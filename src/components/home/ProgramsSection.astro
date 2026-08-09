@@ -1,0 +1,85 @@
+---
+// ProgramsSection.astro — Alternating rows for thematic focus areas
+// USTADI works in thematic areas, not discrete "programs"
+// Each row alternates image/text sides
+export interface FocusArea {
+  title: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  href: string;
+}
+
+export interface Props {
+  heading: string;
+  subheading: string;
+  programs: [FocusArea, FocusArea, FocusArea];
+}
+
+const { heading, subheading, programs } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="programs-heading">
+  <div class="container-wide">
+    <div class="text-center mb-16">
+      <h2
+        id="programs-heading"
+        class="font-heading font-bold text-dark text-balance"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-xl mx-auto text-dark/70 text-balance"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
+
+    <div class="space-y-20 md:space-y-28">
+      {programs.map((program, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div class={isEven ? 'md:order-1' : 'md:order-2'}>
+              <img
+                src={program.image.src}
+                alt={program.image.alt}
+                class="w-full rounded-2xl shadow-card object-cover aspect-[4/3]"
+                loading="lazy"
+              />
+            </div>
+            <div class={isEven ? 'md:order-2' : 'md:order-1'}>
+              <h3
+                class="font-heading font-bold text-dark"
+                style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+              >
+                {program.title}
+              </h3>
+              <p
+                class="mt-4 text-dark/70"
+                style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+              >
+                {program.description}
+              </p>
+              <a
+                href={program.href}
+                class="inline-flex items-center gap-2 mt-5 font-semibold text-primary hover:text-primary-light no-underline"
+                style="font-size: var(--text-body-base);"
+              >
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

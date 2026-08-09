@@ -1,0 +1,67 @@
+---
+// CoreValues.astro — EQUIP values as an icon grid
+// Visual: Five columns with icons, headings, and descriptions
+export interface Value {
+  letter: string;
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  heading: string;
+  subheading: string;
+  values: Value[];
+}
+
+const { heading, subheading, values } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="values-heading">
+  <div class="container-wide">
+    
+    <div class="text-center mb-14">
+      <h2
+        id="values-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-xl mx-auto text-dark/70"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      {values.map((value) => (
+        <div class="bg-white rounded-2xl p-6 text-center shadow-card hover:shadow-card-hover transition-shadow">
+          {/* Letter */}
+          <div
+            class="w-16 h-16 mx-auto flex items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold"
+            style="font-size: var(--text-heading-sm);"
+            aria-hidden="true"
+          >
+            {value.letter}
+          </div>
+          <h3
+            class="mt-4 font-heading font-bold text-dark"
+            style="font-size: 1.125rem;"
+          >
+            {value.title}
+          </h3>
+          <p
+            class="mt-2 text-dark/60"
+            style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
+          >
+            {value.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

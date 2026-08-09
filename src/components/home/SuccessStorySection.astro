@@ -1,0 +1,90 @@
+---
+// SuccessStorySection.astro — Editorial testimonial with large portrait
+// Visual: Large portrait image, pull quote, minimal attribution
+// Purpose: Human proof — emotional connection through individual story
+export interface Props {
+  quote: string;
+  name: string;
+  role: string;
+  portrait: {
+    src: string;
+    alt: string;
+  };
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { quote, name, role, portrait, cta } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="story-heading">
+  <div class="container-wide">
+    
+    <h2 id="story-heading" class="sr-only">Success story</h2>
+
+    <div class="grid md:grid-cols-5 gap-10 lg:gap-16 items-center">
+      
+      {/* Portrait — spans 2 columns */}
+      <div class="md:col-span-2">
+        <div class="relative">
+          <img
+            src={portrait.src}
+            alt={portrait.alt}
+            class="w-full rounded-2xl shadow-card object-cover aspect-[3/4]"
+            loading="lazy"
+          />
+          {/* Decorative accent */}
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-2xl -z-10 hidden md:block" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      {/* Quote — spans 3 columns */}
+      <div class="md:col-span-3">
+        <svg class="w-12 h-12 text-accent/40 mb-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+
+        <blockquote>
+          <p
+            class="font-heading font-medium italic text-dark text-balance"
+            style="font-size: clamp(1.25rem, 3vw, var(--text-heading-md)); line-height: 1.4;"
+          >
+            {quote}
+          </p>
+        </blockquote>
+
+        <div class="mt-8 flex items-center gap-3">
+          <div class="w-px h-10 bg-accent" aria-hidden="true"></div>
+          <div>
+            <p
+              class="font-semibold text-dark"
+              style="font-size: var(--text-body-base);"
+            >
+              {name}
+            </p>
+            <p
+              class="text-dark/50"
+              style="font-size: var(--text-body-sm);"
+            >
+              {role}
+            </p>
+          </div>
+        </div>
+
+        <a
+          href={cta.href}
+          class="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:text-primary-light no-underline"
+          style="font-size: var(--text-body-base);"
+        >
+          {cta.label}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+---
+// OurStory.astro — Founding history as an editorial timeline
+// Visual: Centered narrative with key dates pulled out
+export interface Props {
+  heading: string;
+  milestones: {
+    year: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const { heading, milestones } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="story-heading">
+  <div class="container-tight">
+    
+    <h2
+      id="story-heading"
+      class="text-center font-heading font-bold text-dark"
+      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+    >
+      {heading}
+    </h2>
+    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+
+    <div class="mt-16 relative">
+      {/* Vertical line */}
+      <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-accent/30 -translate-x-1/2" aria-hidden="true"></div>
+
+      <div class="space-y-12">
+        {milestones.map((milestone, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div class={`relative flex items-start gap-8 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              {/* Year marker */}
+              <div class="hidden md:flex w-1/2 justify-end">
+                {isEven && (
+                  <div class="text-right pr-8">
+                    <span
+                      class="font-heading font-bold text-accent"
+                      style="font-size: var(--text-heading-sm); line-height: 1;"
+                    >
+                      {milestone.year}
+                    </span>
+                  </div>
+                )}
+                {!isEven && (
+                  <div class="text-left pl-8">
+                    <span
+                      class="font-heading font-bold text-accent"
+                      style="font-size: var(--text-heading-sm); line-height: 1;"
+                    >
+                      {milestone.year}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Dot on the line */}
+              <div class="absolute left-4 md:left-1/2 w-3 h-3 bg-accent rounded-full -translate-x-1/2 mt-1.5 z-10" aria-hidden="true"></div>
+
+              {/* Content */}
+              <div class={`md:w-1/2 pl-12 md:pl-0 ${isEven ? 'md:pl-8' : 'md:pr-8'}`}>
+                <span class="md:hidden font-heading font-bold text-accent block mb-2" style="font-size: var(--text-heading-sm);">
+                  {milestone.year}
+                </span>
+                <h3
+                  class="font-heading font-bold text-dark"
+                  style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+                >
+                  {milestone.title}
+                </h3>
+                <p
+                  class="mt-3 text-dark/70"
+                  style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+                >
+                  {milestone.description}
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+  </div>
+</section>

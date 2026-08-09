@@ -1,0 +1,83 @@
+---
+// WhereWeWork.astro — Geographic footprint with stats
+// Visual: Split layout with map placeholder and key statistics
+export interface Props {
+  heading: string;
+  description: string;
+  stats: {
+    value: string;
+    label: string;
+  }[];
+  locations: string[];
+}
+
+const { heading, description, stats, locations } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-labelledby="where-heading">
+  <div class="container-wide">
+    
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      {/* Map placeholder */}
+      <div class="bg-cream rounded-2xl p-8 flex items-center justify-center aspect-[4/3]">
+        <div class="text-center">
+          <svg class="w-16 h-16 text-accent/40 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>
+          <p class="mt-4 text-dark/40" style="font-size: var(--text-body-sm);">
+            Map showing USTADI's operational counties in Kenya
+          </p>
+        </div>
+      </div>
+
+      {/* Info */}
+      <div>
+        <h2
+          id="where-heading"
+          class="font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          {heading}
+        </h2>
+        <div class="mt-4 w-16 h-1 bg-accent rounded-full" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {description}
+        </p>
+
+        {/* Stats */}
+        <div class="mt-8 grid grid-cols-2 gap-4">
+          {stats.map((stat) => (
+            <div class="bg-cream rounded-xl p-4">
+              <span
+                class="block font-heading font-bold text-accent"
+                style="font-size: var(--text-heading-sm); line-height: 1;"
+              >
+                {stat.value}
+              </span>
+              <span
+                class="block mt-1 text-dark/60"
+                style="font-size: var(--text-body-sm);"
+              >
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Key locations */}
+        <div class="mt-6">
+          <p class="font-semibold text-dark" style="font-size: var(--text-body-sm);">Key locations:</p>
+          <p class="mt-1 text-dark/60" style="font-size: var(--text-body-sm);">
+            {locations.join(' · ')}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

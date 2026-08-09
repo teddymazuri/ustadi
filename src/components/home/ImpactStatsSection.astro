@@ -1,0 +1,38 @@
+---
+// ImpactStatsSection.astro — Cream band with large numbers
+// Visual: Full-width cream background, three stats, minimal text
+// Purpose: Proof interrupt — breaks visual rhythm, builds trust
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+export interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-label="Our impact in numbers">
+  <div class="container-wide">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+      {stats.map((stat) => (
+        <div>
+          <p
+            class="font-heading font-bold text-primary"
+            style="font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1;"
+          >
+            {stat.value}
+          </p>
+          <p
+            class="mt-3 text-dark/70 max-w-xs mx-auto"
+            style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+          >
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

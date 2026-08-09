@@ -1,0 +1,171 @@
+/* ===== USTADI FOUNDATION — GLOBAL STYLES (Tailwind CSS v4) ===== */
+
+@import "tailwindcss";
+
+/* ===== DESIGN TOKENS ===== */
+@theme {
+  /* ── Colors ── */
+  --color-primary: #0F5E3A;
+  --color-primary-light: #2F8A57;
+  --color-accent: #C89A2D;
+  --color-cream: #FAF9F5;
+  --color-dark: #202020;
+  --color-gray-light: #F3F4F6;
+
+  /* ── Typography ── */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Semantic font sizes — components reference these, not raw scales */
+  --text-heading-xl: 3rem;       /* h1 on desktop */
+  --text-heading-xl--line-height: 1.1;
+  --text-heading-lg: 2.25rem;   /* h2 on desktop */
+  --text-heading-lg--line-height: 1.15;
+  --text-heading-md: 1.5rem;    /* h3 on desktop */
+  --text-heading-md--line-height: 1.25;
+  --text-heading-sm: 1.25rem;   /* h4 on desktop */
+  --text-heading-sm--line-height: 1.3;
+  --text-body-lg: 1.125rem;     /* Large body / lead */
+  --text-body-lg--line-height: 1.7;
+  --text-body-base: 1rem;       /* Standard body */
+  --text-body-base--line-height: 1.625;
+  --text-body-sm: 0.875rem;     /* Small body / captions */
+  --text-body-sm--line-height: 1.5;
+
+  /* Responsive heading overrides */
+  --text-heading-xl-responsive: var(--text-heading-xl);
+  --text-heading-lg-responsive: var(--text-heading-lg);
+  --text-heading-md-responsive: var(--text-heading-md);
+
+  /* ── Spacing ── */
+  --spacing-section: 6rem;      /* Default section padding */
+  --spacing-section-sm: 4rem;   /* Compact section padding */
+  --spacing-element: 1.5rem;    /* Standard gap between elements */
+  --spacing-element-sm: 1rem;   /* Compact element gap */
+  --spacing-element-lg: 2.5rem; /* Large element gap */
+
+  /* ── Border Radius ── */
+  --radius-card: 1rem;
+  --radius-button: 0.5rem;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 2px 15px -3px rgb(0 0 0 / 0.07),
+                 0 10px 20px -2px rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 4px 25px -3px rgb(0 0 0 / 0.1),
+                       0 10px 30px -2px rgb(0 0 0 / 0.05);
+  --shadow-nav: 0 1px 3px rgb(0 0 0 / 0.06);
+}
+
+/* ===== CUSTOM UTILITIES ===== */
+@utility container-wide {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-element);
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility container-tight {
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-inline: var(--spacing-element);
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility section-padding {
+  padding-block: var(--spacing-section-sm);
+
+  @media (width >= 48rem) {
+    padding-block: var(--spacing-section);
+  }
+}
+
+@utility section-padding-sm {
+  padding-block: 3rem;
+
+  @media (width >= 48rem) {
+    padding-block: var(--spacing-section-sm);
+  }
+}
+
+/* ===== RESET & BASE ===== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--text-body-base);
+    line-height: var(--text-body-base--line-height);
+    color: var(--color-dark);
+    background-color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Headings get heading font by default */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
+}
+
+/* ===== REDUCED MOTION (global override) ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

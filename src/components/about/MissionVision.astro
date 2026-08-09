@@ -1,0 +1,71 @@
+---
+// MissionVision.astro — Side-by-side statement cards
+// Visual: Two distinct cards with different styling for contrast
+export interface Props {
+  vision: {
+    heading: string;
+    body: string;
+  };
+  mission: {
+    heading: string;
+    body: string;
+  };
+}
+
+const { vision, mission } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-label="Vision and Mission">
+  <div class="container-wide">
+    
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+      
+      {/* Vision Card */}
+      <div class="bg-cream rounded-2xl p-8 md:p-10 lg:p-12">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6" aria-hidden="true">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </div>
+        <h2
+          class="font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+        >
+          {vision.heading}
+        </h2>
+        <div class="mt-4 w-12 h-0.5 bg-accent rounded-full" aria-hidden="true"></div>
+        <p
+          class="mt-5 text-dark/70"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          {vision.body}
+        </p>
+      </div>
+
+      {/* Mission Card */}
+      <div class="bg-primary rounded-2xl p-8 md:p-10 lg:p-12 text-white">
+        <div class="w-12 h-12 flex items-center justify-center rounded-full bg-white/20 text-white mb-6" aria-hidden="true">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <h2
+          class="font-heading font-bold"
+          style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+        >
+          {mission.heading}
+        </h2>
+        <div class="mt-4 w-12 h-0.5 bg-accent rounded-full" aria-hidden="true"></div>
+        <p
+          class="mt-5 text-white/80"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          {mission.body}
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

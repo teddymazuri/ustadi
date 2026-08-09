@@ -1,0 +1,76 @@
+---
+// HeroSection.astro — Fullscreen hero with overlay
+// Visual: Full-bleed background image, dark gradient overlay
+// Typography: Large editorial headline, single sentence, one CTA
+// Purpose: Emotional hook — "this matters"
+export interface Props {
+  headline: string;
+  subheadline: string;
+  cta: {
+    label: string;
+    href: string;
+  };
+  backgroundImage: string;
+  backgroundAlt: string;
+}
+
+const { headline, subheadline, cta, backgroundImage, backgroundAlt } = Astro.props;
+---
+
+<section
+  class="relative flex items-end md:items-center min-h-[85vh] md:min-h-screen bg-dark overflow-hidden"
+  aria-labelledby="hero-heading"
+>
+  <!-- Background image -->
+  <img
+    src={backgroundImage}
+    alt={backgroundAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+    fetchpriority="high"
+  />
+  
+  <!-- Gradient overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/40 to-dark/80"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Content -->
+  <div class="relative z-10 container-wide pb-16 md:pb-0">
+    <div class="max-w-3xl">
+      <h1
+        id="hero-heading"
+        class="font-heading font-bold text-white text-balance"
+        style="font-size: clamp(2.25rem, 5vw, var(--text-heading-xl)); line-height: 1.1;"
+      >
+        {headline}
+      </h1>
+      <p
+        class="mt-6 text-white/80 max-w-xl text-balance"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheadline}
+      </p>
+      <div class="mt-8">
+        <a
+          href={cta.href}
+          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+          style="font-size: var(--text-body-lg);"
+        >
+          {cta.label}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block" aria-hidden="true">
+    <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+      <div class="w-1.5 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></div>
+    </div>
+  </div>
+</section>

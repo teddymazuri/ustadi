@@ -1,0 +1,40 @@
+---
+// PartnersSection.astro — Understated logo strip
+// Visual: Clean logo row, no grayscale, high opacity
+export interface Partner {
+  name: string;
+  logo: string;
+}
+
+export interface Props {
+  heading: string;
+  partners: Partner[];
+}
+
+const { heading, partners } = Astro.props;
+---
+
+<section class="section-padding-sm bg-white" aria-labelledby="partners-heading">
+  <div class="container-wide">
+    
+    <h2
+      id="partners-heading"
+      class="text-center font-heading font-bold text-dark"
+      style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+    >
+      {heading}
+    </h2>
+
+    <div class="mt-10 flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-90">
+      {partners.map((partner) => (
+        <img
+          src={partner.logo}
+          alt={partner.name}
+          class="h-8 md:h-10 w-auto"
+          loading="lazy"
+        />
+      ))}
+    </div>
+
+  </div>
+</section>

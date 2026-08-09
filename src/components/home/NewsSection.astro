@@ -1,0 +1,138 @@
+---
+// NewsSection.astro — Asymmetric editorial news layout
+// Visual: One featured article (larger), two secondary (smaller)
+// Purpose: Show momentum without overwhelming
+export interface NewsItem {
+  title: string;
+  excerpt: string;
+  date: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  href: string;
+}
+
+export interface Props {
+  heading: string;
+  subheading: string;
+  featured: NewsItem;
+  secondary: [NewsItem, NewsItem];
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { heading, subheading, featured, secondary, cta } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="news-heading">
+  <div class="container-wide">
+    
+    <div class="text-center mb-12">
+      <h2
+        id="news-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-xl mx-auto text-dark/70"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      
+      {/* Featured — spans 2 columns */}
+      <article class="lg:col-span-2 bg-white rounded-2xl shadow-card overflow-hidden group">
+        <a href={featured.href} class="no-underline" aria-label={`Read more: ${featured.title}`}>
+          <img
+            src={featured.image.src}
+            alt={featured.image.alt}
+            class="w-full h-64 md:h-80 object-cover"
+            loading="lazy"
+          />
+          <div class="p-6 md:p-8">
+            <time
+              class="text-accent font-semibold tracking-wide uppercase"
+              style="font-size: var(--text-body-sm);"
+              datetime={featured.date}
+            >
+              {featured.date}
+            </time>
+            <h3
+              class="mt-2 font-heading font-bold text-dark group-hover:text-primary transition-colors"
+              style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+            >
+              {featured.title}
+            </h3>
+            <p
+              class="mt-3 text-dark/60"
+              style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+            >
+              {featured.excerpt}
+            </p>
+          </div>
+        </a>
+      </article>
+
+      {/* Secondary articles */}
+      <div class="flex flex-col gap-8">
+        {secondary.map((item) => (
+          <article class="bg-white rounded-2xl shadow-card overflow-hidden group flex-1">
+            <a href={item.href} class="no-underline flex flex-col h-full" aria-label={`Read more: ${item.title}`}>
+              <img
+                src={item.image.src}
+                alt={item.image.alt}
+                class="w-full h-40 object-cover"
+                loading="lazy"
+              />
+              <div class="p-5 flex flex-col flex-1">
+                <time
+                  class="text-accent font-semibold tracking-wide uppercase"
+                  style="font-size: var(--text-body-sm);"
+                  datetime={item.date}
+                >
+                  {item.date}
+                </time>
+                <h3
+                  class="mt-2 font-heading font-bold text-dark group-hover:text-primary transition-colors"
+                  style="font-size: 1.125rem; line-height: 1.4;"
+                >
+                  {item.title}
+                </h3>
+                <p
+                  class="mt-2 text-dark/60 flex-1"
+                  style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
+                >
+                  {item.excerpt}
+                </p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a
+        href={cta.href}
+        class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-light no-underline"
+        style="font-size: var(--text-body-base);"
+      >
+        {cta.label}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

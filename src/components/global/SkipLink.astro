@@ -1,0 +1,17 @@
+---
+// SkipLink.astro — Accessibility skip-to-content link
+export interface Props {
+  targetId?: string;
+  label?: string;
+}
+
+const { targetId = 'main-content', label = 'Skip to main content' } = Astro.props;
+---
+
+<a
+  href={`#${targetId}`}
+  class="absolute top-0 left-0 -translate-y-full bg-primary text-white px-4 py-2 z-100 rounded-br-lg font-semibold text-sm no-underline focus:translate-y-0"
+  style="font-size: var(--text-body-sm);"
+>
+  {label}
+</a>

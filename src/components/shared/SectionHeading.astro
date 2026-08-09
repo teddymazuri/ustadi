@@ -1,0 +1,49 @@
+---
+// SectionHeading.astro — Consistent section header for every page
+// Owns: typography tokens, spacing, decorative line, theme awareness
+// Receives: heading text, optional subheading, semantic HTML tag, theme
+export interface Props {
+  heading: string;
+  subheading?: string;
+  /** Semantic HTML heading element: 'h1' | 'h2' | 'h3' */
+  as?: 'h1' | 'h2' | 'h3';
+  /** Use 'dark' when on dark/green backgrounds */
+  theme?: 'light' | 'dark';
+  /** Hide the decorative gold line */
+  hideLine?: boolean;
+}
+
+const {
+  heading,
+  subheading,
+  as: HeadingTag = 'h2',
+  theme = 'light',
+  hideLine = false,
+} = Astro.props;
+
+const isDark = theme === 'dark';
+const textColor = isDark ? 'text-white' : 'text-dark';
+const subColor = isDark ? 'text-white/70' : 'text-dark/70';
+---
+
+<div class="text-center mb-12 md:mb-16">
+  <HeadingTag
+    class="text-balance {textColor}"
+    style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+  >
+    {heading}
+  </HeadingTag>
+
+  {subheading && (
+    <p
+      class="mt-4 max-w-2xl mx-auto text-balance {subColor}"
+      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+    >
+      {subheading}
+    </p>
+  )}
+
+  {!hideLine && (
+    <div class="mt-6 w-16 h-1 rounded-full bg-accent mx-auto" aria-hidden="true"></div>
+  )}
+</div>
