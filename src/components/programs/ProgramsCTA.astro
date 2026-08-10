@@ -1,0 +1,58 @@
+---
+// ProgramsCTA.astro — Page-closing call to action
+// Visual: Dark green centered CTA with two buttons
+export interface Props {
+  heading: string;
+  body: string;
+  primaryCta: {
+    label: string;
+    href: string;
+  };
+  secondaryCta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { heading, body, primaryCta, secondaryCta } = Astro.props;
+---
+
+<section class="section-padding bg-primary" aria-labelledby="programs-cta-heading">
+  <div class="container-tight text-center">
+    
+    <h2
+      id="programs-cta-heading"
+      class="font-heading font-bold text-white"
+      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+    >
+      {heading}
+    </h2>
+    <p
+      class="mt-5 text-white/70 max-w-lg mx-auto"
+      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+    >
+      {body}
+    </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href={primaryCta.href}
+        class="inline-flex items-center justify-center px-8 py-4 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+        style="font-size: var(--text-body-base);"
+      >
+        {primaryCta.label}
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+      <a
+        href={secondaryCta.href}
+        class="inline-flex items-center justify-center px-8 py-4 font-semibold text-white border-2 border-white/30 rounded-lg hover:bg-white/10 no-underline"
+        style="font-size: var(--text-body-base);"
+      >
+        {secondaryCta.label}
+      </a>
+    </div>
+
+  </div>
+</section>

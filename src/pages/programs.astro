@@ -1,0 +1,135 @@
+---
+// Programs page — USTADI Foundation
+// All content sourced from USTADI Institutional Profile (February 2024)
+import MainLayout from '../layouts/MainLayout.astro';
+import ProgramsHero from '../components/programs/ProgramsHero.astro';
+import ThematicAreas from '../components/programs/ThematicAreas.astro';
+import KeyProjects from '../components/programs/KeyProjects.astro';
+import ApproachSection from '../components/programs/ApproachSection.astro';
+import ProgramsCTA from '../components/programs/ProgramsCTA.astro';
+
+// Helper function to build clean base-aware internal URLs
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Programs"
+  description="USTADI Foundation promotes demand-driven professional capacity development across youth employment, value chain facilitation, climate solutions, and enterprise development in Kenya."
+  currentPage="programs"
+>
+  <!-- 1. Hero -->
+  <ProgramsHero
+    headline="Capacity development as the core — not as an add-on"
+    subheadline="USTADI employs a market facilitation model where both the demand and supply sides of capacity development services are strengthened and linked for purposes of developing businesses. Our approach is demand-driven, fee-based, and grounded in knowledge sharing from documented best practice cases."
+    image={{
+      src: getUrl('/images/programs/programs-hero.jpg'),
+      alt: 'USTADI Foundation capacity development training session with youth and women entrepreneurs',
+    }}
+  />
+
+  <!-- 2. Thematic Areas -->
+  <ThematicAreas
+    heading="Our Thematic Focus"
+    subheading="USTADI's work spans eight interconnected areas that together promote sustainable enterprise development for youth and women."
+    areas={[
+      {
+        title: 'Youth Employment',
+        description: 'Creating sustainable employment opportunities for rural youth through agribusiness, entrepreneurship, and market-driven skills development.',
+        icon: 'users',
+      },
+      {
+        title: 'Value Chain Facilitation',
+        description: 'Strengthening agricultural value chains including cereals, dairy, fisheries, livestock, cassava, and soy to improve market access and incomes.',
+        icon: 'chart',
+      },
+      {
+        title: 'Youth Inclusion',
+        description: 'Ensuring young people — particularly young women — are actively engaged in economic opportunities and decision-making processes.',
+        icon: 'heart',
+      },
+      {
+        title: 'Rural Youth and Women Enterprise Development',
+        description: 'Building entrepreneurial capacity through training, mentorship, coaching, and incubation programmes tailored for rural contexts.',
+        icon: 'briefcase',
+      },
+      {
+        title: 'Climate Solutions and Green Jobs',
+        description: 'Promoting environmental management, renewable energy, and climate-resilient agriculture that creates employment for youth.',
+        icon: 'leaf',
+      },
+      {
+        title: 'Demand-Driven Professional Capacity Development',
+        description: 'Delivering competitively priced professional services at the local level based on real market demands and client needs.',
+        icon: 'academic',
+      },
+      {
+        title: 'Mentorship and Coaching',
+        description: 'Providing ongoing support to youth entrepreneurs through structured mentorship programmes and business coaching.',
+        icon: 'lightbulb',
+      },
+      {
+        title: 'Innovative Financing',
+        description: 'Facilitating access to finance through crowdfunding, technical assistance grants, and linkages to financial institutions.',
+        icon: 'cash',
+      },
+    ]}
+  />
+
+  <!-- 3. Key Projects -->
+  <KeyProjects
+    heading="Key Projects"
+    subheading="Selected initiatives that demonstrate our approach to capacity development in action."
+    projects={[
+      {
+        title: 'JOY Project — Boosting Rural Youth Employment through Integrated Agribusiness Hubs',
+        description: 'A 4-year initiative establishing agribusiness hubs and integrated training programmes across Kilifi, Kakamega, and Nakuru counties. The project builds youth capacity with technical, managerial, and entrepreneurial skills for self and wage employment. Partnership with IFAD, Visa Foundation, ILO, and Procasur.',
+        image: { src: getUrl('/images/projects/joy-project.jpg'), alt: 'JOY Project agribusiness hub training session' },
+        href: getUrl('/projects'),
+      },
+      {
+        title: 'VIJABIZ — Youth Economic Empowerment through Agribusiness',
+        description: 'An IFAD-funded project that built entrepreneurship capacity, created market linkages, and added value for 173 rural youth groups in cereals, dairy, and fisheries value chains across Kilifi and Nakuru counties. Over 1,550 direct participants, with 72 agri-enterprises receiving grants.',
+        image: { src: getUrl('/images/projects/vijabiz-project.jpg'), alt: 'VIJABIZ youth agribusiness training in Kenya' },
+        href: getUrl('/projects'),
+      },
+      {
+        title: 'Y2YF — Youth-to-Youth Fund for Entrepreneurship Promotion',
+        description: 'USTADI was competitively selected by ILO to implement the Y2Y Fund in Kenya. From 486 proposals received nationwide, 34 youth-led organisations were supported as grantees, creating 1,171 jobs and reaching over 10,000 indirect beneficiaries across 11 counties.',
+        image: { src: getUrl('/images/projects/y2yf-project.jpg'), alt: 'Y2YF grantee showcasing their enterprise' },
+        href: getUrl('/projects'),
+      },
+    ]}
+  />
+
+  <!-- 4. Our Approach -->
+  <ApproachSection
+    heading="Our Approach"
+    subheading="USTADI's model revolves around three complementary pillars that promote capacity development as the core — not as an add-on."
+    pillars={[
+      {
+        number: '01',
+        title: 'Market Facilitation Services',
+        description: 'Face-to-face market matchmaking events, trade fairs, and linkages that connect youth and women entrepreneurs to buyers, suppliers, and business opportunities at the national and sub-national level.',
+      },
+      {
+        number: '02',
+        title: 'Technical Assistance Grants and Investments',
+        description: 'Providing financial support, procurement and grant management, and innovative financing solutions including crowdfunding to help enterprises grow sustainably in rural regions.',
+      },
+      {
+        number: '03',
+        title: 'Learning and Sharing Platform',
+        description: 'Knowledge development through best practice documentation, quality assurance, policy advocacy, and competitively priced professional services at the local level.',
+      },
+    ]}
+  />
+
+  <!-- 5. CTA -->
+  <ProgramsCTA
+    heading="Partner with us to scale capacity development"
+    body="We work with county governments, development partners, and the private sector to deliver sustainable impact across Kenya. Explore our projects or get in touch to discuss collaboration."
+    primaryCta={{ label: 'View our projects', href: getUrl('/projects') }}
+    secondaryCta={{ label: 'Get in touch', href: getUrl('/contact') }}
+  />
+</MainLayout>

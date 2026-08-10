@@ -1,0 +1,51 @@
+---
+// ProgramsHero.astro — Editorial hero for Programs page
+// Visual: Split layout with text block and supporting image
+export interface Props {
+  headline: string;
+  subheadline: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+const { headline, subheadline, image } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-labelledby="programs-hero-heading">
+  <div class="container-wide">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <div>
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Our Programs
+        </p>
+        <h1
+          id="programs-hero-heading"
+          class="mt-4 font-heading font-bold text-dark text-balance"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          {headline}
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-xl"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {subheadline}
+        </p>
+      </div>
+
+      <div>
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="w-full rounded-2xl shadow-card object-cover aspect-[4/3]"
+          loading="eager"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
