@@ -15,9 +15,9 @@ import DonationCTASection from '../components/home/DonationCTASection.astro';
 import NewsletterSection from '../components/home/NewsletterSection.astro';
 import ContactSummarySection from '../components/home/ContactSummarySection.astro';
 
-// Helper function to dynamically prefix paths for local dev and GitHub Pages
+// Helper function to build clean base-aware internal URLs
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const getUrl = (path: string) => `${base}${path.startsWith('/') ? path : '/' + path}`;
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 ---
 
 <MainLayout

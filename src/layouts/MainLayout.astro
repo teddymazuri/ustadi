@@ -21,7 +21,7 @@ const { title, description, image, noIndex, currentPage } = Astro.props;
 
 // Helper function to build clean base-aware internal URLs
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const getUrl = (path: string) => `${base}${path.startsWith('/') ? path : '/' + path}`;
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 interface NavLink {
   label: string;
@@ -187,16 +187,12 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
     <div slot="columns" class="lg:col-span-2">
       <h3 class="font-heading text-lg font-semibold mb-5 text-dark">Quick Links</h3>
       <ul class="space-y-2.5" role="list">
-        {['About Us', 'Programs', 'Projects', 'Impact', 'Partners', 'News'].map((label) => (
-          <li>
-            <a
-              href={getUrl(`/${label.toLowerCase().replace(/\s+/g, '-').replace('our-', '')}`)}
-              class="text-sm text-dark/60 hover:text-primary no-underline"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
+        <li><a href={getUrl('/about')} class="text-sm text-dark/60 hover:text-primary no-underline">About Us</a></li>
+        <li><a href={getUrl('/programs')} class="text-sm text-dark/60 hover:text-primary no-underline">Programs</a></li>
+        <li><a href={getUrl('/projects')} class="text-sm text-dark/60 hover:text-primary no-underline">Projects</a></li>
+        <li><a href={getUrl('/impact')} class="text-sm text-dark/60 hover:text-primary no-underline">Our Impact</a></li>
+        <li><a href={getUrl('/partners')} class="text-sm text-dark/60 hover:text-primary no-underline">Partners</a></li>
+        <li><a href={getUrl('/news')} class="text-sm text-dark/60 hover:text-primary no-underline">News</a></li>
       </ul>
     </div>
 
@@ -204,16 +200,10 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
     <div slot="columns" class="lg:col-span-2">
       <h3 class="font-heading text-lg font-semibold mb-5 text-dark">Get Involved</h3>
       <ul class="space-y-2.5" role="list">
-        {['Donate', 'Volunteer', 'Partner With Us', 'Contact'].map((label) => (
-          <li>
-            <a
-              href={getUrl(`/${label.toLowerCase().replace(/\s+/g, '-').replace('with-', '')}`)}
-              class="text-sm text-dark/60 hover:text-primary no-underline"
-            >
-              {label}
-            </a>
-          </li>
-        ))}
+        <li><a href={getUrl('/donate')} class="text-sm text-dark/60 hover:text-primary no-underline">Donate</a></li>
+        <li><a href={getUrl('/get-involved')} class="text-sm text-dark/60 hover:text-primary no-underline">Volunteer</a></li>
+        <li><a href={getUrl('/partners')} class="text-sm text-dark/60 hover:text-primary no-underline">Partner With Us</a></li>
+        <li><a href={getUrl('/contact')} class="text-sm text-dark/60 hover:text-primary no-underline">Contact</a></li>
       </ul>
     </div>
 

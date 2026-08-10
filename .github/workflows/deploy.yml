@@ -25,14 +25,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'npm'
 
-      - name: Upgrade npm
-        run: npm install -g npm@latest
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build
+      - name: Build
+        run: npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

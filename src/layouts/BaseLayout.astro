@@ -53,7 +53,7 @@ const ogImageURL = Astro.site ? new URL(image, Astro.site).href : '';
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Ustadi Foundation`} />
     <meta name="twitter:description" content={description} />
-    {ogImageURL && <meta property="twitter:image" content={ogImageURL} />}
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL} />}
 
     {Astro.site && (
       <script type="application/ld+json" set:html={JSON.stringify({
@@ -71,6 +71,12 @@ const ogImageURL = Astro.site ? new URL(image, Astro.site).href : '';
       })}>
       </script>
     )}
+
+    <!-- Favicon and PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0F5E3A" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

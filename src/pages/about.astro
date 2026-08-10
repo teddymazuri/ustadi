@@ -12,6 +12,10 @@ import WhereWeWork from '../components/about/WhereWeWork.astro';
 import TargetGroups from '../components/about/TargetGroups.astro';
 import DonorRecognition from '../components/about/DonorRecognition.astro';
 import AboutCTA from '../components/about/AboutCTA.astro';
+
+// Helper function to build clean base-aware internal URLs
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 ---
 
 <MainLayout
@@ -24,7 +28,7 @@ import AboutCTA from '../components/about/AboutCTA.astro';
     headline="Promoting transformation and growth of youth and women enterprises since 2010"
     subheadline="USTADI is a registered Kenyan organisation that was started by a consortium of 21 organisations led by SNV and HIVOs, promoting capacity development initiatives across Kenya. Formally registered in 2012, we work through a market facilitation model that strengthens both the demand and supply sides of capacity development services."
     image={{
-      src: '/images/about/about-hero.jpg',
+      src: getUrl('/images/about/about-hero.jpg'),
       alt: 'USTADI Foundation team working with youth and women entrepreneurs in rural Kenya',
     }}
   />
@@ -182,16 +186,27 @@ import AboutCTA from '../components/about/AboutCTA.astro';
     heading="Our Funding Partners"
     subheading="We are grateful to the organisations that support our work across Kenya."
     donors={[
-      { name: 'SNV', logo: '/images/donors/snv.svg' },
-      { name: 'IFAD', logo: '/images/donors/ifad.svg' },
-      { name: 'ILO', logo: '/images/donors/ilo.svg' },
-      { name: 'European Union', logo: '/images/donors/eu.svg' },
-      { name: 'USAID', logo: '/images/donors/usaid.svg' },
-      { name: 'Visa Foundation', logo: '/images/donors/visa-foundation.svg' },
-      { name: 'Land O\'Lakes', logo: '/images/donors/landolakes.svg' },
-      { name: 'USADF', logo: '/images/donors/usadf.svg' },
-      { name: 'KALRO', logo: '/images/donors/kalro.svg' },
-      { name: 'Pathfinder International', logo: '/images/donors/pathfinder.svg' },
+      { name: 'SNV', logo: getUrl('/images/donors/snv.svg') },
+      { name: 'IFAD', logo: getUrl('/images/donors/ifad.svg') },
+      { name: 'ILO', logo: getUrl('/images/donors/ilo.svg') },
+      { name: 'European Union', logo: getUrl('/images/donors/eu.svg') },
+      { name: 'USAID', logo: getUrl('/images/donors/usaid.svg') },
+      { name: 'Visa Foundation', logo: getUrl('/images/donors/visa-foundation.svg') },
+      { name: 'Mastercard Foundation', logo: getUrl('/images/donors/mastercard-foundation.svg') },
+      { name: "Land O'Lakes", logo: getUrl('/images/donors/landolakes.svg') },
+      { name: 'USADF', logo: getUrl('/images/donors/usadf.svg') },
+      { name: 'KALRO', logo: getUrl('/images/donors/kalro.svg') },
+      { name: 'Pathfinder International', logo: getUrl('/images/donors/pathfinder.svg') },
+      { name: 'GIZ', logo: getUrl('/images/donors/giz.svg') },
+      { name: 'ChildFund', logo: getUrl('/images/donors/childfund.svg') },
+      { name: 'Self Help Africa', logo: getUrl('/images/donors/self-help-africa.svg') },
+      { name: 'Procasur', logo: getUrl('/images/donors/procasur.svg') },
+      { name: 'CTA', logo: getUrl('/images/donors/cta.svg') },
+      { name: 'HIVOS', logo: getUrl('/images/donors/hivos.svg') },
+      { name: 'Safaricom Foundation', logo: getUrl('/images/donors/safaricom-foundation.svg') },
+      { name: 'CoELIB', logo: getUrl('/images/donors/coelib.svg') },
+      { name: 'TechnoServe', logo: getUrl('/images/donors/technoserve.svg') },
+      { name: 'ACT (Act Change Transform)', logo: getUrl('/images/donors/act.svg') },
     ]}
   />
 
@@ -199,7 +214,7 @@ import AboutCTA from '../components/about/AboutCTA.astro';
   <AboutCTA
     heading="Partner with us to transform rural livelihoods"
     body="We work with county governments, the private sector, and development partners to deliver sustainable impact. Explore our programmes or get in touch to discuss collaboration."
-    primaryCta={{ label: 'Our programmes', href: '/programs' }}
-    secondaryCta={{ label: 'Contact us', href: '/contact' }}
+    primaryCta={{ label: 'Our programmes', href: getUrl('/programs') }}
+    secondaryCta={{ label: 'Contact us', href: getUrl('/contact') }}
   />
 </MainLayout>
