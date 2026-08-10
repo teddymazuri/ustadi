@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://teddymazuri.github.io',
   // Automatically uses '/' for local dev, and '/ustadi' for production builds
-  base: process.env.NODE_ENV === 'production' ? '/ustadi' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/ustadi/' : '/',
   vite: {
     plugins: [tailwindcss()]
   }
