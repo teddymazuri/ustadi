@@ -1,0 +1,48 @@
+---
+// ImpactStatsGrid.astro — Grid of key impact numbers
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+export interface Props {
+  heading: string;
+  stats: Stat[];
+}
+
+const { heading, stats } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="impact-stats-heading">
+  <div class="container-wide">
+    
+    <h2
+      id="impact-stats-heading"
+      class="text-center font-heading font-bold text-dark"
+      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+    >
+      {heading}
+    </h2>
+    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {stats.map((stat) => (
+        <div class="bg-white rounded-2xl p-8 text-center shadow-card">
+          <p
+            class="font-heading font-bold text-primary"
+            style="font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1;"
+          >
+            {stat.value}
+          </p>
+          <p
+            class="mt-3 text-dark/60"
+            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+          >
+            {stat.label}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

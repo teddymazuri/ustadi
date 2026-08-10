@@ -1,0 +1,64 @@
+---
+// ProjectOutcomes.astro — Selected project outcomes in editorial layout
+export interface Outcome {
+  project: string;
+  metric: string;
+  description: string;
+}
+
+export interface Props {
+  heading: string;
+  subheading: string;
+  outcomes: Outcome[];
+}
+
+const { heading, subheading, outcomes } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-labelledby="outcomes-heading">
+  <div class="container-wide">
+    
+    <div class="text-center mb-14">
+      <h2
+        id="outcomes-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-2xl mx-auto text-dark/70"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      {outcomes.map((outcome) => (
+        <div class="bg-cream rounded-2xl p-8">
+          <p
+            class="font-heading font-bold text-accent"
+            style="font-size: var(--text-heading-sm); line-height: 1.2;"
+          >
+            {outcome.metric}
+          </p>
+          <p
+            class="mt-2 text-dark/50 font-medium"
+            style="font-size: var(--text-body-sm);"
+          >
+            {outcome.project}
+          </p>
+          <p
+            class="mt-3 text-dark/70"
+            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+          >
+            {outcome.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

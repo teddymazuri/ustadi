@@ -1,0 +1,51 @@
+---
+// ImpactHero.astro — Centered hero with large stat highlight
+export interface Props {
+  headline: string;
+  subheadline: string;
+  highlightStat: {
+    value: string;
+    label: string;
+  };
+}
+
+const { headline, subheadline, highlightStat } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-labelledby="impact-hero-heading">
+  <div class="container-tight text-center">
+    <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+      Our Impact
+    </p>
+    <h1
+      id="impact-hero-heading"
+      class="mt-4 font-heading font-bold text-dark text-balance"
+      style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+    >
+      {headline}
+    </h1>
+    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    <p
+      class="mt-6 text-dark/70 max-w-2xl mx-auto text-balance"
+      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+    >
+      {subheadline}
+    </p>
+
+    {/* Highlight stat */}
+    <div class="mt-12 inline-block bg-cream rounded-2xl px-12 py-8">
+      <p
+        class="font-heading font-bold text-primary"
+        style="font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1;"
+      >
+        {highlightStat.value}
+      </p>
+      <p
+        class="mt-3 text-dark/70 max-w-sm mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {highlightStat.label}
+      </p>
+    </div>
+  </div>
+</section>
