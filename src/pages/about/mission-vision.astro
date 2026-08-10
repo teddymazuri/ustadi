@@ -1,0 +1,102 @@
+---
+// Mission & Vision page — USTADI Foundation
+// All content sourced from USTADI Institutional Profile (February 2024)
+import MainLayout from '../../layouts/MainLayout.astro';
+import MissionVision from '../../components/about/MissionVision.astro';
+import CoreValues from '../../components/about/CoreValues.astro';
+import OurModel from '../../components/about/OurModel.astro';
+import TargetGroups from '../../components/about/TargetGroups.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Mission & Vision"
+  description="USTADI Foundation's vision is vibrant and self-sustaining markets delivering improved income and livelihoods for rural communities across Kenya."
+  currentPage="about"
+>
+  <!-- 1. Vision & Mission (verbatim from profile) -->
+  <MissionVision
+    vision={{
+      heading: 'Our Vision',
+      body: 'Vibrant and self-sustaining markets delivering improved income and livelihoods for rural communities.',
+    }}
+    mission={{
+      heading: 'Our Mission',
+      body: 'To promote transformation and growth of youth and women enterprises and their related institutions, in Food Security and Nutrition, WaSH, Climate solutions and the SME sectors, by stimulating demand driven professional capacity development, investments, innovative financing and market systems development to deliver sustainable economic, social and environmental development to target communities.',
+    }}
+  />
+
+  <!-- 2. Core Values — EQUIP -->
+  <CoreValues
+    heading="Our Core Values"
+    subheading="The EQUIP framework guides everything we do."
+    values={[
+      {
+        letter: 'E',
+        title: 'Empowering',
+        description: 'Equipping youth and women with the skills and confidence to lead their own development.',
+      },
+      {
+        letter: 'Q',
+        title: 'Quality',
+        description: 'Pursuing excellence in all our capacity development services and programmes.',
+      },
+      {
+        letter: 'U',
+        title: 'Uniting',
+        description: 'Connecting stakeholders across sectors to create lasting partnerships.',
+      },
+      {
+        letter: 'I',
+        title: 'Innovation',
+        description: 'Developing creative solutions to enterprise and market challenges.',
+      },
+      {
+        letter: 'P',
+        title: 'Partnership',
+        description: 'Working collaboratively with communities, governments, and funders.',
+      },
+    ]}
+  />
+
+  <!-- 3. Our Model — Three pillars -->
+  <OurModel
+    heading="Our Model"
+    subheading="USTADI's strategy revolves around three complementary pillars that promote capacity development as the core — not as an add-on."
+    pillars={[
+      {
+        number: '01',
+        title: 'Market Facilitation Services',
+        description: 'Face-to-face market matchmaking events, trade fairs, and linkages that connect youth and women entrepreneurs to buyers, suppliers, and business opportunities.',
+      },
+      {
+        number: '02',
+        title: 'Technical Assistance Grants and Investments',
+        description: 'Providing financial support, procurement and grant management, and innovative financing solutions including crowdfunding to help enterprises grow sustainably.',
+      },
+      {
+        number: '03',
+        title: 'Learning and Sharing Platform',
+        description: 'Knowledge development through best practice documentation, quality assurance, policy advocacy, and competitively priced professional services at the local level.',
+      },
+    ]}
+  />
+
+  <!-- 4. Target Groups -->
+  <TargetGroups
+    heading="Who We Serve"
+    groups={[
+      { title: 'Rural businesses', icon: 'briefcase' },
+      { title: 'Youth and women entrepreneurs', icon: 'users' },
+      { title: 'Business Development Services providers', icon: 'building' },
+      { title: 'Non-profit organisations', icon: 'heart' },
+      { title: 'Farmer groups and associations', icon: 'globe' },
+      { title: 'Self-help groups', icon: 'users' },
+      { title: 'TVETs and vocational training institutions', icon: 'academic' },
+      { title: 'NGOs and other CSOs', icon: 'office' },
+      { title: 'County governments', icon: 'building' },
+    ]}
+  />
+</MainLayout>

@@ -1,0 +1,35 @@
+---
+// Governance & Management page — USTADI Foundation
+// All content sourced from USTADI Institutional Profile (February 2024)
+import MainLayout from '../../layouts/MainLayout.astro';
+import GovernanceSection from '../../components/about/GovernanceSection.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Governance & Management"
+  description="USTADI Foundation is governed by a Board of 5 Directors and managed by a team led by the Chief Executive Officer, overseeing programmes, finance, grants, and monitoring and evaluation."
+  currentPage="about"
+>
+  <GovernanceSection
+    heading="Governance and Management"
+    board={{
+      heading: 'Board of Directors',
+      description: 'The Board of Directors is the key governance body providing leadership and guidance to management. The Board delegates responsibility for day-to-day management to the Chief Executive Officer.',
+      members: 'Currently composed of 5 Directors.',
+    }}
+    management={{
+      heading: 'Management Team',
+      description: 'The management team comprises senior professionals who oversee the organisation\'s programmes, finance, grants, and monitoring functions under the leadership of the CEO.',
+      roles: [
+        'Chief Executive Officer and Team Leader',
+        'Finance, Grants, and Administration Manager',
+        'Head of Programmes (Business Development Services)',
+        'Head of Monitoring and Evaluation',
+        'Several staff supporting various departments',
+      ],
+    }}
+  />
+</MainLayout>

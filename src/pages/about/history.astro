@@ -1,0 +1,61 @@
+---
+// History page — USTADI Foundation
+// All content sourced from USTADI Institutional Profile (February 2024)
+import MainLayout from '../../layouts/MainLayout.astro';
+import OurStory from '../../components/about/OurStory.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="History"
+  description="USTADI Foundation was founded in 2010 by a consortium of 21 organisations led by SNV and HIVOs. Formally registered in 2012, USTADI has grown to reach over 350,000 rural households across Kenya."
+  currentPage="about"
+>
+  <OurStory
+    heading="Our History"
+    milestones={[
+      {
+        year: '2010',
+        title: 'Founded by a consortium of 21 organisations',
+        description: 'USTADI began as a capacity development initiative led by SNV and HIVOs, bringing together 21 organisations to promote professional capacity development services across Kenya.',
+      },
+      {
+        year: '2012',
+        title: 'Formally registered as a Company Limited by Guarantee',
+        description: 'USTADI received its certificate of registration (CPR/2012/70718), establishing its legal identity as a Kenyan organisation focused on enterprise development.',
+      },
+      {
+        year: '2014',
+        title: 'First major youth programme launched',
+        description: 'Selected by the ILO as the implementing partner for the Youth-to-Youth Fund in Kenya, supporting 34 youth-led organisations and creating over 1,100 jobs across 11 counties.',
+      },
+      {
+        year: '2015',
+        title: 'Expanding into value chains and climate',
+        description: 'Launched K-SALES livestock enhancement project with Land O\'Lakes and KICCAP climate change project in Kilifi, broadening USTADI\'s sectoral reach into livestock and environmental resilience.',
+      },
+      {
+        year: '2017',
+        title: 'Cassava value chain and WaSH projects begin',
+        description: 'Began the 4.5-year EU-funded cassava value chain project across Kilifi and Kitui Counties, and the Afya Pwani WaSH project in Kilifi with Pathfinder International.',
+      },
+      {
+        year: '2018',
+        title: 'VIJABIZ: Scaling youth agribusiness',
+        description: 'Launched the Youth Economic Empowerment through Agribusiness project with IFAD and CTA, reaching 173 youth groups and over 1,550 direct participants across Kilifi and Nakuru counties.',
+      },
+      {
+        year: '2021',
+        title: 'JOY Project: Integrated agribusiness hubs',
+        description: 'Began a 4-year partnership with IFAD, Visa Foundation, ILO, and Procasur to establish agribusiness hubs across Kilifi, Kakamega, and Nakuru counties, targeting youth self and wage employment.',
+      },
+      {
+        year: '2022',
+        title: 'Green jobs and resilience',
+        description: 'Launched the Emajic project with GIZ and ChildFund focused on environmental management, jobs, and income for youth and women in Nairobi, while continuing post-COVID resilience support for youth enterprises.',
+      },
+    ]}
+  />
+</MainLayout>
