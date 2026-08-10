@@ -14,6 +14,10 @@ import VolunteerCTASection from '../components/home/VolunteerCTASection.astro';
 import DonationCTASection from '../components/home/DonationCTASection.astro';
 import NewsletterSection from '../components/home/NewsletterSection.astro';
 import ContactSummarySection from '../components/home/ContactSummarySection.astro';
+
+// Helper function to dynamically prefix paths for local dev and GitHub Pages
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}${path.startsWith('/') ? path : '/' + path}`;
 ---
 
 <MainLayout
@@ -25,8 +29,8 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
   <HeroSection
     headline="Transforming youth and women enterprises across Kenya"
     subheadline="Demand-driven capacity development for sustainable livelihoods."
-    cta={{ label: 'Our Work', href: '/programs' }}
-    backgroundImage="/images/hero/ustadi-hero.jpg"
+    cta={{ label: 'Our Work', href: getUrl('/programs') }}
+    backgroundImage={getUrl('/images/hero/ustadi-hero.jpg')}
     backgroundAlt="Youth and women entrepreneurs participating in USTADI Foundation capacity development programs in rural Kenya"
   />
 
@@ -35,10 +39,10 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
     heading="Vibrant and self-sustaining markets delivering improved income and livelihoods for rural communities"
     body="USTADI is a registered Kenyan organisation whose primary focus is on facilitation of professional and demand-driven capacity development services. We work directly with youth and women entrepreneurs, business support institutions, and through local implementing partners to stimulate the growth and expansion of businesses at the national and sub-national level. Our model promotes capacity development as the core — not as an add-on — and revolves around three complementary pillars: Market Facilitation Services, Technical Assistance grants and Investments, and a Learning and Sharing Platform."
     image={{
-      src: '/images/home/ustadi-mission.jpg',
+      src: getUrl('/images/home/ustadi-mission.jpg'),
       alt: 'USTADI Foundation team working with rural youth entrepreneurs in Kenya',
     }}
-    cta={{ label: 'Learn more about our approach', href: '/about' }}
+    cta={{ label: 'Learn more about our approach', href: getUrl('/about') }}
   />
 
   <!-- 3. Programs — Based on real thematic areas from the profile -->
@@ -49,20 +53,20 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
       {
         title: 'Youth and Women Enterprise Development',
         description: 'We build entrepreneurial capacity through training, mentorship, coaching, and incubation programmes. Using ILO tools such as Start Your Own Business and Improve Your Business, we equip youth and women with practical skills to launch and grow sustainable enterprises in agribusiness, renewable energy, and other sectors.',
-        image: { src: '/images/home/focus-enterprise.jpg', alt: 'Youth entrepreneurs at a USTADI business training session' },
-        href: '/programs',
+        image: { src: getUrl('/images/home/focus-enterprise.jpg'), alt: 'Youth entrepreneurs at a USTADI business training session' },
+        href: getUrl('/programs'),
       },
       {
         title: 'Value Chain Facilitation',
         description: 'We strengthen agricultural value chains — including cereals, dairy, fisheries, livestock, cassava, and soy — by linking smallholder farmers and youth groups to markets, improving post-harvest handling, and facilitating access to innovative financing and technical support.',
-        image: { src: '/images/home/focus-value-chains.jpg', alt: 'Farmers in a USTADI-supported cassava value chain project' },
-        href: '/programs',
+        image: { src: getUrl('/images/home/focus-value-chains.jpg'), alt: 'Farmers in a USTADI-supported cassava value chain project' },
+        href: getUrl('/programs'),
       },
       {
         title: 'Climate Solutions and Green Jobs',
         description: 'We promote environmental management, renewable energy, and climate-resilient agriculture. Through projects focused on green growth, we create employment opportunities for youth while addressing environmental challenges in rural communities.',
-        image: { src: '/images/home/focus-climate.jpg', alt: 'Youth engaged in a USTADI climate-resilient agriculture initiative' },
-        href: '/programs',
+        image: { src: getUrl('/images/home/focus-climate.jpg'), alt: 'Youth engaged in a USTADI climate-resilient agriculture initiative' },
+        href: getUrl('/programs'),
       },
     ]}
   />
@@ -83,8 +87,8 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
     description="The JOY Project establishes agribusiness hubs and develops integrated training programmes for youth self-employment and wage employment across Kilifi, Kakamega, and Nakuru counties. Through partnerships with county governments, academic institutions, TVETs, and the private sector, the project builds the capacities of young people with technical, managerial, and entrepreneurial skills to launch viable agribusiness enterprises."
     quote="The project ensures youth are capacitated with the skills to ensure viability and sustainability of agribusiness opportunities based on the demand of the labour market."
     quoteAttribution="JOY Project Design, IFAD-ILO-Procasur-USTADI Partnership"
-    image={{ src: '/images/home/project-joy.jpg', alt: 'Youth participants in the JOY Project agribusiness hub training' }}
-    cta={{ label: 'View all projects', href: '/projects' }}
+    image={{ src: getUrl('/images/home/project-joy.jpg'), alt: 'Youth participants in the JOY Project agribusiness hub training' }}
+    cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
   <!-- 6. Success Story — VIJABIZ results (verified) -->
@@ -92,35 +96,35 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
     quote="Through VIJABIZ, 173 youth groups benefited across two counties. Over 1,550 direct participants — thirty percent of them young women — received enterprise training, design clinics, boot camps, mentorship, and incubation. Seventy-two agri-enterprises received grants to improve their businesses. Best practices and innovations were identified and documented for scale."
     name="VIJABIZ Project"
     role="Youth Economic Empowerment through Agribusiness in Kenya, 2018–2020"
-    portrait={{ src: '/images/home/success-vijabiz.jpg', alt: 'Youth participants at a VIJABIZ agribusiness training session in Kilifi or Nakuru County' }}
-    cta={{ label: 'More success stories', href: '/success-stories' }}
+    portrait={{ src: getUrl('/images/home/success-vijabiz.jpg'), alt: 'Youth participants at a VIJABIZ agribusiness training session in Kilifi or Nakuru County' }}
+    cta={{ label: 'More success stories', href: getUrl('/success-stories') }}
   />
 
   <!-- 7. Partners — Understated logo strip -->
   <PartnersSection
     heading="Trusted by partners who share our vision"
     partners={[
-      { name: 'SNV', logo: '/images/partners/snv.svg' },
-      { name: 'IFAD', logo: '/images/partners/ifad.svg' },
-      { name: 'ILO', logo: '/images/partners/ilo.svg' },
-      { name: 'European Union', logo: '/images/partners/eu.svg' },
-      { name: 'USAID', logo: '/images/partners/usaid.svg' },
-      { name: 'Visa Foundation', logo: '/images/partners/visa-foundation.svg' },
-	  { name: 'Mastercard Foundation', logo: '/images/partners/mastercard-foundation.svg' },
-      { name: 'Land O\'Lakes', logo: '/images/partners/landolakes.svg' },
-      { name: 'USADF', logo: '/images/partners/usadf.svg' },
-      { name: 'KALRO', logo: '/images/partners/kalro.svg' },
-      { name: 'Pathfinder International', logo: '/images/partners/pathfinder.svg' },
-      { name: 'GIZ', logo: '/images/partners/giz.svg' },
-      { name: 'ChildFund', logo: '/images/partners/childfund.svg' },
-      { name: 'Self Help Africa', logo: '/images/partners/self-help-africa.svg' },
-      { name: 'Procasur', logo: '/images/partners/procasur.svg' },
-      { name: 'CTA', logo: '/images/partners/cta.svg' },
-      { name: 'HIVOS', logo: '/images/partners/hivos.svg' },
-	  { name: 'Safaricom Foundation', logo: '/images/partners/safaricom-foundation.svg' },
-	  { name: 'CoELIB', logo: '/images/partners/coelib.svg' },
-      { name: 'TechnoServe', logo: '/images/partners/technoserve.svg' },
-      { name: 'ACT (Act Change Transform)', logo: '/images/partners/act.svg' },
+      { name: 'SNV', logo: getUrl('/images/partners/snv.svg') },
+      { name: 'IFAD', logo: getUrl('/images/partners/ifad.svg') },
+      { name: 'ILO', logo: getUrl('/images/partners/ilo.svg') },
+      { name: 'European Union', logo: getUrl('/images/partners/eu.svg') },
+      { name: 'USAID', logo: getUrl('/images/partners/usaid.svg') },
+      { name: 'Visa Foundation', logo: getUrl('/images/partners/visa-foundation.svg') },
+      { name: 'Mastercard Foundation', logo: getUrl('/images/partners/mastercard-foundation.svg') },
+      { name: "Land O'Lakes", logo: getUrl('/images/partners/landolakes.svg') },
+      { name: 'USADF', logo: getUrl('/images/partners/usadf.svg') },
+      { name: 'KALRO', logo: getUrl('/images/partners/kalro.svg') },
+      { name: 'Pathfinder International', logo: getUrl('/images/partners/pathfinder.svg') },
+      { name: 'GIZ', logo: getUrl('/images/partners/giz.svg') },
+      { name: 'ChildFund', logo: getUrl('/images/partners/childfund.svg') },
+      { name: 'Self Help Africa', logo: getUrl('/images/partners/self-help-africa.svg') },
+      { name: 'Procasur', logo: getUrl('/images/partners/procasur.svg') },
+      { name: 'CTA', logo: getUrl('/images/partners/cta.svg') },
+      { name: 'HIVOS', logo: getUrl('/images/partners/hivos.svg') },
+      { name: 'Safaricom Foundation', logo: getUrl('/images/partners/safaricom-foundation.svg') },
+      { name: 'CoELIB', logo: getUrl('/images/partners/coelib.svg') },
+      { name: 'TechnoServe', logo: getUrl('/images/partners/technoserve.svg') },
+      { name: 'ACT (Act Change Transform)', logo: getUrl('/images/partners/act.svg') },
     ]}
   />
 
@@ -132,40 +136,40 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
       title: 'Cassava Value Chain Strengthening Project',
       excerpt: 'This 4.5-year EU-funded initiative reached over 10,000 smallholder farmers across Kilifi and Kitui Counties, establishing 450 farmer business groups and 100 aggregation centres. At least 60% of participants were women.',
       date: '2017–2022',
-      image: { src: '/images/projects/cassava-project.jpg', alt: 'Smallholder farmers in a USTADI-supported cassava farming group' },
-      href: '/projects',
+      image: { src: getUrl('/images/projects/cassava-project.jpg'), alt: 'Smallholder farmers in a USTADI-supported cassava farming group' },
+      href: getUrl('/projects'),
     }}
     secondary={[
       {
         title: 'Youth-to-Youth Fund (Y2YF)',
         excerpt: '34 youth-led organizations received grants. The programme created 1,171 jobs and reached over 10,000 indirect beneficiaries across 11 counties.',
         date: '2014–2015',
-        image: { src: '/images/projects/y2yf-project.jpg', alt: 'Y2YF grantee showcasing their business' },
-        href: '/projects',
+        image: { src: getUrl('/images/projects/y2yf-project.jpg'), alt: 'Y2YF grantee showcasing their business' },
+        href: getUrl('/projects'),
       },
       {
         title: 'Increasing Resilience for Youth Enterprises Affected by COVID-19',
         excerpt: 'Post-VIJABIZ support helping youth enterprises recover and build resilience after the pandemic, funded by USADF.',
         date: '2020–2022',
-        image: { src: '/images/projects/covid-resilience.jpg', alt: 'Youth entrepreneur rebuilding their business after COVID-19' },
-        href: '/projects',
+        image: { src: getUrl('/images/projects/covid-resilience.jpg'), alt: 'Youth entrepreneur rebuilding their business after COVID-19' },
+        href: getUrl('/projects'),
       },
     ]}
-    cta={{ label: 'View all projects', href: '/projects' }}
+    cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
   <!-- 9. Volunteer CTA — Based on real model of working with associates -->
   <VolunteerCTASection
     heading="Work with us as an associate"
     body="USTADI works with associates — including ILO-certified trainers — across Kenya. If you have expertise in enterprise development, value chain facilitation, mentorship, or capacity development, we would like to hear from you."
-    cta={{ label: 'Get involved', href: '/get-involved' }}
+    cta={{ label: 'Get involved', href: getUrl('/get-involved') }}
   />
 
   <!-- 10. Donation CTA — Supporting real work -->
   <DonationCTASection
     heading="Support demand-driven capacity development for rural youth and women"
     body="Your contribution helps us provide technical assistance grants, business training, mentorship, and market linkages to youth and women entrepreneurs building sustainable livelihoods."
-    cta={{ label: 'Make a donation', href: '/donate' }}
+    cta={{ label: 'Make a donation', href: getUrl('/donate') }}
   />
 
   <!-- 11. Newsletter — Stay informed -->
@@ -180,8 +184,8 @@ import ContactSummarySection from '../components/home/ContactSummarySection.astr
     heading="Get in touch"
     methods={[
       { icon: 'email', label: 'Email us', value: 'info@ustadi.org', href: 'mailto:info@ustadi.org' },
-	  { icon: 'phone', label: 'Call us', value: '0707 387 313', href: 'tel:+254707387313' },
-      { icon: 'location', label: 'Head office', value: 'Nairobi, Kenya', href: '/contact' },
+      { icon: 'phone', label: 'Call us', value: '0707 387 313', href: 'tel:+254707387313' },
+      { icon: 'location', label: 'Head office', value: 'Nairobi, Kenya', href: getUrl('/contact') },
     ]}
   />
 </MainLayout>
