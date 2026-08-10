@@ -1,0 +1,61 @@
+---
+// ProjectsList.astro — Full list of projects with alternating layouts
+import ProjectCard from './ProjectCard.astro';
+
+export interface Project {
+  title: string;
+  donor: string;
+  duration: string;
+  value: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+export interface Props {
+  heading: string;
+  subheading: string;
+  projects: Project[];
+}
+
+const { heading, subheading, projects } = Astro.props;
+---
+
+<section class="section-padding bg-cream" aria-labelledby="projects-list-heading">
+  <div class="container-wide">
+    
+    <div class="text-center mb-16">
+      <h2
+        id="projects-list-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-2xl mx-auto text-dark/70"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
+
+    <div class="space-y-20 md:space-y-28">
+      {projects.map((project, index) => (
+        <ProjectCard
+          title={project.title}
+          donor={project.donor}
+          duration={project.duration}
+          value={project.value}
+          description={project.description}
+          image={project.image}
+          index={index}
+        />
+      ))}
+    </div>
+
+  </div>
+</section>

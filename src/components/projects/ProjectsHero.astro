@@ -1,0 +1,31 @@
+---
+// ProjectsHero.astro — Simple centered hero for the Projects listing
+export interface Props {
+  headline: string;
+  subheadline: string;
+}
+
+const { headline, subheadline } = Astro.props;
+---
+
+<section class="section-padding bg-white" aria-labelledby="projects-hero-heading">
+  <div class="container-tight text-center">
+    <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+      Our Projects
+    </p>
+    <h1
+      id="projects-hero-heading"
+      class="mt-4 font-heading font-bold text-dark text-balance"
+      style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+    >
+      {headline}
+    </h1>
+    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    <p
+      class="mt-6 text-dark/70 max-w-2xl mx-auto text-balance"
+      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+    >
+      {subheadline}
+    </p>
+  </div>
+</section>

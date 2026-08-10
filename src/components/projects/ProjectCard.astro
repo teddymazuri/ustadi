@@ -1,0 +1,68 @@
+---
+// ProjectCard.astro — Individual project card
+// Visual: Image top, content below, alternating layout support
+export interface Props {
+  title: string;
+  donor: string;
+  duration: string;
+  value: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  index: number;
+}
+
+const { title, donor, duration, value, description, image, index } = Astro.props;
+const isEven = index % 2 === 0;
+---
+
+<article class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+  <div class={isEven ? 'md:order-1' : 'md:order-2'}>
+    <img
+      src={image.src}
+      alt={image.alt}
+      class="w-full rounded-2xl shadow-card object-cover aspect-[4/3]"
+      loading="lazy"
+    />
+  </div>
+  
+  <div class={isEven ? 'md:order-2' : 'md:order-1'}>
+    <h2
+      class="font-heading font-bold text-dark"
+      style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+    >
+      {title}
+    </h2>
+    
+    {/* Project meta */}
+    <div class="mt-4 flex flex-wrap gap-4" style="font-size: var(--text-body-sm);">
+      <div class="flex items-center gap-1.5 text-dark/50">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+        {donor}
+      </div>
+      <div class="flex items-center gap-1.5 text-dark/50">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        {duration}
+      </div>
+      <div class="flex items-center gap-1.5 text-accent font-semibold">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        {value}
+      </div>
+    </div>
+
+    <p
+      class="mt-4 text-dark/70"
+      style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+    >
+      {description}
+    </p>
+  </div>
+</article>

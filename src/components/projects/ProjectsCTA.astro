@@ -1,0 +1,44 @@
+---
+// ProjectsCTA.astro — Page-closing call to action
+export interface Props {
+  heading: string;
+  body: string;
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { heading, body, cta } = Astro.props;
+---
+
+<section class="section-padding bg-primary" aria-labelledby="projects-cta-heading">
+  <div class="container-tight text-center">
+    
+    <h2
+      id="projects-cta-heading"
+      class="font-heading font-bold text-white"
+      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+    >
+      {heading}
+    </h2>
+    <p
+      class="mt-5 text-white/70 max-w-lg mx-auto"
+      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+    >
+      {body}
+    </p>
+
+    <a
+      href={cta.href}
+      class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+      style="font-size: var(--text-body-base);"
+    >
+      {cta.label}
+      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+
+  </div>
+</section>
