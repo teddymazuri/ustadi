@@ -1,6 +1,6 @@
 ---
 // GovernanceSection.astro — Board and management structure
-// Visual: Clean layout with distinct sections for board and management
+// Visual: Split layout with board on left, management on right, decorative accents
 export interface Props {
   heading: string;
   board: {
@@ -18,91 +18,99 @@ export interface Props {
 const { heading, board, management } = Astro.props;
 ---
 
-<section class="section-padding bg-cream" aria-labelledby="governance-heading">
-  <div class="container-tight">
+<section class="section-padding bg-white" aria-labelledby="governance-heading">
+  <div class="container-wide">
     
-    <h2
-      id="governance-heading"
-      class="text-center font-heading font-bold text-dark"
-      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-    >
-      {heading}
-    </h2>
-    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    <div class="text-center mb-16">
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        Our Structure
+      </p>
+      <h2
+        id="governance-heading"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+      >
+        {heading}
+      </h2>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    </div>
 
-    <div class="mt-14 grid md:grid-cols-2 gap-10">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
       
       {/* Board */}
-      <div class="bg-white rounded-2xl p-8 shadow-card">
-        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-accent/10 text-accent mb-5" aria-hidden="true">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </div>
-        <h3
-          class="font-heading font-bold text-dark"
-          style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-        >
-          {board.heading}
-        </h3>
-        <p
-          class="mt-3 text-dark/70"
-          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-        >
-          {board.description}
-        </p>
-        <div class="mt-5 pt-5 border-t border-gray-light">
-          <p
-            class="font-semibold text-dark"
-            style="font-size: var(--text-body-sm);"
+      <div class="relative bg-cream rounded-3xl p-8 lg:p-10 overflow-hidden">
+        {/* Decorative background pattern */}
+        <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/5" aria-hidden="true"></div>
+        <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-accent/10" aria-hidden="true"></div>
+        
+        <div class="relative">
+          <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-primary text-white mb-6 shadow-lg">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+
+          <h3
+            class="font-heading font-bold text-dark"
+            style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
           >
-            Current composition
-          </p>
+            {board.heading}
+          </h3>
           <p
-            class="mt-1 text-dark/60"
-            style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
+            class="mt-4 text-dark/70 leading-relaxed"
+            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
           >
-            {board.members}
+            {board.description}
           </p>
+
+          <div class="mt-8 flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-accent/10 text-accent shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-dark">Current composition</p>
+              <p class="text-sm text-dark/60 mt-0.5">{board.members}</p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Management */}
-      <div class="bg-white rounded-2xl p-8 shadow-card">
-        <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-5" aria-hidden="true">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-        </div>
-        <h3
-          class="font-heading font-bold text-dark"
-          style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-        >
-          {management.heading}
-        </h3>
-        <p
-          class="mt-3 text-dark/70"
-          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-        >
-          {management.description}
-        </p>
-        <div class="mt-5 pt-5 border-t border-gray-light">
-          <p
-            class="font-semibold text-dark"
-            style="font-size: var(--text-body-sm);"
+      <div class="relative bg-primary rounded-3xl p-8 lg:p-10 overflow-hidden">
+        {/* Decorative background pattern */}
+        <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
+        <div class="absolute -bottom-6 -left-6 w-24 h-24 rounded-full bg-accent/20" aria-hidden="true"></div>
+
+        <div class="relative">
+          <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+
+          <h3
+            class="font-heading font-bold text-white"
+            style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
           >
-            Key roles
+            {management.heading}
+          </h3>
+          <p
+            class="mt-4 text-white/70 leading-relaxed"
+            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+          >
+            {management.description}
           </p>
-          <ul class="mt-1 space-y-1" role="list">
-            {management.roles.map((role) => (
-              <li
-                class="text-dark/60"
-                style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
-              >
-                {role}
-              </li>
+
+          <div class="mt-8 space-y-2">
+            {management.roles.map((role, index) => (
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/15 transition-colors">
+                <div class="w-2 h-2 rounded-full bg-accent shrink-0" aria-hidden="true"></div>
+                <span class="text-white/90 text-sm leading-snug">{role}</span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 

@@ -1,6 +1,5 @@
 ---
-// OurModel.astro — Three pillars as a numbered process
-// Visual: Three columns with large numbers and descriptions
+// OurModel.astro — Three pillars with numbered steps
 export interface Pillar {
   number: string;
   title: string;
@@ -20,10 +19,13 @@ const { heading, subheading, pillars } = Astro.props;
   <div class="container-wide">
     
     <div class="text-center mb-14">
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        How We Work
+      </p>
       <h2
         id="model-heading"
-        class="font-heading font-bold text-dark"
-        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
       >
         {heading}
       </h2>
@@ -36,30 +38,41 @@ const { heading, subheading, pillars } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-      {pillars.map((pillar) => (
-        <div class="relative">
-          {/* Large number */}
-          <span
-            class="block font-heading font-bold text-accent/20"
-            style="font-size: 5rem; line-height: 1;"
-            aria-hidden="true"
-          >
-            {pillar.number}
-          </span>
-          <div class="-mt-6">
-            <h3
-              class="font-heading font-bold text-dark"
-              style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
+      {pillars.map((pillar, index) => (
+        <div class="relative group">
+          {/* Connecting line between cards */}
+          {index < pillars.length - 1 && (
+            <div class="hidden md:block absolute top-12 left-[calc(100%-0.5rem)] w-10 h-px bg-accent/40" aria-hidden="true"></div>
+          )}
+
+          <div class="relative bg-cream rounded-3xl p-8 h-full overflow-hidden shadow-card hover:shadow-card-hover transition-shadow">
+            {/* Large background number */}
+            <span
+              class="absolute -bottom-4 -right-2 text-9xl font-heading font-bold text-primary/5 select-none pointer-events-none leading-none"
+              aria-hidden="true"
             >
-              {pillar.title}
-            </h3>
-            <p
-              class="mt-3 text-dark/70"
-              style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-            >
-              {pillar.description}
-            </p>
+              {pillar.number}
+            </span>
+            
+            <div class="relative">
+              <div class="w-12 h-12 flex items-center justify-center rounded-2xl bg-primary text-white mb-5 font-heading font-bold" style="font-size: var(--text-heading-sm);">
+                {pillar.number}
+              </div>
+              
+              <h3
+                class="font-heading font-bold text-dark"
+                style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+              >
+                {pillar.title}
+              </h3>
+              <p
+                class="mt-4 text-dark/70 leading-relaxed"
+                style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+              >
+                {pillar.description}
+              </p>
+            </div>
           </div>
         </div>
       ))}
