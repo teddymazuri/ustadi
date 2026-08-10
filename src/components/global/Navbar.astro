@@ -1,12 +1,11 @@
 ---
-// Navbar.astro — Accessible responsive navigation bar
-// Pure presentation shell. Zero business content.
-// Mobile menu: CSS-only toggle via hidden checkbox + peer.
-// Zero JavaScript.
+// Navbar.astro — Accessible responsive navigation bar with dropdown support
+// Desktop: click-to-open dropdowns with aria-expanded
+// Mobile: accordion expand/collapse within mobile menu
+// Zero JavaScript for core toggle. Minimal JS for dropdown clicks.
 ---
 
 <header class="sticky top-0 z-40 bg-white shadow-nav" role="banner">
-  <!-- Hidden checkbox must be a sibling of the mobile panel for peer-checked to work -->
   <input type="checkbox" id="mobile-menu-toggle" class="peer hidden" aria-hidden="true" />
 
   <nav
@@ -14,13 +13,13 @@
     style="height: 4rem;"
     aria-label="Primary navigation"
   >
-    <!-- Logo slot -->
+    <!-- Logo -->
     <div class="shrink-0">
       <slot name="logo" />
     </div>
 
     <!-- Desktop links -->
-    <div class="hidden lg:flex items-center gap-1">
+    <div class="hidden lg:flex items-center gap-0.5">
       <slot name="nav-links" />
     </div>
 
@@ -38,18 +37,16 @@
       tabindex="0"
       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}"
     >
-      <!-- Hamburger -->
       <svg class="w-6 h-6 pointer-events-none block peer-checked:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
-      <!-- Close -->
       <svg class="w-6 h-6 pointer-events-none hidden peer-checked:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </label>
   </nav>
 
-  <!-- Mobile panel — sibling of the checkbox, so peer-checked works -->
+  <!-- Mobile panel -->
   <div class="lg:hidden hidden peer-checked:block border-t border-gray-light" role="region" aria-label="Mobile navigation">
     <div class="container-wide py-3">
       <div class="flex flex-col gap-0.5">

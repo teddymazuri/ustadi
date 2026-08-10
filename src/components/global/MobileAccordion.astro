@@ -1,0 +1,69 @@
+---
+// MobileAccordion.astro — Expandable section for mobile nav
+export interface Props {
+  label: string;
+  id: string;
+  items: {
+    label: string;
+    href: string;
+  }[];
+}
+
+const { label, id, items } = Astro.props;
+---
+
+<div data-accordion={id}>
+  <button
+    type="button"
+    class="flex items-center justify-between w-full px-4 py-3 text-base font-medium rounded-lg text-dark/70 hover:text-primary hover:bg-gray-light/50 cursor-pointer"
+    aria-expanded="false"
+    aria-controls={`accordion-${id}`}
+  >
+    {label}
+    <svg
+      class="w-4 h-4 transition-transform duration-200 pointer-events-none"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  <div
+    id={`accordion-${id}`}
+    class="hidden pl-4 space-y-0.5"
+    role="region"
+  >
+    {items.map((item) => (
+      <a
+        href={item.href}
+        class="block px-4 py-2.5 text-sm font-medium rounded-lg text-dark/60 hover:text-primary hover:bg-gray-light/50 no-underline"
+      >
+        {item.label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  function initAccordions() {
+    document.querySelectorAll('[data-accordion]').forEach((container) => {
+      const btn = container.querySelector('button');
+      const panel = container.querySelector('[role="region"]');
+      const arrow = btn?.querySelector('svg');
+      if (!btn || !panel) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('hidden', isOpen);
+        if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    });
+  }
+
+  initAccordions();
+  document.addEventListener('astro:page-load', initAccordions);
+</script>
