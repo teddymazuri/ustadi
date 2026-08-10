@@ -27,6 +27,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 function isActive(key: string): boolean {
   if (!currentPage) return false;
+  if (key === 'about') return currentPage.startsWith('about');
   if (key === 'what-we-do') return currentPage === 'programs' || currentPage === 'projects';
   if (key === 'news') return currentPage === 'news';
   if (key === 'resources') return currentPage === 'resources';
@@ -72,54 +73,100 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
 
     <!-- Desktop nav links -->
     <slot slot="nav-links" name="nav-links">
-      <a
-        href={getUrl('/about')}
-        class={navLinkClass(isActive('about'))}
-        aria-current={isActive('about') ? 'page' : undefined}
-      >
-        About Us
-        {isActive('about') && (
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-accent rounded-full" aria-hidden="true" />
-        )}
-      </a>
+      <!-- About Us dropdown -->
+      <NavDropdown
+        id="about"
+        label="About Us"
+        intro={{
+          description: 'A Kenyan organisation promoting transformation and growth of youth and women enterprises since 2010.',
+        }}
+        columns={[
+          {
+            title: 'History & Impact',
+            links: [
+              { label: 'Mission & Vision', href: getUrl('/about/mission-vision') },
+              { label: 'History', href: getUrl('/about/history') },
+              { label: 'Impact', href: getUrl('/impact') },
+            ],
+          },
+          {
+            title: 'Personnel & Offices',
+            links: [
+              { label: 'Governance & Management', href: getUrl('/about/governance') },
+              { label: 'Offices', href: getUrl('/about/offices') },
+            ],
+          },
+          {
+            title: 'Work With Us',
+            links: [
+              { label: 'Careers', href: getUrl('/about/careers') },
+            ],
+          },
+        ]}
+      />
 
+      <!-- What We Do dropdown -->
       <NavDropdown
         id="what-we-do"
         label="What We Do"
-        items={[
-          { label: 'Programs', href: getUrl('/programs') },
-          { label: 'Projects', href: getUrl('/projects') },
+        intro={{
+          description: 'Demand-driven capacity development across youth employment, value chains, and enterprise growth.',
+        }}
+        columns={[
+          {
+            title: 'What We Fund',
+            links: [
+              { label: 'Programs', href: getUrl('/programs') },
+              { label: 'Projects', href: getUrl('/projects') },
+            ],
+          },
+          {
+            title: 'Focus Areas',
+            links: [
+              { label: 'Youth and Women Enterprise Development', href: getUrl('/programs') },
+              { label: 'Value Chain Facilitation', href: getUrl('/programs') },
+              { label: 'Climate Solutions and Green Jobs', href: getUrl('/programs') },
+            ],
+          },
         ]}
       />
 
-      <a
-        href={getUrl('/impact')}
-        class={navLinkClass(isActive('impact'))}
-        aria-current={isActive('impact') ? 'page' : undefined}
-      >
-        Impact
-        {isActive('impact') && (
-          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-accent rounded-full" aria-hidden="true" />
-        )}
-      </a>
-
+      <!-- Resources dropdown -->
       <NavDropdown
         id="resources"
         label="Resources"
-        items={[
-          { label: 'Reports', href: getUrl('/resources/reports') },
-          { label: 'Media', href: getUrl('/resources/media') },
+        intro={{
+          description: 'Reports, case studies, media, and knowledge products from our work across Kenya.',
+        }}
+        columns={[
+          {
+            title: 'Resources',
+            links: [
+              { label: 'Reports', href: getUrl('/resources/reports') },
+              { label: 'Media', href: getUrl('/resources/media') },
+            ],
+          },
         ]}
       />
 
+      <!-- News dropdown -->
       <NavDropdown
         id="news"
         label="News"
-        items={[
-          { label: 'Latest News', href: getUrl('/news') },
+        intro={{
+          description: 'Latest updates, success stories, and project news from USTADI Foundation.',
+        }}
+        columns={[
+          {
+            title: 'News',
+            links: [
+              { label: 'Latest News', href: getUrl('/news') },
+            ],
+          },
         ]}
       />
 
+      <!-- Contact direct link -->
       <a
         href={getUrl('/contact')}
         class={navLinkClass(isActive('contact'))}
@@ -143,13 +190,18 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
 
     <!-- Mobile nav links -->
     <slot slot="mobile-links" name="mobile-links">
-      <a
-        href={getUrl('/about')}
-        class={mobileNavLinkClass(isActive('about'))}
-        aria-current={isActive('about') ? 'page' : undefined}
-      >
-        About Us
-      </a>
+      <MobileAccordion
+        id="mobile-about"
+        label="About Us"
+        items={[
+          { label: 'Mission & Vision', href: getUrl('/about/mission-vision') },
+          { label: 'History', href: getUrl('/about/history') },
+          { label: 'Impact', href: getUrl('/impact') },
+          { label: 'Governance & Management', href: getUrl('/about/governance') },
+          { label: 'Offices', href: getUrl('/about/offices') },
+          { label: 'Careers', href: getUrl('/about/careers') },
+        ]}
+      />
 
       <MobileAccordion
         id="mobile-what-we-do"
@@ -159,14 +211,6 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
           { label: 'Projects', href: getUrl('/projects') },
         ]}
       />
-
-      <a
-        href={getUrl('/impact')}
-        class={mobileNavLinkClass(isActive('impact'))}
-        aria-current={isActive('impact') ? 'page' : undefined}
-      >
-        Impact
-      </a>
 
       <MobileAccordion
         id="mobile-resources"
@@ -259,16 +303,12 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
       </div>
     </div>
 
-    <!-- Quick Links -->
+    <!-- Resources -->
     <div slot="columns" class="lg:col-span-2">
-      <h3 class="font-heading text-lg font-semibold mb-5 text-dark">Quick Links</h3>
+      <h3 class="font-heading text-lg font-semibold mb-5 text-dark">Resources</h3>
       <ul class="space-y-2.5" role="list">
-        <li><a href={getUrl('/about')} class="text-sm text-dark/60 hover:text-primary no-underline">About Us</a></li>
-        <li><a href={getUrl('/programs')} class="text-sm text-dark/60 hover:text-primary no-underline">Programs</a></li>
-        <li><a href={getUrl('/projects')} class="text-sm text-dark/60 hover:text-primary no-underline">Projects</a></li>
-        <li><a href={getUrl('/impact')} class="text-sm text-dark/60 hover:text-primary no-underline">Our Impact</a></li>
-        <li><a href={getUrl('/partners')} class="text-sm text-dark/60 hover:text-primary no-underline">Partners</a></li>
-        <li><a href={getUrl('/news')} class="text-sm text-dark/60 hover:text-primary no-underline">News</a></li>
+        <li><a href={getUrl('/resources/reports')} class="text-sm text-dark/60 hover:text-primary no-underline">Reports</a></li>
+        <li><a href={getUrl('/resources/media')} class="text-sm text-dark/60 hover:text-primary no-underline">Media</a></li>
       </ul>
     </div>
 

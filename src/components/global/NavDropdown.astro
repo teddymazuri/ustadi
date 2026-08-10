@@ -1,27 +1,40 @@
 ---
-// NavDropdown.astro — Desktop dropdown menu
-export interface Props {
-  label: string;
-  id: string;
-  items: {
+// NavDropdown.astro — Multi-column desktop dropdown menu
+// One row, multiple columns, each with a title and links
+// Optional intro column on the left with description
+// Hover to open, close on mouse leave
+// Dropdown positions so the second column aligns under the button
+export interface DropdownColumn {
+  title: string;
+  links: {
     label: string;
     href: string;
   }[];
 }
 
-const { label, id, items } = Astro.props;
+export interface Props {
+  label: string;
+  id: string;
+  columns: DropdownColumn[];
+  intro?: {
+    description: string;
+  };
+}
+
+const { label, id, columns, intro } = Astro.props;
+const totalColumns = intro ? columns.length + 1 : columns.length;
 ---
 
-<div class="relative" data-dropdown={id}>
+<div class="relative group" data-dropdown={id}>
   <button
     type="button"
-    class="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg text-dark/70 hover:text-primary hover:bg-gray-light/50 cursor-pointer"
+    class="flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg text-dark/70 group-hover:text-primary group-hover:bg-gray-light/50 cursor-pointer"
     aria-expanded="false"
     aria-controls={`dropdown-${id}`}
   >
     {label}
     <svg
-      class="w-4 h-4 transition-transform duration-200 pointer-events-none"
+      class="w-4 h-4 transition-transform duration-200 pointer-events-none group-hover:rotate-180"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
@@ -31,84 +44,45 @@ const { label, id, items } = Astro.props;
     </svg>
   </button>
 
+  {/* Invisible bridge to keep hover active between button and dropdown */}
+  <div class="absolute top-full left-0 w-full h-4 hidden group-hover:block" aria-hidden="true"></div>
+
   <div
     id={`dropdown-${id}`}
-    class="absolute top-full left-0 mt-1 min-w-[200px] bg-white rounded-lg shadow-soft-lg border border-gray-light py-1 z-50 hidden"
+    class="absolute top-[calc(100%+1rem)] mt-0 bg-white rounded-lg shadow-soft-lg border border-gray-light z-50 hidden group-hover:block"
+    style={`left: ${intro ? '-16rem' : '0'}; min-width: ${totalColumns * 220}px;`}
     role="menu"
   >
-    {items.map((item) => (
-      <a
-        href={item.href}
-        class="block px-4 py-2.5 text-sm font-medium text-dark/60 hover:text-primary hover:bg-gray-light/50 no-underline"
-        role="menuitem"
-      >
-        {item.label}
-      </a>
-    ))}
+    <div class="flex flex-row p-6 gap-6">
+      
+      {/* Intro column */}
+      {intro && (
+        <div class="w-56 shrink-0 pr-6 border-r border-gray-light">
+          <p class="text-sm text-dark/60 leading-relaxed">
+            {intro.description}
+          </p>
+        </div>
+      )}
+
+      {/* Link columns */}
+      {columns.map((column, index) => (
+        <div class={`flex-1 ${index > 0 || intro ? 'pl-6 border-l border-gray-light' : ''}`}>
+          <p class="text-xs font-semibold text-dark/40 uppercase tracking-wider mb-3">
+            {column.title}
+          </p>
+          <div class="space-y-1">
+            {column.links.map((link) => (
+              <a
+                href={link.href}
+                class="block px-3 py-2 text-sm font-medium text-dark/60 hover:text-primary hover:bg-gray-light/50 rounded-lg no-underline"
+                role="menuitem"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 </div>
-
-<script>
-  function initDropdowns() {
-    document.querySelectorAll('[data-dropdown]').forEach((container) => {
-      const btn = container.querySelector('button');
-      const menu = container.querySelector('[role="menu"]');
-      const arrow = btn?.querySelector('svg');
-      if (!btn || !menu) return;
-
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        
-        // Close all other dropdowns first
-        document.querySelectorAll('[data-dropdown]').forEach((other) => {
-          const otherBtn = other.querySelector('button');
-          const otherMenu = other.querySelector('[role="menu"]');
-          const otherArrow = otherBtn?.querySelector('svg');
-          if (otherBtn && otherMenu && otherBtn !== btn) {
-            otherBtn.setAttribute('aria-expanded', 'false');
-            otherMenu.classList.add('hidden');
-            if (otherArrow) otherArrow.style.transform = 'rotate(0deg)';
-          }
-        });
-
-        btn.setAttribute('aria-expanded', String(!isOpen));
-        menu.classList.toggle('hidden', isOpen);
-        if (arrow) arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
-      });
-    });
-
-    // Close all dropdowns when clicking outside
-    document.addEventListener('click', () => {
-      document.querySelectorAll('[data-dropdown]').forEach((container) => {
-        const btn = container.querySelector('button');
-        const menu = container.querySelector('[role="menu"]');
-        const arrow = btn?.querySelector('svg');
-        if (btn && menu) {
-          btn.setAttribute('aria-expanded', 'false');
-          menu.classList.add('hidden');
-          if (arrow) arrow.style.transform = 'rotate(0deg)';
-        }
-      });
-    });
-
-    // Close all on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('[data-dropdown]').forEach((container) => {
-          const btn = container.querySelector('button');
-          const menu = container.querySelector('[role="menu"]');
-          const arrow = btn?.querySelector('svg');
-          if (btn && menu) {
-            btn.setAttribute('aria-expanded', 'false');
-            menu.classList.add('hidden');
-            if (arrow) arrow.style.transform = 'rotate(0deg)';
-          }
-        });
-      }
-    });
-  }
-
-  initDropdowns();
-  document.addEventListener('astro:page-load', initDropdowns);
-</script>
