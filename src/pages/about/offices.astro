@@ -1,0 +1,25 @@
+---
+// Offices page — USTADI Foundation
+// All content sourced from USTADI Institutional Profile (February 2024)
+import MainLayout from '../../layouts/MainLayout.astro';
+import WhereWeWork from '../../components/about/WhereWeWork.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Offices"
+  description="USTADI Foundation's head office is in Nairobi, Kenya, with field offices in Kilifi and Nakuru Counties. Our footprint extends across over 20 counties."
+  currentPage="about"
+>
+  <WhereWeWork
+    heading="Our Offices"
+    description="USTADI's head office is situated in Nairobi, Kenya, with field offices in Kilifi and Nakuru Counties. Our footprint extends across over 20 counties, reaching rural communities with demand-driven capacity development services."
+    stats={[
+      { value: '20+', label: 'Counties reached' },
+      { value: '2', label: 'Field offices' },
+    ]}
+    locations={['Nairobi (HQ)', 'Kilifi', 'Nakuru']}
+  />
+</MainLayout>
