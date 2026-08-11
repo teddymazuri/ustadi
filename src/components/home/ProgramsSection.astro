@@ -1,7 +1,7 @@
 ---
 // ProgramsSection.astro — Alternating rows for thematic focus areas
-// USTADI works in thematic areas, not discrete "programs"
-// Each row alternates image/text sides
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface FocusArea {
   title: string;
   description: string;
@@ -23,21 +23,29 @@ const { heading, subheading, programs } = Astro.props;
 
 <section class="section-padding bg-cream" aria-labelledby="programs-heading">
   <div class="container-wide">
-    <div class="text-center mb-16">
-      <h2
-        id="programs-heading"
-        class="font-heading font-bold text-dark text-balance"
-        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-      >
-        {heading}
-      </h2>
-      <p
-        class="mt-4 max-w-xl mx-auto text-dark/70 text-balance"
-        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-      >
-        {subheading}
-      </p>
-      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    <div class="text-center mb-16 relative">
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={15}
+        class="absolute top-0 right-0 z-0"
+      />
+      <div class="relative z-10">
+        <h2
+          id="programs-heading"
+          class="font-heading font-bold text-dark text-balance"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          {heading}
+        </h2>
+        <p
+          class="mt-4 max-w-xl mx-auto text-dark/70 text-balance"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {subheading}
+        </p>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      </div>
     </div>
 
     <div class="space-y-20 md:space-y-28">

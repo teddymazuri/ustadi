@@ -1,7 +1,7 @@
 ---
 // ContactSummarySection.astro — Practical contact row
-// Visual: Clean info columns with icons
-// Purpose: Functional close — practical next step
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface ContactMethod {
   icon: 'email' | 'location' | 'phone';
   label: string;
@@ -24,42 +24,42 @@ const icons: Record<string, string> = {
 ---
 
 <section class="section-padding-sm bg-white" aria-labelledby="contact-summary-heading">
-  <div class="container-wide">
-    
-    <h2
-      id="contact-summary-heading"
-      class="text-center font-heading font-bold text-dark"
-      style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-    >
-      {heading}
-    </h2>
+  <div class="container-wide relative">
+    <ScribbleCircle
+      size={180}
+      opacity={0.4}
+      rotation={25}
+      class="absolute top-0 left-1/2 -translate-x-1/2 z-0"
+    />
+    <div class="relative z-10">
+      <h2
+        id="contact-summary-heading"
+        class="text-center font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+      >
+        {heading}
+      </h2>
 
-    <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-      {methods.map((method) => (
-        <a
-          href={method.href}
-          class="flex flex-col items-center text-center p-6 rounded-xl hover:bg-gray-light/50 transition-colors no-underline group"
-        >
-          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons[method.icon]} />
-            </svg>
-          </div>
-          <p
-            class="mt-4 font-semibold text-dark"
-            style="font-size: var(--text-body-sm);"
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
+        {methods.map((method) => (
+          <a
+            href={method.href}
+            class="flex flex-col items-center text-center p-6 rounded-xl hover:bg-gray-light/50 transition-colors no-underline group"
           >
-            {method.label}
-          </p>
-          <p
-            class="mt-1 text-dark/60"
-            style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
-          >
-            {method.value}
-          </p>
-        </a>
-      ))}
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icons[method.icon]} />
+              </svg>
+            </div>
+            <p class="mt-4 font-semibold text-dark" style="font-size: var(--text-body-sm);">
+              {method.label}
+            </p>
+            <p class="mt-1 text-dark/60" style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);">
+              {method.value}
+            </p>
+          </a>
+        ))}
+      </div>
     </div>
-
   </div>
 </section>

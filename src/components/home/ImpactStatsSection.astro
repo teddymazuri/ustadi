@@ -1,7 +1,7 @@
 ---
 // ImpactStatsSection.astro — Cream band with large numbers
-// Visual: Full-width cream background, three stats, minimal text
-// Purpose: Proof interrupt — breaks visual rhythm, builds trust
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Stat {
   value: string;
   label: string;
@@ -15,8 +15,14 @@ const { stats } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-label="Our impact in numbers">
-  <div class="container-wide">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+  <div class="container-wide relative">
+    <ScribbleCircle
+      size={180}
+      opacity={0.4}
+      rotation={-25}
+      class="absolute top-0 left-1/2 -translate-x-1/2 z-0"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center relative z-10">
       {stats.map((stat) => (
         <div>
           <p

@@ -1,7 +1,7 @@
 ---
 // NewsletterSection.astro — Simple email capture
-// Visual: Cream background, minimal form
-// Purpose: Relationship — soft close, stay connected
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   heading: string;
   subheading: string;
@@ -12,48 +12,54 @@ const { heading, subheading, formAction } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="newsletter-heading">
-  <div class="container-tight text-center">
-    
-    <h2
-      id="newsletter-heading"
-      class="font-heading font-bold text-dark"
-      style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-    >
-      {heading}
-    </h2>
-
-    <p
-      class="mt-3 text-dark/60 max-w-md mx-auto"
-      style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-    >
-      {subheading}
-    </p>
-
-    <form
-      class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-      action={formAction}
-      method="POST"
-    >
-      <label for="newsletter-email" class="sr-only">Email address</label>
-      <input
-        type="email"
-        name="email"
-        id="newsletter-email"
-        placeholder="your@email.com"
-        required
-        autocomplete="email"
-        class="flex-1 px-5 py-3 bg-white border border-gray-200 rounded-lg text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-        style="font-size: var(--text-body-base);"
-      />
-      <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
-      <button
-        type="submit"
-        class="px-6 py-3 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light shadow-sm shrink-0"
-        style="font-size: var(--text-body-base);"
+  <div class="container-tight text-center relative">
+    <ScribbleCircle
+      size={180}
+      opacity={0.4}
+      rotation={-10}
+      class="absolute top-0 left-1/2 -translate-x-1/2 z-0"
+    />
+    <div class="relative z-10">
+      <h2
+        id="newsletter-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
       >
-        Subscribe
-      </button>
-    </form>
+        {heading}
+      </h2>
 
+      <p
+        class="mt-3 text-dark/60 max-w-md mx-auto"
+        style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+      >
+        {subheading}
+      </p>
+
+      <form
+        class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        action={formAction}
+        method="POST"
+      >
+        <label for="newsletter-email" class="sr-only">Email address</label>
+        <input
+          type="email"
+          name="email"
+          id="newsletter-email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+          class="flex-1 px-5 py-3 bg-white border border-gray-200 rounded-lg text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          style="font-size: var(--text-body-base);"
+        />
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+        <button
+          type="submit"
+          class="px-6 py-3 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light shadow-sm shrink-0"
+          style="font-size: var(--text-body-base);"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
   </div>
 </section>
