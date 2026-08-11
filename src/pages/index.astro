@@ -27,8 +27,9 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 >
   <!-- 1. Hero — Mission-driven hook -->
   <HeroSection
-    headline="Transforming youth and women enterprises across Kenya"
-    subheadline="Demand-driven capacity development for sustainable livelihoods."
+    headline="Building Thriving Youth & Women Enterprises Across Kenya"
+    subheadline="We equip local entrepreneurs, smallholder farmers, and communities with the skills,
+					market connections, and capital needed to create sustainable livelihoods."
     cta={{ label: 'Our Work', href: getUrl('/programs') }}
     backgroundImage={getUrl('/images/hero/ustadi-hero.jpg')}
     backgroundAlt="Youth and women entrepreneurs participating in USTADI Foundation capacity development programs in rural Kenya"
@@ -36,8 +37,15 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
   <!-- 2. Mission — Verbatim from institutional profile -->
   <MissionSection
-    heading="Vibrant and self-sustaining markets delivering improved income and livelihoods for rural communities"
-    body="USTADI is a registered Kenyan organisation whose primary focus is on facilitation of professional and demand-driven capacity development services. We work directly with youth and women entrepreneurs, business support institutions, and through local implementing partners to stimulate the growth and expansion of businesses at the national and sub-national level. Our model promotes capacity development as the core — not as an add-on — and revolves around three complementary pillars: Market Facilitation Services, Technical Assistance grants and Investments, and a Learning and Sharing Platform."
+    heading="Vibrant, Self-Sustaining Markets That Transform Rural Livelihoods"
+    body="USTADI is a Kenyan organization dedicated to accelerating enterprise growth for rural youth and
+		women. We don’t bring one-size-fits-all solutions. Instead, we ask local communities what skills they
+		need, connect them with verified local trainers, and link their businesses directly to profitable
+		markets so their growth is self-sustaining.
+		
+		Our capacity development model puts community growth at the center by combining market
+		facilitation services, catalytic technical assistance grants, and an active learning platform that
+		ensures long-term local ownership."
     image={{
       src: getUrl('/images/home/ustadi-mission.jpg'),
       alt: 'USTADI Foundation team working with rural youth entrepreneurs in Kenya',
@@ -48,23 +56,24 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   <!-- 3. Programs — Based on real thematic areas from the profile -->
   <ProgramsSection
     heading="Our Focus Areas"
-    subheading="Demand-driven capacity development across key sectors for youth and women enterprise growth."
+    subheading="Building practical skills, market connections, and green solutions to help youth and women
+				enterprises thrive."
     programs={[
       {
-        title: 'Youth and Women Enterprise Development',
-        description: 'We build entrepreneurial capacity through training, mentorship, coaching, and incubation programmes. Using ILO tools such as Start Your Own Business and Improve Your Business, we equip youth and women with practical skills to launch and grow sustainable enterprises in agribusiness, renewable energy, and other sectors.',
+        title: 'Youth & Women Enterprise Development',
+        description: 'We equip youth and women with the practical skills needed to launch and scale profitable enterprises. Through hands-on mentorship, incubation, and proven ILO frameworks like Start and Improve Your Business, we help entrepreneurs turn local ideas into sustainable businesses across agribusiness, renewable energy, and emerging markets.',
         image: { src: getUrl('/images/home/focus-enterprise.jpg'), alt: 'Youth entrepreneurs at a USTADI business training session' },
         href: getUrl('/programs'),
       },
       {
         title: 'Value Chain Facilitation',
-        description: 'We strengthen agricultural value chains — including cereals, dairy, fisheries, livestock, cassava, and soy — by linking smallholder farmers and youth groups to markets, improving post-harvest handling, and facilitating access to innovative financing and technical support.',
+        description: 'We connect smallholder farmers and youth groups directly to profitable markets. By strengthening key agricultural value chains such as fisheries, dairy, cassava, livestock, and grains, we help producers reduce post-harvest losses, access modern equipment, and secure innovative financing to grow their incomes.',
         image: { src: getUrl('/images/home/focus-value-chains.jpg'), alt: 'Farmers in a USTADI-supported cassava value chain project' },
         href: getUrl('/programs'),
       },
       {
         title: 'Climate Solutions and Green Jobs',
-        description: 'We promote environmental management, renewable energy, and climate-resilient agriculture. Through projects focused on green growth, we create employment opportunities for youth while addressing environmental challenges in rural communities.',
+        description: 'We promote climate-resilient agriculture, renewable energy, and sustainable natural resource management across Kenya. By embedding eco-friendly practices into rural businesses, we create green employment opportunities for youth while protecting local ecosystems for future generations.',
         image: { src: getUrl('/images/home/focus-climate.jpg'), alt: 'Youth engaged in a USTADI climate-resilient agriculture initiative' },
         href: getUrl('/programs'),
       },
@@ -83,8 +92,8 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   <!-- 5. Featured Project — JOY Project (verified, current flagship) -->
   <FeaturedProjectSection
     overline="Featured Initiative"
-    heading="Boosting rural youth employment through integrated agribusiness hubs"
-    description="The JOY Project establishes agribusiness hubs and develops integrated training programmes for youth self-employment and wage employment across Kilifi, Kakamega, and Nakuru counties. Through partnerships with county governments, academic institutions, TVETs, and the private sector, the project builds the capacities of young people with technical, managerial, and entrepreneurial skills to launch viable agribusiness enterprises."
+    heading="Boosting Rural Youth Employment Through Agribusiness Hubs"
+    description="The JOY Project creates sustainable employment for young people across Kilifi, Kakamega, and Nakuru counties by building integrated agribusiness hubs. In partnership with county governments, TVETs, academic institutions, and the private sector, we equip youth with practical technical, managerial, and business skills. From hands-on training to market connections, the project ensures young entrepreneurs have everything they need to launch viable, long-term agricultural enterprises."
     quote="The project ensures youth are capacitated with the skills to ensure viability and sustainability of agribusiness opportunities based on the demand of the labour market."
     quoteAttribution="JOY Project Design, IFAD-ILO-Procasur-USTADI Partnership"
     image={{ src: getUrl('/images/home/project-joy.jpg'), alt: 'Youth participants in the JOY Project agribusiness hub training' }}
@@ -93,7 +102,11 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
   <!-- 6. Success Story — VIJABIZ results (verified) -->
   <SuccessStorySection
-    quote="Through VIJABIZ, 173 youth groups benefited across two counties. Over 1,550 direct participants — thirty percent of them young women — received enterprise training, design clinics, boot camps, mentorship, and incubation. Seventy-two agri-enterprises received grants to improve their businesses. Best practices and innovations were identified and documented for scale."
+    quote="Through the VIJABIZ project, USTADI supported 173 youth groups across 2 counties, equipping over
+			1,550 direct participants (30 percent of them young women) with enterprise training, design clinics,
+			boot camps, mentorship, and incubation. To turn skills into real growth, 72 youth businesses
+			received catalytic grants to scale their operations, while key innovations and best practices were
+			documented for future expansion."
     name="VIJABIZ Project"
     role="Youth Economic Empowerment through Agribusiness in Kenya, 2018–2020"
     portrait={{ src: getUrl('/images/home/success-vijabiz.jpg'), alt: 'Youth participants at a VIJABIZ agribusiness training session in Kilifi or Nakuru County' }}
