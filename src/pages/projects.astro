@@ -18,108 +18,110 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   <!-- 1. Hero -->
   <ProjectsHero
     headline="Delivering impact through demand-driven projects"
-    subheadline="Since 2010, USTADI has implemented capacity development projects across Kenya in partnership with leading development organisations. Each project strengthens the capacity of youth and women entrepreneurs while building sustainable market systems."
+    subheadline="Since 2010, USTADI has implemented capacity development projects across Kenya in partnership
+                with leading international development organizations. Every project strengthens youth and women
+                entrepreneurs while building sustainable market systems."
   />
 
   <!-- 2. Projects List — All verified from institutional profile -->
   <ProjectsList
     heading="All Projects"
-    subheading="A complete record of USTADI's donor-funded initiatives from 2014 to present."
+    subheading="A complete record of USTADI's donor-funded initiatives from 2010 to present."
     projects={[
       {
-        title: 'JOY — Boosting Rural Youth Employment through Integrated Agribusiness Hubs in Kenya',
+        title: 'JOY: Boosting Rural Youth Employment Through Integrated Agribusiness Hubs in Kenya',
         donor: 'IFAD, Visa Foundation, ILO, Procasur',
-        duration: '2021–2025',
+        duration: '2021–2026(Active)',
         value: 'US$ 2.5 Million',
-        description: 'The JOY Project establishes agribusiness hubs and develops integrated training programmes for youth self and wage employment across Kilifi, Kakamega, and Nakuru counties. Component 1 focuses on starting up the hubs and building capacities through a training of trainers programme. Component 2 disseminates results through learning, knowledge management, and South-South cooperation.',
+        description: 'The JOY Project establishes agribusiness hubs and integrated training programs for youth self-employment and wage employment across Kilifi, Kakamega, and Nakuru counties. Component 1 focuses on launching the hubs and building capacity through a training-of-trainers model. Component 2 shares results through learning, knowledge management, and South-South cooperation.',
         image: { src: getUrl('/images/projects/joy-project.jpg'), alt: 'JOY Project agribusiness hub training' },
       },
       {
-        title: 'Emajic — Environmental Management, Jobs and Income for Youth and Women Project',
+        title: 'Emajic: Environmental Management, Jobs and Income for Youth and Women Project',
         donor: 'GIZ, ChildFund',
-        duration: '2022–2024',
+        duration: '2022–2024 (Completed)',
         value: '€400,000',
-        description: 'A project based in Kasarani, Nairobi, focused on creating environmental management opportunities that generate jobs and income for youth and women. Phase 1 of a multi-phase initiative linking environmental sustainability with livelihood creation.',
+        description: 'Based in Kasarani, Nairobi, this initiative created environmental management opportunities that generated steady jobs and income for youth and women. It marked Phase 1 of a multi-phase project connecting environmental sustainability directly to local livelihoods.',
         image: { src: getUrl('/images/projects/emajic-project.jpg'), alt: 'Emajic environmental management project in Kasarani, Nairobi' },
       },
       {
-        title: 'SOYPAM — Soy Production and Marketing Project',
+        title: 'SOYPAM: Soy Production and Marketing Project',
         donor: 'EU, AGRIFI',
-        duration: '2021–2022',
+        duration: '2021–2022 (Completed)',
         value: '€543,241',
-        description: 'Focused on strengthening the soy value chain in Kenya by improving production techniques and creating market linkages for smallholder farmers. The project connected producers to processors and developed sustainable marketing channels.',
+        description: 'Strengthened the soy value chain in Kenya by advancing production techniques and opening market access for smallholder farmers. The project connected growers to commercial processors and developed reliable marketing channels.',
         image: { src: getUrl('/images/projects/soypam-project.jpg'), alt: 'Soy production under the SOYPAM project' },
       },
       {
         title: 'Increasing Resilience for Youth Enterprises Affected by COVID-19 Pandemic (Post-VIJABIZ)',
         donor: 'USADF',
-        duration: '2020–2022',
+        duration: '2020–2022 (Completed)',
         value: 'US$ 250,000',
-        description: 'A follow-on project supporting youth enterprises that were disrupted by the COVID-19 pandemic. Building on the VIJABIZ network, the project provided targeted support to help young entrepreneurs recover, adapt, and build resilience against future shocks.',
+        description: 'Supported youth enterprises disrupted by the global pandemic. Building on the established VIJABIZ network, the initiative provided targeted assistance to help young business owners recover, adapt, and build resilience against future economic shocks.',
         image: { src: getUrl('/images/projects/covid-resilience.jpg'), alt: 'Youth entrepreneur rebuilding after COVID-19' },
       },
       {
         title: 'Upscaling Agricultural Technologies to Enhance Productivity and Incomes for Smallholder Farmers',
         donor: 'EU, KALRO',
-        duration: '2020–2022',
+        duration: '2020–2022 (Completed)',
         value: '€66,000',
-        description: 'A 3-year project partnering with the Kenya Agricultural and Livestock Research Organisation (KALRO) to scale up proven agricultural technologies. The initiative improved productivity and incomes for smallholder farmers through access to improved inputs and practices.',
+        description: 'Partnered with the Kenya Agricultural and Livestock Research Organization (KALRO) on a 3-year initiative to scale up proven farm technologies. The project boosted productivity and local farm incomes through access to improved inputs and modern techniques.',
         image: { src: getUrl('/images/projects/kalro-project.jpg'), alt: 'Smallholder farmers adopting improved agricultural technologies' },
       },
       {
-        title: 'VIJABIZ — Youth Economic Empowerment through Agribusiness in Kenya',
+        title: 'VIJABIZ: Youth Economic Empowerment Through Agribusiness in Kenya',
         donor: 'IFAD, CTA',
-        duration: '2018–2020',
+        duration: '2018–2020 (Completed)',
         value: 'US$ 2.1 Million',
-        description: 'An IFAD-funded project that created sustainable employment for rural youth through agribusiness in cereals, dairy, and fisheries value chains. The project reached 173 youth groups, 1,550 direct participants (30% female), and provided grants to 72 agri-enterprises. Best practices and innovations were identified and documented.',
+        description: 'An IFAD-funded project that created sustainable jobs for rural youth across cereals, dairy, and fisheries value chains. The project reached 173 youth groups and 1,550 direct participants (30% female), awarding direct grants to 72 youth businesses to scale their operations.',
         image: { src: getUrl('/images/projects/vijabiz-project.jpg'), alt: 'VIJABIZ youth agribusiness training' },
       },
       {
         title: 'Strengthening the Competitiveness of the Cassava Value Chain in Kenya',
         donor: 'EU, Self Help Africa',
-        duration: '2017–2022',
+        duration: '2017–2022 (Completed)',
         value: '€1,500,000',
-        description: 'A 4.5-year consortium project in Kilifi and Kitui Counties reaching over 10,000 smallholder farmers. The project established 450 farmer business groups, trained 9,500 farmers on sustainable agricultural practices, post-harvest handling, and farming as a business, and created 100 aggregation centres. At least 60% of participants were women.',
+        description: 'A 4.5-year consortium project in Kilifi and Kitui counties that reached over 10,000 smallholder farmers. The project established 450 farmer business groups, trained 9,500 farmers on sustainable agriculture and post-harvest handling, and built 100 aggregation centers. Women made up at least 60% of participants.',
         image: { src: getUrl('/images/projects/cassava-project.jpg'), alt: 'Cassava farmers in a USTADI-supported project' },
       },
       {
-        title: 'Afya Pwani — WaSH Project in Kilifi',
+        title: 'Afya Pwani: WaSH Project in Kilifi',
         donor: 'Pathfinder International',
-        duration: '2017–2020',
+        duration: '2017–2020 (Completed)',
         value: 'US$ 150,000',
-        description: 'A Water, Sanitation, and Hygiene project implemented in Kilifi County. The project improved access to clean water and sanitation facilities while promoting hygiene practices in target communities.',
+        description: 'A Water, Sanitation, and Hygiene initiative implemented in Kilifi County. The project expanded access to clean water and sanitation facilities while promoting essential hygiene practices in target communities.',
         image: { src: getUrl('/images/projects/afya-pwani.jpg'), alt: 'Afya Pwani WaSH project activities in Kilifi' },
       },
       {
-        title: 'K-SALES — Kenya Semi-Arid Livestock Enhancement Support Project',
+        title: 'K-SALES: Kenya Semi-Arid Livestock Enhancement Support Project',
         donor: 'Land O\'Lakes',
-        duration: '2015–2016',
+        duration: '2015–2016 (Completed)',
         value: 'US$ 760,000',
-        description: 'Focused on improving the competitiveness of the cattle, sheep, and goat meat value chains in Kenya\'s semi-arid regions. The project strengthened market linkages and improved livestock management practices among pastoralist communities.',
+        description: 'Focused on boosting competitiveness across cattle, sheep, and goat meat value chains in Kenya\'s semi-arid regions. The project expanded market connections and improved livestock management practices for pastoralist communities.',
         image: { src: getUrl('/images/projects/ksales-project.jpg'), alt: 'Livestock market under the K-SALES project' },
       },
       {
-        title: 'KICCAP — Kilifi Integrated Climate Change Project',
+        title: 'KICCAP: Kilifi Integrated Climate Change Project',
         donor: 'DFID, Act!',
-        duration: '2014–2015',
+        duration: '2014–2015 (Completed)',
         value: 'US$ 120,000',
-        description: 'An integrated climate change adaptation project in Kilifi County. The project supported communities to build resilience against climate impacts through sustainable agricultural practices and environmental management.',
+        description: 'An integrated climate change adaptation project in Kilifi County. The initiative helped local communities build climate resilience through sustainable farming practices and environmental management.',
         image: { src: getUrl('/images/projects/kiccap-project.jpg'), alt: 'KICCAP climate change adaptation activities in Kilifi' },
       },
       {
-        title: 'Y2YF — Youth-to-Youth Fund for Entrepreneurship Promotion in Kenya',
+        title: 'Y2YF: Youth-to-Youth Fund for Entrepreneurship Promotion in Kenya',
         donor: 'ILO',
-        duration: '2014–2015',
+        duration: '2014–2015 (Completed)',
         value: 'US$ 593,000',
-        description: 'USTADI was competitively selected by ILO to implement the Y2Y Fund. From 486 proposals received nationwide, 34 youth-led organisations were supported across agriculture, renewable energy, waste management, leather products, value addition, and apprenticeship sectors. The project created 1,171 jobs and reached over 10,000 indirect beneficiaries across 11 counties.',
+        description: 'USTADI was competitively selected by ILO to implement the Youth-to-Youth Fund in Kenya. Out of 486 nationwide proposals, 34 youth-led organizations received grant support across agriculture, renewable energy, waste management, leather products, and apprenticeships. The project created 1,171 jobs and reached over 10,000 indirect beneficiaries across 11 counties.',
         image: { src: getUrl('/images/projects/y2yf-project.jpg'), alt: 'Y2YF grantee business' },
       },
       {
         title: 'Localization of Demand-Driven Professional Capacity Development',
         donor: 'SNV Netherlands Development Organisation',
-        duration: '2010–2014',
+        duration: '2010–2014 (Completed)',
         value: 'US$ 1,310,477',
-        description: 'USTADI\'s founding project, established by a consortium of 21 organisations led by SNV and HIVOs. This initiative laid the groundwork for USTADI\'s market facilitation model, promoting demand-driven capacity development services at the local level across Kenya.',
+        description: 'USTADI\'s founding project, established by a consortium of 21 organizations led by SNV and HIVOS. This initiative laid the groundwork for USTADI\'s market facilitation model, delivering demand-driven capacity development services at the local level across Kenya.',
         image: { src: getUrl('/images/projects/snv-project.jpg'), alt: 'SNV capacity development project activities' },
       },
     ]}
