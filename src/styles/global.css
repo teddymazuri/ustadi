@@ -13,8 +13,8 @@
   --color-gray-light: #F3F4F6;
 
   /* ── Typography ── */
-  --font-heading: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "DM Serif Display", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
 
   /* Semantic font sizes — components reference these, not raw scales */
   --text-heading-xl: 3rem;       /* h1 on desktop */
@@ -136,7 +136,7 @@
   /* Headings get heading font by default */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 400;
   }
 }
 
