@@ -2,6 +2,7 @@
 // Home page — USTADI Foundation
 // All content sourced from USTADI Institutional Profile (February 2024)
 import MainLayout from '../layouts/MainLayout.astro';
+import ScribbleCircle from '../components/shared/ScribbleCircle.astro';
 import HeroSection from '../components/home/HeroSection.astro';
 import MissionSection from '../components/home/MissionSection.astro';
 import ProgramsSection from '../components/home/ProgramsSection.astro';
@@ -36,22 +37,30 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   />
 
   <!-- 2. Mission — Verbatim from institutional profile -->
-  <MissionSection
-    heading="Vibrant, Self-Sustaining Markets That Transform Rural Livelihoods"
-    body="USTADI is a Kenyan organization dedicated to accelerating enterprise growth for rural youth and
-		women. We don’t bring one-size-fits-all solutions. Instead, we ask local communities what skills they
+  <div class="relative">
+    <ScribbleCircle
+      size={220}
+      opacity={0.5}
+      rotation={-10}
+      class="absolute top-0 left-0 z-0 hidden lg:block"
+    />
+    <MissionSection
+      heading="Vibrant, Self-Sustaining Markets That Transform Rural Livelihoods"
+      body="USTADI is a Kenyan organization dedicated to accelerating enterprise growth for rural youth and
+		women. We don't bring one-size-fits-all solutions. Instead, we ask local communities what skills they
 		need, connect them with verified local trainers, and link their businesses directly to profitable
 		markets so their growth is self-sustaining.
 		
 		Our capacity development model puts community growth at the center by combining market
 		facilitation services, catalytic technical assistance grants, and an active learning platform that
 		ensures long-term local ownership."
-    image={{
-      src: getUrl('/images/home/ustadi-mission.jpg'),
-      alt: 'USTADI Foundation team working with rural youth entrepreneurs in Kenya',
-    }}
-    cta={{ label: 'Learn more about our approach', href: getUrl('/about') }}
-  />
+      image={{
+        src: getUrl('/images/home/ustadi-mission.jpg'),
+        alt: 'USTADI Foundation team working with rural youth entrepreneurs in Kenya',
+      }}
+      cta={{ label: 'Learn more about our approach', href: getUrl('/about') }}
+    />
+  </div>
 
   <!-- 3. Programs — Based on real thematic areas from the profile -->
   <ProgramsSection
@@ -172,11 +181,19 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   />
 
   <!-- 9. Volunteer CTA — Based on real model of working with associates -->
-  <VolunteerCTASection
-    heading="Work with us as an associate"
-    body="Our network of associates includes ILO-certified trainers and experienced professionals working across Kenya. We collaborate with experts in enterprise development, value chain facilitation, mentorship, and capacity development to deliver high-quality services. If you share our commitment to strengthening enterprises and livelihoods, we invite you to join our associate network."
-    cta={{ label: 'Get involved', href: getUrl('/get-involved') }}
-  />
+  <div class="relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.5}
+      rotation={-20}
+      class="absolute -top-4 left-1/2 -translate-x-1/2 z-10 hidden lg:block"
+    />
+    <VolunteerCTASection
+      heading="Work with us as an associate"
+      body="Our network of associates includes ILO-certified trainers and experienced professionals working across Kenya. We collaborate with experts in enterprise development, value chain facilitation, mentorship, and capacity development to deliver high-quality services. If you share our commitment to strengthening enterprises and livelihoods, we invite you to join our associate network."
+      cta={{ label: 'Get involved', href: getUrl('/get-involved') }}
+    />
+  </div>
 
   <!-- 10. Donation CTA — Supporting real work -->
   <DonationCTASection

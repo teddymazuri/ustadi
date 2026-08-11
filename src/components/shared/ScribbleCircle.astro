@@ -1,0 +1,31 @@
+---
+// ScribbleCircle.astro — Hand-drawn circular decorative element
+// Reusable background accent for sections, cards, and headings
+export interface Props {
+  size?: number;
+  opacity?: number;
+  rotation?: number;
+  class?: string;
+}
+
+const {
+  size = 210,
+  opacity = 0.6,
+  rotation,
+  class: extraClass = '',
+} = Astro.props;
+
+const randomRotation = rotation ?? 0;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<img
+  src={`${base}/images/scribble-circle.png`}
+  alt=""
+  width={size}
+  height={size}
+  class={`${extraClass}`}
+  style={`opacity: ${opacity}; transform: rotate(${randomRotation}deg); pointer-events: none; user-select: none;`}
+  aria-hidden="true"
+  loading="lazy"
+/>

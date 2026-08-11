@@ -2,6 +2,7 @@
 // Mission & Vision page — USTADI Foundation
 // All content sourced from USTADI Institutional Profile (February 2024)
 import MainLayout from '../../layouts/MainLayout.astro';
+import ScribbleCircle from '../../components/shared/ScribbleCircle.astro';
 import MissionVision from '../../components/about/MissionVision.astro';
 import CoreValues from '../../components/about/CoreValues.astro';
 import OurModel from '../../components/about/OurModel.astro';
@@ -17,16 +18,26 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   currentPage="about"
 >
   <!-- 1. Vision & Mission (verbatim from profile) -->
-  <MissionVision
-    vision={{
-      heading: 'Our Vision',
-      body: 'Vibrant and self sustaining markets that deliver improved income and livelihoods for rural communities.',
-    }}
-    mission={{
-      heading: 'Our Mission',
-      body: 'We promote the growth of youth and women enterprises and their supporting institutions in food security, nutrition, water and sanitation, climate solutions, and the SME sector. We achieve this by stimulating demand driven capacity development, investment, innovative financing, and market systems that deliver sustainable economic, social, and environmental progress.',
-    }}
-  />
+  <div class="relative">
+    <ScribbleCircle
+      size={240}
+      opacity={0.5}
+      rotation={-10}
+      class="absolute top-0 left-0 z-0 hidden lg:block"
+    />
+    <div class="relative z-10">
+      <MissionVision
+        vision={{
+          heading: 'Our Vision',
+          body: 'Vibrant and self sustaining markets that deliver improved income and livelihoods for rural communities.',
+        }}
+        mission={{
+          heading: 'Our Mission',
+          body: 'We promote the growth of youth and women enterprises and their supporting institutions in food security, nutrition, water and sanitation, climate solutions, and the SME sector. We achieve this by stimulating demand driven capacity development, investment, innovative financing, and market systems that deliver sustainable economic, social, and environmental progress.',
+        }}
+      />
+    </div>
+  </div>
 
   <!-- 2. Core Values — EQUIP -->
   <CoreValues

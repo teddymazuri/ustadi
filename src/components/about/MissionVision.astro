@@ -1,5 +1,7 @@
 ---
 // MissionVision.astro — Vision and Mission with visual distinction
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   vision: {
     heading: string;
@@ -17,14 +19,20 @@ const { vision, mission } = Astro.props;
 <section class="section-padding bg-white" aria-label="Vision and Mission">
   <div class="container-wide">
     
-    <div class="text-center mb-16">
-      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+    <div class="text-center mb-16 relative">
+      <ScribbleCircle
+        size={180}
+        opacity={0.4}
+        rotation={-10}
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
+      />
+      <p class="text-accent font-semibold tracking-wider uppercase relative z-10" style="font-size: var(--text-body-sm);">
         Our Purpose
       </p>
-      <h2 class="mt-4 font-heading font-bold text-dark" style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);">
+      <h2 class="mt-4 font-heading font-bold text-dark relative z-10" style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);">
         Why We Exist
       </h2>
-      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto relative z-10" aria-hidden="true"></div>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
