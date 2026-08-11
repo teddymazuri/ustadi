@@ -1,0 +1,72 @@
+---
+// Careers page — USTADI Foundation
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Careers"
+  description="Join USTADI Foundation and contribute to transforming youth and women enterprises across Kenya through demand-driven capacity development."
+  currentPage="about"
+>
+  <section class="section-padding bg-white" aria-labelledby="careers-heading">
+    <div class="container-tight text-center">
+      
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        Work With Us
+      </p>
+      <h1
+        id="careers-heading"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+      >
+        Join Our Team
+      </h1>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+
+      <p
+        class="mt-8 text-dark/70 max-w-xl mx-auto leading-relaxed"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        We are always interested in connecting with talented professionals who share our passion for youth and women enterprise development. While there are no open positions at this time, we welcome expressions of interest.
+      </p>
+
+      {/* Contact card */}
+      <div class="mt-12 relative bg-cream rounded-3xl p-10 max-w-md mx-auto overflow-hidden">
+        <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-primary/5" aria-hidden="true"></div>
+        <div class="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-accent/10" aria-hidden="true"></div>
+
+        <div class="relative">
+          <div class="w-14 h-14 mx-auto flex items-center justify-center rounded-2xl bg-primary/10 text-primary mb-6">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h2 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+            Send us your CV
+          </h2>
+          <p class="mt-3 text-dark/60" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+            Email us at <a href="mailto:info@ustadi.org" class="text-primary font-semibold hover:text-primary-light no-underline">info@ustadi.org</a> with your CV and a brief introduction. We will keep your details on file for future opportunities.
+          </p>
+        </div>
+      </div>
+
+      {/* Back to mission */}
+      <div class="mt-12">
+        <a
+          href={getUrl('/about/mission-vision')}
+          class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-light no-underline"
+          style="font-size: var(--text-body-base);"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Learn more about our mission and values
+        </a>
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
