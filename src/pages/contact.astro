@@ -1,0 +1,157 @@
+---
+// Contact page — USTADI Foundation
+import MainLayout from '../layouts/MainLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Contact"
+  description="Get in touch with USTADI Foundation. Head office in Nairobi, Kenya, with field offices in Kilifi and Nakuru Counties."
+  currentPage="contact"
+>
+  <section class="section-padding bg-white" aria-labelledby="contact-heading">
+    <div class="container-tight">
+      
+      <div class="text-center mb-16">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Get In Touch
+        </p>
+        <h1
+          id="contact-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Contact Us
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          Whether you're interested in partnerships, have questions about our programmes, or want to explore collaboration opportunities — we're here to help.
+        </p>
+      </div>
+
+      <!-- Contact Cards -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-6">
+        <a
+          href="mailto:info@ustadi.org"
+          class="group bg-cream rounded-3xl p-6 text-center no-underline shadow-card hover:shadow-card-hover transition-all duration-300"
+        >
+          <div class="w-12 h-12 mx-auto flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <p class="text-xs font-semibold text-dark/40 uppercase tracking-wider mb-1">Email</p>
+          <p class="text-dark font-semibold group-hover:text-primary transition-colors" style="font-size: var(--text-body-base);">info@ustadi.org</p>
+        </a>
+
+        <a
+          href="tel:+254707387313"
+          class="group bg-cream rounded-3xl p-6 text-center no-underline shadow-card hover:shadow-card-hover transition-all duration-300"
+        >
+          <div class="w-12 h-12 mx-auto flex items-center justify-center rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-dark transition-colors mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <p class="text-xs font-semibold text-dark/40 uppercase tracking-wider mb-1">Phone</p>
+          <p class="text-dark font-semibold group-hover:text-primary transition-colors" style="font-size: var(--text-body-base);">0707 387 313</p>
+        </a>
+      </div>
+
+      {/* Address Card — full width */}
+      <div class="bg-cream rounded-3xl p-6 text-center shadow-card mb-16">
+        <div class="w-12 h-12 mx-auto flex items-center justify-center rounded-xl bg-primary/10 text-primary mb-4">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <p class="text-xs font-semibold text-dark/40 uppercase tracking-wider mb-2">Visit Our Office</p>
+        <p class="text-dark/70 leading-relaxed" style="font-size: var(--text-body-base);">
+          Nine Planet Apartments, Block Jupiter-J3, Kabarnet Road, off Ngong Road, Kilimani, Nairobi
+        </p>
+        <p class="mt-2 text-dark/40 text-sm">Field offices in Kilifi and Nakuru Counties</p>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-cream rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto">
+        <h2 class="font-heading font-bold text-dark text-center" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+          Send Us a Message
+        </h2>
+        <div class="mt-2 w-12 h-0.5 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-10">
+          <div class="space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-dark/60 mb-2">Full Name *</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  placeholder="Jane Muthoni"
+                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-dark/60 mb-2">Email Address *</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder="jane@example.com"
+                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-sm font-medium text-dark/60 mb-2">Subject *</label>
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                required
+                placeholder="Partnership Inquiry"
+                class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-medium text-dark/60 mb-2">Message *</label>
+              <textarea
+                name="message"
+                id="message"
+                rows="5"
+                required
+                placeholder="Tell us about your interest in USTADI's work..."
+                class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+              ></textarea>
+            </div>
+
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <button
+              type="submit"
+              class="w-full inline-flex items-center justify-center px-6 py-4 font-semibold text-white bg-primary rounded-xl hover:bg-primary-light transition-colors"
+              style="font-size: var(--text-body-base);"
+            >
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
