@@ -1,0 +1,206 @@
+---
+// News page — USTADI Foundation
+import MainLayout from '../layouts/MainLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+
+const newsArticles = [
+  {
+    title: 'USTADI Foundation Expands Digital Skills Program to Three New Counties',
+    excerpt: 'The JOY Project continues to scale, bringing agribusiness hub training to more youth across Kilifi, Kakamega, and Nakuru counties through partnerships with county governments and TVET institutions.',
+    date: 'July 2026',
+    image: getUrl('/images/projects/joy-project.jpg'),
+    href: getUrl('/news/joy-expansion-2026'),
+    category: 'Project Update',
+  },
+  {
+    title: 'Emajic Project Launches Green Jobs Initiative in Nairobi',
+    excerpt: 'In partnership with GIZ and ChildFund, the Emajic project is creating environmental management opportunities that generate jobs and income for youth and women in Kasarani, Nairobi.',
+    date: 'March 2026',
+    image: getUrl('/images/projects/emajic-project.jpg'),
+    href: getUrl('/news/emajic-launch-2026'),
+    category: 'Project Launch',
+  },
+  {
+    title: 'VIJABIZ Legacy: 173 Youth Groups Transformed Through Agribusiness',
+    excerpt: 'A look back at the impact of the VIJABIZ project, which reached over 1,550 direct participants and provided grants to 72 agri-enterprises across Kilifi and Nakuru counties.',
+    date: 'January 2026',
+    image: getUrl('/images/projects/vijabiz-project.jpg'),
+    href: getUrl('/news/vijabiz-legacy-2026'),
+    category: 'Impact Story',
+  },
+  {
+    title: 'Cassava Value Chain Project Concludes After 4.5 Years of Impact',
+    excerpt: 'The EU-funded cassava project reached over 10,000 smallholder farmers, established 450 farmer business groups, and created 100 aggregation centres across Kilifi and Kitui Counties.',
+    date: 'October 2025',
+    image: getUrl('/images/projects/cassava-project.jpg'),
+    href: getUrl('/news/cassava-completion-2025'),
+    category: 'Project Milestone',
+  },
+  {
+    title: 'SOYPAM Project Strengthens Soy Value Chain for Smallholder Farmers',
+    excerpt: 'The Soy Production and Marketing project, funded by the EU and AGRIFI, connected smallholder farmers to processors and developed sustainable marketing channels.',
+    date: 'June 2025',
+    image: getUrl('/images/projects/soypam-project.jpg'),
+    href: getUrl('/news/soypam-results-2025'),
+    category: 'Project Update',
+  },
+  {
+    title: 'Youth Enterprises Show Resilience After COVID-19 Recovery Programme',
+    excerpt: 'USADF-funded post-VIJABIZ support helped youth entrepreneurs recover from pandemic disruptions. The programme provided targeted assistance to rebuild and adapt businesses.',
+    date: 'February 2025',
+    image: getUrl('/images/projects/covid-resilience.jpg'),
+    href: getUrl('/news/covid-resilience-2025'),
+    category: 'Impact Story',
+  },
+];
+---
+
+<MainLayout
+  title="News"
+  description="Latest news, project updates, impact stories, and announcements from USTADI Foundation's work across Kenya."
+  currentPage="news"
+>
+  <section class="section-padding bg-white" aria-labelledby="news-heading">
+    <div class="container-wide">
+      
+      <div class="text-center mb-16">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Stay Updated
+        </p>
+        <h1
+          id="news-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Latest News
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          Project updates, impact stories, and announcements from our programmes across Kenya.
+        </p>
+      </div>
+
+      {/* Featured article */}
+      {newsArticles.length > 0 && (
+        <div class="mb-12">
+          <a href={newsArticles[0].href} class="group block bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 no-underline">
+            <div class="grid md:grid-cols-2">
+              <div class="relative h-64 md:h-full overflow-hidden">
+                <img
+                  src={newsArticles[0].image}
+                  alt={newsArticles[0].title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="eager"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent md:bg-gradient-to-r" aria-hidden="true"></div>
+              </div>
+              <div class="p-8 lg:p-10 flex flex-col justify-center">
+                <span class="inline-flex items-center gap-1.5 text-accent text-xs font-semibold tracking-wider uppercase">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M11 7h2v6h-2zM11 15h2v2h-2z" />
+                  </svg>
+                  {newsArticles[0].category}
+                </span>
+                <h2 class="mt-3 font-heading font-bold text-dark group-hover:text-primary transition-colors" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);">
+                  {newsArticles[0].title}
+                </h2>
+                <p class="mt-4 text-dark/60 leading-relaxed" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+                  {newsArticles[0].excerpt}
+                </p>
+                <div class="mt-6 flex items-center gap-3">
+                  <span class="text-dark/40 text-sm">{newsArticles[0].date}</span>
+                  <span class="text-primary font-semibold text-sm group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Read more
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      )}
+
+      {/* Article grid */}
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {newsArticles.slice(1).map((article) => (
+          <a href={article.href} class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col no-underline">
+            
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src={article.image}
+                alt={article.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
+              <div class="absolute top-4 left-4">
+                <span class="text-white/90 text-xs font-semibold bg-dark/30 px-2.5 py-1 rounded-full tracking-wider uppercase">
+                  {article.category}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 flex flex-col flex-1">
+              <h2 class="font-heading font-bold text-dark group-hover:text-primary transition-colors" style="font-size: 1.125rem; line-height: 1.4;">
+                {article.title}
+              </h2>
+              <p class="mt-3 text-dark/50 text-sm leading-relaxed flex-1">{article.excerpt}</p>
+              <div class="mt-4 pt-4 border-t border-dark/10 flex items-center justify-between">
+                <span class="text-dark/40 text-xs">{article.date}</span>
+                <span class="text-primary font-semibold text-xs group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                  Read more
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+
+          </a>
+        ))}
+      </div>
+
+      {/* Newsletter CTA */}
+      <div class="mt-16 text-center">
+        <div class="bg-cream rounded-3xl p-10 max-w-lg mx-auto">
+          <div class="w-12 h-12 mx-auto flex items-center justify-center rounded-2xl bg-primary/10 text-primary mb-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h2 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+            Stay informed
+          </h2>
+          <p class="mt-2 text-dark/60 text-sm">Subscribe to receive updates on our work, impact stories, and opportunities.</p>
+          <form class="mt-6 flex flex-col sm:flex-row gap-2" action="https://formspree.io/f/your-form-id" method="POST">
+            <label for="news-email" class="sr-only">Your email address</label>
+            <input
+              type="email"
+              name="email"
+              id="news-email"
+              placeholder="your@email.com"
+              required
+              autocomplete="email"
+              class="flex-1 px-4 py-2.5 bg-white border border-dark/10 rounded-[5px] text-dark placeholder:text-dark/30 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-[5px] hover:bg-primary-light shrink-0"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,275 @@
+---
+// Partners page — USTADI Foundation
+import MainLayout from '../layouts/MainLayout.astro';
+import DonorRecognition from '../components/about/DonorRecognition.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+
+const fundingPartners = [
+  { name: 'SNV', logo: getUrl('/images/partners/snv.svg') },
+  { name: 'IFAD', logo: getUrl('/images/partners/ifad.svg') },
+  { name: 'ILO', logo: getUrl('/images/partners/ilo.svg') },
+  { name: 'European Union', logo: getUrl('/images/partners/eu.svg') },
+  { name: 'USAID', logo: getUrl('/images/partners/usaid.svg') },
+  { name: 'Visa Foundation', logo: getUrl('/images/partners/visa-foundation.svg') },
+  { name: 'Mastercard Foundation', logo: getUrl('/images/partners/mastercard-foundation.svg') },
+  { name: "Land O'Lakes", logo: getUrl('/images/partners/landolakes.svg') },
+  { name: 'USADF', logo: getUrl('/images/partners/usadf.svg') },
+  { name: 'GIZ', logo: getUrl('/images/partners/giz.svg') },
+  { name: 'ChildFund', logo: getUrl('/images/partners/childfund.svg') },
+  { name: 'Self Help Africa', logo: getUrl('/images/partners/self-help-africa.svg') },
+  { name: 'Procasur', logo: getUrl('/images/partners/procasur.svg') },
+  { name: 'CTA', logo: getUrl('/images/partners/cta.svg') },
+  { name: 'HIVOS', logo: getUrl('/images/partners/hivos.svg') },
+  { name: 'Pathfinder International', logo: getUrl('/images/partners/pathfinder.svg') },
+  { name: 'KALRO', logo: getUrl('/images/partners/kalro.svg') },
+  { name: 'Safaricom Foundation', logo: getUrl('/images/partners/safaricom-foundation.svg') },
+];
+
+const implementingPartners = [
+  { name: 'CoELIB — Egerton University', logo: getUrl('/images/partners/coelib.svg'), description: 'Centre of Excellence for Livestock Innovation and Business' },
+  { name: 'ICT4Development', logo: getUrl('/images/partners/ict4d.svg'), description: 'Technology for development partner' },
+  { name: 'Pwani University', logo: getUrl('/images/partners/pwani-university.svg'), description: 'Higher education and research partner' },
+  { name: 'TechnoServe', logo: getUrl('/images/partners/technoserve.svg'), description: 'Business solutions to poverty' },
+  { name: 'ACT (Act Change Transform)', logo: getUrl('/images/partners/act.svg'), description: 'Community transformation partner' },
+];
+
+const countyPartners = [
+  { name: 'Kilifi', region: 'Coast' },
+  { name: 'Nakuru', region: 'Rift Valley' },
+  { name: 'Kakamega', region: 'Western' },
+  { name: 'Kitui', region: 'Eastern' },
+  { name: 'Nairobi', region: 'Nairobi' },
+  { name: 'Mombasa', region: 'Coast' },
+  { name: 'Kisumu', region: 'Nyanza' },
+  { name: 'Siaya', region: 'Nyanza' },
+  { name: 'Machakos', region: 'Eastern' },
+  { name: 'Busia', region: 'Western' },
+  { name: 'Bungoma', region: 'Western' },
+  { name: 'Kwale', region: 'Coast' },
+];
+
+const privateSectorPartners = [
+  { name: 'East African Grain Council', logo: getUrl('/images/partners/eagc.svg') },
+  { name: 'Agricultural Finance Corporation', logo: getUrl('/images/partners/afc.svg') },
+];
+---
+
+<MainLayout
+  title="Partners"
+  description="USTADI Foundation works with over 300 youth groups, 12 implementing partners, 18 funding partners, 20 county governments, and private sector allies across Kenya."
+  currentPage="partners"
+>
+  <!-- Hero -->
+  <section class="section-padding bg-white" aria-labelledby="partners-hero-heading">
+    <div class="container-tight text-center">
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        Our Network
+      </p>
+      <h1
+        id="partners-hero-heading"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+      >
+        Partners & Collaborators
+      </h1>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      <p
+        class="mt-6 text-dark/70 max-w-2xl mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        USTADI's market facilitation model thrives on collaboration. We bring together funding partners, implementing organisations, academic institutions, county governments, and the private sector to deliver lasting impact.
+      </p>
+    </div>
+  </section>
+
+  {/* Stats */}
+  <section class="pb-16 bg-white" aria-label="Partner statistics">
+    <div class="container-wide">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        {[
+          { value: '18', label: 'Funding Partners', color: 'bg-primary/10 text-primary' },
+          { value: '300+', label: 'Youth Groups & CSOs', color: 'bg-accent/10 text-accent' },
+          { value: '12', label: 'Implementing Partners', color: 'bg-primary/10 text-primary' },
+          { value: '20', label: 'County Governments', color: 'bg-accent/10 text-accent' },
+          { value: '350K+', label: 'Households Reached', color: 'bg-primary/10 text-primary' },
+        ].map((stat) => (
+          <div class="relative bg-cream rounded-3xl p-6 text-center overflow-hidden group hover:shadow-card transition-shadow">
+            <div class="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-white/50" aria-hidden="true"></div>
+            <div class="relative">
+              <span class={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${stat.color} font-heading font-bold text-lg mb-3`}>
+                {String(stat.label.length)}
+              </span>
+              <span class="block font-heading font-bold text-dark" style="font-size: var(--text-heading-md); line-height: 1;">
+                {stat.value}
+              </span>
+              <span class="block mt-2 text-dark/50 text-xs font-medium tracking-wide uppercase">{stat.label}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Funding Partners */}
+  <DonorRecognition
+    heading="Funding Partners"
+    subheading="We are grateful to the organisations that invest in our mission to transform youth and women enterprises across Kenya."
+    donors={fundingPartners}
+  />
+
+  {/* Implementing Partners */}
+  <section class="section-padding bg-cream" aria-labelledby="implementing-heading">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Delivery Network
+        </p>
+        <h2
+          id="implementing-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          Implementing Partners
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-4 text-dark/60 max-w-xl mx-auto"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          Trusted organisations and institutions that deliver programmes alongside our teams on the ground.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {implementingPartners.map((partner) => (
+          <div class="group bg-white rounded-3xl p-8 text-center shadow-card hover:shadow-card-hover transition-all duration-300">
+            <div class="w-20 h-20 mx-auto flex items-center justify-center rounded-2xl bg-cream group-hover:bg-primary/5 transition-colors">
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                class="h-10 w-auto opacity-80 group-hover:opacity-100 transition-opacity"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="mt-5 font-heading font-bold text-dark" style="font-size: 1.125rem;">
+              {partner.name.split(' — ')[0]}
+            </h3>
+            {partner.name.includes(' — ') && (
+              <p class="mt-1 text-dark/40 text-xs font-medium tracking-wide uppercase">{partner.name.split(' — ')[1]}</p>
+            )}
+            <p class="mt-3 text-dark/50 text-sm leading-relaxed">{partner.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Private Sector Partners */}
+  <section class="section-padding-sm bg-white" aria-labelledby="private-heading">
+    <div class="container-wide">
+      <h2
+        id="private-heading"
+        class="text-center font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+      >
+        Private Sector Partners
+      </h2>
+      <p
+        class="mt-3 text-center text-dark/60 max-w-lg mx-auto"
+        style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+      >
+        Strategic alliances that connect youth enterprises to markets, finance, and opportunities.
+      </p>
+
+      <div class="mt-10 flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-90">
+        {privateSectorPartners.map((partner) => (
+          <img
+            src={partner.logo}
+            alt={partner.name}
+            class="h-8 md:h-10 w-auto"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* County Governments */}
+  <section class="section-padding bg-cream" aria-labelledby="counties-heading">
+    <div class="container-wide">
+      <div class="text-center mb-12">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Local Governance
+        </p>
+        <h2
+          id="counties-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          County Government Partners
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-4 text-dark/60 max-w-xl mx-auto"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          USTADI collaborates with county governments to align programmes with local development priorities and ensure sustainable impact.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-w-5xl mx-auto">
+        {countyPartners.map((county) => (
+          <div class="group bg-white rounded-2xl p-5 text-center shadow-card hover:shadow-card-hover transition-all duration-300 cursor-default">
+            <div class="w-10 h-10 mx-auto flex items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <p class="font-heading font-bold text-dark text-sm">{county.name}</p>
+            <p class="text-dark/40 text-xs mt-1">{county.region}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* Become a Partner CTA */}
+  <section class="section-padding bg-primary relative overflow-hidden" aria-labelledby="partner-cta-heading">
+    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
+    <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>
+    
+    <div class="container-tight text-center relative">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <h2
+        id="partner-cta-heading"
+        class="font-heading font-bold text-white"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        Partner with us
+      </h2>
+      <p
+        class="mt-5 text-white/70 max-w-lg mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        We are always open to new partnerships that advance youth and women enterprise development in Kenya. Reach out to explore collaboration opportunities.
+      </p>
+      <a
+        href={getUrl('/contact')}
+        class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+        style="font-size: var(--text-body-base);"
+      >
+        Get in touch
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>
