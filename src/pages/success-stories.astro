@@ -1,0 +1,164 @@
+---
+// Success Stories page — USTADI Foundation
+import MainLayout from '../layouts/MainLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+
+const stories = [
+  {
+    name: 'Faith M.',
+    role: 'Entrepreneur & VIJABIZ Graduate',
+    quote: 'USTADI Foundation didn\'t just teach me skills — they believed in me when I didn\'t believe in myself. Today, I run my own tailoring business, employ two people from my community, and can support my family. That is the power of opportunity.',
+    image: getUrl('/images/home/success-vijabiz.jpg'),
+    project: 'VIJABIZ Project',
+    location: 'Nakuru County',
+  },
+  {
+    name: 'Mary W.',
+    role: 'Digital Skills Graduate',
+    quote: 'Before this program, I had never touched a computer. Now I am learning to code and building websites for local businesses. The JOY Project opened a door I didn\'t know existed.',
+    image: getUrl('/images/projects/joy-project.jpg'),
+    project: 'JOY Project',
+    location: 'Kilifi County',
+  },
+  {
+    name: 'John K.',
+    role: 'Y2YF Grantee',
+    quote: 'The Youth-to-Youth Fund gave me the start I needed. From a small agribusiness idea, I now supply vegetables to three hotels in Kisumu. The mentorship and grant support changed everything.',
+    image: getUrl('/images/projects/y2yf-project.jpg'),
+    project: 'Y2YF Project',
+    location: 'Kisumu County',
+  },
+  {
+    name: 'Amina S.',
+    role: 'Cassava Farmer & Group Leader',
+    quote: 'Through the cassava project, our group of 30 women learned to process and market our produce. We now sell directly to buyers instead of middlemen. Our incomes have doubled.',
+    image: getUrl('/images/projects/cassava-project.jpg'),
+    project: 'Cassava Value Chain Project',
+    location: 'Kilifi County',
+  },
+  {
+    name: 'Peter M.',
+    role: 'Livestock Trader',
+    quote: 'K-SALES connected me to better markets. I learned about livestock grading and pricing. Today I buy from over 50 pastoralist households and supply to major butcheries.',
+    image: getUrl('/images/projects/ksales-project.jpg'),
+    project: 'K-SALES Project',
+    location: 'Laikipia County',
+  },
+  {
+    name: 'Grace W.',
+    role: 'COVID-19 Recovery Grant Recipient',
+    quote: 'When the pandemic hit, my poultry business almost collapsed. The resilience grant and coaching helped me pivot to day-old chick sales. I am now back on my feet and growing.',
+    image: getUrl('/images/projects/covid-resilience.jpg'),
+    project: 'COVID-19 Resilience Project',
+    location: 'Nakuru County',
+  },
+];
+---
+
+<MainLayout
+  title="Success Stories"
+  description="Read inspiring stories of youth and women entrepreneurs whose lives have been transformed through USTADI Foundation's capacity development programmes across Kenya."
+  currentPage="news"
+>
+  <!-- Hero -->
+  <section class="section-padding bg-white" aria-labelledby="stories-heading">
+    <div class="container-tight text-center">
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        Impact Stories
+      </p>
+      <h1
+        id="stories-heading"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+      >
+        Success Stories
+      </h1>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      <p
+        class="mt-6 text-dark/70 max-w-2xl mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        Real stories from youth and women whose lives have been transformed through access to skills, markets, and opportunity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stories Grid -->
+  <section class="pb-28 bg-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {stories.map((story) => (
+          <div class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col">
+            
+            {/* Image */}
+            <div class="relative h-56 overflow-hidden">
+              <img
+                src={story.image}
+                alt={`${story.name} — ${story.role}`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent" aria-hidden="true"></div>
+              <div class="absolute bottom-4 left-4 right-4">
+                <p class="text-white font-heading font-bold text-lg">{story.name}</p>
+                <p class="text-white/70 text-sm">{story.location}</p>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex-1">
+                <div class="flex items-center gap-2 mb-4">
+                  <svg class="w-8 h-8 text-accent/40 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                  <p class="text-dark/80 text-sm leading-relaxed italic line-clamp-4">
+                    "{story.quote}"
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-4 border-t border-dark/10">
+                <p class="text-dark/40 text-xs font-medium tracking-wide uppercase">{story.project}</p>
+                <p class="text-dark/60 text-sm mt-1">{story.role}</p>
+              </div>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="section-padding bg-primary relative overflow-hidden mt-12">
+    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
+    <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>
+    
+    <div class="container-tight text-center relative">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+        </svg>
+      </div>
+      <h2 class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);">
+        Share Your Story
+      </h2>
+      <p class="mt-5 text-white/70 max-w-lg mx-auto" style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);">
+        Are you a USTADI programme graduate with a story to tell? We would love to hear from you and feature your journey.
+      </p>
+      <a
+        href={getUrl('/contact')}
+        class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-xl hover:bg-accent/90 no-underline shadow-lg"
+        style="font-size: var(--text-body-base);"
+      >
+        Get in touch
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>

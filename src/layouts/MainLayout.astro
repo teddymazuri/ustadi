@@ -165,6 +165,12 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
               { label: 'Latest News', href: getUrl('/news') },
             ],
           },
+          {
+            title: 'Stories',
+            links: [
+              { label: 'Success Stories', href: getUrl('/success-stories') },
+            ],
+          },
         ]}
       />
 
@@ -233,6 +239,7 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
         label="News"
         items={[
           { label: 'Latest News', href: getUrl('/news') },
+          { label: 'Success Stories', href: getUrl('/success-stories') },
         ]}
       />
 
@@ -316,6 +323,8 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
       <ul class="space-y-2.5" role="list">
         <li><a href={getUrl('/resources/reports')} class="text-sm text-dark/60 hover:text-primary no-underline">Reports</a></li>
         <li><a href={getUrl('/resources/media')} class="text-sm text-dark/60 hover:text-primary no-underline">Media</a></li>
+        <li><a href={getUrl('/news')} class="text-sm text-dark/60 hover:text-primary no-underline">Latest News</a></li>
+        <li><a href={getUrl('/success-stories')} class="text-sm text-dark/60 hover:text-primary no-underline">Success Stories</a></li>
       </ul>
     </div>
 
