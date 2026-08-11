@@ -1,0 +1,83 @@
+---
+// Terms of Service page — USTADI Foundation
+import MainLayout from '../layouts/MainLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+---
+
+<MainLayout
+  title="Terms of Service"
+  description="Terms and conditions for using the USTADI Foundation website."
+  noIndex={true}
+>
+  <section class="section-padding bg-white" aria-labelledby="terms-heading">
+    <div class="container-tight">
+      
+      <div class="text-center mb-16">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Legal
+        </p>
+        <h1
+          id="terms-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Terms of Service
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p class="mt-4 text-dark/50 text-sm">Last updated: January 2024</p>
+      </div>
+
+      <div class="prose prose-lg max-w-none space-y-8 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+        
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">1. Acceptance of Terms</h2>
+          <p>By accessing and using the USTADI Foundation website, you agree to be bound by these terms of service. If you do not agree, please do not use this website.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">2. Use of Website</h2>
+          <p>You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others or restrict their use of the website.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">3. Intellectual Property</h2>
+          <p>All content on this website, including text, images, logos, and downloadable materials, is the property of USTADI Foundation unless otherwise stated. You may download and use reports and resources for personal, non-commercial purposes with appropriate attribution.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">4. External Links</h2>
+          <p>Our website may contain links to third-party websites. We are not responsible for the content or practices of these external sites.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">5. Disclaimer</h2>
+          <p>While we strive to keep information accurate and up to date, USTADI Foundation makes no warranties about the completeness or accuracy of the content on this website. Information is provided for general informational purposes only.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">6. Limitation of Liability</h2>
+          <p>USTADI Foundation shall not be liable for any direct, indirect, or consequential damages arising from the use of this website or its content.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">7. Changes to Terms</h2>
+          <p>We may update these terms from time to time. Continued use of the website after changes constitutes acceptance of the updated terms.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">8. Governing Law</h2>
+          <p>These terms are governed by the laws of the Republic of Kenya.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">9. Contact</h2>
+          <p>For questions about these terms, please contact us at <a href="mailto:info@ustadi.org" class="text-primary font-semibold hover:text-primary-light no-underline">info@ustadi.org</a>.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</MainLayout>
