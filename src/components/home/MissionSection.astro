@@ -19,45 +19,43 @@ const { heading, body, image, cta } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="mission-heading">
-  <div class="container-wide">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <div class="container-wide relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.5}
+      rotation={-10}
+      class="absolute -top-1 left-0 z-0"
+    />
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
       
       <!-- Text column -->
-      <div class="relative">
-        <ScribbleCircle
-          size={200}
-          opacity={0.5}
-          rotation={-10}
-          class="absolute -top-4 -left-4 z-0"
-        />
-        <div class="relative z-10">
-          <h2
-            id="mission-heading"
-            class="font-heading font-bold text-dark text-balance"
-            style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-          >
-            {heading}
-          </h2>
-          <div class="mt-6 w-16 h-1 bg-accent rounded-full" aria-hidden="true"></div>
-          <div
-            class="mt-6 text-dark/70 space-y-4"
-            style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-          >
-            {body}
-          </div>
-          {cta && (
-            <a
-              href={cta.href}
-              class="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:text-primary-light no-underline"
-              style="font-size: var(--text-body-base);"
-            >
-              {cta.label}
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          )}
+      <div>
+        <h2
+          id="mission-heading"
+          class="font-heading font-bold text-dark text-balance"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          {heading}
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full" aria-hidden="true"></div>
+        <div
+          class="mt-6 text-dark/70 space-y-4"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {body}
         </div>
+        {cta && (
+          <a
+            href={cta.href}
+            class="inline-flex items-center gap-2 mt-8 font-semibold text-primary hover:text-primary-light no-underline"
+            style="font-size: var(--text-body-base);"
+          >
+            {cta.label}
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        )}
       </div>
 
       <!-- Image column -->

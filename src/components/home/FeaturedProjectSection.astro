@@ -1,7 +1,5 @@
 ---
 // FeaturedProjectSection.astro — Magazine-style deep dive
-import ScribbleCircle from '../shared/ScribbleCircle.astro';
-
 export interface Props {
   overline: string;
   heading: string;
@@ -25,7 +23,7 @@ const { overline, heading, description, quote, quoteAttribution, image, cta } = 
   <div class="container-wide">
     
     <p
-      class="text-accent font-semibold tracking-wider uppercase relative z-10"
+      class="text-accent font-semibold tracking-wider uppercase"
       style="font-size: var(--text-body-sm);"
     >
       {overline}
@@ -42,51 +40,43 @@ const { overline, heading, description, quote, quoteAttribution, image, cta } = 
         />
       </div>
 
-      <div class="flex flex-col justify-center relative">
-        <ScribbleCircle
-          size={200}
-          opacity={0.45}
-          rotation={30}
-          class="absolute -top-4 -left-4 z-0"
-        />
-        <div class="relative z-10">
-          <h2
-            id="project-heading"
-            class="font-heading font-bold text-dark text-balance"
-            style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-          >
-            {heading}
-          </h2>
+      <div class="flex flex-col justify-center">
+        <h2
+          id="project-heading"
+          class="font-heading font-bold text-dark text-balance"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          {heading}
+        </h2>
+        <p
+          class="mt-6 text-dark/70"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {description}
+        </p>
+
+        <blockquote class="mt-8 pl-6 border-l-4 border-accent">
           <p
-            class="mt-6 text-dark/70"
-            style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+            class="font-heading italic text-dark/80"
+            style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
           >
-            {description}
+            "{quote}"
           </p>
-
-          <blockquote class="mt-8 pl-6 border-l-4 border-accent">
-            <p
-              class="font-heading italic text-dark/80"
-              style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-            >
-              "{quote}"
-            </p>
-            <footer
-              class="mt-3 text-dark/50"
-              style="font-size: var(--text-body-sm);"
-            >
-              — {quoteAttribution}
-            </footer>
-          </blockquote>
-
-          <a
-            href={cta.href}
-            class="inline-flex items-center justify-center px-6 py-3 mt-8 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light no-underline shadow-sm self-start"
-            style="font-size: var(--text-body-base);"
+          <footer
+            class="mt-3 text-dark/50"
+            style="font-size: var(--text-body-sm);"
           >
-            {cta.label}
-          </a>
-        </div>
+            — {quoteAttribution}
+          </footer>
+        </blockquote>
+
+        <a
+          href={cta.href}
+          class="inline-flex items-center justify-center px-6 py-3 mt-8 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light no-underline shadow-sm self-start"
+          style="font-size: var(--text-body-base);"
+        >
+          {cta.label}
+        </a>
       </div>
 
     </div>

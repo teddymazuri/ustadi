@@ -28,34 +28,32 @@ const { heading, subheading, featured, secondary, cta } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="news-heading">
-  <div class="container-wide">
+  <div class="container-wide relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-30}
+      class="absolute -top-12 left-0 z-0"
+    />
     
-    <div class="text-center mb-12 relative">
-      <ScribbleCircle
-        size={200}
-        opacity={0.45}
-        rotation={-30}
-        class="absolute top-0 left-0 z-0"
-      />
-      <div class="relative z-10">
-        <h2
-          id="news-heading"
-          class="font-heading font-bold text-dark"
-          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-        >
-          {heading}
-        </h2>
-        <p
-          class="mt-4 max-w-xl mx-auto text-dark/70"
-          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-        >
-          {subheading}
-        </p>
-        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
-      </div>
+    <div class="text-center mb-12 relative z-10">
+      <h2
+        id="news-heading"
+        class="font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <p
+        class="mt-4 max-w-xl mx-auto text-dark/70"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {subheading}
+      </p>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid lg:grid-cols-3 gap-8">
+    <div class="grid lg:grid-cols-3 gap-8 relative z-10">
       
       <article class="lg:col-span-2 bg-white rounded-2xl shadow-card overflow-hidden group">
         <a href={featured.href} class="no-underline" aria-label={`Read more: ${featured.title}`}>
@@ -127,7 +125,7 @@ const { heading, subheading, featured, secondary, cta } = Astro.props;
 
     </div>
 
-    <div class="text-center mt-10">
+    <div class="text-center mt-10 relative z-10">
       <a
         href={cta.href}
         class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-light no-underline"
