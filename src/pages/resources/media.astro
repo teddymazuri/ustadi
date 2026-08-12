@@ -1,6 +1,7 @@
 ---
 // Media page — USTADI Foundation
 import MainLayout from '../../layouts/MainLayout.astro';
+import ScribbleCircle from '../../components/shared/ScribbleCircle.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
@@ -140,9 +141,16 @@ const mediaProjects = [
   currentPage="resources"
 >
   <section class="section-padding bg-white" aria-labelledby="media-heading">
-    <div class="container-wide">
+    <div class="container-wide relative">
       
-      <div class="text-center mb-16">
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="text-center mb-16 relative z-10">
         <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
           Resources
         </p>
@@ -162,11 +170,10 @@ const mediaProjects = [
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
         {mediaProjects.map((project) => (
           <div class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col">
             
-            {/* Thumbnail */}
             <div class="relative h-48 overflow-hidden">
               <img
                 src={project.image}
@@ -188,7 +195,6 @@ const mediaProjects = [
               </div>
             </div>
 
-            {/* Content */}
             <div class="p-6 flex flex-col flex-1">
               <h2 class="font-heading font-bold text-dark group-hover:text-primary transition-colors" style="font-size: 1.125rem; line-height: 1.4;">
                 {project.project}
@@ -196,7 +202,6 @@ const mediaProjects = [
               <p class="mt-1 text-dark/50 text-sm">{project.fullName}</p>
               <p class="mt-2 text-dark/40 text-xs font-medium tracking-wide uppercase">{project.donor}</p>
 
-              {/* Media links */}
               <div class="mt-4 pt-4 border-t border-dark/10 flex flex-wrap gap-1.5">
                 {project.items.map((item) => (
                   <a
