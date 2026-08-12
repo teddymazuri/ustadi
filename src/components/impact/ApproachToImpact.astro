@@ -1,5 +1,7 @@
 ---
 // ApproachToImpact.astro — How USTADI measures impact
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   heading: string;
   body: string;
@@ -13,48 +15,57 @@ const { heading, body, pillars } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="approach-impact-heading">
-  <div class="container-tight">
+  <div class="container-tight relative">
     
-    <h2
-      id="approach-impact-heading"
-      class="text-center font-heading font-bold text-dark"
-      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-    >
-      {heading}
-    </h2>
-    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
-    
-    <p
-      class="mt-8 text-dark/70 text-center max-w-2xl mx-auto"
-      style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-    >
-      {body}
-    </p>
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
 
-    <div class="mt-12 grid sm:grid-cols-3 gap-6">
-      {pillars.map((pillar, index) => (
-        <div class="bg-white rounded-2xl p-6 text-center shadow-card">
-          <div
-            class="w-12 h-12 mx-auto flex items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold"
-            style="font-size: var(--text-heading-sm);"
-            aria-hidden="true"
-          >
-            {index + 1}
+    <div class="relative z-10">
+      <h2
+        id="approach-impact-heading"
+        class="text-center font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        {heading}
+      </h2>
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      
+      <p
+        class="mt-8 text-dark/70 text-center max-w-2xl mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        {body}
+      </p>
+
+      <div class="mt-12 grid sm:grid-cols-3 gap-6">
+        {pillars.map((pillar, index) => (
+          <div class="bg-white rounded-2xl p-6 text-center shadow-card">
+            <div
+              class="w-12 h-12 mx-auto flex items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold"
+              style="font-size: var(--text-heading-sm);"
+              aria-hidden="true"
+            >
+              {index + 1}
+            </div>
+            <h3
+              class="mt-4 font-heading font-bold text-dark"
+              style="font-size: 1.125rem;"
+            >
+              {pillar.title}
+            </h3>
+            <p
+              class="mt-2 text-dark/60"
+              style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
+            >
+              {pillar.description}
+            </p>
           </div>
-          <h3
-            class="mt-4 font-heading font-bold text-dark"
-            style="font-size: 1.125rem;"
-          >
-            {pillar.title}
-          </h3>
-          <p
-            class="mt-2 text-dark/60"
-            style="font-size: var(--text-body-sm); line-height: var(--text-body-sm--line-height);"
-          >
-            {pillar.description}
-          </p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
 
   </div>
