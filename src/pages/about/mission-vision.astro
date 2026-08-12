@@ -17,13 +17,13 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   description="USTADI Foundation's vision is vibrant and self-sustaining markets delivering improved income and livelihoods for rural communities across Kenya."
   currentPage="about"
 >
-  <!-- 1. Vision & Mission (verbatim from profile) -->
+  <!-- 1. Vision & Mission -->
   <div class="relative">
     <ScribbleCircle
       size={240}
       opacity={0.5}
       rotation={-10}
-      class="absolute top-0 left-0 z-0 hidden lg:block"
+      class="absolute top-0 left-0 z-0"
     />
     <div class="relative z-10">
       <MissionVision
@@ -39,75 +39,105 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     </div>
   </div>
 
-  <!-- 2. Core Values — EQUIP -->
-  <CoreValues
-    heading="Our Core Values"
-    subheading="The EQUIP framework guides everything we do."
-    values={[
-      {
-        letter: 'E',
-        title: 'Empowering',
-        description: 'We equip youth and women with the skills and confidence to lead their own development.',
-      },
-      {
-        letter: 'Q',
-        title: 'Quality',
-        description: 'We pursue excellence in every service and program we deliver.',
-      },
-      {
-        letter: 'U',
-        title: 'Uniting',
-        description: 'We connect stakeholders across sectors to build lasting partnerships.',
-      },
-      {
-        letter: 'I',
-        title: 'Innovation',
-        description: 'We develop creative solutions to complex market challenges.',
-      },
-      {
-        letter: 'P',
-        title: 'Partnership',
-        description: 'We work collaboratively with communities, governments, and funders.',
-      },
-    ]}
-  />
+  <!-- 2. Core Values -->
+  <div class="relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={15}
+      class="absolute top-0 right-0 z-0"
+    />
+    <div class="relative z-10">
+      <CoreValues
+        heading="Our Core Values"
+        subheading="The EQUIP framework guides everything we do."
+        values={[
+          {
+            letter: 'E',
+            title: 'Empowering',
+            description: 'We equip youth and women with the skills and confidence to lead their own development.',
+          },
+          {
+            letter: 'Q',
+            title: 'Quality',
+            description: 'We pursue excellence in every service and program we deliver.',
+          },
+          {
+            letter: 'U',
+            title: 'Uniting',
+            description: 'We connect stakeholders across sectors to build lasting partnerships.',
+          },
+          {
+            letter: 'I',
+            title: 'Innovation',
+            description: 'We develop creative solutions to complex market challenges.',
+          },
+          {
+            letter: 'P',
+            title: 'Partnership',
+            description: 'We work collaboratively with communities, governments, and funders.',
+          },
+        ]}
+      />
+    </div>
+  </div>
 
-  <!-- 3. Our Model — Three pillars -->
-  <OurModel
-    heading="Our Model"
-    subheading="Our model revolves around 3 complementary pillars that place capacity development at the core, not as an add on."
-    pillars={[
-      {
-        number: '01',
-        title: 'Market Facilitation Services',
-        description: 'In person market matchmaking events, trade fairs, and connections that link youth and women entrepreneurs to buyers, suppliers, and commercial opportunities at the national and local level.',
-      },
-      {
-        number: '02',
-        title: 'Technical Assistance Grants and Investments',
-        description: 'Direct financial support, procurement and grant management, and creative funding tools like crowdfunding to help rural enterprises scale sustainably.',
-      },
-      {
-        number: '03',
-        title: 'Learning and Sharing Platform',
-        description: 'Knowledge generation through documented best practices, quality assurance, policy advocacy, and affordably priced professional services at the local level.',
-      },
-    ]}
-  />
+  <!-- 3. Our Model -->
+  <div class="relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-20}
+      class="absolute top-0 left-0 z-0"
+    />
+    <div class="relative z-10">
+      <OurModel
+        heading="Our Model"
+        subheading="Our model revolves around 3 complementary pillars that place capacity development at the core, not as an add on."
+        pillars={[
+          {
+            number: '01',
+            title: 'Market Facilitation Services',
+            description: 'In person market matchmaking events, trade fairs, and connections that link youth and women entrepreneurs to buyers, suppliers, and commercial opportunities at the national and local level.',
+          },
+          {
+            number: '02',
+            title: 'Technical Assistance Grants and Investments',
+            description: 'Direct financial support, procurement and grant management, and creative funding tools like crowdfunding to help rural enterprises scale sustainably.',
+          },
+          {
+            number: '03',
+            title: 'Learning and Sharing Platform',
+            description: 'Knowledge generation through documented best practices, quality assurance, policy advocacy, and affordably priced professional services at the local level.',
+          },
+        ]}
+      />
+    </div>
+  </div>
 
   <!-- 4. Target Groups -->
-  <TargetGroups
-    heading="Who We Serve"
-    groups={[
-      { title: 'Rural businesses', icon: 'briefcase' },
-      { title: 'Youth and women entrepreneurs', icon: 'users' },
-      { title: 'Business Development Services providers', icon: 'building' },
-      { title: 'Non-profit organisations', icon: 'heart' },
-      { title: 'Farmer groups and associations', icon: 'globe' },
-      { title: 'Self-help groups', icon: 'users' },
-      { title: 'TVETs and vocational training institutions', icon: 'academic' },
-      { title: 'NGOs and other CSOs', icon: 'office' },
-      { title: 'County governments', icon: 'building' },
-    ]}
-  />
+  <div class="relative">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={10}
+      class="absolute top-0 right-0 z-0"
+    />
+    <div class="relative z-10">
+      <TargetGroups
+        heading="Who We Serve"
+        groups={[
+          { title: 'Rural businesses', icon: 'briefcase' },
+          { title: 'Youth and women entrepreneurs', icon: 'users' },
+          { title: 'Business Development Services providers', icon: 'building' },
+          { title: 'Non-profit organisations', icon: 'heart' },
+          { title: 'Farmer groups and associations', icon: 'globe' },
+          { title: 'Self-help groups', icon: 'users' },
+          { title: 'TVETs and vocational training institutions', icon: 'academic' },
+          { title: 'NGOs and other CSOs', icon: 'office' },
+          { title: 'County governments', icon: 'building' },
+        ]}
+      />
+    </div>
+  </div>
 </MainLayout>
