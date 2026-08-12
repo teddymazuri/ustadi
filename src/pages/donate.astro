@@ -1,6 +1,7 @@
 ---
 // Donate page — USTADI Foundation
 import MainLayout from '../layouts/MainLayout.astro';
+import ScribbleCircle from '../components/shared/ScribbleCircle.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
@@ -13,24 +14,34 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 >
   <!-- Hero -->
   <section class="section-padding bg-white" aria-labelledby="donate-heading">
-    <div class="container-tight text-center">
-      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
-        Support Our Work
-      </p>
-      <h1
-        id="donate-heading"
-        class="mt-4 font-heading font-bold text-dark"
-        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
-      >
-        Make a Donation
-      </h1>
-      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
-      <p
-        class="mt-6 text-dark/70 max-w-2xl mx-auto"
-        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-      >
-        Your contribution directly supports capacity development programmes that equip youth and women entrepreneurs with the skills, resources, and opportunities they need to build sustainable livelihoods.
-      </p>
+    <div class="container-tight text-center relative">
+      
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="relative z-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Support Our Work
+        </p>
+        <h1
+          id="donate-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Make a Donation
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          Your contribution directly supports capacity development programmes that equip youth and women entrepreneurs with the skills, resources, and opportunities they need to build sustainable livelihoods.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -71,7 +82,6 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
       <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
         
-        {/* Bank Transfer */}
         <div class="bg-white rounded-3xl p-8 shadow-card">
           <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary mb-5">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -95,7 +105,6 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
           </a>
         </div>
 
-        {/* Mobile Money */}
         <div class="bg-white rounded-3xl p-8 shadow-card">
           <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-accent/10 text-accent mb-5">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -121,7 +130,6 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
       </div>
 
-      {/* Note */}
       <p class="mt-8 text-center text-dark/40 text-sm max-w-md mx-auto leading-relaxed">
         USTADI Foundation is a registered Kenyan organisation. All contributions go directly to supporting our programmes. Contact us at <a href="mailto:info@ustadi.org" class="text-primary font-semibold hover:text-primary-light no-underline">info@ustadi.org</a> for any questions about donating.
       </p>
@@ -129,7 +137,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     </div>
   </section>
 
-  {/* Quote CTA */}
+  <!-- Quote CTA -->
   <section class="section-padding bg-primary relative overflow-hidden" aria-labelledby="cta-heading">
     <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
     <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>

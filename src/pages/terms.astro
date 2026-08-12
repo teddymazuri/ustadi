@@ -1,6 +1,7 @@
 ---
 // Terms of Service page — USTADI Foundation
 import MainLayout from '../layouts/MainLayout.astro';
+import ScribbleCircle from '../components/shared/ScribbleCircle.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
@@ -12,9 +13,16 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   noIndex={true}
 >
   <section class="section-padding bg-white" aria-labelledby="terms-heading">
-    <div class="container-tight">
+    <div class="container-tight relative">
       
-      <div class="text-center mb-16">
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="text-center mb-16 relative z-10">
         <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
           Legal
         </p>
@@ -29,7 +37,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
         <p class="mt-4 text-dark/50 text-sm">Last updated: January 2024</p>
       </div>
 
-      <div class="prose prose-lg max-w-none space-y-8 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+      <div class="prose prose-lg max-w-none space-y-8 text-dark/70 relative z-10" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
         
         <div>
           <h2 class="font-heading font-bold text-dark mb-3" style="font-size: var(--text-heading-sm);">1. Acceptance of Terms</h2>
