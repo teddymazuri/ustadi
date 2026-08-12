@@ -17,9 +17,16 @@ const { heading, subheading, intro, milestones } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="story-heading">
-  <div class="container-tight">
+  <div class="container-tight relative">
     
-    <div class="text-center mb-8">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
+
+    <div class="text-center mb-8 relative z-10">
       <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
         Our Journey
       </p>
@@ -49,88 +56,87 @@ const { heading, subheading, intro, milestones } = Astro.props;
       )}
     </div>
 
-    <div class="mt-16 relative">
-      {/* Center line */}
-      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-accent/30 -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
+    {milestones.length > 0 && (
+      <div class="mt-16 relative z-10">
+        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-accent/30 -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
 
-      <div class="space-y-0">
-        {milestones.map((milestone, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <div class="relative pb-16 last:pb-0">
-              
-              {/* Mobile layout */}
-              <div class="md:hidden flex gap-4">
-                <div class="flex flex-col items-center shrink-0">
-                  <div class="w-3 h-3 bg-accent rounded-full mt-1.5" aria-hidden="true"></div>
-                  {index < milestones.length - 1 && (
-                    <div class="w-px flex-1 bg-accent/30 mt-2" aria-hidden="true"></div>
+        <div class="space-y-0">
+          {milestones.map((milestone, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div class="relative pb-16 last:pb-0">
+                
+                <div class="md:hidden flex gap-4">
+                  <div class="flex flex-col items-center shrink-0">
+                    <div class="w-3 h-3 bg-accent rounded-full mt-1.5" aria-hidden="true"></div>
+                    {index < milestones.length - 1 && (
+                      <div class="w-px flex-1 bg-accent/30 mt-2" aria-hidden="true"></div>
+                    )}
+                  </div>
+                  <div class="flex-1">
+                    <span class="font-heading font-bold text-accent block mb-2" style="font-size: var(--text-heading-sm);">
+                      {milestone.year}
+                    </span>
+                    <div class="bg-white rounded-2xl p-6 shadow-card">
+                      <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                        {milestone.title}
+                      </h3>
+                      <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="hidden md:grid grid-cols-2 items-start">
+                  
+                  {isEven ? (
+                    <div class="pr-16 text-right">
+                      <div class="bg-white rounded-2xl p-6 shadow-card inline-block text-left">
+                        <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                          {milestone.title}
+                        </h3>
+                        <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+                          {milestone.description}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div class="pr-16 flex items-center justify-end">
+                      <span class="font-heading font-bold text-accent" style="font-size: var(--text-heading-lg); line-height: 1;">
+                        {milestone.year}
+                      </span>
+                    </div>
+                  )}
+
+                  <div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-accent rounded-full mt-1.5 z-10" aria-hidden="true"></div>
+
+                  {isEven ? (
+                    <div class="pl-16 flex items-center">
+                      <span class="font-heading font-bold text-accent" style="font-size: var(--text-heading-lg); line-height: 1;">
+                        {milestone.year}
+                      </span>
+                    </div>
+                  ) : (
+                    <div class="pl-16">
+                      <div class="bg-white rounded-2xl p-6 shadow-card inline-block">
+                        <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                          {milestone.title}
+                        </h3>
+                        <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+                          {milestone.description}
+                        </p>
+                      </div>
+                    </div>
                   )}
                 </div>
-                <div class="flex-1">
-                  <span class="font-heading font-bold text-accent block mb-2" style="font-size: var(--text-heading-sm);">
-                    {milestone.year}
-                  </span>
-                  <div class="bg-white rounded-2xl p-6 shadow-card">
-                    <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                      {milestone.title}
-                    </h3>
-                    <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
-                      {milestone.description}
-                    </p>
-                  </div>
-                </div>
+
               </div>
-
-              {/* Desktop layout */}
-              <div class="hidden md:grid grid-cols-2 items-start">
-                
-                {isEven ? (
-                  <div class="pr-16 text-right">
-                    <div class="bg-white rounded-2xl p-6 shadow-card inline-block text-left">
-                      <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                        {milestone.title}
-                      </h3>
-                      <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-                ) : (
-                  <div class="pr-16 flex items-center justify-end">
-                    <span class="font-heading font-bold text-accent" style="font-size: var(--text-heading-lg); line-height: 1;">
-                      {milestone.year}
-                    </span>
-                  </div>
-                )}
-
-                <div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-accent rounded-full mt-1.5 z-10" aria-hidden="true"></div>
-
-                {isEven ? (
-                  <div class="pl-16 flex items-center">
-                    <span class="font-heading font-bold text-accent" style="font-size: var(--text-heading-lg); line-height: 1;">
-                      {milestone.year}
-                    </span>
-                  </div>
-                ) : (
-                  <div class="pl-16">
-                    <div class="bg-white rounded-2xl p-6 shadow-card inline-block">
-                      <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                        {milestone.title}
-                      </h3>
-                      <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    )}
 
   </div>
 </section>
