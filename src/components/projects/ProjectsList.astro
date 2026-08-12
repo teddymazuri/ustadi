@@ -1,5 +1,6 @@
 ---
 // ProjectsList.astro — Full list of projects with alternating layouts
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
 import ProjectCard from './ProjectCard.astro';
 
 export interface Project {
@@ -24,9 +25,16 @@ const { heading, subheading, projects } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="projects-list-heading">
-  <div class="container-wide">
+  <div class="container-wide relative">
     
-    <div class="text-center mb-16">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
+
+    <div class="text-center mb-16 relative z-10">
       <h2
         id="projects-list-heading"
         class="font-heading font-bold text-dark"
@@ -43,7 +51,7 @@ const { heading, subheading, projects } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="space-y-20 md:space-y-28">
+    <div class="space-y-20 md:space-y-28 relative z-10">
       {projects.map((project, index) => (
         <ProjectCard
           title={project.title}
