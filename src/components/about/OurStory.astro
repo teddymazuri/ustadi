@@ -1,8 +1,11 @@
 ---
 // OurStory.astro — Founding history as an editorial timeline
-// Visual: Centered timeline with alternating content cards and years
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   heading: string;
+  subheading?: string;
+  intro?: string;
   milestones: {
     year: string;
     title: string;
@@ -10,20 +13,41 @@ export interface Props {
   }[];
 }
 
-const { heading, milestones } = Astro.props;
+const { heading, subheading, intro, milestones } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="story-heading">
   <div class="container-tight">
     
-    <h2
-      id="story-heading"
-      class="text-center font-heading font-bold text-dark"
-      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-    >
-      {heading}
-    </h2>
-    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+    <div class="text-center mb-8">
+      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+        Our Journey
+      </p>
+      <h2
+        id="story-heading"
+        class="mt-4 font-heading font-bold text-dark"
+        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+      >
+        {heading}
+      </h2>
+      {subheading && (
+        <p
+          class="mt-4 text-dark/70 max-w-xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          {subheading}
+        </p>
+      )}
+      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      {intro && (
+        <p
+          class="mt-6 text-dark/60 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          {intro}
+        </p>
+      )}
+    </div>
 
     <div class="mt-16 relative">
       {/* Center line */}
@@ -61,7 +85,6 @@ const { heading, milestones } = Astro.props;
               {/* Desktop layout */}
               <div class="hidden md:grid grid-cols-2 items-start">
                 
-                {/* Left side */}
                 {isEven ? (
                   <div class="pr-16 text-right">
                     <div class="bg-white rounded-2xl p-6 shadow-card inline-block text-left">
@@ -81,10 +104,8 @@ const { heading, milestones } = Astro.props;
                   </div>
                 )}
 
-                {/* Center dot */}
                 <div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-accent rounded-full mt-1.5 z-10" aria-hidden="true"></div>
 
-                {/* Right side */}
                 {isEven ? (
                   <div class="pl-16 flex items-center">
                     <span class="font-heading font-bold text-accent" style="font-size: var(--text-heading-lg); line-height: 1;">

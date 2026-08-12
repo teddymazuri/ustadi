@@ -2,6 +2,7 @@
 // History page — USTADI Foundation
 // All content sourced from USTADI Institutional Profile (February 2024)
 import MainLayout from '../../layouts/MainLayout.astro';
+import HistoryIntro from '../../components/about/HistoryIntro.astro';
 import OurStory from '../../components/about/OurStory.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -15,47 +16,105 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 >
   <OurStory
     heading="Our History"
-    milestones={[
+    subheading="A legacy of localizing development"
+    intro="USTADI Foundation (from the Swahili word USTADI, meaning 'skillful') was established to promote professional capacity development as the core of enterprise growth rather than an add-on. Since 2010, we have evolved from a multi-institutional consortium into a national NGO and Trust, reaching over 500,000 rural households across Kenya."
+    milestones={[]}
+  />
+
+  <HistoryIntro
+    heading="Our Origins & Legal Evolution"
+    content={[
       {
         year: '2010',
-        title: 'Founded by a consortium of 21 organisations',
-        description: 'USTADI began as a capacity development initiative led by SNV and HIVOs, bringing together 21 organisations to promote professional capacity development services across Kenya.',
+        title: 'The Founding Consortium',
+        description: 'USTADI was established in 2010 by the Netherlands Development Organisation (SNV), HIVOS, and a consortium of 21 local capacity development institutions. The initiative set out to build a coalition of change across the private sector, civil society, government, and financial service providers to strengthen sub-national (rural) capacity development markets.',
       },
       {
-        year: '2012',
-        title: 'Formally registered as a Company Limited by Guarantee',
-        description: 'USTADI received its certificate of registration (CPR/2012/70718), establishing its legal identity as a Kenyan organisation focused on enterprise development.',
-      },
-      {
-        year: '2014',
-        title: 'First major youth programme launched',
-        description: 'Selected by the ILO as the implementing partner for the Youth-to-Youth Fund in Kenya, supporting 34 youth-led organisations and creating over 1,100 jobs across 11 counties.',
-      },
-      {
-        year: '2015',
-        title: 'Expanding into value chains and climate',
-        description: 'Launched K-SALES livestock enhancement project with Land O\'Lakes and KICCAP climate change project in Kilifi, broadening USTADI\'s sectoral reach into livestock and environmental resilience.',
-      },
-      {
-        year: '2017',
-        title: 'Cassava value chain and WaSH projects begin',
-        description: 'Began the 4.5-year EU-funded cassava value chain project across Kilifi and Kitui Counties, and the Afya Pwani WaSH project in Kilifi with Pathfinder International.',
-      },
-      {
-        year: '2018',
-        title: 'VIJABIZ: Scaling youth agribusiness',
-        description: 'Launched the Youth Economic Empowerment through Agribusiness project with IFAD and CTA, reaching 173 youth groups and over 1,550 direct participants across Kilifi and Nakuru counties.',
-      },
-      {
-        year: '2021',
-        title: 'JOY Project: Integrated agribusiness hubs',
-        description: 'Began a 4-year partnership with IFAD, Visa Foundation, ILO, and Procasur to establish agribusiness hubs across Kilifi, Kakamega, and Nakuru counties, targeting youth self and wage employment.',
-      },
-      {
-        year: '2022',
-        title: 'Green jobs and resilience',
-        description: 'Launched the Emajic project with GIZ and ChildFund focused on environmental management, jobs, and income for youth and women in Nairobi, while continuing post-COVID resilience support for youth enterprises.',
+        year: '2012–2014',
+        title: 'NGO Transition & Trust Registration',
+        description: 'To solidify its long-term national mandate, USTADI was registered as a Company Limited by Guarantee in 2012 and formally registered as a Trust in 2014. This established USTADI\'s two-pronged governance structure, led by a Board of Trustees and a Board of Directors.',
       },
     ]}
   />
+
+  <OurStory
+    heading="Key Milestones & Project Portfolio"
+    milestones={[
+      {
+        year: '2010',
+        title: 'The Founding Facility',
+        description: 'Launched the Localization of Demand-Driven Professional Capacity Development project with SNV and HIVOS, laying the foundation for USTADI\'s market facilitation model.',
+      },
+      {
+        year: '2013',
+        title: 'Agro-Enterprise Expansion',
+        description: 'Implemented HIVOS-funded capacity development and market facilitation across Migori, Homa Bay, Kilifi, and Kwale counties.',
+      },
+      {
+        year: '2014',
+        title: 'Youth-to-Youth Fund (Y2YF)',
+        description: 'Selected by the ILO to manage the Y2Y Fund in Kenya. The program supported 34 youth-led organizations, creating 1,171 jobs and 681 new businesses nationwide.',
+      },
+      {
+        year: '2015',
+        title: 'Livestock & Cashew Value Chains',
+        description: 'Partnered with Land O\'Lakes on the K-SALES project to boost semi-arid livestock value chains, and collaborated with Walmart/Self Help Africa to expand cashew production for women in Kilifi.',
+      },
+      {
+        year: '2016',
+        title: 'Civil Society Capacity Development',
+        description: 'Led the Global South pilot program supported by ORGUT Consulting, providing capacity building, advocacy, and grant management support to 23 CSOs across Nairobi, Mombasa, and Nyanza.',
+      },
+      {
+        year: '2017',
+        title: 'Cassava & WaSH Initiatives',
+        description: 'Joined Self Help Africa and the European Union on a 4.5-year cassava value chain project reaching over 10,000 smallholder farmers. Simultaneously launched the Pathfinder International-funded Afya Pwani WaSH project in Kilifi.',
+      },
+      {
+        year: '2018',
+        title: 'The VIJABIZ Launch',
+        description: 'Secured $2.1 million from IFAD and CTA to launch VIJABIZ, supporting 173 youth agribusiness groups and awarding direct grants to 72 agri-enterprises.',
+      },
+      {
+        year: '2020–2021',
+        title: 'Agribusiness Hubs & Post-COVID Resilience',
+        description: 'Partnered with USADF to build resilience for pandemic-affected youth businesses. Launched the IFAD/Procasur/ILO-funded JOY Project ($1.25M), establishing integrated agribusiness hubs in Kilifi, Kakamega, and Nakuru counties.',
+      },
+      {
+        year: '2021–2022',
+        title: 'Soy Production & Tech Upscaling',
+        description: 'Partnered with EU/AGRIFI on the SOYPAM project to strengthen soy production, and with EU/KALRO to scale up agricultural technologies for smallholders.',
+      },
+    ]}
+  />
+
+  <section class="section-padding bg-primary relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
+    <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>
+    
+    <div class="container-tight text-center relative">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      </div>
+      <h2 class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);">
+        Be Part of Our Next Chapter
+      </h2>
+      <p class="mt-5 text-white/70 max-w-lg mx-auto" style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);">
+        We continuously partner with county governments, international development agencies, and local communities to scale sustainable solutions across Kenya.
+      </p>
+      <a
+        href={getUrl('/contact')}
+        class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+        style="font-size: var(--text-body-base);"
+      >
+        Partner with us
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
 </MainLayout>

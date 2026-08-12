@@ -1,0 +1,48 @@
+---
+// HistoryIntro.astro — Narrative history section
+export interface Props {
+  heading: string;
+  content: {
+    year: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const { heading, content } = Astro.props;
+---
+
+<section class="section-padding-sm bg-white" aria-labelledby="origins-heading">
+  <div class="container-tight">
+    
+    <h2
+      id="origins-heading"
+      class="font-heading font-bold text-dark text-center"
+      style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+    >
+      {heading}
+    </h2>
+    <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+
+    <div class="mt-12 space-y-10">
+      {content.map((item) => (
+        <div class="flex gap-6">
+          <div class="shrink-0">
+            <span class="block font-heading font-bold text-accent w-16 text-right" style="font-size: var(--text-heading-sm); line-height: 1;">
+              {item.year}
+            </span>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+              {item.title}
+            </h3>
+            <p class="mt-2 text-dark/70 leading-relaxed" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
