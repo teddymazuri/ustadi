@@ -1,6 +1,7 @@
 ---
 // KeyProjects.astro — Alternating project rows like home ProgramsSection
-// Visual: Each project is its own row with image on alternating sides
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Project {
   title: string;
   description: string;
@@ -21,9 +22,16 @@ const { heading, subheading, projects } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="projects-heading">
-  <div class="container-wide">
+  <div class="container-wide relative">
     
-    <div class="text-center mb-16">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
+
+    <div class="text-center mb-16 relative z-10">
       <h2
         id="projects-heading"
         class="font-heading font-bold text-dark"
@@ -40,7 +48,7 @@ const { heading, subheading, projects } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="space-y-20 md:space-y-28">
+    <div class="space-y-20 md:space-y-28 relative z-10">
       {projects.map((project, index) => {
         const isEven = index % 2 === 0;
         return (

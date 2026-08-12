@@ -1,6 +1,7 @@
 ---
 // ApproachSection.astro — Three-pillar model recap
-// Visual: Three numbered columns with icons
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Pillar {
   number: string;
   title: string;
@@ -17,9 +18,16 @@ const { heading, subheading, pillars } = Astro.props;
 ---
 
 <section class="section-padding bg-cream" aria-labelledby="approach-heading">
-  <div class="container-wide">
+  <div class="container-wide relative">
     
-    <div class="text-center mb-14">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
+
+    <div class="text-center mb-14 relative z-10">
       <h2
         id="approach-heading"
         class="font-heading font-bold text-dark"
@@ -36,7 +44,7 @@ const { heading, subheading, pillars } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12 relative z-10">
       {pillars.map((pillar) => (
         <div class="relative bg-white rounded-2xl p-8 shadow-card">
           <span

@@ -1,6 +1,7 @@
 ---
 // ProgramsHero.astro — Editorial hero for Programs page
-// Visual: Split layout with text block and supporting image
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   headline: string;
   subheadline: string;
@@ -14,8 +15,16 @@ const { headline, subheadline, image } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="programs-hero-heading">
-  <div class="container-wide">
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+  <div class="container-wide relative">
+    
+    <ScribbleCircle
+      size={220}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute top-0 left-0 z-0"
+    />
+
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
       
       <div>
         <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
