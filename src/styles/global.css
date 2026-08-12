@@ -5,9 +5,9 @@
 /* ===== DESIGN TOKENS ===== */
 @theme {
   /* ── Colors ── */
-  --color-primary: #0F5E3A;
-  --color-primary-light: #2F8A57;
-  --color-accent: #C89A2D;
+    --color-primary: #5A6267;
+  --color-primary-light: #7A8287;
+  --color-accent: #F47322;
   --color-cream: #FAF9F5;
   --color-dark: #202020;
   --color-gray-light: #F3F4F6;
