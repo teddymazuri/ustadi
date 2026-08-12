@@ -1,6 +1,7 @@
 ---
 // Get Involved page — USTADI Foundation
 import MainLayout from '../layouts/MainLayout.astro';
+import ScribbleCircle from '../components/shared/ScribbleCircle.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
@@ -13,26 +14,36 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 >
   <!-- Hero -->
   <section class="section-padding bg-white" aria-labelledby="involved-heading">
-    <div class="container-tight text-center">
-      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
-        Get Involved
-      </p>
-      <h1
-        id="involved-heading"
-        class="mt-4 font-heading font-bold text-dark"
-        style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
-      >
-        Volunteer With Us
-      </h1>
-      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
-      <p
-        class="mt-6 text-dark/70 max-w-2xl mx-auto"
-        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-      >
-        USTADI collaborates with a widespread network of skilled associates, including ILO certified trainers
-        across Kenya. Whether contributing a few hours monthly or committing to an extended partnership,
-        your expertise creates immediate impact for local communities.
-      </p>
+    <div class="container-tight text-center relative">
+      
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="relative z-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Get Involved
+        </p>
+        <h1
+          id="involved-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Volunteer With Us
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          USTADI collaborates with a widespread network of skilled associates, including ILO certified trainers
+          across Kenya. Whether contributing a few hours monthly or committing to an extended partnership,
+          your expertise creates immediate impact for local communities.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -93,26 +104,36 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
   {/* Associate Model */}
   <section class="section-padding bg-cream" aria-labelledby="associate-heading">
-    <div class="container-tight text-center">
-      <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
-        Our Model
-      </p>
-      <h2
-        id="associate-heading"
-        class="mt-4 font-heading font-bold text-dark"
-        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
-      >
-        Work With Us as an Associate
-      </h2>
-      <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
-      <p
-        class="mt-6 text-dark/60 max-w-2xl mx-auto"
-        style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-      >
-        USTADI relies on a trusted network of technical associates and ILO certified trainers throughout Kenya. 
-        We deploy associates according to specific program requirements and domain expertise,
-        building lasting partnerships with leaders dedicated to expanding youth and women enterprises.
-      </p>
+    <div class="container-tight text-center relative">
+      
+      <ScribbleCircle
+        size={180}
+        opacity={0.4}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="relative z-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Our Model
+        </p>
+        <h2
+          id="associate-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          Work With Us as an Associate
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/60 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          USTADI relies on a trusted network of technical associates and ILO certified trainers throughout Kenya. 
+          We deploy associates according to specific program requirements and domain expertise,
+          building lasting partnerships with leaders dedicated to expanding youth and women enterprises.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -120,87 +141,97 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   <section class="section-padding bg-white" aria-labelledby="form-heading">
     <div class="container-tight">
       
-      <div class="bg-cream rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto">
-        <h2
-          id="form-heading"
-          class="font-heading font-bold text-dark text-center"
-          style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-        >
-          Express Your Interest
-        </h2>
-        <div class="mt-2 w-12 h-0.5 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      <div class="bg-cream rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto relative overflow-hidden">
         
-        <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-10">
-          <div class="space-y-6">
-            <div class="grid sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-medium text-dark/60 mb-2">Full Name *</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  required
-                  placeholder="Your full name"
-                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-dark/60 mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  placeholder="your@email.com"
-                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
-            </div>
+        <ScribbleCircle
+          size={160}
+          opacity={0.3}
+          rotation={-15}
+          class="absolute -top-6 left-1/2 -translate-x-1/2 z-0"
+        />
 
-            <div>
-              <label for="expertise" class="block text-sm font-medium text-dark/60 mb-2">Area of Expertise *</label>
-              <select
-                name="expertise"
-                id="expertise"
-                required
-                class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none"
+        <div class="relative z-10">
+          <h2
+            id="form-heading"
+            class="font-heading font-bold text-dark text-center"
+            style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+          >
+            Express Your Interest
+          </h2>
+          <div class="mt-2 w-12 h-0.5 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+          
+          <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-10">
+            <div class="space-y-6">
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-dark/60 mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    required
+                    placeholder="Your full name"
+                    class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-dark/60 mb-2">Email Address *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    required
+                    placeholder="your@email.com"
+                    class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="expertise" class="block text-sm font-medium text-dark/60 mb-2">Area of Expertise *</label>
+                <select
+                  name="expertise"
+                  id="expertise"
+                  required
+                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none"
+                >
+                  <option value="" disabled selected>Select your area of expertise</option>
+                  <option value="training">Training & Facilitation</option>
+                  <option value="mentorship">Mentorship & Coaching</option>
+                  <option value="technical">Technical Expertise (Agribusiness, Value Chains, etc.)</option>
+                  <option value="proposal">Proposal Writing & Fundraising</option>
+                  <option value="monitoring">Monitoring & Evaluation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-dark/60 mb-2">Tell Us About Yourself *</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="4"
+                  required
+                  placeholder="Briefly describe your background, experience, and how you would like to contribute..."
+                  class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                ></textarea>
+              </div>
+
+              <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center px-6 py-4 font-semibold text-white bg-primary rounded-xl hover:bg-primary-light transition-colors"
+                style="font-size: var(--text-body-base);"
               >
-                <option value="" disabled selected>Select your area of expertise</option>
-                <option value="training">Training & Facilitation</option>
-                <option value="mentorship">Mentorship & Coaching</option>
-                <option value="technical">Technical Expertise (Agribusiness, Value Chains, etc.)</option>
-                <option value="proposal">Proposal Writing & Fundraising</option>
-                <option value="monitoring">Monitoring & Evaluation</option>
-                <option value="other">Other</option>
-              </select>
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Submit Expression of Interest
+              </button>
             </div>
-
-            <div>
-              <label for="message" class="block text-sm font-medium text-dark/60 mb-2">Tell Us About Yourself *</label>
-              <textarea
-                name="message"
-                id="message"
-                rows="4"
-                required
-                placeholder="Briefly describe your background, experience, and how you would like to contribute..."
-                class="w-full px-4 py-3 bg-white border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
-              ></textarea>
-            </div>
-
-            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
-
-            <button
-              type="submit"
-              class="w-full inline-flex items-center justify-center px-6 py-4 font-semibold text-white bg-primary rounded-xl hover:bg-primary-light transition-colors"
-              style="font-size: var(--text-body-base);"
-            >
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Submit Expression of Interest
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
 
     </div>
