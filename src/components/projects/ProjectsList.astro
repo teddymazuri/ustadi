@@ -13,6 +13,7 @@ export interface Project {
     src: string;
     alt: string;
   };
+  resourcesHref?: string;
 }
 
 export interface Props {
@@ -30,8 +31,8 @@ const { heading, subheading, projects } = Astro.props;
     <ScribbleCircle
       size={200}
       opacity={0.45}
-      rotation={-10}
-      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      rotation={20}
+      class="absolute top-0 right-0 z-0"
     />
 
     <div class="text-center mb-16 relative z-10">
@@ -61,6 +62,7 @@ const { heading, subheading, projects } = Astro.props;
           description={project.description}
           image={project.image}
           index={index}
+          resourcesHref={project.resourcesHref}
         />
       ))}
     </div>

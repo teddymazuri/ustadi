@@ -1,6 +1,5 @@
 ---
 // ProjectCard.astro — Individual project card
-// Visual: Image top, content below, alternating layout support
 export interface Props {
   title: string;
   donor: string;
@@ -12,9 +11,10 @@ export interface Props {
     alt: string;
   };
   index: number;
+  resourcesHref?: string;
 }
 
-const { title, donor, duration, value, description, image, index } = Astro.props;
+const { title, donor, duration, value, description, image, index, resourcesHref } = Astro.props;
 const isEven = index % 2 === 0;
 ---
 
@@ -36,7 +36,6 @@ const isEven = index % 2 === 0;
       {title}
     </h2>
     
-    {/* Project meta */}
     <div class="mt-4 flex flex-wrap gap-4" style="font-size: var(--text-body-sm);">
       <div class="flex items-center gap-1.5 text-dark/50">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -64,5 +63,17 @@ const isEven = index % 2 === 0;
     >
       {description}
     </p>
+
+    {resourcesHref && (
+      <a
+        href={resourcesHref}
+        class="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        View Resources
+      </a>
+    )}
   </div>
 </article>
