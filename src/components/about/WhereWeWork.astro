@@ -1,6 +1,7 @@
 ---
 // WhereWeWork.astro — Geographic footprint with stats
-// Visual: Split layout with map area and styled stats
+import ScribbleCircle from '../shared/ScribbleCircle.astro';
+
 export interface Props {
   heading: string;
   description: string;
@@ -15,9 +16,16 @@ const { heading, description, stats, locations } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="where-heading">
-  <div class="container-wide">
+  <div class="container-wide relative">
     
-    <div class="text-center mb-16">
+    <ScribbleCircle
+      size={200}
+      opacity={0.45}
+      rotation={-10}
+      class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+    />
+
+    <div class="text-center mb-16 relative z-10">
       <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
         Our Presence
       </p>
@@ -31,7 +39,7 @@ const { heading, description, stats, locations } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
       
       {/* Map area */}
       <div class="relative bg-cream rounded-3xl p-10 lg:p-12 overflow-hidden">
@@ -45,7 +53,6 @@ const { heading, description, stats, locations } = Astro.props;
             </svg>
           </div>
           
-          {/* Location pins */}
           <div class="space-y-4 w-full max-w-xs">
             {locations.map((location, index) => (
               <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
@@ -74,7 +81,6 @@ const { heading, description, stats, locations } = Astro.props;
           {description}
         </p>
 
-        {/* Stats */}
         <div class="mt-8 grid grid-cols-2 gap-4">
           {stats.map((stat) => (
             <div class="relative bg-cream rounded-2xl p-6 overflow-hidden">
@@ -95,10 +101,9 @@ const { heading, description, stats, locations } = Astro.props;
           ))}
         </div>
 
-        {/* Reach summary */}
         <div class="mt-8 p-6 bg-primary rounded-2xl text-white">
           <p class="text-white/80 text-sm leading-relaxed">
-            USTADI's footprint extends across Kenya, reaching rural communities through a network of implementing partners, county government relationships, and direct engagement with youth and women entrepreneurs.
+            USTADI footprint extends across Kenya, reaching rural communities through a deep network of implementing partners, county government relationships, and direct engagement with youth and women entrepreneurs.
           </p>
         </div>
       </div>
