@@ -1,5 +1,5 @@
 ---
-// TargetGroups.astro — Beneficiary groups with icons and hover effects
+// TargetGroups.astro — Beneficiary groups as tag chips
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Group {
@@ -50,15 +50,15 @@ const defaultIcon = 'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z';
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto relative z-10">
+    <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto relative z-10">
       {groups.map((group) => (
-        <div class="flex items-center gap-4 bg-cream rounded-2xl p-5 hover:bg-white hover:shadow-card transition-all duration-300 group cursor-default">
-          <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-white text-primary group-hover:bg-primary group-hover:text-white transition-colors shadow-sm shrink-0" aria-hidden="true">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group inline-flex items-center gap-2.5 bg-cream rounded-full px-5 py-3 hover:bg-primary hover:shadow-card transition-all duration-300 cursor-default">
+          <div class="w-7 h-7 flex items-center justify-center rounded-full bg-white text-primary group-hover:bg-white/20 group-hover:text-white transition-colors shadow-sm shrink-0" aria-hidden="true">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[group.icon] || defaultIcon} />
             </svg>
           </div>
-          <span class="font-medium text-dark group-hover:text-primary transition-colors" style="font-size: var(--text-body-base);">
+          <span class="font-medium text-dark/70 group-hover:text-white transition-colors text-sm">
             {group.title}
           </span>
         </div>
