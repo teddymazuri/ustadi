@@ -1,5 +1,5 @@
 ---
-// ProjectsList.astro — Full list of projects with alternating layouts
+// ProjectsList.astro — Timeline of projects
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 import ProjectCard from './ProjectCard.astro';
 
@@ -14,6 +14,7 @@ export interface Project {
     alt: string;
   };
   resourcesHref?: string;
+  year: string;
 }
 
 export interface Props {
@@ -52,19 +53,25 @@ const { heading, subheading, projects } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="space-y-20 md:space-y-28 relative z-10">
-      {projects.map((project, index) => (
-        <ProjectCard
-          title={project.title}
-          donor={project.donor}
-          duration={project.duration}
-          value={project.value}
-          description={project.description}
-          image={project.image}
-          index={index}
-          resourcesHref={project.resourcesHref}
-        />
-      ))}
+    <div class="relative z-10">
+      {/* Center line */}
+      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-dark/10 -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
+
+      <div class="space-y-12 md:space-y-16">
+        {projects.map((project, index) => (
+          <ProjectCard
+            title={project.title}
+            donor={project.donor}
+            duration={project.duration}
+            value={project.value}
+            description={project.description}
+            image={project.image}
+            index={index}
+            year={project.year}
+            resourcesHref={project.resourcesHref}
+          />
+        ))}
+      </div>
     </div>
 
   </div>

@@ -11,11 +11,12 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#report-${getSlug(projectName)}`);
+const getStartYear = (duration: string) => duration.split('–')[0].trim();
 ---
 
 <MainLayout
   title="Projects"
-  description="USTADI Foundation implements demand-driven capacity development projects across Kenya, reaching over 350,000 rural households through 10+ donor-funded initiatives."
+  description="USTADI Foundation implements demand-driven capacity development projects across Kenya, reaching over 500,000 rural households through 10+ donor-funded initiatives."
   currentPage="projects"
 >
   <ProjectsHero
@@ -32,6 +33,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'IFAD, Visa Foundation, ILO, Procasur',
         duration: '2021–2025',
         value: 'US$ 2.5 Million',
+        year: getStartYear('2021–2025'),
         description: 'The JOY Project establishes agribusiness hubs and develops integrated training programmes for youth self and wage employment across Kilifi, Kakamega, and Nakuru counties. Component 1 focuses on starting up the hubs and building capacities through a training of trainers programme. Component 2 disseminates results through learning, knowledge management, and South-South cooperation.',
         image: { src: getUrl('/images/projects/joy-project.jpg'), alt: 'JOY Project agribusiness hub training' },
         resourcesHref: getReportAnchor('JOY Project'),
@@ -41,6 +43,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'GIZ, ChildFund',
         duration: '2022–2024',
         value: '€400,000',
+        year: getStartYear('2022–2024'),
         description: 'A project based in Kasarani, Nairobi, focused on creating environmental management opportunities that generate jobs and income for youth and women. Phase 1 of a multi-phase initiative linking environmental sustainability with livelihood creation.',
         image: { src: getUrl('/images/projects/emajic-project.jpg'), alt: 'Emajic environmental management project in Kasarani, Nairobi' },
         resourcesHref: getReportAnchor('Emajic'),
@@ -50,6 +53,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'EU, AGRIFI',
         duration: '2021–2022',
         value: '€543,241',
+        year: getStartYear('2021–2022'),
         description: 'Focused on strengthening the soy value chain in Kenya by improving production techniques and creating market linkages for smallholder farmers. The project connected producers to processors and developed sustainable marketing channels.',
         image: { src: getUrl('/images/projects/soypam-project.jpg'), alt: 'Soy production under the SOYPAM project' },
         resourcesHref: getReportAnchor('SOYPAM'),
@@ -59,6 +63,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'USADF',
         duration: '2020–2022',
         value: 'US$ 250,000',
+        year: getStartYear('2020–2022'),
         description: 'A follow-on project supporting youth enterprises that were disrupted by the COVID-19 pandemic. Building on the VIJABIZ network, the project provided targeted support to help young entrepreneurs recover, adapt, and build resilience against future shocks.',
         image: { src: getUrl('/images/projects/covid-resilience.jpg'), alt: 'Youth entrepreneur rebuilding after COVID-19' },
         resourcesHref: getReportAnchor('COVID-19 Resilience'),
@@ -68,6 +73,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'EU, KALRO',
         duration: '2020–2022',
         value: '€66,000',
+        year: getStartYear('2020–2022'),
         description: 'A 3-year project partnering with the Kenya Agricultural and Livestock Research Organisation (KALRO) to scale up proven agricultural technologies. The initiative improved productivity and incomes for smallholder farmers through access to improved inputs and practices.',
         image: { src: getUrl('/images/projects/kalro-project.jpg'), alt: 'Smallholder farmers adopting improved agricultural technologies' },
         resourcesHref: getReportAnchor('KALRO Ag Tech'),
@@ -77,6 +83,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'IFAD, CTA',
         duration: '2018–2020',
         value: 'US$ 2.1 Million',
+        year: getStartYear('2018–2020'),
         description: 'An IFAD-funded project that created sustainable employment for rural youth through agribusiness in cereals, dairy, and fisheries value chains. The project reached 173 youth groups, 1,550 direct participants (30% female), and provided grants to 72 agri-enterprises. Best practices and innovations were identified and documented.',
         image: { src: getUrl('/images/projects/vijabiz-project.jpg'), alt: 'VIJABIZ youth agribusiness training' },
         resourcesHref: getReportAnchor('VIJABIZ'),
@@ -86,6 +93,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'EU, Self Help Africa',
         duration: '2017–2022',
         value: '€1,500,000',
+        year: getStartYear('2017–2022'),
         description: 'A 4.5-year consortium project in Kilifi and Kitui Counties reaching over 10,000 smallholder farmers. The project established 450 farmer business groups, trained 9,500 farmers on sustainable agricultural practices, post-harvest handling, and farming as a business, and created 100 aggregation centres. At least 60% of participants were women.',
         image: { src: getUrl('/images/projects/cassava-project.jpg'), alt: 'Cassava farmers in a USTADI-supported project' },
         resourcesHref: getReportAnchor('Cassava Value Chain'),
@@ -95,6 +103,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'Pathfinder International',
         duration: '2017–2020',
         value: 'US$ 150,000',
+        year: getStartYear('2017–2020'),
         description: 'A Water, Sanitation, and Hygiene project implemented in Kilifi County. The project improved access to clean water and sanitation facilities while promoting hygiene practices in target communities.',
         image: { src: getUrl('/images/projects/afya-pwani.jpg'), alt: 'Afya Pwani WaSH project activities in Kilifi' },
         resourcesHref: getReportAnchor('Afya Pwani'),
@@ -104,6 +113,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'Land O\'Lakes',
         duration: '2015–2016',
         value: 'US$ 760,000',
+        year: getStartYear('2015–2016'),
         description: 'Focused on improving the competitiveness of the cattle, sheep, and goat meat value chains in Kenya\'s semi-arid regions. The project strengthened market linkages and improved livestock management practices among pastoralist communities.',
         image: { src: getUrl('/images/projects/ksales-project.jpg'), alt: 'Livestock market under the K-SALES project' },
         resourcesHref: getReportAnchor('K-SALES'),
@@ -113,6 +123,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'DFID, Act!',
         duration: '2014–2015',
         value: 'US$ 120,000',
+        year: getStartYear('2014–2015'),
         description: 'An integrated climate change adaptation project in Kilifi County. The project supported communities to build resilience against climate impacts through sustainable agricultural practices and environmental management.',
         image: { src: getUrl('/images/projects/kiccap-project.jpg'), alt: 'KICCAP climate change adaptation activities in Kilifi' },
         resourcesHref: getReportAnchor('KICCAP'),
@@ -122,6 +133,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'ILO',
         duration: '2014–2015',
         value: 'US$ 593,000',
+        year: getStartYear('2014–2015'),
         description: 'USTADI was competitively selected by ILO to implement the Y2Y Fund. From 486 proposals received nationwide, 34 youth-led organisations were supported across agriculture, renewable energy, waste management, leather products, value addition, and apprenticeship sectors. The project created 1,171 jobs and reached over 10,000 indirect beneficiaries across 11 counties.',
         image: { src: getUrl('/images/projects/y2yf-project.jpg'), alt: 'Y2YF grantee business' },
         resourcesHref: getReportAnchor('Y2YF'),
@@ -131,6 +143,7 @@ const getReportAnchor = (projectName: string) => getUrl(`/resources/reports#repo
         donor: 'SNV Netherlands Development Organisation',
         duration: '2010–2014',
         value: 'US$ 1,310,477',
+        year: getStartYear('2010–2014'),
         description: 'USTADI\'s founding project, established by a consortium of 21 organisations led by SNV and HIVOs. This initiative laid the groundwork for USTADI\'s market facilitation model, promoting demand-driven capacity development services at the local level across Kenya.',
         image: { src: getUrl('/images/projects/snv-project.jpg'), alt: 'SNV capacity development project activities' },
         resourcesHref: getReportAnchor('SNV Localization'),
