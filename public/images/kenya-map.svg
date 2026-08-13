@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#202020" flood-opacity="0.12" />
+    </filter>
+    
+    <filter id="glowHQ" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- PURE WHITE BACKGROUND -->
+  <rect width="100%" height="100%" fill="#FFFFFF" />
+
+  <!-- EXACT OUTLINE OF KENYA -->
+  <path d="
+    M 215,26 C 220,30 225,25 230,35 C 232,45 230,50 248,60 C 255,65 270,60 275,70 C 278,75 285,75 290,95 C 330,95 380,95 405,105 C 410,110 420,110 430,120 C 475,185 510,180 530,185 C 570,195 590,190 610,200 C 660,205 690,180 735,150 C 740,140 765,130 845,115 C 875,120 955,145 980,145 L 870,285 L 870,725 L 938,815 L 900,850 C 890,840 880,855 860,850 C 855,870 870,885 860,900 C 850,910 875,910 865,920 C 860,935 835,930 830,945 C 800,950 780,920 775,940 C 765,960 775,980 750,1010 C 730,1050 710,1095 685,1115 L 660,1170 L 485,1030 L 470,1035 C 485,1005 470,1000 480,970 L 35,735 L 35,605 C 55,595 50,570 60,560 C 80,510 80,500 105,485 C 105,465 140,445 145,420 C 145,395 165,370 165,325 C 145,280 155,275 125,275 C 115,250 115,245 95,235 C 85,210 65,180 85,170 C 65,150 45,125 50,125 L 105,90 C 130,70 160,50 215,26 Z" 
+    fill="#FAF9F5" 
+    stroke="#5A6267" 
+    stroke-width="6" 
+    stroke-linejoin="round" 
+    stroke-linecap="round"
+    filter="url(#shadow)"
+  />
+
+  <!-- CONNECTIVITY DASHED LINES -->
+  <path d="M 405,820 L 320,740" stroke="#F47322" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.5" />
+  <path d="M 405,820 L 730,1020" stroke="#F47322" stroke-width="2.5" stroke-dasharray="6 5" opacity="0.5" />
+
+  <!-- ================= LOCATION PINS & LABELS ================= -->
+
+  <!-- NAKURU BRANCH -->
+  <g transform="translate(320, 740)">
+    <circle cx="0" cy="0" r="16" fill="#F47322" opacity="0.2">
+      <animate attributeName="r" values="8;22;8" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.35;0;0.35" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#F47322" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shadow)" />
+    
+    <g transform="translate(-105, -22)">
+      <rect x="0" y="0" width="90" height="36" rx="10" fill="#202020" opacity="0.95" filter="url(#shadow)" />
+      <text x="45" y="24" font-family="'Nunito Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">Nakuru</text>
+    </g>
+  </g>
+
+  <!-- KILIFI BRANCH -->
+  <g transform="translate(730, 1020)">
+    <circle cx="0" cy="0" r="16" fill="#F47322" opacity="0.2">
+      <animate attributeName="r" values="8;22;8" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.35;0;0.35" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#F47322" stroke="#FFFFFF" stroke-width="2.5" filter="url(#shadow)" />
+
+    <g transform="translate(22, -22)">
+      <rect x="0" y="0" width="80" height="36" rx="10" fill="#202020" opacity="0.95" filter="url(#shadow)" />
+      <text x="40" y="24" font-family="'Nunito Sans', system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">Kilifi</text>
+    </g>
+  </g>
+
+  <!-- NAIROBI HEADQUARTERS -->
+  <g transform="translate(405, 820)">
+    <circle cx="0" cy="0" r="28" fill="#F47322" opacity="0.25">
+      <animate attributeName="r" values="12;32;12" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="10" fill="#5A6267" stroke="#FFFFFF" stroke-width="3" filter="url(#glowHQ)" />
+    <path d="M 0,-5 L 1.5,-1.2 L 5,-1.2 L 2.2,1 L 3.2,4.5 L 0,2.2 L -3.2,4.5 L -2.2,1 L -5,-1.2 L -1.5,-1.2 Z" fill="#FFFFFF" />
+
+    <g transform="translate(26, -26)">
+      <rect x="0" y="0" width="145" height="42" rx="12" fill="#5A6267" filter="url(#shadow)" />
+      <text x="16" y="28" font-family="'Nunito Sans', system-ui, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF">Nairobi (HQ)</text>
+    </g>
+  </g>
+
+  <!-- LEGEND -->
+  <g transform="translate(40, 960)">
+    <rect x="0" y="0" width="320" height="150" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" filter="url(#shadow)" />
+    <text x="24" y="38" font-family="'Nunito Sans', system-ui, sans-serif" font-size="14" font-weight="800" fill="#5A6267" letter-spacing="1.5">LOCATIONS LEGEND</text>
+
+    <!-- HQ Legend -->
+    <g transform="translate(24, 62)">
+      <circle cx="12" cy="10" r="10" fill="#5A6267" stroke="#FFFFFF" stroke-width="2.5" />
+      <path d="M 12,5 L 13.3,8 L 16.3,8 L 14,10 L 15,13 L 12,11 L 9,13 L 10,10 L 7.7,8 L 10.7,8 Z" fill="#FFFFFF" />
+      <text x="44" y="15" font-family="'Nunito Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#202020">Headquarters (Nairobi)</text>
+    </g>
+
+    <!-- Branch Legend -->
+    <g transform="translate(24, 104)">
+      <circle cx="12" cy="10" r="9" fill="#F47322" stroke="#FFFFFF" stroke-width="2.5" />
+      <text x="44" y="15" font-family="'Nunito Sans', system-ui, sans-serif" font-size="14" font-weight="700" fill="#202020">Regional Offices (Nakuru, Kilifi)</text>
+    </g>
+  </g>
+</svg>

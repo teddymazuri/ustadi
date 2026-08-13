@@ -1,5 +1,5 @@
 ---
-// WhereWeWork.astro — Geographic footprint with stats
+// WhereWeWork.astro — Geographic footprint with Kenya map
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Props {
@@ -13,6 +13,7 @@ export interface Props {
 }
 
 const { heading, description, stats, locations } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section-padding bg-white" aria-labelledby="where-heading">
@@ -21,7 +22,7 @@ const { heading, description, stats, locations } = Astro.props;
     <ScribbleCircle
       size={200}
       opacity={0.45}
-      rotation={-10}
+      rotation={15}
       class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
     />
 
@@ -41,35 +42,14 @@ const { heading, description, stats, locations } = Astro.props;
 
     <div class="grid md:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
       
-      {/* Map area */}
-      <div class="relative bg-cream rounded-3xl p-10 lg:p-12 overflow-hidden">
-        <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-primary/5" aria-hidden="true"></div>
-        <div class="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-accent/10" aria-hidden="true"></div>
-        
-        <div class="relative flex flex-col items-center text-center">
-          <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary/10 text-primary mb-6">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-            </svg>
-          </div>
-          
-          <div class="space-y-4 w-full max-w-xs">
-            {locations.map((location, index) => (
-              <div class="flex items-center gap-4 p-4 bg-white rounded-xl shadow-card">
-                <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <span class="font-semibold text-dark text-sm">{location}</span>
-                {index === 0 && (
-                  <span class="ml-auto text-xs font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full">HQ</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Map */}
+      <div class="relative">
+        <img
+          src={`${base}/images/kenya-map.svg`}
+          alt="Map of Kenya showing USTADI Foundation offices in Nairobi, Nakuru, and Kilifi"
+          class="w-full max-w-md mx-auto"
+          loading="lazy"
+        />
       </div>
 
       {/* Info */}
@@ -81,6 +61,7 @@ const { heading, description, stats, locations } = Astro.props;
           {description}
         </p>
 
+        {/* Stats */}
         <div class="mt-8 grid grid-cols-2 gap-4">
           {stats.map((stat) => (
             <div class="relative bg-cream rounded-2xl p-6 overflow-hidden">
@@ -101,6 +82,25 @@ const { heading, description, stats, locations } = Astro.props;
           ))}
         </div>
 
+        {/* Office locations */}
+        <div class="mt-8 space-y-3">
+          {locations.map((location, index) => (
+            <div class="flex items-center gap-4 p-4 bg-cream rounded-xl shadow-card">
+              <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <span class="font-semibold text-dark text-sm">{location}</span>
+              {index === 0 && (
+                <span class="ml-auto text-xs font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full">HQ</span>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Reach summary */}
         <div class="mt-8 p-6 bg-primary rounded-2xl text-white">
           <p class="text-white/80 text-sm leading-relaxed">
             USTADI footprint extends across Kenya, reaching rural communities through a deep network of implementing partners, county government relationships, and direct engagement with youth and women entrepreneurs.
