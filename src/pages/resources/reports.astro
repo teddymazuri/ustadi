@@ -14,9 +14,9 @@ const reports = [
     donor: 'IFAD, Visa Foundation, ILO, Procasur',
     image: getUrl('/images/projects/joy-project.jpg'),
     downloads: [
-      { label: 'Baseline Assessment', href: '/downloads/joy-baseline-report.pdf' },
-      { label: 'Mid-term Review', href: '/downloads/joy-midterm-review.pdf' },
-      { label: 'Annual Progress Report', href: '/downloads/joy-annual-report.pdf' },
+      { label: 'Baseline Assessment', href: '/downloads/joy-baseline-report.pdf', type: 'Baseline' },
+      { label: 'Mid-term Review', href: '/downloads/joy-midterm-review.pdf', type: 'Review' },
+      { label: 'Annual Progress Report', href: '/downloads/joy-annual-report.pdf', type: 'Report' },
     ],
   },
   {
@@ -26,8 +26,8 @@ const reports = [
     donor: 'GIZ, ChildFund',
     image: getUrl('/images/projects/emajic-project.jpg'),
     downloads: [
-      { label: 'Inception Report', href: '/downloads/emajic-inception-report.pdf' },
-      { label: 'Phase 1 Progress Report', href: '/downloads/emajic-progress-report.pdf' },
+      { label: 'Inception Report', href: '/downloads/emajic-inception-report.pdf', type: 'Report' },
+      { label: 'Phase 1 Progress Report', href: '/downloads/emajic-progress-report.pdf', type: 'Report' },
     ],
   },
   {
@@ -37,8 +37,8 @@ const reports = [
     donor: 'EU, AGRIFI',
     image: getUrl('/images/projects/soypam-project.jpg'),
     downloads: [
-      { label: 'Final Project Report', href: '/downloads/soypam-final-report.pdf' },
-      { label: 'Market Assessment Study', href: '/downloads/soypam-market-assessment.pdf' },
+      { label: 'Final Project Report', href: '/downloads/soypam-final-report.pdf', type: 'Report' },
+      { label: 'Market Assessment Study', href: '/downloads/soypam-market-assessment.pdf', type: 'Study' },
     ],
   },
   {
@@ -48,8 +48,8 @@ const reports = [
     donor: 'USADF',
     image: getUrl('/images/projects/covid-resilience.jpg'),
     downloads: [
-      { label: 'Project Completion Report', href: '/downloads/covid-resilience-final-report.pdf' },
-      { label: 'Impact Assessment', href: '/downloads/covid-resilience-impact.pdf' },
+      { label: 'Project Completion Report', href: '/downloads/covid-resilience-final-report.pdf', type: 'Report' },
+      { label: 'Impact Assessment', href: '/downloads/covid-resilience-impact.pdf', type: 'Impact' },
     ],
   },
   {
@@ -59,8 +59,8 @@ const reports = [
     donor: 'EU, KALRO',
     image: getUrl('/images/projects/kalro-project.jpg'),
     downloads: [
-      { label: 'Technical Report', href: '/downloads/kalro-technical-report.pdf' },
-      { label: 'Productivity Study', href: '/downloads/kalro-productivity-study.pdf' },
+      { label: 'Technical Report', href: '/downloads/kalro-technical-report.pdf', type: 'Report' },
+      { label: 'Productivity Study', href: '/downloads/kalro-productivity-study.pdf', type: 'Study' },
     ],
   },
   {
@@ -70,9 +70,9 @@ const reports = [
     donor: 'IFAD, CTA',
     image: getUrl('/images/projects/vijabiz-project.jpg'),
     downloads: [
-      { label: 'Final Project Report', href: '/downloads/vijabiz-final-report.pdf' },
-      { label: 'Case Study', href: '/downloads/vijabiz-case-study.pdf' },
-      { label: 'Best Practices', href: '/downloads/vijabiz-best-practices.pdf' },
+      { label: 'Final Project Report', href: '/downloads/vijabiz-final-report.pdf', type: 'Report' },
+      { label: 'Case Study', href: '/downloads/vijabiz-case-study.pdf', type: 'Case Study' },
+      { label: 'Best Practices', href: '/downloads/vijabiz-best-practices.pdf', type: 'Best Practice' },
     ],
   },
   {
@@ -82,9 +82,9 @@ const reports = [
     donor: 'EU, Self Help Africa',
     image: getUrl('/images/projects/cassava-project.jpg'),
     downloads: [
-      { label: 'Final Project Report', href: '/downloads/cassava-final-report.pdf' },
-      { label: 'Impact Assessment', href: '/downloads/cassava-impact-assessment.pdf' },
-      { label: 'Training Manual', href: '/downloads/cassava-training-manual.pdf' },
+      { label: 'Final Project Report', href: '/downloads/cassava-final-report.pdf', type: 'Report' },
+      { label: 'Impact Assessment', href: '/downloads/cassava-impact-assessment.pdf', type: 'Impact' },
+      { label: 'Training Manual', href: '/downloads/cassava-training-manual.pdf', type: 'Manual' },
     ],
   },
   {
@@ -94,7 +94,7 @@ const reports = [
     donor: 'Pathfinder International',
     image: getUrl('/images/projects/afya-pwani.jpg'),
     downloads: [
-      { label: 'Project Completion Report', href: '/downloads/afya-pwani-final-report.pdf' },
+      { label: 'Project Completion Report', href: '/downloads/afya-pwani-final-report.pdf', type: 'Report' },
     ],
   },
   {
@@ -104,8 +104,8 @@ const reports = [
     donor: 'Land O\'Lakes',
     image: getUrl('/images/projects/ksales-project.jpg'),
     downloads: [
-      { label: 'Final Project Report', href: '/downloads/ksales-final-report.pdf' },
-      { label: 'Value Chain Analysis', href: '/downloads/ksales-value-chain-analysis.pdf' },
+      { label: 'Final Project Report', href: '/downloads/ksales-final-report.pdf', type: 'Report' },
+      { label: 'Value Chain Analysis', href: '/downloads/ksales-value-chain-analysis.pdf', type: 'Study' },
     ],
   },
   {
@@ -115,7 +115,7 @@ const reports = [
     donor: 'DFID, Act!',
     image: getUrl('/images/projects/kiccap-project.jpg'),
     downloads: [
-      { label: 'Project Completion Report', href: '/downloads/kiccap-final-report.pdf' },
+      { label: 'Project Completion Report', href: '/downloads/kiccap-final-report.pdf', type: 'Report' },
     ],
   },
   {
@@ -125,9 +125,9 @@ const reports = [
     donor: 'ILO',
     image: getUrl('/images/projects/y2yf-project.jpg'),
     downloads: [
-      { label: 'Programme Completion Report', href: '/downloads/y2yf-final-report.pdf' },
-      { label: 'Impact Evaluation', href: '/downloads/y2yf-impact-evaluation.pdf' },
-      { label: 'Innovation Case Studies', href: '/downloads/y2yf-case-studies.pdf' },
+      { label: 'Programme Completion Report', href: '/downloads/y2yf-final-report.pdf', type: 'Report' },
+      { label: 'Impact Evaluation', href: '/downloads/y2yf-impact-evaluation.pdf', type: 'Impact' },
+      { label: 'Innovation Case Studies', href: '/downloads/y2yf-case-studies.pdf', type: 'Case Study' },
     ],
   },
   {
@@ -137,13 +137,25 @@ const reports = [
     donor: 'SNV',
     image: getUrl('/images/projects/snv-project.jpg'),
     downloads: [
-      { label: 'Programme Report', href: '/downloads/snv-localization-report.pdf' },
-      { label: 'CD Framework', href: '/downloads/snv-cd-framework.pdf' },
+      { label: 'Programme Report', href: '/downloads/snv-localization-report.pdf', type: 'Report' },
+      { label: 'CD Framework', href: '/downloads/snv-cd-framework.pdf', type: 'Framework' },
     ],
   },
 ];
 
 const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+const typeColors: Record<string, string> = {
+  'Baseline': 'bg-blue-50 text-blue-600 border-blue-200',
+  'Review': 'bg-purple-50 text-purple-600 border-purple-200',
+  'Report': 'bg-gray-50 text-gray-600 border-gray-200',
+  'Study': 'bg-green-50 text-green-600 border-green-200',
+  'Impact': 'bg-orange-50 text-orange-600 border-orange-200',
+  'Case Study': 'bg-pink-50 text-pink-600 border-pink-200',
+  'Best Practice': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+  'Manual': 'bg-yellow-50 text-yellow-600 border-yellow-200',
+  'Framework': 'bg-indigo-50 text-indigo-600 border-indigo-200',
+};
 ---
 
 <MainLayout
@@ -161,7 +173,7 @@ const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replac
         class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
       />
 
-      <div class="text-center mb-16 relative z-10">
+      <div class="text-center mb-12 relative z-10">
         <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
           Resources
         </p>
@@ -181,9 +193,43 @@ const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replac
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+      {/* Search and Filters */}
+      <div class="max-w-2xl mx-auto mb-12 relative z-10">
+        <div class="flex flex-col sm:flex-row gap-4">
+          
+          <div class="flex-1 relative">
+            <label for="report-search" class="sr-only">Search reports</label>
+            <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark/30 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              id="report-search"
+              placeholder="Search by project, donor, or report type..."
+              class="w-full pl-12 pr-4 py-3 bg-cream border-2 border-dark/10 rounded-xl text-dark placeholder:text-dark/30 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+          </div>
+
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filter reports by donor">
+            <button type="button" data-filter="All" class="px-4 py-2.5 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary-light transition-colors">All</button>
+            <button type="button" data-filter="IFAD" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">IFAD</button>
+            <button type="button" data-filter="EU" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">EU</button>
+            <button type="button" data-filter="USAID" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">USAID</button>
+            <button type="button" data-filter="GIZ" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">GIZ</button>
+            <button type="button" data-filter="ILO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">ILO</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" data-report-grid>
         {reports.map((report) => (
-          <div id={`report-${getSlug(report.project)}`} class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col scroll-mt-24">
+          <div
+            id={`report-${getSlug(report.project)}`}
+            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col scroll-mt-24"
+            data-donor={report.donor}
+            data-searchable={`${report.project} ${report.fullName} ${report.donor} ${report.downloads.map((d) => `${d.label} ${d.type}`).join(' ')}`.toLowerCase()}
+          >
             
             <div class="relative h-48 overflow-hidden">
               <img
@@ -209,13 +255,16 @@ const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replac
                 {report.downloads.map((download) => (
                   <a
                     href={download.href}
-                    class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-primary bg-white rounded-[5px] hover:bg-primary hover:text-white transition-colors no-underline"
+                    class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium text-primary bg-white rounded-[5px] hover:bg-primary hover:text-white transition-colors no-underline border border-dark/5"
                     download
                   >
                     <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     {download.label}
+                    <span class={`ml-1 px-1.5 py-0.5 text-[10px] font-semibold rounded-full border ${typeColors[download.type] || 'bg-gray-50 text-gray-600 border-gray-200'}`}>
+                      {download.type}
+                    </span>
                   </a>
                 ))}
               </div>
@@ -225,6 +274,68 @@ const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replac
         ))}
       </div>
 
+      <div id="no-results" class="hidden text-center py-12 relative z-10">
+        <p class="text-dark/40">No reports found matching your search.</p>
+      </div>
+
     </div>
   </section>
 </MainLayout>
+
+<script>
+  function initReportFilters() {
+    const searchInput = document.getElementById('report-search') as HTMLInputElement;
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const grid = document.querySelector('[data-report-grid]');
+    const cards = grid?.querySelectorAll('[data-searchable]');
+    const noResults = document.getElementById('no-results');
+    
+    let activeFilter = 'All';
+    let searchTerm = '';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards?.forEach((card) => {
+        const searchable = card.getAttribute('data-searchable') || '';
+        const donor = card.getAttribute('data-donor') || '';
+        
+        const matchesSearch = searchTerm === '' || searchable.includes(searchTerm.toLowerCase());
+        const matchesFilter = activeFilter === 'All' || donor.includes(activeFilter);
+        
+        const shouldShow = matchesSearch && matchesFilter;
+        (card as HTMLElement).classList.toggle('hidden', !shouldShow);
+        
+        if (shouldShow) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    searchInput?.addEventListener('input', (e) => {
+      searchTerm = (e.target as HTMLInputElement).value;
+      applyFilters();
+    });
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeFilter = (btn as HTMLElement).getAttribute('data-filter') || 'All';
+        
+        filterButtons.forEach((other) => {
+          const isActive = other === btn;
+          (other as HTMLElement).classList.toggle('bg-primary', isActive);
+          (other as HTMLElement).classList.toggle('text-white', isActive);
+          (other as HTMLElement).classList.toggle('bg-cream', !isActive);
+          (other as HTMLElement).classList.toggle('text-dark/60', !isActive);
+        });
+
+        applyFilters();
+      });
+    });
+  }
+
+  initReportFilters();
+  document.addEventListener('astro:page-load', initReportFilters);
+</script>
