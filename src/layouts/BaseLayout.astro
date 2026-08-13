@@ -15,7 +15,7 @@ export interface Props {
 const {
   title,
   description,
-    image = `${import.meta.env.BASE_URL}images/ustadi-og-default.svg`,
+    image = `${import.meta.env.BASE_URL}images/ustadi-og-default.png`,
   noIndex = false,
 } = Astro.props;
 
@@ -74,7 +74,7 @@ const ogImageURL = Astro.site ? new URL(image, Astro.site).href : image;
 
     <!-- Favicon and PWA -->
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-        <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
     <link rel="manifest" href={`${import.meta.env.BASE_URL}site.webmanifest`} />
     <meta name="theme-color" content="#0F5E3A" />
 
