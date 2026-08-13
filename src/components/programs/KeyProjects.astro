@@ -1,5 +1,5 @@
 ---
-// KeyProjects.astro — Alternating project rows like home ProgramsSection
+// KeyProjects.astro — Timeline of featured projects
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Project {
@@ -10,6 +10,7 @@ export interface Project {
     alt: string;
   };
   href: string;
+  year: string;
 }
 
 export interface Props {
@@ -19,9 +20,11 @@ export interface Props {
 }
 
 const { heading, subheading, projects } = Astro.props;
+
+const getStartYear = (duration: string) => duration.split('–')[0].trim();
 ---
 
-<section class="section-padding bg-white" aria-labelledby="projects-heading">
+<section class="section-padding bg-cream" aria-labelledby="projects-heading">
   <div class="container-wide relative">
     
     <ScribbleCircle
@@ -48,46 +51,138 @@ const { heading, subheading, projects } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="space-y-20 md:space-y-28 relative z-10">
-      {projects.map((project, index) => {
-        const isEven = index % 2 === 0;
-        return (
-          <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div class={isEven ? 'md:order-1' : 'md:order-2'}>
-              <img
-                src={project.image.src}
-                alt={project.image.alt}
-                class="w-full rounded-2xl shadow-card object-cover aspect-[4/3]"
-                loading="lazy"
-              />
+    <div class="relative z-10">
+      
+      {/* Center line */}
+      <div class="absolute left-1/2 top-0 bottom-0 w-px bg-dark/10 -translate-x-1/2 hidden md:block" aria-hidden="true"></div>
+
+      <div class="space-y-14 md:space-y-20">
+        {projects.map((project, index) => {
+          const isEven = index % 2 === 0;
+          return (
+            <div class="relative">
+              
+              {/* Mobile layout */}
+              <div class="md:hidden space-y-4">
+                <span class="inline-block bg-accent text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                  {getStartYear(project.year)}
+                </span>
+                <div class="bg-white rounded-3xl overflow-hidden shadow-card">
+                  <div class="relative h-44 overflow-hidden">
+                    <img
+                      src={project.image.src}
+                      alt={project.image.alt}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                      {project.title}
+                    </h3>
+                    <p class="mt-3 text-dark/60 text-sm leading-relaxed">{project.description}</p>
+                    <a
+                      href={project.href}
+                      class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                    >
+                      Learn more
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop layout */}
+              <div class="hidden md:grid grid-cols-2 items-center">
+                
+                {/* Left side */}
+                {isEven ? (
+                  <div class="pr-16">
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
+                      <div class="relative h-48 overflow-hidden">
+                        <img
+                          src={project.image.src}
+                          alt={project.image.alt}
+                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                          {project.title}
+                        </h3>
+                        <p class="mt-3 text-dark/60 text-sm leading-relaxed">{project.description}</p>
+                        <a
+                          href={project.href}
+                          class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                        >
+                          Learn more
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="pr-16 flex items-center justify-end">
+                    <span class="bg-accent text-white text-sm font-bold px-3 py-1.5 rounded-full">
+                      {getStartYear(project.year)}
+                    </span>
+                  </div>
+                )}
+
+                {/* Center dot */}
+                <div class="absolute left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-accent rounded-full z-10" aria-hidden="true"></div>
+
+                {/* Right side */}
+                {isEven ? (
+                  <div class="pl-16 flex items-center">
+                    <span class="bg-accent text-white text-sm font-bold px-3 py-1.5 rounded-full">
+                      {getStartYear(project.year)}
+                    </span>
+                  </div>
+                ) : (
+                  <div class="pl-16">
+                    <div class="bg-white rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
+                      <div class="relative h-48 overflow-hidden">
+                        <img
+                          src={project.image.src}
+                          alt={project.image.alt}
+                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
+                      </div>
+                      <div class="p-6">
+                        <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
+                          {project.title}
+                        </h3>
+                        <p class="mt-3 text-dark/60 text-sm leading-relaxed">{project.description}</p>
+                        <a
+                          href={project.href}
+                          class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                        >
+                          Learn more
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
             </div>
-            <div class={isEven ? 'md:order-2' : 'md:order-1'}>
-              <h3
-                class="font-heading font-bold text-dark"
-                style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
-              >
-                {project.title}
-              </h3>
-              <p
-                class="mt-4 text-dark/70"
-                style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-              >
-                {project.description}
-              </p>
-              <a
-                href={project.href}
-                class="inline-flex items-center gap-2 mt-5 font-semibold text-primary hover:text-primary-light no-underline"
-                style="font-size: var(--text-body-base);"
-              >
-                Learn more
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
     </div>
 
   </div>

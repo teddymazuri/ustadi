@@ -14,20 +14,16 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 <MainLayout
   title="Our Impact"
-  description="USTADI Foundation has reached over 350,000 rural households and 300+ youth groups across 20+ counties in Kenya through demand-driven capacity development projects."
+  description="USTADI Foundation has reached over 500,000 rural households and 300+ youth groups across 20+ counties in Kenya through demand-driven capacity development projects."
   currentPage="impact"
 >
-  <!-- 1. Hero with highlight stat -->
+  <!-- 1. Hero -->
   <ImpactHero
     headline="Measuring what matters: sustainable change for rural communities"
     subheadline="USTADI embeds rigorous monitoring and evaluation across every initiative. A primary goal of our work is bridging the critical knowledge gap around what drives long term success in youth employment."
-    highlightStat={{
-      value: '500,000+',
-      label: 'Rural households reached with crucial capacity development support',
-    }}
   />
 
-  <!-- 2. Key Statistics Grid -->
+  <!-- 2. Key Statistics Tree -->
   <ImpactStatsGrid
     heading="Impact in Numbers"
     stats={[

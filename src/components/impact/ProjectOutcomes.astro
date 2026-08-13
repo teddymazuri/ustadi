@@ -1,5 +1,5 @@
 ---
-// ProjectOutcomes.astro — Selected project outcomes in editorial layout
+// ProjectOutcomes.astro — Hub and spoke layout
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Outcome {
@@ -15,6 +15,17 @@ export interface Props {
 }
 
 const { heading, subheading, outcomes } = Astro.props;
+
+const totalOutcomes = outcomes.length;
+
+// Calculate positions around a circle
+const getPosition = (index: number, total: number) => {
+  const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
+  const radius = 45; // percentage
+  const x = 50 + radius * Math.cos(angle);
+  const y = 50 + radius * Math.sin(angle);
+  return { x, y };
+};
 ---
 
 <section class="section-padding bg-white" aria-labelledby="outcomes-heading">
@@ -44,29 +55,72 @@ const { heading, subheading, outcomes } = Astro.props;
       <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto relative z-10">
-      {outcomes.map((outcome) => (
-        <div class="bg-cream rounded-2xl p-8">
-          <p
-            class="font-heading font-bold text-accent"
-            style="font-size: var(--text-heading-sm); line-height: 1.2;"
-          >
-            {outcome.metric}
-          </p>
-          <p
-            class="mt-2 text-dark/50 font-medium"
-            style="font-size: var(--text-body-sm);"
-          >
-            {outcome.project}
-          </p>
-          <p
-            class="mt-3 text-dark/70"
-            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
-          >
-            {outcome.description}
+    <div class="relative z-10">
+      
+      {/* Mobile: stacked cards */}
+      <div class="lg:hidden space-y-4">
+        {outcomes.map((outcome) => (
+          <div class="bg-cream rounded-2xl p-6">
+            <span class="font-heading font-bold text-primary" style="font-size: var(--text-heading-md); line-height: 1;">
+              {outcome.metric}
+            </span>
+            <p class="mt-2 text-dark/50 font-medium text-sm tracking-wider uppercase">{outcome.project}</p>
+            <p class="mt-3 text-dark/70 text-sm leading-relaxed">{outcome.description}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop: hub and spoke */}
+      <div class="hidden lg:block relative aspect-square max-w-5xl mx-auto">
+        
+        {/* Center hub */}
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary rounded-full flex items-center justify-center text-center z-10 shadow-xl">
+          <p class="text-white font-heading font-bold text-sm px-6">
+            {totalOutcomes} Projects
           </p>
         </div>
-      ))}
+
+        {/* Spoke cards */}
+        {outcomes.map((outcome, index) => {
+          const pos = getPosition(index, totalOutcomes);
+          return (
+            <div
+              class="absolute w-64 bg-cream rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300"
+              style={`top: ${pos.y}%; left: ${pos.x}%; transform: translate(-50%, -50%);`}
+            >
+              <span class="font-heading font-bold text-primary" style="font-size: var(--text-heading-sm); line-height: 1.1;">
+                {outcome.metric}
+              </span>
+              <p class="mt-2 text-dark/50 font-medium text-xs tracking-wider uppercase">{outcome.project}</p>
+              <p class="mt-2 text-dark/60 text-sm leading-relaxed line-clamp-3">{outcome.description}</p>
+            </div>
+          );
+        })}
+
+        {/* Spoke lines */}
+        {outcomes.map((outcome, index) => {
+          const pos = getPosition(index, totalOutcomes);
+          return (
+            <svg
+              class="absolute inset-0 w-full h-full pointer-events-none"
+              aria-hidden="true"
+            >
+              <line
+                x1="50%"
+                y1="50%"
+                x2={`${pos.x}%`}
+                y2={`${pos.y}%`}
+                stroke="#C89A2D"
+                stroke-width="1"
+                stroke-dasharray="6 4"
+                opacity="0.3"
+              />
+            </svg>
+          );
+        })}
+
+      </div>
+
     </div>
 
   </div>

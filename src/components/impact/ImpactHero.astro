@@ -1,17 +1,13 @@
 ---
-// ImpactHero.astro — Centered hero with large stat highlight
+// ImpactHero.astro — Centered hero without stat highlight
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Props {
   headline: string;
   subheadline: string;
-  highlightStat: {
-    value: string;
-    label: string;
-  };
 }
 
-const { headline, subheadline, highlightStat } = Astro.props;
+const { headline, subheadline } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="impact-hero-heading">
@@ -42,21 +38,6 @@ const { headline, subheadline, highlightStat } = Astro.props;
       >
         {subheadline}
       </p>
-
-      <div class="mt-12 inline-block bg-cream rounded-2xl px-12 py-8">
-        <p
-          class="font-heading font-bold text-primary"
-          style="font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1;"
-        >
-          {highlightStat.value}
-        </p>
-        <p
-          class="mt-3 text-dark/70 max-w-sm mx-auto"
-          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-        >
-          {highlightStat.label}
-        </p>
-      </div>
     </div>
 
   </div>
