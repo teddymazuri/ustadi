@@ -18,10 +18,9 @@ const { heading, subheading, outcomes } = Astro.props;
 
 const totalOutcomes = outcomes.length;
 
-// Calculate positions around a circle
 const getPosition = (index: number, total: number) => {
   const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
-  const radius = 45; // percentage
+  const radius = 40;
   const x = 50 + radius * Math.cos(angle);
   const y = 50 + radius * Math.sin(angle);
   return { x, y };
@@ -74,9 +73,9 @@ const getPosition = (index: number, total: number) => {
       <div class="hidden lg:block relative aspect-square max-w-5xl mx-auto">
         
         {/* Center hub */}
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary rounded-full flex items-center justify-center text-center z-10 shadow-xl">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 bg-primary rounded-full flex items-center justify-center text-center z-10 shadow-xl">
           <p class="text-white font-heading font-bold text-sm px-6">
-            {totalOutcomes} Projects
+            {totalOutcomes} Verified Outcomes
           </p>
         </div>
 
@@ -85,14 +84,14 @@ const getPosition = (index: number, total: number) => {
           const pos = getPosition(index, totalOutcomes);
           return (
             <div
-              class="absolute w-64 bg-cream rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300"
+              class="absolute w-72 bg-cream rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300"
               style={`top: ${pos.y}%; left: ${pos.x}%; transform: translate(-50%, -50%);`}
             >
               <span class="font-heading font-bold text-primary" style="font-size: var(--text-heading-sm); line-height: 1.1;">
                 {outcome.metric}
               </span>
               <p class="mt-2 text-dark/50 font-medium text-xs tracking-wider uppercase">{outcome.project}</p>
-              <p class="mt-2 text-dark/60 text-sm leading-relaxed line-clamp-3">{outcome.description}</p>
+              <p class="mt-2 text-dark/60 text-sm leading-relaxed">{outcome.description}</p>
             </div>
           );
         })}
@@ -110,7 +109,7 @@ const getPosition = (index: number, total: number) => {
                 y1="50%"
                 x2={`${pos.x}%`}
                 y2={`${pos.y}%`}
-                stroke="#C89A2D"
+                stroke="#F47322"
                 stroke-width="1"
                 stroke-dasharray="6 4"
                 opacity="0.3"
