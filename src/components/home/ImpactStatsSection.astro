@@ -1,5 +1,5 @@
 ---
-// ImpactStatsSection.astro — Cream band with large numbers
+// ImpactStatsSection.astro — Compact band with animated counters and dividers
 export interface Stat {
   value: string;
   label: string;
@@ -11,32 +11,35 @@ export interface Props {
 
 const { stats } = Astro.props;
 
-// Give each stat a unique ID for the script to target
 const statsWithIds = stats.map((stat, i) => ({
   ...stat,
   id: `impact-stat-${i}`,
 }));
 ---
 
-<section class="section-padding bg-cream" aria-label="Our impact in numbers">
-  <div class="container-wide">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+<section class="py-10 md:py-14 bg-cream relative overflow-hidden" aria-label="Our impact in numbers">
+  
+  <div class="container-wide relative">
+    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-dark/10">
       {statsWithIds.map((stat) => (
-        <div>
+        <div class="text-center py-6 md:py-0 md:px-8">
+          
           <p
             id={stat.id}
             class="font-heading font-bold text-primary"
-            style="font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1;"
+            style="font-size: clamp(2.25rem, 4vw, 3.25rem); line-height: 1;"
             data-target={stat.value}
           >
             0
           </p>
+          
           <p
-            class="mt-3 text-dark/70 max-w-xs mx-auto"
-            style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+            class="mt-3 text-dark/60 max-w-xs mx-auto"
+            style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
           >
             {stat.label}
           </p>
+
         </div>
       ))}
     </div>
@@ -49,7 +52,6 @@ const statsWithIds = stats.map((stat, i) => ({
     
     statElements.forEach((el) => {
       const target = el.getAttribute('data-target') || '';
-      // Extract the number from strings like "500,000+" or "300+"
       const numMatch = target.match(/[\d,]+/);
       if (!numMatch) return;
       
@@ -61,7 +63,6 @@ const statsWithIds = stats.map((stat, i) => ({
       function update(currentTime: number) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out quad
         const eased = 1 - (1 - progress) * (1 - progress);
         const current = Math.floor(eased * targetNum);
         
@@ -76,7 +77,6 @@ const statsWithIds = stats.map((stat, i) => ({
     });
   }
 
-  // Use IntersectionObserver to trigger when stats come into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -90,7 +90,6 @@ const statsWithIds = stats.map((stat, i) => ({
   if (container) {
     observer.observe(container);
   } else {
-    // Fallback: animate immediately
     animateStats();
   }
 </script>

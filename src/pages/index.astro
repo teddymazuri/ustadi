@@ -62,19 +62,22 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
         title: 'Youth & Women Enterprise Development',
         description: 'We equip youth and women with the practical skills needed to launch and scale profitable enterprises. Through hands-on mentorship, incubation, and proven ILO frameworks like Start and Improve Your Business, we help entrepreneurs turn local ideas into sustainable businesses across agribusiness, renewable energy, and emerging markets.',
         image: { src: getUrl('/images/home/focus-enterprise.jpg'), alt: 'Youth entrepreneurs at a USTADI business training session' },
-        href: getUrl('/programs'),
+        href: getUrl('/projects'),
+        icon: 'briefcase',
       },
       {
         title: 'Value Chain Facilitation',
         description: 'We connect smallholder farmers and youth groups directly to profitable markets. By strengthening key agricultural value chains such as fisheries, dairy, cassava, livestock, and grains, we help producers reduce post-harvest losses, access modern equipment, and secure innovative financing to grow their incomes.',
         image: { src: getUrl('/images/home/focus-value-chains.jpg'), alt: 'Farmers in a USTADI-supported cassava value chain project' },
-        href: getUrl('/programs'),
+        href: getUrl('/projects'),
+        icon: 'chart',
       },
       {
         title: 'Climate Solutions and Green Jobs',
         description: 'We promote climate-resilient agriculture, renewable energy, and sustainable natural resource management across Kenya. By embedding eco-friendly practices into rural businesses, we create green employment opportunities for youth while protecting local ecosystems for future generations.',
         image: { src: getUrl('/images/home/focus-climate.jpg'), alt: 'Youth engaged in a USTADI climate-resilient agriculture initiative' },
-        href: getUrl('/programs'),
+        href: getUrl('/projects'),
+        icon: 'leaf',
       },
     ]}
   />
@@ -197,7 +200,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     methods={[
       { icon: 'email', label: 'Email us', value: 'info@ustadi.org', href: 'mailto:info@ustadi.org' },
       { icon: 'phone', label: 'Call us', value: '0707 387 313', href: 'tel:+254707387313' },
-      { icon: 'location', label: 'Head office', value: 'Nairobi, Kenya', href: getUrl('/contact') },
+      { icon: 'location', label: 'Visit us', value: 'Nine Planet Apartments, Block Jupiter-J3, Kabarnet Road, off Ngong Road, Kilimani, Nairobi', href: getUrl('/contact') },
     ]}
   />
 </MainLayout>
