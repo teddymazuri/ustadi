@@ -95,6 +95,14 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
       <!-- Contact Form -->
       <div class="bg-cream rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto relative overflow-hidden">
+      
+        <ScribbleCircle
+          size={160}
+          opacity={0.3}
+          rotation={-10}
+          class="absolute -top-4 left-1/2 -translate-x-1/2 z-0"
+        />
+
         <h2 class="font-heading font-bold text-dark text-center relative" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
           Send Us a Message
         </h2>

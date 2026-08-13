@@ -56,6 +56,10 @@ const stories = [
     location: 'Nakuru County',
   },
 ];
+
+const projects = ['All', ...new Set(stories.map((s) => s.project))];
+const featured = stories[0];
+const remainingStories = stories.slice(1);
 ---
 
 <MainLayout
@@ -92,16 +96,82 @@ const stories = [
         >
           Real stories from youth and women whose lives have been transformed through access to skills, markets, and opportunity.
         </p>
+
+        {/* Mini stats */}
+        <div class="mt-8 inline-flex flex-wrap justify-center gap-6">
+          <span class="text-dark/50 text-sm"><strong class="text-primary font-heading">{stories.length}</strong> Stories</span>
+          <span class="text-dark/30">·</span>
+          <span class="text-dark/50 text-sm"><strong class="text-primary font-heading">{new Set(stories.map((s) => s.project)).size}</strong> Projects</span>
+          <span class="text-dark/30">·</span>
+          <span class="text-dark/50 text-sm"><strong class="text-primary font-heading">{new Set(stories.map((s) => s.location)).size}</strong> Counties</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Featured Story */}
+  {featured && (
+    <section class="pb-12 bg-white" aria-label="Featured story">
+      <div class="container-wide">
+        <div class="bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
+          <div class="grid md:grid-cols-2">
+            <div class="relative h-72 md:h-full overflow-hidden">
+              <img
+                src={featured.image}
+                alt={`${featured.name} — ${featured.role}`}
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent md:bg-gradient-to-r" aria-hidden="true"></div>
+            </div>
+            <div class="p-8 lg:p-12 flex flex-col justify-center">
+              <span class="text-accent text-xs font-semibold tracking-wider uppercase">Featured Story</span>
+              <blockquote class="mt-4">
+                <p class="font-heading font-medium italic text-dark text-balance" style="font-size: var(--text-heading-sm); line-height: 1.5;">
+                  "{featured.quote}"
+                </p>
+              </blockquote>
+              <div class="mt-6 flex items-center gap-3">
+                <div class="w-px h-10 bg-accent" aria-hidden="true"></div>
+                <div>
+                  <p class="font-semibold text-dark">{featured.name}</p>
+                  <p class="text-dark/50 text-sm">{featured.role} · {featured.location}</p>
+                </div>
+              </div>
+              <p class="mt-4 text-dark/40 text-xs font-medium tracking-wide uppercase">{featured.project}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {/* Project Filters */}
+  <section class="pb-12 bg-white" aria-label="Filter stories">
+    <div class="container-wide">
+      <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter stories by project">
+        {projects.map((project) => (
+          <button
+            type="button"
+            data-story-filter={project}
+            class={`px-4 py-2.5 text-sm font-medium rounded-lg border-2 border-dark/10 transition-colors ${project === 'All' ? 'bg-primary text-white border-primary' : 'bg-cream text-dark/60 hover:bg-primary hover:text-white hover:border-primary'}`}
+          >
+            {project}
+          </button>
+        ))}
       </div>
     </div>
   </section>
 
   {/* Stories Grid */}
-  <section class="pb-28 bg-white">
+  <section class="pb-20 bg-white">
     <div class="container-wide">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {stories.map((story) => (
-          <div class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stories-grid>
+        {remainingStories.map((story) => (
+          <div
+            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col"
+            data-story-project={story.project}
+          >
             
             <div class="relative h-56 overflow-hidden">
               <img
@@ -138,36 +208,157 @@ const stories = [
           </div>
         ))}
       </div>
+
+      <div id="stories-no-results" class="hidden text-center py-12">
+        <p class="text-dark/40">No stories found for this project.</p>
+      </div>
     </div>
   </section>
 
-  {/* CTA */}
-  <section class="section-padding bg-primary relative overflow-hidden mt-12">
-    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
-    <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>
-    
-    <div class="container-tight text-center relative">
-      <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-        </svg>
+  {/* Story Submission Form */}
+  <section class="section-padding bg-cream" aria-labelledby="share-story-heading">
+    <div class="container-tight">
+      <div class="bg-white rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto relative overflow-hidden">
+        
+        <ScribbleCircle
+          size={160}
+          opacity={0.3}
+          rotation={-10}
+          class="absolute -top-4 left-1/2 -translate-x-1/2 z-0"
+        />
+
+        <div class="relative z-10">
+          <h2
+            id="share-story-heading"
+            class="font-heading font-bold text-dark text-center"
+            style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);"
+          >
+            Share Your Story
+          </h2>
+          <div class="mt-2 w-12 h-0.5 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+          <p class="mt-4 text-dark/60 text-center text-sm max-w-md mx-auto">
+            Are you a USTADI programme graduate? We would love to feature your journey.
+          </p>
+          
+          <form action="https://formspree.io/f/your-form-id" method="POST" class="mt-8">
+            <div class="space-y-5">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="story-name" class="block text-sm font-medium text-dark/60 mb-2">Full Name *</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="story-name"
+                    required
+                    placeholder="Your full name"
+                    class="w-full px-4 py-3 bg-cream border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label for="story-email" class="block text-sm font-medium text-dark/60 mb-2">Email Address *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="story-email"
+                    required
+                    placeholder="your@email.com"
+                    class="w-full px-4 py-3 bg-cream border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="story-project" class="block text-sm font-medium text-dark/60 mb-2">Programme / Project *</label>
+                <select
+                  name="project"
+                  id="story-project"
+                  required
+                  class="w-full px-4 py-3 bg-cream border border-dark/10 rounded-xl text-dark/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent appearance-none"
+                >
+                  <option value="" disabled selected>Select your programme</option>
+                  <option value="JOY Project">JOY Project</option>
+                  <option value="VIJABIZ">VIJABIZ</option>
+                  <option value="Y2YF">Y2YF</option>
+                  <option value="Cassava Value Chain">Cassava Value Chain</option>
+                  <option value="K-SALES">K-SALES</option>
+                  <option value="COVID-19 Resilience">COVID-19 Resilience</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="story-message" class="block text-sm font-medium text-dark/60 mb-2">Your Story *</label>
+                <textarea
+                  name="message"
+                  id="story-message"
+                  rows="4"
+                  required
+                  placeholder="Tell us how USTADI's programmes have impacted your life..."
+                  class="w-full px-4 py-3 bg-cream border border-dark/10 rounded-xl text-dark placeholder:text-dark/25 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"
+                ></textarea>
+              </div>
+
+              <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+
+              <button
+                type="submit"
+                class="w-full inline-flex items-center justify-center px-6 py-4 font-semibold text-white bg-primary rounded-xl hover:bg-primary-light transition-colors"
+                style="font-size: var(--text-body-base);"
+              >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Submit Your Story
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-      <h2 class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);">
-        Share Your Story
-      </h2>
-      <p class="mt-5 text-white/70 max-w-lg mx-auto" style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);">
-        Are you a USTADI programme graduate with a story to tell? We would love to hear from you and feature your journey.
-      </p>
-      <a
-        href={getUrl('/contact')}
-        class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-xl hover:bg-accent/90 no-underline shadow-lg"
-        style="font-size: var(--text-body-base);"
-      >
-        Get in touch
-        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
     </div>
   </section>
 </MainLayout>
+
+<script>
+  function initStoryFilters() {
+    const filterButtons = document.querySelectorAll('[data-story-filter]');
+    const cards = document.querySelectorAll('[data-story-project]');
+    const noResults = document.getElementById('stories-no-results');
+    
+    let activeFilter = 'All';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const project = (card as HTMLElement).getAttribute('data-story-project') || '';
+        const shouldShow = activeFilter === 'All' || project === activeFilter;
+        (card as HTMLElement).classList.toggle('hidden', !shouldShow);
+        if (shouldShow) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeFilter = (btn as HTMLElement).getAttribute('data-story-filter') || 'All';
+        
+        filterButtons.forEach((other) => {
+          const isActive = other === btn;
+          (other as HTMLElement).classList.toggle('bg-primary', isActive);
+          (other as HTMLElement).classList.toggle('text-white', isActive);
+          (other as HTMLElement).classList.toggle('border-primary', isActive);
+          (other as HTMLElement).classList.toggle('bg-cream', !isActive);
+          (other as HTMLElement).classList.toggle('text-dark/60', !isActive);
+        });
+
+        applyFilters();
+      });
+    });
+  }
+
+  initStoryFilters();
+  document.addEventListener('astro:page-load', initStoryFilters);
+</script>

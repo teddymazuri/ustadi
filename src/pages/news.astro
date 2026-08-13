@@ -56,6 +56,8 @@ const newsArticles = [
     category: 'Impact Story',
   },
 ];
+
+const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', 'Project Milestone'];
 ---
 
 <MainLayout
@@ -73,7 +75,7 @@ const newsArticles = [
         class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
       />
 
-      <div class="text-center mb-16 relative z-10">
+      <div class="text-center mb-12 relative z-10">
         <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
           Stay Updated
         </p>
@@ -93,10 +95,24 @@ const newsArticles = [
         </p>
       </div>
 
-      {/* Featured article */}
-      <div class="relative z-10">
+      {/* Category Filters */}
+      <div class="flex flex-wrap justify-center gap-2 mb-12 relative z-10" role="group" aria-label="Filter news by category">
+        {categories.map((category) => (
+          <button
+            type="button"
+            data-news-filter={category}
+            class={`px-4 py-2.5 text-sm font-medium rounded-lg border-2 border-dark/10 transition-colors ${category === 'All' ? 'bg-primary text-white border-primary' : 'bg-cream text-dark/60 hover:bg-primary hover:text-white hover:border-primary'}`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div class="relative z-10" data-news-grid>
+        
+        {/* Featured article */}
         {newsArticles.length > 0 && (
-          <div class="mb-12">
+          <div class="mb-12" data-news-category={newsArticles[0].category} data-news-searchable={`${newsArticles[0].title} ${newsArticles[0].excerpt} ${newsArticles[0].category}`.toLowerCase()}>
             <a href={newsArticles[0].href} class="group block bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 no-underline">
               <div class="grid md:grid-cols-2">
                 <div class="relative h-64 md:h-full overflow-hidden">
@@ -139,7 +155,12 @@ const newsArticles = [
         {/* Article grid */}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {newsArticles.slice(1).map((article) => (
-            <a href={article.href} class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col no-underline">
+            <a
+              href={article.href}
+              class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col no-underline"
+              data-news-category={article.category}
+              data-news-searchable={`${article.title} ${article.excerpt} ${article.category}`.toLowerCase()}
+            >
               
               <div class="relative h-48 overflow-hidden">
                 <img
@@ -174,6 +195,11 @@ const newsArticles = [
 
             </a>
           ))}
+        </div>
+
+        {/* No results */}
+        <div id="news-no-results" class="hidden text-center py-12">
+          <p class="text-dark/40">No news found in this category.</p>
         </div>
 
         {/* Newsletter CTA */}
@@ -214,3 +240,48 @@ const newsArticles = [
     </div>
   </section>
 </MainLayout>
+
+<script>
+  function initNewsFilters() {
+    const filterButtons = document.querySelectorAll('[data-news-filter]');
+    const cards = document.querySelectorAll('[data-news-category]');
+    const noResults = document.getElementById('news-no-results');
+    
+    let activeFilter = 'All';
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const category = (card as HTMLElement).getAttribute('data-news-category') || '';
+        const shouldShow = activeFilter === 'All' || category === activeFilter;
+        (card as HTMLElement).classList.toggle('hidden', !shouldShow);
+        if (shouldShow) visibleCount++;
+      });
+
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    }
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        activeFilter = (btn as HTMLElement).getAttribute('data-news-filter') || 'All';
+        
+        filterButtons.forEach((other) => {
+          const isActive = other === btn;
+          (other as HTMLElement).classList.toggle('bg-primary', isActive);
+          (other as HTMLElement).classList.toggle('text-white', isActive);
+          (other as HTMLElement).classList.toggle('border-primary', isActive);
+          (other as HTMLElement).classList.toggle('bg-cream', !isActive);
+          (other as HTMLElement).classList.toggle('text-dark/60', !isActive);
+        });
+
+        applyFilters();
+      });
+    });
+  }
+
+  initNewsFilters();
+  document.addEventListener('astro:page-load', initNewsFilters);
+</script>
