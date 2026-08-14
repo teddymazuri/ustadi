@@ -1,6 +1,6 @@
 ---
 // History page — USTADI Foundation
-// All content sourced from USTADI Institutional Profile (February 2024)
+// All content sourced from USTADI Institutional Profile (February 2024) + FAO Fisheries & GSMESKILL
 import MainLayout from '../../layouts/MainLayout.astro';
 import HistoryIntro from '../../components/about/HistoryIntro.astro';
 import OurStory from '../../components/about/OurStory.astro';
@@ -11,12 +11,12 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 <MainLayout
   title="History"
-  description="USTADI Foundation was founded in 2011 by a consortium of 21 organisations led by SNV and HIVOs. Formally registered in 2012, USTADI has grown to reach over 350,000 rural households across Kenya."
+  description="USTADI Foundation was founded in 2011 by a consortium of 21 organisations led by SNV and HIVOs. Formally registered in 2012, USTADI has grown to reach over 500,000 rural households across Kenya."
   currentPage="about"
 >
   <OurStory
     heading="Our History"
-    subheading="A legacy of localizing capacty development"
+    subheading="A legacy of localizing capacity development"
     intro="USTADI Foundation (from the Swahili word USTADI, meaning 'skillful') was established to promote professional capacity development as the core of enterprise growth rather than an add-on. Since 2011, we have evolved from a multi-institutional consortium into a Company Limited by Guarantee and a Trust, reaching over 500,000 rural households across Kenya."
     milestones={[]}
   />
@@ -84,6 +84,16 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
         year: '2021–2022',
         title: 'Soy Production & Tech Upscaling',
         description: 'Partnered with EU/AGRIFI on the SOYPAM project to strengthen soy production, and with EU/KALRO to scale up agricultural technologies for smallholders.',
+      },
+      {
+        year: '2023–2025',
+        title: 'GSMESKILL — VET Entrepreneurial Green Mindset',
+        description: 'Launched a 36-month Erasmus+ Capacity Building in VET project strengthening links between VET systems and labour markets in Kenya, Nigeria, and South Africa. USTADI led Kenya-focused research, policy advisory groups, and Awareness Days on inclusive VET policy recommendations.',
+      },
+      {
+        year: '2026',
+        title: 'FAO Fisheries Technical Assistance',
+        description: 'Commenced technical assistance to improve the functional capacity of small-scale fishers and profitability of targeted fisher communities in Kwale and Lamu Counties. Funded by FAO through AFRACA, with USTADI as implementing partner.',
       },
     ]}
   />

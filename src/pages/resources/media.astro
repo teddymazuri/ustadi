@@ -8,6 +8,27 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 const mediaProjects = [
   {
+    project: 'FAO Fisheries',
+    fullName: 'Technical Assistance to Improve Functional Capacity of Small-Scale Fishers in Kwale and Lamu Counties',
+    duration: '2026',
+    donor: 'FAO, AFRACA',
+    image: getUrl('/images/projects/fao-fisheries.jpg'),
+    items: [
+      { label: 'Fisher Community Photos', href: '/media/fao-fisheries-photos', type: 'photo' },
+    ],
+  },
+  {
+    project: 'GSMESKILL',
+    fullName: 'Developing VET Entrepreneurial Green Mindset and Skills for Small-Business Development',
+    duration: '2023–2025',
+    donor: 'European Union, EACEA (Erasmus+)',
+    image: getUrl('/images/projects/gsmeskill.jpg'),
+    items: [
+      { label: 'VET Training Photos', href: '/media/gsmeskill-photos', type: 'photo' },
+      { label: 'Awareness Day Highlights', href: 'https://youtube.com/@USTADIFoundation', type: 'video' },
+    ],
+  },
+  {
     project: 'JOY Project',
     fullName: 'Boosting Rural Youth Employment through Integrated Agribusiness Hubs',
     duration: '2021–2025',
@@ -125,7 +146,7 @@ const mediaProjects = [
   {
     project: 'SNV Localization',
     fullName: 'Localization of Demand-Driven Professional Capacity Development',
-    duration: '2010–2014',
+    duration: '2011–2014',
     donor: 'SNV',
     image: getUrl('/images/projects/snv-project.jpg'),
     items: [

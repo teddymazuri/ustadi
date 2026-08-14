@@ -8,6 +8,29 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 const reports = [
   {
+    project: 'FAO Fisheries',
+    fullName: 'Technical Assistance to Improve Functional Capacity of Small-Scale Fishers in Kwale and Lamu Counties',
+    duration: '2026',
+    donor: 'FAO, AFRACA',
+    image: getUrl('/images/projects/fao-fisheries.jpg'),
+    downloads: [
+      { label: 'Inception Report', href: '/downloads/fao-fisheries-inception-report.pdf', type: 'Report' },
+      { label: 'Progress Report', href: '/downloads/fao-fisheries-progress-report.pdf', type: 'Report' },
+    ],
+  },
+  {
+    project: 'GSMESKILL',
+    fullName: 'Developing VET Entrepreneurial Green Mindset and Skills for Small-Business Development',
+    duration: '2023–2025',
+    donor: 'European Union, EACEA (Erasmus+)',
+    image: getUrl('/images/projects/gsmeskill.jpg'),
+    downloads: [
+      { label: 'Project Research Report', href: '/downloads/gsmeskill-research-report.pdf', type: 'Study' },
+      { label: 'Training Toolbox', href: '/downloads/gsmeskill-training-toolbox.pdf', type: 'Manual' },
+      { label: 'Policy Recommendations', href: '/downloads/gsmeskill-policy-recommendations.pdf', type: 'Framework' },
+    ],
+  },
+  {
     project: 'JOY Project',
     fullName: 'Boosting Rural Youth Employment through Integrated Agribusiness Hubs',
     duration: '2021–2025',
@@ -133,7 +156,7 @@ const reports = [
   {
     project: 'SNV Localization',
     fullName: 'Localization of Demand-Driven Professional Capacity Development',
-    duration: '2010–2014',
+    duration: '2011–2014',
     donor: 'SNV',
     image: getUrl('/images/projects/snv-project.jpg'),
     downloads: [
@@ -214,6 +237,7 @@ const typeColors: Record<string, string> = {
             <button type="button" data-filter="All" class="px-4 py-2.5 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary-light transition-colors">All</button>
             <button type="button" data-filter="IFAD" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">IFAD</button>
             <button type="button" data-filter="EU" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">EU</button>
+            <button type="button" data-filter="FAO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">FAO</button>
             <button type="button" data-filter="USAID" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">USAID</button>
             <button type="button" data-filter="GIZ" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">GIZ</button>
             <button type="button" data-filter="ILO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">ILO</button>

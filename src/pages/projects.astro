@@ -1,6 +1,6 @@
 ---
 // Projects page — USTADI Foundation
-// All content sourced from USTADI Institutional Profile (February 2024)
+// All content sourced from USTADI Institutional Profile (February 2024) + FAO Fisheries & GSMESKILL
 import MainLayout from '../layouts/MainLayout.astro';
 import ProjectsHero from '../components/projects/ProjectsHero.astro';
 import ProjectsList from '../components/projects/ProjectsList.astro';
@@ -16,18 +16,38 @@ const getStartYear = (duration: string) => duration.split('–')[0].trim();
 
 <MainLayout
   title="Projects"
-  description="USTADI Foundation implements demand-driven capacity development projects across Kenya, reaching over 500,000 rural households through 10+ donor-funded initiatives."
+  description="USTADI Foundation implements demand-driven capacity development projects across Kenya, reaching over 500,000 rural households through 14 donor-funded initiatives."
   currentPage="projects"
 >
   <ProjectsHero
     headline="Delivering impact through demand-driven projects"
-    subheadline="Since 2010, USTADI has implemented capacity development projects across Kenya in partnership with leading development organisations. Each project strengthens the capacity of youth and women entrepreneurs while building sustainable market systems."
+    subheadline="Since 2011, USTADI has implemented capacity development projects across Kenya in partnership with leading development organisations. Each project strengthens the capacity of youth and women entrepreneurs while building sustainable market systems."
   />
 
   <ProjectsList
     heading="All Projects"
-    subheading="A complete record of USTADI's donor-funded initiatives from 2014 to present."
+    subheading="A complete record of USTADI's donor-funded initiatives from 2011 to present."
     projects={[
+      {
+        title: 'Technical Assistance to Improve Functional Capacity of Small-Scale Fishers in Kwale and Lamu Counties',
+        donor: 'FAO, AFRACA',
+        duration: '2026–2026',
+        value: 'US$ 90,000',
+        year: getStartYear('2026–2026'),
+        description: 'The project provides technical assistance to improve the functional capacity of small-scale fishers and the profitability of targeted fisher communities in Vanga and Jimbo in Kwale County, and Amu, Shela, Matondoni and Faza in Lamu County. USTADI implements the sub-agreement with AFRACA providing financial and technical oversight, funded through FAO Grant No. GCP/SFS/006/SWE.',
+        image: { src: getUrl('/images/projects/fao-fisheries.jpg'), alt: 'Small-scale fishers in Kwale or Lamu County receiving USTADI technical assistance' },
+        resourcesHref: getReportAnchor('FAO Fisheries'),
+      },
+      {
+        title: 'GSMESKILL — Developing VET Entrepreneurial Green Mindset and Skills for Small-Business Development',
+        donor: 'European Union, EACEA (Erasmus+)',
+        duration: '2023–2025',
+        value: '€399,178',
+        year: getStartYear('2023–2025'),
+        description: 'A 36-month Erasmus+ Capacity Building in VET project strengthening links between VET systems and labour markets in Kenya, Nigeria and South Africa. USTADI led Kenya-focused research, contributed to development of digitalised vocational teaching methodologies and the Training Toolbox, led national policy advisory groups, and led Awareness Days on inclusive VET policy recommendations.',
+        image: { src: getUrl('/images/projects/gsmeskill.jpg'), alt: 'GSMESKILL VET training session with young entrepreneurs in Kenya' },
+        resourcesHref: getReportAnchor('GSMESKILL'),
+      },
       {
         title: 'JOY — Boosting Rural Youth Employment through Integrated Agribusiness Hubs in Kenya',
         donor: 'IFAD, Visa Foundation, ILO, Procasur',
@@ -141,9 +161,9 @@ const getStartYear = (duration: string) => duration.split('–')[0].trim();
       {
         title: 'Localization of Demand-Driven Professional Capacity Development',
         donor: 'SNV Netherlands Development Organisation',
-        duration: '2010–2014',
+        duration: '2011–2014',
         value: 'US$ 1,310,477',
-        year: getStartYear('2010–2014'),
+        year: getStartYear('2011–2014'),
         description: 'USTADI\'s founding project, established by a consortium of 21 organisations led by SNV and HIVOs. This initiative laid the groundwork for USTADI\'s market facilitation model, promoting demand-driven capacity development services at the local level across Kenya.',
         image: { src: getUrl('/images/projects/snv-project.jpg'), alt: 'SNV capacity development project activities' },
         resourcesHref: getReportAnchor('SNV Localization'),
