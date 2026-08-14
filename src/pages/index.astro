@@ -62,21 +62,21 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
         title: 'Youth & Women Enterprise Development',
         description: 'We equip youth and women with the practical skills needed to launch and scale profitable enterprises. Through hands-on mentorship, incubation, and proven ILO frameworks like Start and Improve Your Business, we help entrepreneurs turn local ideas into sustainable businesses across agribusiness, renewable energy, and emerging markets.',
         image: { src: getUrl('/images/home/focus-enterprise.jpg'), alt: 'Youth entrepreneurs at a USTADI business training session' },
-        href: getUrl('/projects'),
+        href: getUrl('/programs'),
         icon: 'briefcase',
       },
       {
         title: 'Value Chain Facilitation',
         description: 'We connect smallholder farmers and youth groups directly to profitable markets. By strengthening key agricultural value chains such as fisheries, dairy, cassava, livestock, and grains, we help producers reduce post-harvest losses, access modern equipment, and secure innovative financing to grow their incomes.',
         image: { src: getUrl('/images/home/focus-value-chains.jpg'), alt: 'Farmers in a USTADI-supported cassava value chain project' },
-        href: getUrl('/projects'),
+        href: getUrl('/programs'),
         icon: 'chart',
       },
       {
         title: 'Climate Solutions and Green Jobs',
         description: 'We promote climate-resilient agriculture, renewable energy, and sustainable natural resource management across Kenya. By embedding eco-friendly practices into rural businesses, we create green employment opportunities for youth while protecting local ecosystems for future generations.',
         image: { src: getUrl('/images/home/focus-climate.jpg'), alt: 'Youth engaged in a USTADI climate-resilient agriculture initiative' },
-        href: getUrl('/projects'),
+        href: getUrl('/programs'),
         icon: 'leaf',
       },
     ]}
@@ -99,6 +99,8 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     quote="The project ensures youth are capacitated with the skills to ensure viability and sustainability of agribusiness opportunities based on the demand of the labour market."
     quoteAttribution="JOY Project Design, IFAD-ILO-Procasur-USTADI Partnership"
     image={{ src: getUrl('/images/home/project-joy.jpg'), alt: 'Youth participants in the JOY Project agribusiness hub training' }}
+    duration="2021–2025"
+    value="US$ 2.5 Million"
     cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
@@ -145,8 +147,8 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
   <!-- 8. News / Projects -->
   <NewsSection
-    heading="Our Projects"
-    subheading="Selected initiatives delivering capacity development across Kenya."
+    heading="Featured Projects"
+    subheading="A snapshot of our donor-funded initiatives delivering capacity development across Kenya."
     featured={{
       title: 'Cassava Value Chain Strengthening Project',
       excerpt: 'This 4.5-year EU-funded initiative reached over 10,000 smallholder farmers across Kilifi and Kitui Counties, establishing 450 farmer business groups and 100 aggregation centres. At least 60% of participants were women.',

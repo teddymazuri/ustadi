@@ -1,5 +1,5 @@
 ---
-// FeaturedProjectSection.astro — Magazine-style deep dive
+// FeaturedProjectSection.astro — Magazine-style deep dive with project metadata
 export interface Props {
   overline: string;
   heading: string;
@@ -14,9 +14,11 @@ export interface Props {
     label: string;
     href: string;
   };
+  duration?: string;
+  value?: string;
 }
 
-const { overline, heading, description, quote, quoteAttribution, image, cta } = Astro.props;
+const { overline, heading, description, quote, quoteAttribution, image, cta, duration, value } = Astro.props;
 ---
 
 <section class="section-padding bg-white" aria-labelledby="project-heading">
@@ -48,6 +50,29 @@ const { overline, heading, description, quote, quoteAttribution, image, cta } = 
         >
           {heading}
         </h2>
+
+        {/* Project metadata */}
+        {(duration || value) && (
+          <div class="mt-5 flex flex-wrap gap-4">
+            {duration && (
+              <div class="flex items-center gap-2 text-dark/50 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {duration}
+              </div>
+            )}
+            {value && (
+              <div class="flex items-center gap-2 text-accent font-semibold text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {value}
+              </div>
+            )}
+          </div>
+        )}
+
         <p
           class="mt-6 text-dark/70"
           style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
