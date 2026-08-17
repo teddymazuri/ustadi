@@ -1,0 +1,443 @@
+---
+// Value Chains page — USTADI Foundation
+// Content sourced from USTADI value chain data
+import MainLayout from '../layouts/MainLayout.astro';
+import ScribbleCircle from '../components/shared/ScribbleCircle.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
+
+const valueChains = [
+  {
+    name: 'Fish',
+    title: 'Fish Value Chain',
+    description: 'Upscaling agricultural technologies to enhance reared fish productivity and improve incomes for smallholder farmers in Kilifi, Kenya.',
+    funder: 'EU, KALRO',
+    image: getUrl('/images/value-chains/fisheries.jpg'),
+    stats: [
+      { value: '28', label: 'Groups' },
+      { value: '643', label: 'Individuals' },
+    ],
+    milestone: 'Established hatchery for mariculture at Kibokoni Youth Group',
+    impactAreas: [
+      'Aquaculture & Mariculture technologies',
+      'Input supplies',
+      'Commodity markets',
+      'Access to finance',
+      'Trade fairs',
+    ],
+  },
+  {
+    name: 'Mango',
+    title: 'Mango Value Chain',
+    description: 'Upscaling agricultural technologies in mango orchard management to enhance productivity and incomes for smallholder farmers in Kilifi.',
+    funder: 'EU, KALRO',
+    image: getUrl('/images/value-chains/mango.jpg'),
+    stats: [
+      { value: '6', label: 'Demo sites' },
+      { value: '1,208', label: 'Individuals' },
+    ],
+    milestone: 'Trade fair event and learning visit to Malindi cooperative by mango champions',
+    impactAreas: [
+      'Integrated Pest Management',
+      'Input supplies',
+      'Commodity markets',
+      'Access to finance',
+      'Trade fairs',
+    ],
+  },
+  {
+    name: 'Cashew',
+    title: 'Cashew Value Chain',
+    description: 'Upscaling agricultural technologies to enhance cashew nut productivity and income generation for smallholder farmers in Kilifi, Kenya.',
+    funder: 'EU, KALRO',
+    image: getUrl('/images/value-chains/cashew.jpg'),
+    stats: [
+      { value: '9,256', label: 'Farmers' },
+      { value: '5,320', label: 'Women' },
+    ],
+    milestone: 'Adoption of climate-smart technologies for enhanced cashew productivity',
+    impactAreas: [
+      'Climate-smart technologies',
+      'Input supplies',
+      'Commodity markets',
+      'Access to finance',
+      'Trade fairs',
+    ],
+  },
+  {
+    name: 'Cassava',
+    title: 'Cassava Value Chain',
+    description: 'Increase food and nutrition security, employment, and income among smallholder farming households in Kilifi County.',
+    funder: 'EU, Self Help Africa',
+    image: getUrl('/images/value-chains/cassava.jpg'),
+    stats: [
+      { value: '2,210', label: 'Farmers' },
+      { value: '20', label: 'Lead farmers' },
+      { value: '2', label: 'Aggregation centres' },
+    ],
+    milestone: 'Distribution of Tajirika cassava variety and adoption by farmers',
+    impactAreas: [
+      'Good Agricultural Practices',
+      'Input supplies',
+      'Commodity markets',
+      'Access to finance',
+      'Value addition',
+      'KEBS certification',
+    ],
+  },
+  {
+    name: 'Dairy',
+    title: 'Dairy Value Chain',
+    description: 'Youth economic empowerment through dairy agribusiness, building enterprise capacity and market linkages for dairy producer groups.',
+    funder: 'IFAD, CTA',
+    image: getUrl('/images/value-chains/dairy.jpg'),
+    milestone: 'Dairy products value addition processing handed over to youth groups',
+    impactAreas: [
+      'Enterprise development',
+      'Input supplies',
+      'Commodity markets',
+      'Value addition',
+      'KEBS certification',
+    ],
+  },
+  {
+    name: 'Cereals',
+    title: 'Cereals Value Chain',
+    description: 'Strengthening cereal value chains through capacity building, value addition equipment, and market linkages for youth agribusiness groups.',
+    funder: 'IFAD, CTA',
+    image: getUrl('/images/value-chains/cereals.jpg'),
+    milestone: 'Cereal value addition equipment handed over to youth groups',
+    impactAreas: [
+      'Enterprise development',
+      'Digital literacy',
+      'Commodity markets',
+      'Value addition',
+    ],
+  },
+  {
+    name: 'Soy',
+    title: 'Soy Value Chain',
+    description: 'Strengthening soy production and marketing by connecting smallholder farmers to processors and developing sustainable marketing channels.',
+    funder: 'EU, AGRIFI',
+    image: getUrl('/images/value-chains/soy.jpg'),
+    milestone: 'Market assessment completed and farmer linkages established',
+    impactAreas: [
+      'Production techniques',
+      'Input supplies',
+      'Commodity markets',
+      'Market linkages',
+    ],
+  },
+  {
+    name: 'Livestock',
+    title: 'Livestock & Meat Value Chain',
+    description: 'Improving the competitiveness of cattle, sheep, and goat meat value chains in Kenya\'s semi-arid regions.',
+    funder: 'Land O\'Lakes',
+    image: getUrl('/images/value-chains/livestock.jpg'),
+    milestone: 'Strengthened market linkages and improved livestock management practices',
+    impactAreas: [
+      'Livestock management',
+      'Market linkages',
+      'Value addition',
+    ],
+  },
+  {
+    name: 'Poultry',
+    title: 'Poultry Value Chain',
+    description: 'Supporting poultry enterprises through resilience grants and coaching, helping youth pivot to sustainable models like day-old chick sales.',
+    funder: 'USADF',
+    image: getUrl('/images/value-chains/poultry.jpg'),
+    milestone: 'Post-COVID resilience support helped poultry businesses recover and grow',
+    impactAreas: [
+      'Enterprise recovery',
+      'Business coaching',
+      'Input supplies',
+      'Market access',
+    ],
+  },
+];
+
+const impactAreas = [
+  {
+    title: 'Technology Adoption',
+    description: 'Proven production technologies tailored to each chain.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: 'Input Supply',
+    description: 'Reliable access to quality seed, feed, and equipment.',
+    icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  },
+  {
+    title: 'Market Access',
+    description: 'Direct links to buyers and aggregation centres.',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+  {
+    title: 'Access to Finance',
+    description: 'Innovative financing including grants and linkages.',
+    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Networking',
+    description: 'Trade fairs and matchmaking events.',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+];
+
+const crossCutting = [
+  'Gender & Youth Inclusivity',
+  'Public-Private Partnerships',
+  'Technology & Skill Transfer',
+  'Commercialization Models',
+  'Documentation & Learning',
+  'Project Sustainability',
+];
+---
+
+<MainLayout
+  title="Value Chains"
+  description="USTADI Foundation strengthens agricultural value chains including fisheries, mango, cashew, cassava, dairy, cereals, soy, livestock, and poultry across Kenya."
+  currentPage="what-we-do"
+>
+  <!-- Hero -->
+  <section class="section-padding bg-white" aria-labelledby="value-chains-heading">
+    <div class="container-tight text-center relative">
+      
+      <ScribbleCircle
+        size={220}
+        opacity={0.45}
+        rotation={-15}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="relative z-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Focus Areas
+        </p>
+        <h1
+          id="value-chains-heading"
+          class="mt-4 font-heading font-bold text-dark text-balance"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Value Chain Facilitation
+        </h1>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-6 text-dark/70 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+        >
+          We connect smallholder farmers and producer groups directly to profitable markets. By strengthening agricultural value chains, we help producers adopt new technologies, access inputs and finance, and secure fair prices for their commodities.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Value Chains — Alternating deep dive sections */}
+  <section class="pb-20 bg-white">
+    <div class="container-wide space-y-32 md:space-y-40">
+      
+      {valueChains.map((chain, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div class="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            
+            {/* Image */}
+            <div class={isEven ? 'md:order-1' : 'md:order-2'}>
+              <div class="relative">
+                <img
+                  src={chain.image}
+                  alt={chain.title}
+                  class="w-full rounded-3xl shadow-card object-cover aspect-[4/3]"
+                  loading="lazy"
+                />
+                <div class="absolute top-4 left-4">
+                  <span class="bg-white/90 backdrop-blur-sm text-dark text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                    {chain.funder}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div class={isEven ? 'md:order-2' : 'md:order-1'}>
+              <div class="flex items-center gap-3 mb-4">
+                <span
+                  class="font-heading font-bold text-primary/15 select-none"
+                  style="font-size: 3rem; line-height: 1;"
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h2 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);">
+                  {chain.name}
+                </h2>
+              </div>
+
+              <p class="text-dark/70 leading-relaxed" style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);">
+                {chain.description}
+              </p>
+
+              {/* Stats */}
+              {chain.stats && (
+                <div class="mt-6 flex flex-wrap gap-4">
+                  {chain.stats.map((stat) => (
+                    <div class="bg-cream rounded-xl px-5 py-3 text-center">
+                      <span class="block font-heading font-bold text-primary" style="font-size: 1.5rem; line-height: 1;">{stat.value}</span>
+                      <span class="block text-dark/50 text-xs mt-1">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Milestone */}
+              {chain.milestone && (
+                <div class="mt-5 flex items-start gap-3 bg-accent/5 rounded-xl px-4 py-3">
+                  <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2l2.4 7.2H22l-6 4.6 2.3 7.2-6.3-4.5-6.3 4.5L8 13.8 2 9.2h7.6z" />
+                  </svg>
+                  <p class="text-dark/70 text-sm leading-relaxed">{chain.milestone}</p>
+                </div>
+              )}
+
+              {/* Impact area chips */}
+              <div class="mt-5 flex flex-wrap gap-2">
+                {chain.impactAreas.map((area) => (
+                  <span class="px-3 py-1.5 bg-white border border-dark/10 rounded-full text-xs text-dark/60 font-medium">
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        );
+      })}
+
+    </div>
+  </section>
+
+  {/* Impact Areas Framework */}
+  <section class="section-padding bg-cream" aria-labelledby="impact-areas-heading">
+    <div class="container-wide relative">
+      
+      <ScribbleCircle
+        size={200}
+        opacity={0.45}
+        rotation={-10}
+        class="absolute -top-10 left-1/2 -translate-x-1/2 z-0"
+      />
+
+      <div class="text-center mb-14 relative z-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          Our Framework
+        </p>
+        <h2
+          id="impact-areas-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height);"
+        >
+          Five Pathways to Impact
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+        <p
+          class="mt-4 text-dark/70 max-w-2xl mx-auto"
+          style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"
+        >
+          Regardless of the commodity, our value chain work follows five consistent pathways.
+        </p>
+      </div>
+
+      <div class="relative z-10">
+        
+        {/* Connecting line */}
+        <div class="hidden md:block absolute top-10 left-[10%] right-[10%] h-px bg-dark/10" aria-hidden="true"></div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+          {impactAreas.map((area) => (
+            <div class="text-center group">
+              <div class="relative z-10 w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-primary text-white shadow-lg group-hover:bg-accent group-hover:text-dark transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={area.icon} />
+                </svg>
+              </div>
+              <h3 class="mt-5 font-heading font-bold text-dark" style="font-size: 1.125rem;">
+                {area.title}
+              </h3>
+              <p class="mt-2 text-dark/50 text-sm leading-relaxed">{area.description}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  {/* Cross-Cutting Principles */}
+  <section class="section-padding bg-white" aria-labelledby="principles-heading">
+    <div class="container-tight">
+      
+      <div class="text-center mb-10">
+        <p class="text-accent font-semibold tracking-wider uppercase" style="font-size: var(--text-body-sm);">
+          How We Work
+        </p>
+        <h2
+          id="principles-heading"
+          class="mt-4 font-heading font-bold text-dark"
+          style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+        >
+          Cross-Cutting Principles
+        </h2>
+        <div class="mt-6 w-16 h-1 bg-accent rounded-full mx-auto" aria-hidden="true"></div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        {crossCutting.map((principle) => (
+          <span class="px-5 py-3 bg-cream rounded-full text-sm text-dark/70 font-medium shadow-sm hover:bg-primary hover:text-white transition-colors cursor-default">
+            {principle}
+          </span>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  {/* CTA */}
+  <section class="section-padding bg-primary relative overflow-hidden" aria-labelledby="vc-cta-heading">
+    <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/5" aria-hidden="true"></div>
+    <div class="absolute -bottom-8 -left-8 w-32 h-32 rounded-full bg-accent/10" aria-hidden="true"></div>
+    
+    <div class="container-tight text-center relative">
+      <div class="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-accent text-dark mb-6 shadow-lg">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      <h2
+        id="vc-cta-heading"
+        class="font-heading font-bold text-white"
+        style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"
+      >
+        Partner with us on value chain development
+      </h2>
+      <p
+        class="mt-5 text-white/70 max-w-lg mx-auto"
+        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
+      >
+        We collaborate with county governments, development partners, and private-sector buyers to strengthen value chains that deliver income and opportunity for rural producers.
+      </p>
+      <a
+        href={getUrl('/contact')}
+        class="inline-flex items-center justify-center px-8 py-4 mt-8 font-semibold text-dark bg-accent rounded-xl hover:bg-accent/90 no-underline shadow-lg"
+        style="font-size: var(--text-body-base);"
+      >
+        Get in touch
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</MainLayout>
