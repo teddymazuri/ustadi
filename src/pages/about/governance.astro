@@ -13,22 +13,30 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   description="USTADI Foundation is governed by a Board of 5 Directors and managed by a team led by the Chief Executive Officer, overseeing programmes, finance, grants, and monitoring and evaluation."
   currentPage="about"
 >
-  <GovernanceSection
+    <GovernanceSection
     heading="Governance and Management"
     board={{
       heading: 'Board of Directors',
-      description: 'The Board of Directors serves as the primary governance body providing strategic leadership and policy oversight to executive management. The Board delegates authority for day to day operations and strategic execution to the Chief Executive Officer.',
-      members: 'Composed of five independent Directors bringing diverse expertise across international development, finance, enterprise strategy, and governance.',
+      description: 'The Board of Directors is the key governance body providing leadership and guidance to management.',
+      members: [
+        { name: "Professor Ruth Oniang'o", title: 'Board Chair' },
+        { name: 'Doctor Anthony Getambu', title: 'Board Member' },
+        { name: 'Daniel Chai Baya', title: 'Board Member' },
+        { name: 'Rahab Ngumba Njoroge', title: 'Board Member' },
+      ],
     }}
     management={{
       heading: 'Management Team',
-      description: 'The executive management team comprises experienced professionals overseeing USTADI programs, finance, grants, and monitoring functions under the leadership of the CEO.',
-      roles: [
-        'Chief Executive Officer and Team Leader',
-        'Finance, Grants, and Administration Manager',
-        'Head of Programmes (Business Development Services)',
-        'Head of Monitoring and Evaluation',
-        'Programmatic and Departmental Support Staff',
+      description: 'The management team comprises senior professionals overseeing programmes, finance, grants, and monitoring functions under the leadership of the CEO.',
+      ceo: {
+        name: 'George Yaa Mazuri',
+      },
+      heads: [
+        { title: 'Finance, Grants, and Administration Manager', name: 'Nancy Mwengi Nzoka' },
+        { title: 'Head of Programmes (BDS)', name: 'Eric Bororio Bosire' },
+        { title: 'Head of Monitoring and Evaluation', name: 'Justus Musau' },
+        { title: 'Regional Coordinator (Nairobi, Eastern & Coast)', name: 'Johnson Moyo Malingi' },
+        { title: 'Regional Coordinator (Rift Valley, Luo Nyanza & Western)', name: 'Morgan Siguda' },
       ],
     }}
   />
