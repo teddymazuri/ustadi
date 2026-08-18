@@ -10,6 +10,7 @@ export interface Props {
     year: string;
     title: string;
     description: string;
+    href?: string;
   }[];
 }
 
@@ -66,6 +67,7 @@ const { heading, subheading, intro, milestones } = Astro.props;
             return (
               <div class="relative pb-10 last:pb-0">
                 
+                {/* Mobile layout */}
                 <div class="md:hidden flex gap-4">
                   <div class="flex flex-col items-center shrink-0">
                     <div class="w-3 h-3 bg-accent rounded-full mt-1.5" aria-hidden="true"></div>
@@ -79,26 +81,61 @@ const { heading, subheading, intro, milestones } = Astro.props;
                     </span>
                     <div class="bg-white rounded-2xl p-6 shadow-card">
                       <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                        {milestone.title}
+                        {milestone.href ? (
+                          <a href={milestone.href} class="text-dark hover:text-primary transition-colors no-underline">
+                            {milestone.title}
+                          </a>
+                        ) : (
+                          milestone.title
+                        )}
                       </h3>
                       <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
                         {milestone.description}
                       </p>
+                      {milestone.href && (
+                        <a
+                          href={milestone.href}
+                          class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                        >
+                          View project
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
 
+                {/* Desktop layout */}
                 <div class="hidden md:grid grid-cols-2 items-start">
                   
                   {isEven ? (
                     <div class="pr-12 text-right">
                       <div class="bg-white rounded-2xl p-6 shadow-card inline-block text-left">
                         <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                          {milestone.title}
+                          {milestone.href ? (
+                            <a href={milestone.href} class="text-dark hover:text-primary transition-colors no-underline">
+                              {milestone.title}
+                            </a>
+                          ) : (
+                            milestone.title
+                          )}
                         </h3>
                         <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
                           {milestone.description}
                         </p>
+                        {milestone.href && (
+                          <a
+                            href={milestone.href}
+                            class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                          >
+                            View project
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </a>
+                        )}
                       </div>
                     </div>
                   ) : (
@@ -121,11 +158,28 @@ const { heading, subheading, intro, milestones } = Astro.props;
                     <div class="pl-12">
                       <div class="bg-white rounded-2xl p-6 shadow-card inline-block">
                         <h3 class="font-heading font-bold text-dark" style="font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height);">
-                          {milestone.title}
+                          {milestone.href ? (
+                            <a href={milestone.href} class="text-dark hover:text-primary transition-colors no-underline">
+                              {milestone.title}
+                            </a>
+                          ) : (
+                            milestone.title
+                          )}
                         </h3>
                         <p class="mt-3 text-dark/70" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);">
                           {milestone.description}
                         </p>
+                        {milestone.href && (
+                          <a
+                            href={milestone.href}
+                            class="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold text-accent hover:text-accent/80 no-underline"
+                          >
+                            View project
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </a>
+                        )}
                       </div>
                     </div>
                   )}

@@ -13,13 +13,14 @@ export interface Props {
   index: number;
   year: string;
   resourcesHref?: string;
+  slug?: string;
 }
 
-const { title, donor, duration, value, description, image, index, year, resourcesHref } = Astro.props;
+const { title, donor, duration, value, description, image, index, year, resourcesHref, slug } = Astro.props;
 const isEven = index % 2 === 0;
 ---
 
-<div class={`flex ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+<div id={slug ? `project-${slug}` : undefined} class={`flex scroll-mt-24 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
   
   {/* Card */}
   <div class="md:w-1/2">

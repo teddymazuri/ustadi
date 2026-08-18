@@ -15,6 +15,7 @@ export interface Project {
   };
   resourcesHref?: string;
   year: string;
+  slug?: string;
 }
 
 export interface Props {
@@ -69,6 +70,7 @@ const { heading, subheading, projects } = Astro.props;
             index={index}
             year={project.year}
             resourcesHref={project.resourcesHref}
+            slug={project.slug}
           />
         ))}
       </div>

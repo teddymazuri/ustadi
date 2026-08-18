@@ -1,6 +1,6 @@
 ---
 // History page — USTADI Foundation
-// All content sourced from USTADI Institutional Profile (February 2024) + FAO Fisheries & GSMESKILL
+// All content sourced from USTADI Institutional Profile (February 2024) + FAO Fisheries, GSMESKILL, Wezesha III, BlueBiz
 import MainLayout from '../../layouts/MainLayout.astro';
 import HistoryIntro from '../../components/about/HistoryIntro.astro';
 import OurStory from '../../components/about/OurStory.astro';
@@ -11,13 +11,13 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 <MainLayout
   title="History"
-  description="USTADI Foundation was founded in 2011 by a consortium of 21 organisations led by SNV and HIVOs. Formally registered in 2012, USTADI has grown to reach over 500,000 rural households across Kenya."
+  description="USTADI Foundation was founded in 2011 by a consortium of 21 organisations led by SNV and HIVOS. Formally registered in 2012, USTADI has grown to reach over 500,000 rural households across Kenya."
   currentPage="about"
 >
   <OurStory
     heading="Our History"
-    subheading="A legacy of localizing capacity development"
-    intro="USTADI Foundation (from the Swahili word USTADI, meaning 'skillful') was established to promote professional capacity development as the core of enterprise growth rather than an add-on. Since 2011, we have evolved from a multi-institutional consortium into a Company Limited by Guarantee and a Trust, reaching over 500,000 rural households across Kenya."
+    subheading="A legacy of localising capacity development"
+    intro="USTADI Foundation (from the Swahili word USTADI, meaning 'skilful') was established to promote professional capacity development as the core of enterprise growth rather than an add-on. Since 2011, we have evolved from a multi-institutional consortium into a Company Limited by Guarantee and a Trust, reaching over 500,000 rural households across Kenya."
     milestones={[]}
   />
 
@@ -41,104 +41,124 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     heading="Key Milestones & Project Portfolio"
     milestones={[
       {
-        year: '2011-2014',
-        title: 'Localization of Demand-Driven Professional Capacity Development project',
+        year: '2011–2014',
+        title: 'Founding Facility',
         description: 'Launched the Localization of Demand-Driven Professional Capacity Development project with SNV and HIVOS, laying the foundation for USTADI\'s market facilitation model.',
+        href: getUrl('/projects#project-snv-localization'),
       },
       {
         year: '2013',
         title: 'Agro-Enterprise Expansion',
-        description: 'Implemented HIVOS-funded capacity development and market facilitation across Migori(Pineapples), Homa Bay(Pineapples), Kilifi(Chillie Farming with Equator Kenya Limited), and Kwale(Seaweed Production and Marketing) counties.',
+        description: 'Implemented HIVOS-funded capacity development and market facilitation across Migori (pineapples), Homa Bay (pineapples), Kilifi (chilli farming with Equator Kenya Limited), and Kwale (seaweed production and marketing) counties.',
+        href: getUrl('/projects#project-agro-enterprise-expansion'),
       },
       {
-        year:'2014-2015',
-        title: 'Seaweed farming & fish farming, and marketing in Kwale and Kilifi',
-        description: 'Upscaling Seaweed farming and Fresh Marine fish marketing in Kwale and Kilifi.',
+        year: '2014–2015',
+        title: 'Seaweed & Fish Farming',
+        description: 'Upscaled seaweed farming and fresh marine fish marketing in Kwale and Kilifi.',
+        href: getUrl('/projects#project-seaweed-fish-farming'),
       },
       {
-        year:'2014-2015',
-        title:'Climate change and adaptation',
-        description:'Kilifi Integrated climate change and adaptation project(KICCAP).',
+        year: '2014–2015',
+        title: 'Climate Change & Adaptation',
+        description: 'Implemented the Kilifi Integrated Climate Change and Adaptation Project (KICCAP).',
+        href: getUrl('/projects#project-kiccap'),
       },
       {
-        year: '2014-2015',
+        year: '2014–2015',
         title: 'Youth-to-Youth Fund (Y2YF)',
-        description: 'Selected by the ILO to manage the Y2Y Fund in Kenya. The program supported 34 youth-led organizations, creating 1,171 jobs and 681 new businesses nationwide.',
+        description: 'Selected by the ILO to manage the Y2Y Fund in Kenya. The programme supported 34 youth-led organisations, creating 1,171 jobs and 681 new businesses nationwide.',
+        href: getUrl('/projects#project-y2yf'),
       },
       {
-        year: '2015-2016',
-        title: 'Kenya Semi-Arid Livestock Enhancement Support (K-SALES) Project',
-        description: 'Partnered with Land O\'Lakes on the K-SALES project to boost semi-arid livestock value chains in the counties of Machakos, Kitui, Makueni, Embu.',
+        year: '2015–2016',
+        title: 'Kenya Semi-Arid Livestock Enhancement Support (K-SALES)',
+        description: 'Partnered with Land O\'Lakes on the K-SALES project to boost semi-arid livestock value chains in Machakos, Kitui, Makueni, and Embu counties.',
+        href: getUrl('/projects#project-ksales'),
       },
       {
-        year: '2015-2017',
-        title: 'Increasing Women\'s Income through cashew production and marketing in Kilifi',
-        description: 'Supported by the Walmart Foundation through Self Help Africa to expand cashew production for women in Kilifi.',
+        year: '2015–2017',
+        title: 'Cashew Production & Marketing',
+        description: 'Supported by the Walmart Foundation through Self Help Africa to expand cashew production and increase women\'s income in Kilifi.',
+        href: getUrl('/projects#project-cashew-production'),
       },
       {
-        year: '2016-2017',
+        year: '2016–2017',
         title: 'Civil Society Capacity Development',
-        description: 'Led the Global South pilot program supported by ORGUT Consulting, providing capacity building, advocacy, and grant management support to 23 CSOs across Nairobi, Mombasa, and Nyanza.',
+        description: 'Led the Global South pilot programme supported by ORGUT Consulting, providing capacity building, advocacy, and grant management support to 23 CSOs across Nairobi, Mombasa, and Nyanza.',
+        href: getUrl('/projects#project-civil-society-capacity'),
       },
       {
-        year: '2017-2020',
-        title: 'Water and Sanitation Initiatives',
-        description: 'Implemented low-cost and water sanitation initiatives at the community level(Afya Pwani WaSH project in Kilifi), funded by Pathfinder International.',
+        year: '2017–2020',
+        title: 'Water & Sanitation Initiatives',
+        description: 'Implemented low-cost water and sanitation initiatives at the community level through the Afya Pwani WaSH project in Kilifi, funded by Pathfinder International.',
+        href: getUrl('/projects#project-afya-pwani'),
       },
       {
-        year: '2017-2022',
-        title: 'Strengthening the competitiveness of the cassava value-chain in Kilifi and Kitui Counties',
-        description: 'Implemented a 4.5-year cassava value chain project reaching over 10,000 smallholder farmers, funded by the European Union through Self Help Africa.',
+        year: '2017–2022',
+        title: 'Cassava Value Chain Competitiveness',
+        description: 'Implemented a 4.5-year cassava value chain project reaching over 10,000 smallholder farmers in Kilifi and Kitui counties, funded by the European Union through Self Help Africa.',
+        href: getUrl('/projects#project-cassava-value-chain'),
       },
       {
-        year: '2018-2020',
-        title: 'Youth Economic Empowerment Through Agribusiness in Kenya (VIJABIZ)',
-        description: 'Secured $2.1 million from IFAD and CTA to launch VIJABIZ, supporting 173 youth agribusiness groups( 48 in Kilifi & 125 in Nakuru) and awarding direct grants to 72 agri-enterprises In Kilifi and Nakuru Counties',
-      },
-      {
-        year: '2020-2022',
-        title: 'Post-COVID Resilience',
-        description: 'Partnered with USADF to build resilience and cushion enterprises supported during the VIJABIZ project against the COVID-19 pandemic. ',
+        year: '2018–2020',
+        title: 'Youth Economic Empowerment Through Agribusiness (VIJABIZ)',
+        description: 'Secured $2.1 million from IFAD and CTA to launch VIJABIZ, supporting 173 youth agribusiness groups (48 in Kilifi and 125 in Nakuru) and awarding direct grants to 72 agri-enterprises.',
+        href: getUrl('/projects#project-vijabiz'),
       },
       {
         year: '2020–2022',
-        title: 'Tech Upscaling',
-        description: 'Partnered with EU/KALRO to scale up agricultural technologies for smallholders famers in the Mango,Cashew, and Fish(Aquaculture & Mariculture) value-chains in Kilifi County.',
+        title: 'Post-COVID Resilience',
+        description: 'Partnered with USADF to build resilience and cushion enterprises supported during the VIJABIZ project against the COVID-19 pandemic.',
+        href: getUrl('/projects#project-covid-resilience'),
       },
       {
-        year: '2021-2022',
+        year: '2020–2022',
+        title: 'Technology Upscaling',
+        description: 'Partnered with EU and KALRO to scale up agricultural technologies for smallholder farmers in the mango, cashew, and fish (aquaculture and mariculture) value chains in Kilifi County.',
+        href: getUrl('/projects#project-kalro-ag-tech'),
+      },
+      {
+        year: '2021–2022',
         title: 'Soy Production',
-        description: 'Partnered with EU/AGRIFI on the SOYPAM project to strengthen soy production.',
+        description: 'Partnered with EU and AGRIFI on the SOYPAM project to strengthen soy production.',
+        href: getUrl('/projects#project-soypam'),
       },
       {
         year: '2021–2023',
-        title: 'Environmental Management for Jobs & Income Creation for Youth and Women (EMAJIC)',
-        description: 'Implemented by USTADI Foundation in partnership with ChildFund Kenya, funded by BMZ Germany, To contribute to a more effective and efficient waste management, a healthy natural environment, and improved livelihood situation of women and youth working in the wste recycling sector in Kasarani Sub-county in Nairobi County. Specifically the objective was to improve efficiency in solid waste management for clean environment, improved hygiene, health, and livelihoods trageting 700 beneficiaries(60% youth and 40% women) who are unemployed and are socially and economically disadvantaged.',
+        title: 'Environmental Management for Jobs & Income (EMAJIC)',
+        description: 'Implemented in partnership with ChildFund Kenya and funded by BMZ Germany. The project contributed to more effective and efficient waste management, a healthier natural environment, and improved livelihoods for women and youth working in the waste recycling sector in Kasarani Sub-County, Nairobi County. The objective was to improve efficiency in solid waste management, hygiene, health, and livelihoods for 700 beneficiaries (60% youth and 40% women) who are unemployed and socially and economically disadvantaged.',
+        href: getUrl('/projects#project-emajic'),
       },
       {
-        year: '2021-2025',
-        title: 'Integrated Agribusiness Hubs Projects',
-        description: 'Launched the IFAD/Procasur/ILO/USTADI-funded JOY(Jobs Open For The Youth) Project (Phase-1 2021-2025) ($1.25M), establishing integrated agribusiness hubs in Kilifi, Kakamega, and Nakuru counties.',
+        year: '2021–2025',
+        title: 'Integrated Agribusiness Hubs (JOY Project)',
+        description: 'Launched the IFAD, Procasur, ILO, and USTADI-funded JOY (Jobs Open For The Youth) Project Phase 1 ($1.25M), establishing integrated agribusiness hubs in Kilifi, Kakamega, and Nakuru counties.',
+        href: getUrl('/projects#project-joy-project'),
       },
       {
         year: '2021–2024',
         title: 'BlueBiz',
-        description: 'Funded by the Mastercard Foundation through Technoserve. To enhance the socio-economic sustenance of youth by supporting specific Blue Economy value chains. It targets marine and aquatic development through tilapia and shrimp farming, fish feed creation, and seaweed cultivation, while also promoting artisanal craft sales and environmental conservation via mangrove restoration. Additionally, it incorporates land-based production ventures including livestock farming, honey production, mango drying, and the cultivation of cashew, coconut, and cassava.',
+        description: 'Funded by the Mastercard Foundation through TechnoServe. The project enhances the socio-economic sustenance of youth by supporting specific Blue Economy value chains. It targets marine and aquatic development through tilapia and shrimp farming, fish feed creation, and seaweed cultivation, while also promoting artisanal craft sales and environmental conservation through mangrove restoration. Additionally, it incorporates land-based production ventures including livestock farming, honey production, mango drying, and the cultivation of cashew, coconut, and cassava.',
+        href: getUrl('/projects#project-bluebiz'),
       },
       {
         year: '2023–2025',
         title: 'GSMESKILL — VET Entrepreneurial Green Mindset',
         description: 'Launched a 36-month Erasmus+ Capacity Building in VET project strengthening links between VET systems and labour markets in Kenya, Nigeria, and South Africa. USTADI led Kenya-focused research, policy advisory groups, and Awareness Days on inclusive VET policy recommendations.',
+        href: getUrl('/projects#project-gsmeskill'),
       },
       {
-        year: '2024-2027',
+        year: '2024–2027',
         title: 'WEZESHA 3',
-        description: 'A transformative youth empowerment initiative funded by the Safaricom Foundation/USTADI Foundation/Lake Basin Development Authority(LBDA), designed to promote agribusiness, innovation, and sustainability in Busia County.',
+        description: 'A transformative youth empowerment initiative funded by the Safaricom Foundation in partnership with USTADI Foundation and the Lake Basin Development Authority (LBDA), designed to promote agribusiness, innovation, and sustainability in Busia County.',
+        href: getUrl('/projects#project-wezesha-iii'),
       },
       {
         year: '2026',
         title: 'FAO Fisheries Technical Assistance',
-        description: 'Commenced technical assistance to improve the functional capacity of small-scale fishers and profitability of targeted fisher communities in Kwale and Lamu Counties. Funded by FAO through AFRACA, with USTADI as implementing partner.',
+        description: 'Commenced technical assistance to improve the functional capacity of small-scale fishers and the profitability of targeted fisher communities in Kwale and Lamu counties. Funded by FAO through AFRACA, with USTADI as implementing partner.',
+        href: getUrl('/projects#project-fao-fisheries'),
       },
     ]}
   />
