@@ -1,5 +1,5 @@
 ---
-// ImpactStatsGrid.astro — Tree diagram of impact numbers
+// ImpactStatsGrid.astro — Sleek flow diagram with animated connectors
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 
 export interface Stat {
@@ -37,76 +37,158 @@ const { heading, stats } = Astro.props;
 
       <div class="mt-16 max-w-4xl mx-auto">
         
-        {/* Root node */}
-        <div class="flex justify-center mb-12">
-          <div class="bg-primary text-white rounded-2xl px-8 py-4 text-center shadow-lg">
-            <p class="font-heading font-bold" style="font-size: var(--text-heading-sm); line-height: 1;">
-              USTADI Impact
-            </p>
-            <p class="mt-1 text-white/60 text-xs tracking-wider uppercase">Since 2010</p>
+        {/* Root emblem */}
+        <div class="flex justify-center mb-8">
+          <div class="relative w-36 h-36 bg-primary rounded-full flex items-center justify-center text-center shadow-xl">
+            <div class="absolute inset-2 border-2 border-accent/50 rounded-full" aria-hidden="true"></div>
+            <div class="relative">
+              <p class="text-white font-heading font-bold text-lg leading-tight">USTADI<br/>Impact</p>
+            </div>
           </div>
         </div>
 
-        {/* Vertical line from root */}
-        <div class="w-px h-8 bg-dark/20 mx-auto" aria-hidden="true"></div>
+        {/* Animated flow line from root */}
+        <svg class="w-full h-8" aria-hidden="true">
+          <line
+            x1="50%"
+            y1="0"
+            x2="50%"
+            y2="100%"
+            stroke="#5A6267"
+            stroke-width="2"
+            stroke-dasharray="6 4"
+            opacity="0.3"
+          >
+            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+          </line>
+        </svg>
 
         {/* Horizontal spread line */}
-        <div class="hidden md:block h-px bg-dark/20 mx-24 mb-8" aria-hidden="true"></div>
+        <svg class="hidden md:block w-full h-px mb-6" aria-hidden="true">
+          <line
+            x1="16.67%"
+            y1="0"
+            x2="83.33%"
+            y2="0"
+            stroke="#5A6267"
+            stroke-width="1.5"
+            stroke-dasharray="6 4"
+            opacity="0.25"
+          >
+            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.2s" repeatCount="indefinite" />
+          </line>
+        </svg>
 
         {/* Level 1 — first 3 stats */}
-        <div class="grid md:grid-cols-3 gap-10 mb-10">
-          {stats.slice(0, 3).map((stat, index) => (
-            <div class="relative text-center">
-              
-              {/* Vertical line up */}
-              <div class="hidden md:block w-px h-8 bg-dark/20 mx-auto mb-4" aria-hidden="true"></div>
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
+          {stats.slice(0, 3).map((stat) => (
+            <div class="text-center">
+              <svg class="hidden md:block w-full h-6 mb-3" aria-hidden="true">
+                <line
+                  x1="50%"
+                  y1="0"
+                  x2="50%"
+                  y2="100%"
+                  stroke="#5A6267"
+                  stroke-width="1.5"
+                  stroke-dasharray="6 4"
+                  opacity="0.25"
+                >
+                  <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+                </line>
+              </svg>
 
-              <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow">
-                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-lg); line-height: 1;">
+              <div class="bg-white rounded-full px-6 py-5 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-md); line-height: 1;">
                   {stat.value}
                 </p>
-                <p class="mt-2 text-dark/50 text-xs leading-relaxed">{stat.label}</p>
+                <p class="mt-1.5 text-dark/50 text-xs leading-snug">{stat.label}</p>
               </div>
-
-              {/* Vertical line down to next level */}
-              {index === 0 && (
-                <div class="hidden md:block w-px h-8 bg-dark/20 mx-auto mt-4" aria-hidden="true"></div>
-              )}
             </div>
           ))}
         </div>
 
-        {/* Horizontal line for second level */}
-        <div class="hidden md:block h-px bg-dark/20 mx-16 mb-8" aria-hidden="true"></div>
+        {/* Flow connector */}
+        <svg class="hidden md:block w-full h-8" aria-hidden="true">
+          <path
+            d="M 16.67% 0 Q 50% 32 83.33% 0"
+            fill="none"
+            stroke="#F47322"
+            stroke-width="1.5"
+            stroke-dasharray="5 5"
+            opacity="0.35"
+          >
+            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.5s" repeatCount="indefinite" />
+          </path>
+        </svg>
 
         {/* Level 2 — next 3 stats */}
-        <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div class="grid md:grid-cols-3 gap-8 mb-8">
           {stats.slice(3, 6).map((stat) => (
             <div class="text-center">
-              <div class="hidden md:block w-px h-8 bg-dark/20 mx-auto mb-4" aria-hidden="true"></div>
-              <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow">
-                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-lg); line-height: 1;">
+              <svg class="hidden md:block w-full h-6 mb-3" aria-hidden="true">
+                <line
+                  x1="50%"
+                  y1="0"
+                  x2="50%"
+                  y2="100%"
+                  stroke="#5A6267"
+                  stroke-width="1.5"
+                  stroke-dasharray="6 4"
+                  opacity="0.25"
+                >
+                  <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+                </line>
+              </svg>
+
+              <div class="bg-white rounded-full px-6 py-5 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-md); line-height: 1;">
                   {stat.value}
                 </p>
-                <p class="mt-2 text-dark/50 text-xs leading-relaxed">{stat.label}</p>
+                <p class="mt-1.5 text-dark/50 text-xs leading-snug">{stat.label}</p>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Horizontal line for third level */}
-        <div class="hidden md:block h-px bg-dark/20 mx-16 mb-8" aria-hidden="true"></div>
+        {/* Flow connector */}
+        <svg class="hidden md:block w-full h-8" aria-hidden="true">
+          <path
+            d="M 25% 0 Q 50% 32 75% 0"
+            fill="none"
+            stroke="#F47322"
+            stroke-width="1.5"
+            stroke-dasharray="5 5"
+            opacity="0.35"
+          >
+            <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1.5s" repeatCount="indefinite" />
+          </path>
+        </svg>
 
         {/* Level 3 — last 2 stats */}
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-2xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
           {stats.slice(6).map((stat) => (
             <div class="text-center">
-              <div class="hidden md:block w-px h-8 bg-dark/20 mx-auto mb-4" aria-hidden="true"></div>
-              <div class="bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow">
-                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-lg); line-height: 1;">
+              <svg class="hidden md:block w-full h-6 mb-3" aria-hidden="true">
+                <line
+                  x1="50%"
+                  y1="0"
+                  x2="50%"
+                  y2="100%"
+                  stroke="#5A6267"
+                  stroke-width="1.5"
+                  stroke-dasharray="6 4"
+                  opacity="0.25"
+                >
+                  <animate attributeName="stroke-dashoffset" from="10" to="0" dur="1s" repeatCount="indefinite" />
+                </line>
+              </svg>
+
+              <div class="bg-white rounded-full px-6 py-5 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+                <p class="font-heading font-bold text-primary" style="font-size: var(--text-heading-md); line-height: 1;">
                   {stat.value}
                 </p>
-                <p class="mt-2 text-dark/50 text-xs leading-relaxed">{stat.label}</p>
+                <p class="mt-1.5 text-dark/50 text-xs leading-snug">{stat.label}</p>
               </div>
             </div>
           ))}
