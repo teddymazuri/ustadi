@@ -2,6 +2,7 @@
 // ProjectsList.astro — Timeline of projects
 import ScribbleCircle from '../shared/ScribbleCircle.astro';
 import ProjectCard from './ProjectCard.astro';
+import Lightbox from './Lightbox.astro';
 
 export interface Project {
   title: string;
@@ -16,6 +17,7 @@ export interface Project {
   resourcesHref?: string;
   year: string;
   slug?: string;
+  gallery?: { src: string; alt: string }[];
 }
 
 export interface Props {
@@ -71,10 +73,13 @@ const { heading, subheading, projects } = Astro.props;
             year={project.year}
             resourcesHref={project.resourcesHref}
             slug={project.slug}
+            gallery={project.gallery}
           />
         ))}
       </div>
     </div>
 
   </div>
+
+  <Lightbox title="Project Photos" images={[]} />
 </section>

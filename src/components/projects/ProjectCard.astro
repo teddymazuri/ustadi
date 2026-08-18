@@ -14,10 +14,14 @@ export interface Props {
   year: string;
   resourcesHref?: string;
   slug?: string;
+  gallery?: { src: string; alt: string }[];
 }
 
-const { title, donor, duration, value, description, image, index, year, resourcesHref, slug } = Astro.props;
+const { title, donor, duration, value, description, image, index, year, resourcesHref, slug, gallery = [] } = Astro.props;
 const isEven = index % 2 === 0;
+const allImages = gallery.length > 0 ? gallery : [image];
+const galleryJson = JSON.stringify(allImages);
+const titleJson = JSON.stringify(title);
 ---
 
 <div id={slug ? `project-${slug}` : undefined} class={`flex scroll-mt-24 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
@@ -27,17 +31,30 @@ const isEven = index % 2 === 0;
     <div class={`bg-white rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 ${isEven ? 'md:mr-10' : 'md:ml-10'}`}>
       
       {/* Thumbnail */}
-      <div class="relative h-44 overflow-hidden">
+      <div class="relative h-44 overflow-hidden group">
         <img
           src={image.src}
           alt={image.alt}
-          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
         <div class="absolute bottom-3 left-4">
           <p class="text-white/80 text-xs font-medium tracking-wider uppercase">{duration}</p>
         </div>
+
+        {/* Gallery trigger */}
+        <button
+          type="button"
+          class="absolute top-3 right-3 inline-flex items-center gap-1.5 bg-dark/50 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-dark/70 transition-colors"
+          aria-label={`View ${allImages.length} photos of ${title}`}
+          onclick={`window.openProjectLightbox && window.openProjectLightbox(${galleryJson}, ${titleJson})`}
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          {allImages.length} Photos
+        </button>
       </div>
 
       {/* Content */}

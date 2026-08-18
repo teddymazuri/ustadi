@@ -1,0 +1,150 @@
+---
+// Lightbox.astro — Reusable fullscreen photo gallery with prev/next + counter
+export interface GalleryImage {
+  src: string;
+  alt: string;
+}
+
+export interface Props {
+  images?: GalleryImage[];
+  title?: string;
+}
+
+const { title = 'Photo Gallery' } = Astro.props;
+---
+
+<dialog
+  id="project-lightbox"
+  class="fixed inset-0 z-50 w-full h-full max-w-none max-h-none m-0 p-0 bg-dark/95 backdrop-blur-sm"
+  aria-label={title}
+>
+  <div class="flex flex-col h-full relative">
+    
+    {/* Top bar: title + counter + close */}
+    <div class="flex items-center justify-between px-6 py-4 bg-dark/50 shrink-0">
+      <p id="lightbox-title" class="text-white/70 text-sm truncate pr-4">{title}</p>
+      <div class="flex items-center gap-4 shrink-0">
+        <span id="lightbox-counter" class="text-white/70 text-sm whitespace-nowrap">1 of 1</span>
+        <button
+          type="button"
+          id="lightbox-close"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          aria-label="Close gallery"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {/* Main image area — fixed height with centered image */}
+    <div class="flex-1 flex items-center justify-center px-20 relative min-h-0 overflow-hidden">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-w-full max-h-full rounded-2xl shadow-2xl object-contain w-auto h-auto"
+      />
+    </div>
+
+    {/* Bottom controls: prev/next — always visible */}
+    <div class="flex items-center justify-center gap-6 py-4 bg-dark/50 shrink-0">
+      <button
+        type="button"
+        id="lightbox-prev"
+        class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="Previous photo"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        id="lightbox-next"
+        class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+        aria-label="Next photo"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</dialog>
+
+<script>
+  let currentImages: { src: string; alt: string }[] = [];
+  let currentIndex = 0;
+
+  function openLightbox(images: { src: string; alt: string }[], title?: string) {
+    currentImages = images;
+    currentIndex = 0;
+    
+    if (title) {
+      const titleEl = document.getElementById('lightbox-title');
+      if (titleEl) titleEl.textContent = title;
+    }
+    
+    updateLightbox();
+    (document.getElementById('project-lightbox') as HTMLDialogElement)?.showModal();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    (document.getElementById('project-lightbox') as HTMLDialogElement)?.close();
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    const image = document.getElementById('lightbox-image') as HTMLImageElement;
+    const counter = document.getElementById('lightbox-counter');
+    const prevBtn = document.getElementById('lightbox-prev') as HTMLButtonElement;
+    const nextBtn = document.getElementById('lightbox-next') as HTMLButtonElement;
+
+    if (!image || !counter || !prevBtn || !nextBtn) return;
+
+    image.src = currentImages[currentIndex].src;
+    image.alt = currentImages[currentIndex].alt;
+    counter.textContent = `${currentIndex + 1} of ${currentImages.length}`;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === currentImages.length - 1;
+  }
+
+  function nextImage() {
+    if (currentIndex < currentImages.length - 1) {
+      currentIndex++;
+      updateLightbox();
+    }
+  }
+
+  function prevImage() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateLightbox();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+    document.getElementById('lightbox-next')?.addEventListener('click', nextImage);
+    document.getElementById('lightbox-prev')?.addEventListener('click', prevImage);
+
+    document.addEventListener('keydown', (e) => {
+      const dialog = document.getElementById('project-lightbox') as HTMLDialogElement;
+      if (!dialog || !dialog.open) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    document.getElementById('project-lightbox')?.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    (window as any).openProjectLightbox = openLightbox;
+  });
+</script>
