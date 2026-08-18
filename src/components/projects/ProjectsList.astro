@@ -14,7 +14,8 @@ export interface Project {
     src: string;
     alt: string;
   };
-  resourcesHref?: string;
+  reportsHref?: string;
+  mediaHref?: string;
   year: string;
   slug?: string;
   gallery?: { src: string; alt: string }[];
@@ -71,7 +72,8 @@ const { heading, subheading, projects } = Astro.props;
             image={project.image}
             index={index}
             year={project.year}
-            resourcesHref={project.resourcesHref}
+            reportsHref={project.reportsHref}
+            mediaHref={project.mediaHref}
             slug={project.slug}
             gallery={project.gallery}
           />

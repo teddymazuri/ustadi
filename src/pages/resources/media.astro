@@ -6,6 +6,8 @@ import ScribbleCircle from '../../components/shared/ScribbleCircle.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
+const getSlug = (name: string) => name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
 const mediaProjects = [
   {
     project: 'FAO Fisheries',
@@ -281,7 +283,8 @@ const mediaProjects = [
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10" data-media-grid>
         {mediaProjects.map((project) => (
           <div
-            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col"
+            id={`media-${getSlug(project.project)}`}
+            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col scroll-mt-24"
             data-media-types={project.items.map((i) => i.type).join(',')}
             data-media-searchable={`${project.project} ${project.fullName} ${project.donor} ${project.items.map((i) => `${i.label} ${i.type}`).join(' ')}`.toLowerCase()}
           >
