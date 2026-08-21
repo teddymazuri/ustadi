@@ -11,6 +11,7 @@ const stories = [
     name: 'Faith M.',
     role: 'Entrepreneur & VIJABIZ Graduate',
     quote: 'USTADI Foundation didn\'t just teach me skills — they believed in me when I didn\'t believe in myself. Today, I run my own tailoring business, employ two people from my community, and can support my family. That is the power of opportunity.',
+    fullStory: 'Faith joined the VIJABIZ project with a passion for tailoring but no formal business training. Through the project\'s enterprise development programme, she received hands-on mentorship, participated in design clinics, and was awarded a catalytic grant to purchase industrial sewing machines.\n\nToday, Faith runs a thriving tailoring business in Nakuru County, employing two people from her community. She has expanded from basic alterations to producing school uniforms and custom clothing for local businesses.\n\nThe training didn\'t just teach her technical skills — it built her confidence to manage finances, negotiate with suppliers, and market her services. Faith now mentors other young women in her community who want to start their own enterprises.',
     image: getUrl('/images/home/success-vijabiz.jpg'),
     project: 'VIJABIZ Project',
     location: 'Nakuru County',
@@ -19,6 +20,7 @@ const stories = [
     name: 'Mary W.',
     role: 'Digital Skills Graduate',
     quote: 'Before this program, I had never touched a computer. Now I am learning to code and building websites for local businesses. The JOY Project opened a door I didn\'t know existed.',
+    fullStory: 'Mary had never touched a computer before joining the JOY Project\'s digital skills programme. Today, she is learning to code and building websites for local businesses in Kilifi County.\n\nThe programme introduced her to basic computer literacy before progressing to web development fundamentals. Through hands-on projects and mentorship, Mary gained the confidence to offer digital services to small businesses in her community.\n\nShe is now part of a growing network of young digital entrepreneurs supported by the JOY Project, demonstrating how access to technology education can open entirely new career pathways for rural youth.',
     image: getUrl('/images/projects/joy-project.jpg'),
     project: 'JOY Project',
     location: 'Kilifi County',
@@ -27,6 +29,7 @@ const stories = [
     name: 'John K.',
     role: 'Y2YF Grantee',
     quote: 'The Youth-to-Youth Fund gave me the start I needed. From a small agribusiness idea, I now supply vegetables to three hotels in Kisumu. The mentorship and grant support changed everything.',
+    fullStory: 'John started with a small agribusiness idea and a desire to supply fresh vegetables to local hotels. Through the Youth-to-Youth Fund, he received grant support and structured mentorship that turned his idea into a viable enterprise.\n\nToday, John supplies vegetables to three hotels in Kisumu. The grant helped him secure reliable inputs, improve his post-harvest handling, and establish consistent supply relationships.\n\nThe mentorship component was particularly valuable — John learned financial management, record keeping, and how to negotiate with buyers. He now provides informal employment to two other young people who help with harvesting and delivery.',
     image: getUrl('/images/projects/y2yf-project.jpg'),
     project: 'Y2YF Project',
     location: 'Kisumu County',
@@ -35,6 +38,7 @@ const stories = [
     name: 'Amina S.',
     role: 'Cassava Farmer & Group Leader',
     quote: 'Through the cassava project, our group of 30 women learned to process and market our produce. We now sell directly to buyers instead of middlemen. Our incomes have doubled.',
+    fullStory: 'Amina leads a group of 30 women who transformed their cassava farming through the cassava value chain project in Kilifi County.\n\nThe group received training on good agricultural practices, post-harvest handling, and farming as a business. They adopted the Tajirika cassava variety, which significantly improved their yields.\n\nMost importantly, they learned to process and market their produce collectively. Instead of selling through middlemen, the group now sells directly to buyers, doubling their incomes. The project also connected them to aggregation centres and KEBS certification for value-added cassava flour.',
     image: getUrl('/images/projects/cassava-project.jpg'),
     project: 'Cassava Value Chain Project',
     location: 'Kilifi County',
@@ -43,6 +47,7 @@ const stories = [
     name: 'Peter M.',
     role: 'Livestock Trader',
     quote: 'K-SALES connected me to better markets. I learned about livestock grading and pricing. Today I buy from over 50 pastoralist households and supply to major butcheries.',
+    fullStory: 'Peter transformed his small livestock trading operation through the K-SALES project, which focused on improving the competitiveness of livestock value chains in semi-arid Kenya.\n\nThe project taught him about livestock grading, pricing, and market dynamics. Armed with this knowledge, he now buys from over 50 pastoralist households and supplies to major butcheries.\n\nThe market linkages established through the project opened doors that were previously inaccessible to small-scale traders. Peter now provides reliable income to pastoralist families while building a sustainable business.',
     image: getUrl('/images/projects/ksales-project.jpg'),
     project: 'K-SALES Project',
     location: 'Laikipia County',
@@ -51,6 +56,7 @@ const stories = [
     name: 'Grace W.',
     role: 'COVID-19 Recovery Grant Recipient',
     quote: 'When the pandemic hit, my poultry business almost collapsed. The resilience grant and coaching helped me pivot to day-old chick sales. I am now back on my feet and growing.',
+    fullStory: 'Grace\'s poultry business was thriving until the COVID-19 pandemic disrupted her supply chain and customer base. The post-VIJABIZ resilience programme provided the lifeline she needed.\n\nThrough targeted coaching and a resilience grant, Grace pivoted her business model to day-old chick sales — a more resilient and scalable approach. The training helped her understand market demand shifts and adapt accordingly.\n\nToday, Grace is back on her feet and growing. Her business now serves surrounding communities with healthy day-old chicks, and she has regained her financial independence.',
     image: getUrl('/images/projects/covid-resilience.jpg'),
     project: 'COVID-19 Resilience Project',
     location: 'Nakuru County',
@@ -60,6 +66,7 @@ const stories = [
 const projects = ['All', ...new Set(stories.map((s) => s.project))];
 const featured = stories[0];
 const remainingStories = stories.slice(1);
+const storiesJson = JSON.stringify(stories);
 ---
 
 <MainLayout
@@ -113,7 +120,11 @@ const remainingStories = stories.slice(1);
   {featured && (
     <section class="pb-12 bg-white" aria-label="Featured story">
       <div class="container-wide">
-        <div class="bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300">
+        <button
+          type="button"
+          class="bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 w-full text-left cursor-pointer"
+          onclick="window.openStory && window.openStory(0)"
+        >
           <div class="grid md:grid-cols-2">
             <div class="relative h-72 md:h-full overflow-hidden">
               <img
@@ -141,7 +152,7 @@ const remainingStories = stories.slice(1);
               <p class="mt-4 text-dark/40 text-xs font-medium tracking-wide uppercase">{featured.project}</p>
             </div>
           </div>
-        </div>
+        </button>
       </div>
     </section>
   )}
@@ -167,10 +178,12 @@ const remainingStories = stories.slice(1);
   <section class="pb-20 bg-white">
     <div class="container-wide">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stories-grid>
-        {remainingStories.map((story) => (
-          <div
-            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col"
+        {remainingStories.map((story, index) => (
+          <button
+            type="button"
+            class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col w-full text-left cursor-pointer"
             data-story-project={story.project}
+            onclick={`window.openStory && window.openStory(${index + 1})`}
           >
             
             <div class="relative h-56 overflow-hidden">
@@ -205,7 +218,7 @@ const remainingStories = stories.slice(1);
               </div>
             </div>
 
-          </div>
+          </button>
         ))}
       </div>
 
@@ -316,49 +329,127 @@ const remainingStories = stories.slice(1);
       </div>
     </div>
   </section>
-</MainLayout>
 
-<script>
-  function initStoryFilters() {
-    const filterButtons = document.querySelectorAll('[data-story-filter]');
-    const cards = document.querySelectorAll('[data-story-project]');
-    const noResults = document.getElementById('stories-no-results');
-    
-    let activeFilter = 'All';
+  {/* Story modal */}
+  <dialog
+    id="story-modal"
+    class="fixed inset-0 z-50 w-full h-full max-w-none max-h-none m-0 p-0 bg-dark/95 backdrop-blur-sm"
+    aria-label="Success story"
+  >
+    <div class="flex flex-col h-full relative">
+      <div class="flex items-center justify-between px-6 py-4 bg-dark/50 shrink-0">
+        <p id="story-modal-project" class="text-accent text-xs font-semibold tracking-wider uppercase"></p>
+        <button
+          type="button"
+          id="story-modal-close"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          aria-label="Close story"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-3xl mx-auto px-6 py-8 md:py-12">
+          <img id="story-modal-image" src="" alt="" class="w-full rounded-2xl shadow-2xl object-cover aspect-[16/9] mb-8" />
+          <h2 id="story-modal-name" class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"></h2>
+          <p id="story-modal-meta" class="mt-3 text-white/50 text-sm"></p>
+          <div id="story-modal-body" class="mt-6 text-white/70 leading-relaxed space-y-4" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
-    function applyFilters() {
-      let visibleCount = 0;
+  <script set:html={`window.__stories = ${storiesJson};`} />
 
-      cards.forEach((card) => {
-        const project = (card as HTMLElement).getAttribute('data-story-project') || '';
-        const shouldShow = activeFilter === 'All' || project === activeFilter;
-        (card as HTMLElement).classList.toggle('hidden', !shouldShow);
-        if (shouldShow) visibleCount++;
+  <script>
+    const storyData = window.__stories;
+
+    function openStory(index: number) {
+      const story = storyData[index];
+      if (!story) return;
+
+      document.getElementById('story-modal-project').textContent = story.project;
+      document.getElementById('story-modal-name').textContent = story.name;
+      document.getElementById('story-modal-meta').textContent = `${story.role} · ${story.location}`;
+      document.getElementById('story-modal-image').src = story.image;
+      document.getElementById('story-modal-image').alt = `${story.name} — ${story.role}`;
+
+      const bodyEl = document.getElementById('story-modal-body');
+      bodyEl.innerHTML = '';
+      story.fullStory.split('\\n\\n').forEach((paragraph) => {
+        const p = document.createElement('p');
+        p.textContent = paragraph;
+        bodyEl.appendChild(p);
       });
 
-      if (noResults) {
-        noResults.classList.toggle('hidden', visibleCount > 0);
-      }
+      document.getElementById('story-modal').showModal();
+      document.body.style.overflow = 'hidden';
     }
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeFilter = (btn as HTMLElement).getAttribute('data-story-filter') || 'All';
-        
-        filterButtons.forEach((other) => {
-          const isActive = other === btn;
-          (other as HTMLElement).classList.toggle('bg-primary', isActive);
-          (other as HTMLElement).classList.toggle('text-white', isActive);
-          (other as HTMLElement).classList.toggle('border-primary', isActive);
-          (other as HTMLElement).classList.toggle('bg-cream', !isActive);
-          (other as HTMLElement).classList.toggle('text-dark/60', !isActive);
+    function closeStoryModal() {
+      document.getElementById('story-modal').close();
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('story-modal-close').addEventListener('click', closeStoryModal);
+
+      document.addEventListener('keydown', (e) => {
+        const dialog = document.getElementById('story-modal');
+        if (!dialog || !dialog.open) return;
+        if (e.key === 'Escape') closeStoryModal();
+      });
+
+      document.getElementById('story-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeStoryModal();
+      });
+
+      window.openStory = openStory;
+    });
+
+    function initStoryFilters() {
+      const filterButtons = document.querySelectorAll('[data-story-filter]');
+      const cards = document.querySelectorAll('[data-story-project]');
+      const noResults = document.getElementById('stories-no-results');
+      
+      let activeFilter = 'All';
+
+      function applyFilters() {
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const project = card.getAttribute('data-story-project') || '';
+          const shouldShow = activeFilter === 'All' || project === activeFilter;
+          card.classList.toggle('hidden', !shouldShow);
+          if (shouldShow) visibleCount++;
         });
 
-        applyFilters();
-      });
-    });
-  }
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
 
-  initStoryFilters();
-  document.addEventListener('astro:page-load', initStoryFilters);
-</script>
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.getAttribute('data-story-filter') || 'All';
+          
+          filterButtons.forEach((other) => {
+            const isActive = other === btn;
+            other.classList.toggle('bg-primary', isActive);
+            other.classList.toggle('text-white', isActive);
+            other.classList.toggle('border-primary', isActive);
+            other.classList.toggle('bg-cream', !isActive);
+            other.classList.toggle('text-dark/60', !isActive);
+          });
+
+          applyFilters();
+        });
+      });
+    }
+
+    initStoryFilters();
+    document.addEventListener('astro:page-load', initStoryFilters);
+  </script>
+</MainLayout>

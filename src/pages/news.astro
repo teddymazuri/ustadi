@@ -10,54 +10,56 @@ const newsArticles = [
   {
     title: 'USTADI Foundation Expands Digital Skills Program to Three New Counties',
     excerpt: 'The JOY Project continues to scale, bringing agribusiness hub training to more youth across Kilifi, Kakamega, and Nakuru counties through partnerships with county governments and TVET institutions.',
+    fullStory: 'The JOY Project continues to scale, bringing agribusiness hub training to more youth across Kilifi, Kakamega, and Nakuru counties through partnerships with county governments and TVET institutions.\n\nThis expansion phase builds on the success of the first cohort, which established integrated training programmes that combine technical agricultural skills with business management. Youth participants receive hands-on training at the agribusiness hubs, access to demonstration plots, and direct linkages to input suppliers and commodity buyers.\n\nThrough partnerships with county governments, TVET institutions, and private-sector actors, the project ensures that training aligns with real labour market demand. The expansion is expected to reach over 1,000 additional youth in the next phase.',
     date: 'July 2026',
     image: getUrl('/images/projects/joy-project.jpg'),
-    href: getUrl('/news/joy-expansion-2026'),
     category: 'Project Update',
   },
   {
     title: 'Emajic Project Launches Green Jobs Initiative in Nairobi',
     excerpt: 'In partnership with GIZ and ChildFund, the Emajic project is creating environmental management opportunities that generate jobs and income for youth and women in Kasarani, Nairobi.',
+    fullStory: 'The Emajic project has launched a green jobs initiative in Kasarani, Nairobi, creating environmental management opportunities that generate jobs and income for youth and women.\n\nImplemented in partnership with GIZ and ChildFund, the project focuses on improving efficiency in solid waste management while creating employment in the waste recycling sector. The initiative targets 700 beneficiaries, with 60% youth and 40% women, who are unemployed and socially and economically disadvantaged.\n\nParticipants receive training on waste segregation, recycling techniques, and enterprise development, enabling them to build sustainable livelihoods while contributing to a cleaner urban environment.',
     date: 'March 2026',
     image: getUrl('/images/projects/emajic-project.jpg'),
-    href: getUrl('/news/emajic-launch-2026'),
     category: 'Project Launch',
   },
   {
     title: 'VIJABIZ Legacy: 173 Youth Groups Transformed Through Agribusiness',
     excerpt: 'A look back at the impact of the VIJABIZ project, which reached over 1,550 direct participants and provided grants to 72 agri-enterprises across Kilifi and Nakuru counties.',
+    fullStory: 'The VIJABIZ project, funded by IFAD and CTA, created sustainable employment for rural youth through agribusiness in cereals, dairy, and fisheries value chains across Kilifi and Nakuru counties.\n\nThe project reached 173 youth groups, engaging over 1,550 direct participants — 30% of them young women — through enterprise training, design clinics, boot camps, mentorship, and incubation. Seventy-two agri-enterprises received direct grants to scale their operations.\n\nBest practices and innovations were identified and documented, providing a knowledge base that continues to inform USTADI\'s youth employment programming today.',
     date: 'January 2026',
     image: getUrl('/images/projects/vijabiz-project.jpg'),
-    href: getUrl('/news/vijabiz-legacy-2026'),
     category: 'Impact Story',
   },
   {
     title: 'Cassava Value Chain Project Concludes After 4.5 Years of Impact',
     excerpt: 'The EU-funded cassava project reached over 10,000 smallholder farmers, established 450 farmer business groups, and created 100 aggregation centres across Kilifi and Kitui Counties.',
+    fullStory: 'The 4.5-year cassava value chain project, funded by the European Union through Self Help Africa, has concluded after reaching over 10,000 smallholder farmers across Kilifi and Kitui counties.\n\nThe project established 450 farmer business groups, trained 9,500 farmers on sustainable agricultural practices, post-harvest handling, and farming as a business, and created 100 aggregation centres. At least 60% of participants were women.\n\nA key achievement was the distribution of the Tajirika cassava variety and its widespread adoption by farmers. The project also supported value addition activities, including cassava flour production with KEBS certification, enabling farmers to access higher-value markets.',
     date: 'October 2025',
     image: getUrl('/images/projects/cassava-project.jpg'),
-    href: getUrl('/news/cassava-completion-2025'),
     category: 'Project Milestone',
   },
   {
     title: 'SOYPAM Project Strengthens Soy Value Chain for Smallholder Farmers',
     excerpt: 'The Soy Production and Marketing project, funded by the EU and AGRIFI, connected smallholder farmers to processors and developed sustainable marketing channels.',
+    fullStory: 'The SOYPAM project, funded by the EU and AGRIFI, has strengthened the soy value chain in Kenya by improving production techniques and creating market linkages for smallholder farmers.\n\nThe project connected producers directly to processors, developed sustainable marketing channels, and provided training on good agricultural practices. Farmers received support on meeting commercial grain specifications, enabling them to command better prices for their harvests.\n\nThrough structured off-take agreements, the project built long-term income stability for participating households.',
     date: 'June 2025',
     image: getUrl('/images/projects/soypam-project.jpg'),
-    href: getUrl('/news/soypam-results-2025'),
     category: 'Project Update',
   },
   {
     title: 'Youth Enterprises Show Resilience After COVID-19 Recovery Programme',
     excerpt: 'USADF-funded post-VIJABIZ support helped youth entrepreneurs recover from pandemic disruptions. The programme provided targeted assistance to rebuild and adapt businesses.',
+    fullStory: 'The USADF-funded post-VIJABIZ resilience programme helped youth enterprises recover from the disruptions caused by the COVID-19 pandemic.\n\nBuilding on the VIJABIZ network, the programme provided targeted support to help young entrepreneurs recover, adapt, and build resilience against future shocks. Participants received business coaching, resilience grants, and technical assistance to pivot their enterprises to new market realities.\n\nMany youth businesses successfully adapted their models — including shifting to day-old chick sales and diversified agribusiness operations — demonstrating the resilience of well-supported enterprises.',
     date: 'February 2025',
     image: getUrl('/images/projects/covid-resilience.jpg'),
-    href: getUrl('/news/covid-resilience-2025'),
     category: 'Impact Story',
   },
 ];
 
 const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', 'Project Milestone'];
+
+const articlesJson = JSON.stringify(newsArticles);
 ---
 
 <MainLayout
@@ -65,6 +67,7 @@ const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', '
   description="Latest news, project updates, impact stories, and announcements from USTADI Foundation's work across Kenya."
   currentPage="news"
 >
+  <!-- Same as before, but cards use buttons with onclick -->
   <section class="section-padding bg-white" aria-labelledby="news-heading">
     <div class="container-wide relative">
       
@@ -112,8 +115,12 @@ const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', '
         
         {/* Featured article */}
         {newsArticles.length > 0 && (
-          <div class="mb-12" data-news-category={newsArticles[0].category} data-news-searchable={`${newsArticles[0].title} ${newsArticles[0].excerpt} ${newsArticles[0].category}`.toLowerCase()}>
-            <a href={newsArticles[0].href} class="group block bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 no-underline">
+          <div class="mb-12" data-news-category={newsArticles[0].category}>
+            <button
+              type="button"
+              class="group block bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 no-underline w-full text-left cursor-pointer"
+              onclick="window.openNewsStory && window.openNewsStory(0)"
+            >
               <div class="grid md:grid-cols-2">
                 <div class="relative h-64 md:h-full overflow-hidden">
                   <img
@@ -148,20 +155,19 @@ const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', '
                   </div>
                 </div>
               </div>
-            </a>
+            </button>
           </div>
         )}
 
         {/* Article grid */}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {newsArticles.slice(1).map((article) => (
-            <a
-              href={article.href}
-              class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col no-underline"
+          {newsArticles.slice(1).map((article, index) => (
+            <button
+              type="button"
+              class="group bg-cream rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 flex flex-col no-underline w-full text-left cursor-pointer"
               data-news-category={article.category}
-              data-news-searchable={`${article.title} ${article.excerpt} ${article.category}`.toLowerCase()}
+              onclick={`window.openNewsStory && window.openNewsStory(${index + 1})`}
             >
-              
               <div class="relative h-48 overflow-hidden">
                 <img
                   src={article.image}
@@ -192,8 +198,7 @@ const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', '
                   </span>
                 </div>
               </div>
-
-            </a>
+            </button>
           ))}
         </div>
 
@@ -239,49 +244,127 @@ const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', '
 
     </div>
   </section>
-</MainLayout>
 
-<script>
-  function initNewsFilters() {
-    const filterButtons = document.querySelectorAll('[data-news-filter]');
-    const cards = document.querySelectorAll('[data-news-category]');
-    const noResults = document.getElementById('news-no-results');
-    
-    let activeFilter = 'All';
+  {/* News modal */}
+  <dialog
+    id="news-modal"
+    class="fixed inset-0 z-50 w-full h-full max-w-none max-h-none m-0 p-0 bg-dark/95 backdrop-blur-sm"
+    aria-label="News story"
+  >
+    <div class="flex flex-col h-full relative">
+      <div class="flex items-center justify-between px-6 py-4 bg-dark/50 shrink-0">
+        <p id="news-modal-category" class="text-accent text-xs font-semibold tracking-wider uppercase"></p>
+        <button
+          type="button"
+          id="news-modal-close"
+          class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          aria-label="Close story"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex-1 overflow-y-auto">
+        <div class="max-w-3xl mx-auto px-6 py-8 md:py-12">
+          <img id="news-modal-image" src="" alt="" class="w-full rounded-2xl shadow-2xl object-cover aspect-[16/9] mb-8" />
+          <h2 id="news-modal-title" class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"></h2>
+          <p id="news-modal-date" class="mt-3 text-white/50 text-sm"></p>
+          <div id="news-modal-body" class="mt-6 text-white/70 leading-relaxed space-y-4" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
-    function applyFilters() {
-      let visibleCount = 0;
+  <script set:html={`window.__newsArticles = ${articlesJson};`} />
 
-      cards.forEach((card) => {
-        const category = (card as HTMLElement).getAttribute('data-news-category') || '';
-        const shouldShow = activeFilter === 'All' || category === activeFilter;
-        (card as HTMLElement).classList.toggle('hidden', !shouldShow);
-        if (shouldShow) visibleCount++;
+  <script>
+    const articles = window.__newsArticles;
+
+    function openNewsStory(index: number) {
+      const article = articles[index];
+      if (!article) return;
+
+      document.getElementById('news-modal-category').textContent = article.category;
+      document.getElementById('news-modal-title').textContent = article.title;
+      document.getElementById('news-modal-date').textContent = article.date;
+      document.getElementById('news-modal-image').src = article.image;
+      document.getElementById('news-modal-image').alt = article.title;
+
+      const bodyEl = document.getElementById('news-modal-body');
+      bodyEl.innerHTML = '';
+      article.fullStory.split('\\n\\n').forEach((paragraph) => {
+        const p = document.createElement('p');
+        p.textContent = paragraph;
+        bodyEl.appendChild(p);
       });
 
-      if (noResults) {
-        noResults.classList.toggle('hidden', visibleCount > 0);
-      }
+      document.getElementById('news-modal').showModal();
+      document.body.style.overflow = 'hidden';
     }
 
-    filterButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeFilter = (btn as HTMLElement).getAttribute('data-news-filter') || 'All';
-        
-        filterButtons.forEach((other) => {
-          const isActive = other === btn;
-          (other as HTMLElement).classList.toggle('bg-primary', isActive);
-          (other as HTMLElement).classList.toggle('text-white', isActive);
-          (other as HTMLElement).classList.toggle('border-primary', isActive);
-          (other as HTMLElement).classList.toggle('bg-cream', !isActive);
-          (other as HTMLElement).classList.toggle('text-dark/60', !isActive);
+    function closeNewsModal() {
+      document.getElementById('news-modal').close();
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('news-modal-close').addEventListener('click', closeNewsModal);
+
+      document.addEventListener('keydown', (e) => {
+        const dialog = document.getElementById('news-modal');
+        if (!dialog || !dialog.open) return;
+        if (e.key === 'Escape') closeNewsModal();
+      });
+
+      document.getElementById('news-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeNewsModal();
+      });
+
+      window.openNewsStory = openNewsStory;
+    });
+
+    function initNewsFilters() {
+      const filterButtons = document.querySelectorAll('[data-news-filter]');
+      const cards = document.querySelectorAll('[data-news-category]');
+      const noResults = document.getElementById('news-no-results');
+      
+      let activeFilter = 'All';
+
+      function applyFilters() {
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const category = card.getAttribute('data-news-category') || '';
+          const shouldShow = activeFilter === 'All' || category === activeFilter;
+          card.classList.toggle('hidden', !shouldShow);
+          if (shouldShow) visibleCount++;
         });
 
-        applyFilters();
-      });
-    });
-  }
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+      }
 
-  initNewsFilters();
-  document.addEventListener('astro:page-load', initNewsFilters);
-</script>
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          activeFilter = btn.getAttribute('data-news-filter') || 'All';
+          
+          filterButtons.forEach((other) => {
+            const isActive = other === btn;
+            other.classList.toggle('bg-primary', isActive);
+            other.classList.toggle('text-white', isActive);
+            other.classList.toggle('border-primary', isActive);
+            other.classList.toggle('bg-cream', !isActive);
+            other.classList.toggle('text-dark/60', !isActive);
+          });
+
+          applyFilters();
+        });
+      });
+    }
+
+    initNewsFilters();
+    document.addEventListener('astro:page-load', initNewsFilters);
+  </script>
+</MainLayout>
