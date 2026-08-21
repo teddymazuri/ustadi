@@ -278,7 +278,7 @@ const typeColors: Record<string, string> = {
       </div>
 
       {/* Search and Filters */}
-      <div class="max-w-3xl mx-auto mb-12 relative z-10">
+      <div class="max-w-4xl mx-auto mb-12 relative z-10">
         
         {/* Search input — full width */}
         <div class="relative mb-4">
@@ -289,21 +289,38 @@ const typeColors: Record<string, string> = {
           <input
             type="text"
             id="report-search"
-            placeholder="Search by project, donor, or report type..."
+            placeholder="Search by project, funding partner, or report type..."
             class="w-full pl-12 pr-4 py-3.5 bg-cream border-2 border-dark/10 rounded-xl text-dark placeholder:text-dark/30 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
         </div>
 
-        {/* Donor filter buttons */}
-        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter reports by donor">
+        {/* Funding partner filter buttons */}
+        <div class="flex flex-wrap justify-center gap-2" role="group" aria-label="Filter reports by funding partner">
           <button type="button" data-filter="All" class="px-4 py-2.5 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary-light transition-colors">All</button>
           <button type="button" data-filter="IFAD" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">IFAD</button>
           <button type="button" data-filter="EU" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">EU</button>
           <button type="button" data-filter="FAO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">FAO</button>
           <button type="button" data-filter="Safaricom" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Safaricom</button>
+          <button type="button" data-filter="Mastercard" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Mastercard</button>
           <button type="button" data-filter="USAID" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">USAID</button>
           <button type="button" data-filter="GIZ" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">GIZ</button>
           <button type="button" data-filter="ILO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">ILO</button>
+          <button type="button" data-filter="KALRO" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">KALRO</button>
+          <button type="button" data-filter="SNV" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">SNV</button>
+          <button type="button" data-filter="HIVOS" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">HIVOS</button>
+          <button type="button" data-filter="Pathfinder" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Pathfinder</button>
+          <button type="button" data-filter="USADF" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">USADF</button>
+          <button type="button" data-filter="DFID" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">DFID</button>
+          <button type="button" data-filter="TechnoServe" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">TechnoServe</button>
+          <button type="button" data-filter="Self Help Africa" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Self Help Africa</button>
+          <button type="button" data-filter="ChildFund" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">ChildFund</button>
+          <button type="button" data-filter="Land O'Lakes" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Land O'Lakes</button>
+          <button type="button" data-filter="Walmart" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Walmart</button>
+          <button type="button" data-filter="BMZ" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">BMZ</button>
+          <button type="button" data-filter="AGRIFI" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">AGRIFI</button>
+          <button type="button" data-filter="CTA" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">CTA</button>
+          <button type="button" data-filter="Procasur" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Procasur</button>
+          <button type="button" data-filter="Visa Foundation" class="px-4 py-2.5 text-sm font-medium bg-cream text-dark/60 rounded-lg hover:bg-primary hover:text-white transition-colors border-2 border-dark/10">Visa Foundation</button>
         </div>
 
       </div>
