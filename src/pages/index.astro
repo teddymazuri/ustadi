@@ -6,12 +6,13 @@ import HeroSection from '../components/home/HeroSection.astro';
 import MissionSection from '../components/home/MissionSection.astro';
 import ProgramsSection from '../components/home/ProgramsSection.astro';
 import ImpactStatsSection from '../components/home/ImpactStatsSection.astro';
+import WhyUSTADI from '../components/home/WhyUSTADI.astro';
 import FeaturedProjectSection from '../components/home/FeaturedProjectSection.astro';
 import SuccessStorySection from '../components/home/SuccessStorySection.astro';
 import PartnersSection from '../components/home/PartnersSection.astro';
 import NewsSection from '../components/home/NewsSection.astro';
+import CombinedCTASection from '../components/home/CombinedCTASection.astro';
 import VolunteerCTASection from '../components/home/VolunteerCTASection.astro';
-import DonationCTASection from '../components/home/DonationCTASection.astro';
 import NewsletterSection from '../components/home/NewsletterSection.astro';
 import ContactSummarySection from '../components/home/ContactSummarySection.astro';
 
@@ -25,10 +26,10 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   description="USTADI Foundation promotes transformation and growth of youth and women enterprises in Kenya through demand-driven professional capacity development, innovative financing, and market systems development."
   currentPage="home"
 >
-  <!-- 1. Hero — Mission-driven hook -->
+  <!-- 1. Hero -->
   <HeroSection
     headline="Building Thriving Youth & Women Enterprises Across Kenya"
-    subheadline="We equip local entrepreneurs, smallholder farmers, and communities(especially youth) with the skills, market connections, and capital needed to grow their enterprises and create job opportunities for improved and sustainable livelihoods."
+    subheadline="We equip local entrepreneurs, smallholder farmers, and communities (especially youth) with the skills, market connections, and capital needed to grow their enterprises and create job opportunities for improved and sustainable livelihoods."
     cta={{ label: 'Our Work', href: getUrl('/programs') }}
     backgroundImage={getUrl('/images/hero/ustadi-hero.jpg')}
     backgroundAlt="Youth and women entrepreneurs participating in USTADI Foundation capacity development programs in rural Kenya"
@@ -85,13 +86,54 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   <!-- 4. Impact Stats -->
   <ImpactStatsSection
     stats={[
-      { value: '500,000+', label: 'Rural households reached with capacity development support' },
-      { value: '300+', label: 'Youth groups, CSOs, and self-help groups engaged' },
-      { value: '20+', label: 'Counties with active USTADI programming in Kenya' },
+      { value: '14+', label: 'Years of experience' },
+      { value: '500,000+', label: 'Rural households reached' },
+      { value: '20+', label: 'Counties with active programming' },
+      { value: '300+', label: 'Youth groups & CSOs engaged' },
+      { value: '1,171', label: 'Jobs created through Y2YF alone' },
+      { value: '20+', label: 'Funding partners' },
     ]}
   />
 
-  <!-- 5. Featured Project -->
+  <!-- 5. Why USTADI -->
+  <WhyUSTADI
+    heading="Why USTADI?"
+    subheading="Six reasons we deliver sustainable change for youth and women enterprises across Kenya."
+    reasons={[
+      {
+        title: 'Local Expertise',
+        description: 'Deep-rooted presence across 20+ counties with local trainers, partners, and community networks.',
+        icon: 'local',
+      },
+      {
+        title: 'Market-Driven Programming',
+        description: 'We respond to real market demand, not one-size-fits-all solutions.',
+        icon: 'market',
+      },
+      {
+        title: 'Enterprise Focus',
+        description: 'Capacity development as the core — not as an add-on — for enterprise growth.',
+        icon: 'enterprise',
+      },
+      {
+        title: 'Green Growth',
+        description: 'Climate-smart agriculture, renewable energy, and sustainable natural resource management.',
+        icon: 'green',
+      },
+      {
+        title: 'Partnership-Based Delivery',
+        description: 'Collaborating with 20+ funders, county governments, and private-sector allies.',
+        icon: 'partnership',
+      },
+      {
+        title: 'Evidence & Learning',
+        description: 'Rigorous M&E, impact evaluations, and knowledge capitalisation in every project.',
+        icon: 'evidence',
+      },
+    ]}
+  />
+
+  <!-- 6. Featured Project -->
   <FeaturedProjectSection
     overline="Featured Initiative"
     heading="Boosting Rural Youth Employment Through Agribusiness Hubs"
@@ -104,7 +146,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
-  <!-- 6. Success Story -->
+  <!-- 7. Success Story -->
   <SuccessStorySection
     quote="Through the VIJABIZ project, USTADI supported 173 youth groups across 2 counties, equipping over
 			1,550 direct participants (30 percent of them young women) with enterprise training, design clinics,
@@ -117,7 +159,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     cta={{ label: 'More success stories', href: getUrl('/success-stories') }}
   />
 
-  <!-- 7. Partners -->
+  <!-- 8. Partners -->
   <PartnersSection
     heading="Trusted by partners who share our vision"
     partners={[
@@ -145,7 +187,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     ]}
   />
 
-  <!-- 8. News / Projects -->
+  <!-- 9. Featured Projects -->
   <NewsSection
     heading="Featured Projects"
     subheading="A snapshot of our donor-funded initiatives delivering capacity development across Kenya."
@@ -175,30 +217,31 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
-  <!-- 9. Volunteer CTA -->
+  <!-- 10. Combined CTA — Partner primary, Donate secondary -->
+  <CombinedCTASection
+    heading="Partner with us to create lasting impact"
+    body="We collaborate with county governments, development partners, and private-sector buyers to strengthen value chains that deliver income and opportunity for rural producers. Every partnership — whether funding or expertise — supports demand-driven capacity development."
+    primaryCta={{ label: 'Partner With Us', href: getUrl('/partners') }}
+    secondaryCta={{ label: 'Donate', href: getUrl('/donate') }}
+  />
+
+  <!-- 11. Volunteer CTA -->
   <VolunteerCTASection
     heading="Work with us as an associate"
     body="Our network includes ILO-certified trainers and seasoned professionals across Kenya specializing in enterprise growth, value chain facilitation, mentorship, and capacity building. If you share our commitment to expanding sustainable enterprises and livelihoods, we invite you to apply to join our associate network."
     cta={{ label: 'Get involved', href: getUrl('/get-involved') }}
   />
 
-  <!-- 10. Donation CTA -->
-  <DonationCTASection
-    heading="Support demand-driven capacity development for rural youth and women"
-    body="Your contribution delivers technical assistance grants, business training, mentorship, and market linkages to youth and women entrepreneurs building sustainable livelihoods across Kenya."
-    cta={{ label: 'Make a donation', href: getUrl('/donate') }}
-  />
-
-  <!-- 11. Newsletter -->
+  <!-- 12. Newsletter -->
   <NewsletterSection
     heading="Stay informed"
     subheading="Receive updates about our projects, learning platforms, and opportunities to collaborate."
     formAction="https://formspree.io/f/your-form-id"
   />
 
-  <!-- 12. Contact Summary -->
-  <ContactSummarySection
+    <ContactSummarySection
     heading="Get in touch"
+    cta={{ label: 'Contact Us', href: getUrl('/contact') }}
     methods={[
       { icon: 'email', label: 'Email us', value: 'info@ustadi.org', href: 'mailto:info@ustadi.org' },
       { icon: 'phone', label: 'Call us', value: '0707 387 313', href: 'tel:+254707387313' },

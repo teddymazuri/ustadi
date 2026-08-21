@@ -1,5 +1,5 @@
 ---
-// ContactSummarySection.astro — Practical contact row
+// ContactSummarySection.astro — Practical contact row with CTA
 export interface ContactMethod {
   icon: 'email' | 'location' | 'phone';
   label: string;
@@ -10,9 +10,13 @@ export interface ContactMethod {
 export interface Props {
   heading: string;
   methods: ContactMethod[];
+  cta?: {
+    label: string;
+    href: string;
+  };
 }
 
-const { heading, methods } = Astro.props;
+const { heading, methods, cta } = Astro.props;
 
 const icons: Record<string, string> = {
   email: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
@@ -51,5 +55,20 @@ const icons: Record<string, string> = {
         </a>
       ))}
     </div>
+
+    {cta && (
+      <div class="mt-10 text-center">
+        <a
+          href={cta.href}
+          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light no-underline shadow-sm"
+          style="font-size: var(--text-body-base);"
+        >
+          {cta.label}
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    )}
   </div>
 </section>
