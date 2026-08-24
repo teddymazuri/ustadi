@@ -1,5 +1,5 @@
 ---
-// NewsletterSection.astro — Simple email capture
+// NewsletterSection.astro — Simple email capture with JS intercept
 export interface Props {
   heading: string;
   subheading: string;
@@ -26,11 +26,23 @@ const { heading, subheading, formAction } = Astro.props;
       {subheading}
     </p>
 
+    <!-- Success message -->
+    <div id="newsletter-success" class="hidden mt-6 bg-green-50 border-2 border-green-200 rounded-xl px-6 py-3 max-w-md mx-auto">
+      <p class="text-green-700 font-semibold text-sm">Subscribed! You're on the list.</p>
+    </div>
+
+    <!-- Error message -->
+    <div id="newsletter-error" class="hidden mt-6 bg-red-50 border-2 border-red-200 rounded-xl px-6 py-3 max-w-md mx-auto">
+      <p class="text-red-700 font-semibold text-sm">Something went wrong. Please try again.</p>
+    </div>
+
     <form
       class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
       data-netlify="true"
+      name="newsletter"
       action={formAction}
       method="POST"
+      id="newsletter-form"
     >
       <label for="newsletter-email" class="sr-only">Email address</label>
       <input
@@ -46,6 +58,7 @@ const { heading, subheading, formAction } = Astro.props;
       <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
       <button
         type="submit"
+        id="newsletter-submit-btn"
         class="px-6 py-3 font-semibold text-white bg-primary rounded-lg hover:bg-primary-light shadow-sm shrink-0"
         style="font-size: var(--text-body-base);"
       >
@@ -54,3 +67,43 @@ const { heading, subheading, formAction } = Astro.props;
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const successMsg = document.getElementById('newsletter-success');
+  const errorMsg = document.getElementById('newsletter-error');
+  const submitBtn = document.getElementById('newsletter-submit-btn');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    successMsg?.classList.add('hidden');
+    errorMsg?.classList.add('hidden');
+    
+    const originalText = submitBtn?.textContent;
+    submitBtn!.textContent = 'Subscribing...';
+    submitBtn!.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        form.reset();
+        successMsg?.classList.remove('hidden');
+      } else {
+        errorMsg?.classList.remove('hidden');
+      }
+    } catch (err) {
+      errorMsg?.classList.remove('hidden');
+    } finally {
+      submitBtn!.textContent = originalText;
+      submitBtn!.disabled = false;
+    }
+  });
+</script>

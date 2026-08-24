@@ -342,7 +342,17 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
         Subscribe to receive updates on our work, impact stories, and opportunities.
       </p>
 
-      <form class="flex flex-col sm:flex-row gap-2 mb-6" data-netlify="true" action="/newsletter" method="POST">
+      <!-- Footer newsletter success -->
+      <div id="footer-newsletter-success" class="hidden mb-4 bg-green-50 border-2 border-green-200 rounded-xl px-4 py-2.5">
+        <p class="text-green-700 font-semibold text-sm">Subscribed! You're on the list.</p>
+      </div>
+
+      <!-- Footer newsletter error -->
+      <div id="footer-newsletter-error" class="hidden mb-4 bg-red-50 border-2 border-red-200 rounded-xl px-4 py-2.5">
+        <p class="text-red-700 font-semibold text-sm">Something went wrong. Please try again.</p>
+      </div>
+
+      <form class="flex flex-col sm:flex-row gap-2 mb-6" data-netlify="true" name="footer-newsletter" action="/newsletter" method="POST" id="footer-newsletter-form">
         <label for="footer-email" class="sr-only">Your email address</label>
         <input
           type="email"
@@ -356,6 +366,7 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
         <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
         <button
           type="submit"
+          id="footer-newsletter-submit-btn"
           class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-lg hover:bg-primary-light shrink-0"
         >
           Subscribe
@@ -386,3 +397,43 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
 
   <BackToTop />
 </BaseLayout>
+
+<script>
+  const footerForm = document.getElementById('footer-newsletter-form');
+  const footerSuccessMsg = document.getElementById('footer-newsletter-success');
+  const footerErrorMsg = document.getElementById('footer-newsletter-error');
+  const footerSubmitBtn = document.getElementById('footer-newsletter-submit-btn');
+
+  footerForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    footerSuccessMsg?.classList.add('hidden');
+    footerErrorMsg?.classList.add('hidden');
+    
+    const originalText = footerSubmitBtn?.textContent;
+    footerSubmitBtn!.textContent = 'Subscribing...';
+    footerSubmitBtn!.disabled = true;
+
+    const formData = new FormData(footerForm);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        footerForm.reset();
+        footerSuccessMsg?.classList.remove('hidden');
+      } else {
+        footerErrorMsg?.classList.remove('hidden');
+      }
+    } catch (err) {
+      footerErrorMsg?.classList.remove('hidden');
+    } finally {
+      footerSubmitBtn!.textContent = originalText;
+      footerSubmitBtn!.disabled = false;
+    }
+  });
+</script>

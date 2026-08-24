@@ -116,7 +116,7 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  {/* Featured Story */}
+  <!-- Featured Story -->
   {featured && (
     <section class="pb-12 bg-white" aria-label="Featured story">
       <div class="container-wide">
@@ -192,6 +192,7 @@ const storiesJson = JSON.stringify(stories);
                 alt={`${story.name} — ${story.role}`}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
+                decoding="async"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent" aria-hidden="true"></div>
               <div class="absolute bottom-4 left-4 right-4">
@@ -228,7 +229,7 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  {/* Story Submission Form */}
+  <!-- Story Submission Form -->
   <section class="section-padding bg-cream" aria-labelledby="share-story-heading">
     <div class="container-tight">
       <div class="bg-white rounded-3xl p-8 md:p-12 shadow-card max-w-2xl mx-auto relative overflow-hidden">
@@ -253,9 +254,23 @@ const storiesJson = JSON.stringify(stories);
             Are you a USTADI programme graduate? We would love to feature your journey.
           </p>
           
-          <form data-netlify="true" action="/success-stories" method="POST" class="mt-8">
-            <div class="space-y-5">
-              <div class="grid sm:grid-cols-2 gap-5">
+          {/* Success message */}
+          <div id="form-success" class="hidden mt-8 bg-green-50 border-2 border-green-200 rounded-xl px-6 py-4 text-center">
+            <svg class="w-10 h-10 mx-auto text-green-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <p class="text-green-700 font-semibold text-sm">Thank you! Your story has been submitted.</p>
+            <p class="text-green-600 text-xs mt-1">We will review it and get back to you shortly.</p>
+          </div>
+
+          {/* Error message */}
+          <div id="form-error" class="hidden mt-8 bg-red-50 border-2 border-red-200 rounded-xl px-6 py-4 text-center">
+            <p class="text-red-700 font-semibold text-sm">Something went wrong. Please try again.</p>
+          </div>
+
+          <form data-netlify="true" name="story-submission" action="/success-stories" method="POST" class="mt-10" id="story-form">
+            <div class="space-y-6">
+              <div class="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label for="story-name" class="block text-sm font-medium text-dark/60 mb-2">Full Name *</label>
                   <input
@@ -315,6 +330,7 @@ const storiesJson = JSON.stringify(stories);
 
               <button
                 type="submit"
+                id="submit-btn"
                 class="w-full inline-flex items-center justify-center px-6 py-4 font-semibold text-white bg-primary rounded-xl hover:bg-primary-light transition-colors"
                 style="font-size: var(--text-body-base);"
               >
@@ -330,7 +346,7 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  {/* Story modal */}
+  <!-- Story modal -->
   <dialog
     id="story-modal"
     class="fixed inset-0 z-50 w-full h-full max-w-none max-h-none m-0 p-0 bg-dark/95 backdrop-blur-sm"
@@ -448,6 +464,48 @@ const storiesJson = JSON.stringify(stories);
         });
       });
     }
+
+    // Form submission handling (matching Contact page pattern)
+    const form = document.getElementById('story-form');
+    const successMsg = document.getElementById('form-success');
+    const errorMsg = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Hide any existing messages
+      successMsg?.classList.add('hidden');
+      errorMsg?.classList.add('hidden');
+      
+      // Disable button and show loading
+      const originalText = submitBtn?.innerHTML;
+      submitBtn!.innerHTML = 'Submitting...';
+      submitBtn!.disabled = true;
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData as any).toString(),
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMsg?.classList.remove('hidden');
+          successMsg?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          errorMsg?.classList.remove('hidden');
+        }
+      } catch (err) {
+        errorMsg?.classList.remove('hidden');
+      } finally {
+        submitBtn!.innerHTML = originalText;
+        submitBtn!.disabled = false;
+      }
+    });
 
     initStoryFilters();
     document.addEventListener('astro:page-load', initStoryFilters);

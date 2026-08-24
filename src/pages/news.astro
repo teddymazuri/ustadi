@@ -58,7 +58,6 @@ const newsArticles = [
 ];
 
 const categories = ['All', 'Project Update', 'Impact Story', 'Project Launch', 'Project Milestone'];
-
 const articlesJson = JSON.stringify(newsArticles);
 ---
 
@@ -67,7 +66,6 @@ const articlesJson = JSON.stringify(newsArticles);
   description="Latest news, project updates, impact stories, and announcements from USTADI Foundation's work across Kenya."
   currentPage="news"
 >
-  <!-- Same as before, but cards use buttons with onclick -->
   <section class="section-padding bg-white" aria-labelledby="news-heading">
     <div class="container-wide relative">
       
@@ -219,7 +217,18 @@ const articlesJson = JSON.stringify(newsArticles);
               Stay informed
             </h2>
             <p class="mt-2 text-dark/60 text-sm">Subscribe to receive updates on our work, impact stories, and opportunities.</p>
-            <form class="mt-6 flex flex-col sm:flex-row gap-2" data-netlify="true" action="/newsletter" method="POST">
+
+            <!-- Success message -->
+            <div id="news-newsletter-success" class="hidden mt-6 bg-green-50 border-2 border-green-200 rounded-xl px-6 py-3">
+              <p class="text-green-700 font-semibold text-sm">Subscribed! You're on the list.</p>
+            </div>
+
+            <!-- Error message -->
+            <div id="news-newsletter-error" class="hidden mt-6 bg-red-50 border-2 border-red-200 rounded-xl px-6 py-3">
+              <p class="text-red-700 font-semibold text-sm">Something went wrong. Please try again.</p>
+            </div>
+
+            <form class="mt-6 flex flex-col sm:flex-row gap-2" data-netlify="true" name="news-newsletter" action="/newsletter" method="POST" id="news-newsletter-form">
               <label for="news-email" class="sr-only">Your email address</label>
               <input
                 type="email"
@@ -233,6 +242,7 @@ const articlesJson = JSON.stringify(newsArticles);
               <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
               <button
                 type="submit"
+                id="news-newsletter-submit-btn"
                 class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-[5px] hover:bg-primary-light shrink-0"
               >
                 Subscribe
@@ -322,6 +332,45 @@ const articlesJson = JSON.stringify(newsArticles);
       });
 
       window.openNewsStory = openNewsStory;
+
+      // Newsletter form intercept
+      const newsletterForm = document.getElementById('news-newsletter-form');
+      const newsletterSuccess = document.getElementById('news-newsletter-success');
+      const newsletterError = document.getElementById('news-newsletter-error');
+      const newsletterBtn = document.getElementById('news-newsletter-submit-btn');
+
+      newsletterForm?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        newsletterSuccess?.classList.add('hidden');
+        newsletterError?.classList.add('hidden');
+        
+        const originalText = newsletterBtn?.textContent;
+        newsletterBtn!.textContent = 'Subscribing...';
+        newsletterBtn!.disabled = true;
+
+        const formData = new FormData(newsletterForm);
+
+        try {
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData as any).toString(),
+          });
+
+          if (response.ok) {
+            newsletterForm.reset();
+            newsletterSuccess?.classList.remove('hidden');
+          } else {
+            newsletterError?.classList.remove('hidden');
+          }
+        } catch (err) {
+          newsletterError?.classList.remove('hidden');
+        } finally {
+          newsletterBtn!.textContent = originalText;
+          newsletterBtn!.disabled = false;
+        }
+      });
     });
 
     function initNewsFilters() {
