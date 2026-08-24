@@ -143,11 +143,11 @@
 /* ===== COMPONENT OVERRIDES ===== */
 @layer components {
   /* Remove Netlify branding badge */
-  .footer__attribution,
-  [data-netlify-badge],
-  .netlify-badge,
-  #netlify-badge,
-  [class*="netlify"] {
+  .nl-wrap,
+  .nl-badge,
+  .nl-card,
+  #nl-badge,
+  #nl-card {
     display: none !important;
   }
 }
