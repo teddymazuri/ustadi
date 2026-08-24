@@ -2,11 +2,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://teddymazuri.github.io',
-  // Automatically uses '/' for local dev, and '/ustadi' for production builds
-  base: process.env.NODE_ENV === 'production' ? '/ustadi/' : '/',
+  site: process.env.NETLIFY 
+    ? 'https://ustadi.netlify.app' 
+    : 'https://teddymazuri.github.io',
+  base: process.env.NETLIFY ? '/' : '/ustadi/',
   vite: {
     plugins: [tailwindcss()]
   }

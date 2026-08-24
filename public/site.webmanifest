@@ -1,0 +1,16 @@
+{
+  "name": "USTADI Foundation",
+  "short_name": "USTADI",
+  "description": "Promoting transformation and growth of youth and women enterprises in Kenya",
+  "start_url": "./",
+  "display": "minimal-ui",
+  "background_color": "#FAF9F5",
+  "theme_color": "#5A6267",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

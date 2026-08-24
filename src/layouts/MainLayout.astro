@@ -342,7 +342,7 @@ const logoUrl = getUrl('/images/logo/ustadi-logo.svg');
         Subscribe to receive updates on our work, impact stories, and opportunities.
       </p>
 
-      <form class="flex flex-col sm:flex-row gap-2 mb-6" action="https://formspree.io/f/your-form-id" method="POST">
+      <form class="flex flex-col sm:flex-row gap-2 mb-6" data-netlify="true" action="/newsletter" method="POST">
         <label for="footer-email" class="sr-only">Your email address</label>
         <input
           type="email"

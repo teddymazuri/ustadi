@@ -219,7 +219,7 @@ const articlesJson = JSON.stringify(newsArticles);
               Stay informed
             </h2>
             <p class="mt-2 text-dark/60 text-sm">Subscribe to receive updates on our work, impact stories, and opportunities.</p>
-            <form class="mt-6 flex flex-col sm:flex-row gap-2" action="https://formspree.io/f/your-form-id" method="POST">
+            <form class="mt-6 flex flex-col sm:flex-row gap-2" data-netlify="true" action="/newsletter" method="POST">
               <label for="news-email" class="sr-only">Your email address</label>
               <input
                 type="email"
