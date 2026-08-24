@@ -140,6 +140,18 @@
   }
 }
 
+/* ===== COMPONENT OVERRIDES ===== */
+@layer components {
+  /* Remove Netlify branding badge */
+  .footer__attribution,
+  [data-netlify-badge],
+  .netlify-badge,
+  #netlify-badge,
+  [class*="netlify"] {
+    display: none !important;
+  }
+}
+
 /* ===== REDUCED MOTION (global override) ===== */
 @media (prefers-reduced-motion: reduce) {
   *,
