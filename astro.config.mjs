@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: process.env.NETLIFY 
-    ? 'https://ustadi.netlify.app' 
+    ? 'https://ustadi-org.netlify.app' 
     : 'https://teddymazuri.github.io',
   base: process.env.NETLIFY ? '/' : '/ustadi/',
   vite: {
