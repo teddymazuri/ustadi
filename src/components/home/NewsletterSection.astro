@@ -38,8 +38,6 @@ const { heading, subheading, formAction } = Astro.props;
 
     <form
       class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-      data-netlify="true"
-      name="newsletter"
       action={formAction}
       method="POST"
       id="newsletter-form"
@@ -55,7 +53,7 @@ const { heading, subheading, formAction } = Astro.props;
         class="flex-1 px-5 py-3 bg-white border border-gray-200 rounded-lg text-dark placeholder:text-dark/40 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
         style="font-size: var(--text-body-base);"
       />
-      <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
       <button
         type="submit"
         id="newsletter-submit-btn"
@@ -87,10 +85,12 @@ const { heading, subheading, formAction } = Astro.props;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {

@@ -5,17 +5,11 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: process.env.NETLIFY 
-    ? 'https://ustadi-org.netlify.app'
-    : process.env.CPANEL
-    ? 'https://ustadi.org'
+    ? 'https://ustadi-org.netlify.app'  // ← Keep this for now
     : 'https://teddymazuri.github.io',
-  base: process.env.NETLIFY 
-    ? '/' 
-    : process.env.CPANEL
-    ? '/'
-    : '/ustadi/',
+  base: process.env.NETLIFY ? '/' : '/ustadi/',
   vite: {
     plugins: [tailwindcss()]
   },
-  integrations: [sitemap()],
+  integrations: [sitemap()],  // ← Just add this
 });

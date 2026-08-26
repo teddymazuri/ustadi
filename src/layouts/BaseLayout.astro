@@ -89,14 +89,5 @@ const ogImageURL = Astro.site ? new URL(image, Astro.site).href : image;
   <body class="min-h-screen flex flex-col antialiased">
     <slot />
 
-    <!-- Remove Netlify Badge -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Remove Netlify injected badge elements
-        document.querySelectorAll('.nl-wrap, .nl-badge, .nl-card, #nl-badge, #nl-card')
-          .forEach(el => el.remove());
-      });
-    </script>
-
   </body>
 </html>
