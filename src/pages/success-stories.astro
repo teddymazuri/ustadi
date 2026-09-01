@@ -256,7 +256,7 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  <!-- Stories Grid -->
+  {/* Stories Grid */}
   <section class="pb-20 bg-white">
     <div class="container-wide">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stories-grid>
@@ -525,7 +525,8 @@ const storiesJson = JSON.stringify(stories);
 
       const bodyEl = document.getElementById('story-modal-body');
       bodyEl.innerHTML = '';
-      story.fullStory.split('\\n\\n').forEach((paragraph) => {
+      // Fix: Use '\n\n' not '\\n\\n'
+      story.fullStory.split('\n\n').forEach((paragraph) => {
         const p = document.createElement('p');
         p.textContent = paragraph;
         bodyEl.appendChild(p);
