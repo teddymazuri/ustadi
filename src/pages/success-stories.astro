@@ -7,21 +7,86 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
 
 const stories = [
+  // ===== FEATURED STORY =====
   {
-    name: 'Faith M.',
-    role: 'Entrepreneur & VIJABIZ Graduate',
-    quote: 'USTADI Foundation didn\'t just teach me skills — they believed in me when I didn\'t believe in myself. Today, I run my own tailoring business, employ two people from my community, and can support my family. That is the power of opportunity.',
-    fullStory: 'Faith joined the VIJABIZ project with a passion for tailoring but no formal business training. Through the project\'s enterprise development programme, she received hands-on mentorship, participated in design clinics, and was awarded a catalytic grant to purchase industrial sewing machines.\n\nToday, Faith runs a thriving tailoring business in Nakuru County, employing two people from her community. She has expanded from basic alterations to producing school uniforms and custom clothing for local businesses.\n\nThe training didn\'t just teach her technical skills — it built her confidence to manage finances, negotiate with suppliers, and market her services. Faith now mentors other young women in her community who want to start their own enterprises.',
-    image: getUrl('/images/home/success-vijabiz.jpg'),
-    project: 'VIJABIZ Project',
-    location: 'Nakuru County',
+    name: 'Catherine Nabwire',
+    role: 'Poultry Breeder & Wezesha III Graduate',
+    quote: 'Farmers are willing to raise poultry, but their problem is the knowledge of breeding. I decided to understand this better so that whenever I get a place somewhere, I will just use the same knowledge that I\'ve been gaining.',
+    fullStory: 'For Catherine Nabwire, 30, from Elugulu ward, Butula sub-county, Busia County, poultry farming is not simply about keeping birds. It is about building practical experience, creating an income, solving problems for other farmers, and turning skills into opportunities.\n\nCatherine studied Animal Production, but she wanted to go beyond having knowledge on paper and gain practical experience that she could use in real farming situations. That decision led her into poultry breeding. Catherine sources day-old chicks, raises them for about one month and sells them to farmers. Her enterprise has grown gradually from starting with 20 birds, 30, then 50, and now maintaining 120 birds through a cycle of selling and restocking.\n\nShe buys day-old chicks at about KES 115 each and sells them at around KES 300 after one month. Her monthly income from the enterprise is approximately KES 16,000 after expenses. But the numbers only tell part of Catherine\'s story. The bigger story is what happened when her poultry skills began solving a problem for other farmers.\n\nCatherine joined the Wezesha III Agri Eco-hub project, implemented by USTADI Foundation, and funded by Safaricom Foundation in June 2025. Through the project, she received training in financial management, business skills, communication skills, and strengthened her poultry care and management skills.\n\nToday, Catherine is a trusted source of poultry knowledge in her community. She has trained over 100 young people who visit her site to observe and learn. She also provides vaccination services at KES 5 per chick, turning her technical knowledge into an additional income stream.',
+    gallery: [
+      { src: getUrl('/images/stories/catherine-1.jpg'), alt: 'Catherine Nabwire at her poultry unit in Elugulu ward, Busia County' },
+      { src: getUrl('/images/stories/catherine-2.jpg'), alt: 'Catherine Nabwire with her poultry flock' },
+      { src: getUrl('/images/stories/catherine-3.jpg'), alt: 'Catherine Nabwire in front of her chicken coup' },
+    ],
+    project: 'Wezesha III Project',
+    location: 'Busia County',
   },
+  // ===== WEZESHA III STORIES =====
+  {
+    name: 'Miriam Ojakol',
+    role: 'Poultry Attendant & Wezesha III Graduate',
+    quote: 'This project has helped me grow my understanding of the challenges farmers face and how to deal with them. In the near future, I hope this experience will attract opportunities to work with international organisations so that I can train farmers across even wider areas.',
+    fullStory: 'At 26, Miriam Ojakol is demonstrating that an immediate paycheck does not always define meaningful work. Sometimes, it begins with gaining the right skills, using them to serve others, and laying the foundation for a future built on knowledge, enterprise, and purpose.\n\nA resident of Amukura West Ward in Busia County, Miriam joined the Wezesha III Agri-Eco Hub as an industrial attachment student from the Shamberere National Polytechnic, where she is pursuing a diploma in Agricultural Extension. During her attachment from January to March 2026, she received hands-on training in poultry production, brooding and vaccination, disease prevention and control, feed formulation, record-keeping, farm management, and agribusiness, alongside kitchen garden technologies.\n\nToday, as she awaits her graduation next year, Miriam serves as the Poultry Attendant at the Wezesha Agri-Eco Hub, applying the skills she acquired during her attachment while continuing to strengthen her practical experience in modern poultry management.\n\nBack home, Miriam has become a trusted source of poultry knowledge within her community. She voluntarily provides advisory services on poultry management, helping neighbours improve how they rear their birds. Although she currently offers these services free of charge, she sees every visit as an opportunity to build trust, share knowledge and strengthen local farming practices. So far, Miriam has inspired and trained 30 farmers, including 17 young people and 13 older farmers.\n\nBeyond sharing knowledge, Miriam is also putting her skills into practice through her own farming enterprise. Today, she has 20 chicks, and she is also expanding into pig farming, where she currently keeps five pigs.',
+    gallery: [
+      { src: getUrl('/images/stories/miriam-1.jpg'), alt: 'Miriam Ojakol at the Wezesha Agri Eco Hub poultry unit in Alupe, Busia County' },
+      { src: getUrl('/images/stories/miriam-2.jpg'), alt: 'Miriam Ojakol working with poultry at the Wezesha Hub' },
+      { src: getUrl('/images/stories/miriam-3.jpg'), alt: 'Miriam Ojakol working with poultry at the Wezesha Hub' },
+    ],
+    project: 'Wezesha III Project',
+    location: 'Busia County',
+  },
+  {
+    name: 'Rebecca Odalo',
+    role: 'Poultry Entrepreneur & Wezesha III Graduate',
+    quote: 'I didn\'t receive equipment or starter kits. What changed me most was the training. I learned how to communicate with customers and how to make them come back after buying chicks.',
+    fullStory: 'For Rebecca Odalo, agriculture was never just a subject she studied. It became the foundation upon which she chose to build her future. Today, at 31 years old, Rebecca is one of the most recognised poultry brooders in Malaba Central Ward, Teso North Sub-County, Busia County.\n\nRebecca started farming two years ago with 50 chicks, brooding day-old chicks up to one month, then selling each chick at KES 300. Although she had graduated in Agriculture and Biotechnology, her college training had focused largely on crop production. Poultry brooding was new territory.\n\nBy the time she joined the Wezesha III Agri-Eco Hub in 2025, Rebecca had already begun brooding chicks, but only on a small scale. She was producing between 50 and 100 chicks per cycle and earning between KES 5,000 and KES 10,000 a month. Through the project, she strengthened both her technical and soft skills. She improved her poultry management practices while also learning communication, customer engagement and marketing.\n\nToday, Rebecca has expanded from brooding 50-100 chicks to managing between 300 and 400 chicks per production cycle. She earns KES 30,000–40,000 from each poultry sales cycle. She serves 15-20 customers. She has also started an agrovet business, making poultry inputs more accessible to local farmers while creating employment for one person. So far, she has trained 20 young people in poultry care and management.',
+    gallery: [
+      { src: getUrl('/images/stories/rebecca-1.jpg'), alt: 'Rebecca Odalo with her poultry flock in Malaba Central Ward, Busia County' },
+      { src: getUrl('/images/stories/rebecca-2.jpg'), alt: 'Rebecca Odalo at her agrovet business' },
+      { src: getUrl('/images/stories/rebecca-3.jpg'), alt: 'Rebecca Odalo at her agrovet business' },
+      { src: getUrl('/images/stories/rebecca-4.jpg'), alt: 'Rebecca Odalo at her agrovet business' },
+    ],
+    project: 'Wezesha III Project',
+    location: 'Busia County',
+  },
+  {
+    name: 'William Otwane',
+    role: 'Agripreneur & Wezesha III Graduate',
+    quote: 'Before, I never thought of selling chickens. We simply kept them. If visitors came, we would slaughter one. They were not a business. One lesson stayed with me: we should rear chickens as a business.',
+    fullStory: 'For years, William Otwane, 30, from Angurai East Ward, Teso North Subcounty, was one of many young graduates struggling to turn their education into a sustainable livelihood after earning a Diploma in Electrical and Electronics Engineering in 2020. Like many rural households, his family kept indigenous chickens. They roamed freely around the homestead, scavenging for food during the day and returning home in the evening. They were never considered a business.\n\nThat changed when William joined the Wezesha III Agri-Eco Hub project in 2025. Implemented by Ustadi Foundation and funded by the Safaricom Foundation, the initiative equipped William with practical skills in poultry management, agribusiness, entrepreneurship, record-keeping, and communication, while changing how he viewed poultry farming.\n\nToday, William keeps 50 chickens, 80 chicks, 6 turkeys, and 6 geese. He does not buy chicks; instead, his hens hatch them, and he sells the chicks they produce. He sells day-old chicks for KES 100–115 and one-month-old chicks for KES 250–300. The last batch earned him about KES 30,000. Alongside poultry, William has a vegetable garden, 5 pigs and a one-acre plot leased for soybeans. He has trained 50 young people so far.',
+    gallery: [
+      { src: getUrl('/images/stories/william-1.jpg'), alt: 'William Otwane with his poultry in Angurai East Ward, Busia County' },
+      { src: getUrl('/images/stories/william-2.jpg'), alt: 'William Otwane with his diversified farm enterprises' },
+      { src: getUrl('/images/stories/william-3.jpg'), alt: 'William Otwane with his diversified farm enterprises' },
+    ],
+    project: 'Wezesha III Project',
+    location: 'Busia County',
+  },
+  {
+    name: 'Wezesha III Agri-Eco Hub',
+    role: 'Strengthening the Agricultural Value Chain',
+    quote: 'During the sunshine and during the rain, you can get vegetables. When you come here and take vegetables worth one thousand shillings, you can expect about five hundred shillings profit.',
+    fullStory: 'For vegetable traders in Adungosi, Angorom, and the surrounding communities of Busia, the dry season has traditionally meant empty stalls, long journeys in search of produce, higher costs, and uncertain supplies. The Wezesha Agri-Eco Hub in Alupe is changing that story.\n\nLinet Juma, who has sold vegetables for nearly 10 years, used to wake up early and spend hours moving from one place to another during the dry season. Sometimes she would leave home at 5:00 a.m. only to be told there was nothing available. The risk of travelling long distances through isolated areas was also a constant concern.\n\nConsolata Abuor, a vegetable trader in Adungosi for 15 years, recalls walking more than five kilometres to Busia town and beyond, sometimes crossing into Uganda in search of produce. Today, she can access vegetables through the Hub weekly even when dry conditions affect other sources. She estimates that when she invests KES 1,000 in vegetables from the Hub, she can expect about KES 500 in profit, compared to only KES 300 profit from KES 2,000 invested elsewhere during the dry season.\n\nThe Hub harvests vegetables every week and consistently serves about 10 loyal buyers. During the dry season, demand often increases. The impact extends beyond traders to food vendors like Lawrence Omachar, who depends on vegetables to serve the university community at Alupe.\n\nImplemented by Ustadi Foundation in partnership with the Lake Basin Development Authority and funded by Safaricom Foundation, the Wezesha Agri-Eco Hub is a youth-centered agricultural innovation and enterprise development hub designed to enhance climate-smart agriculture, agribusiness skills, and sustainable livelihoods among young people.',
+    gallery: [
+      { src: getUrl('/images/stories/wezesha-hub-1.jpg'), alt: 'Vegetable traders at the Wezesha Agri-Eco Hub in Alupe, Busia County' },
+      { src: getUrl('/images/stories/wezesha-hub-2.jpg'), alt: 'Linet Juma Harvesting' },
+      { src: getUrl('/images/stories/wezesha-hub-3.jpg'), alt: 'Consolata Abuor Harvesting' },
+      { src: getUrl('/images/stories/wezesha-hub-4.jpg'), alt: 'Risper Mwajuma Harvesting' },
+      { src: getUrl('/images/stories/wezesha-hub-5.jpg'), alt: 'Laurence Omachar Harvesting' },
+    ],
+    project: 'Wezesha III Project',
+    location: 'Busia County',
+  },
+  // ===== PREVIOUS STORIES (Restored) =====
   {
     name: 'Mary W.',
     role: 'Digital Skills Graduate',
     quote: 'Before this program, I had never touched a computer. Now I am learning to code and building websites for local businesses. The JOY Project opened a door I didn\'t know existed.',
     fullStory: 'Mary had never touched a computer before joining the JOY Project\'s digital skills programme. Today, she is learning to code and building websites for local businesses in Kilifi County.\n\nThe programme introduced her to basic computer literacy before progressing to web development fundamentals. Through hands-on projects and mentorship, Mary gained the confidence to offer digital services to small businesses in her community.\n\nShe is now part of a growing network of young digital entrepreneurs supported by the JOY Project, demonstrating how access to technology education can open entirely new career pathways for rural youth.',
-    image: getUrl('/images/projects/joy-project.jpg'),
+    gallery: [
+      { src: getUrl('/images/stories/mary-1.jpg'), alt: 'Mary W. learning to code at a JOY Project digital skills programme' },
+      { src: getUrl('/images/stories/mary-2.jpg'), alt: 'Mary W. building websites for local businesses' },
+    ],
     project: 'JOY Project',
     location: 'Kilifi County',
   },
@@ -30,7 +95,10 @@ const stories = [
     role: 'Y2YF Grantee',
     quote: 'The Youth-to-Youth Fund gave me the start I needed. From a small agribusiness idea, I now supply vegetables to three hotels in Kisumu. The mentorship and grant support changed everything.',
     fullStory: 'John started with a small agribusiness idea and a desire to supply fresh vegetables to local hotels. Through the Youth-to-Youth Fund, he received grant support and structured mentorship that turned his idea into a viable enterprise.\n\nToday, John supplies vegetables to three hotels in Kisumu. The grant helped him secure reliable inputs, improve his post-harvest handling, and establish consistent supply relationships.\n\nThe mentorship component was particularly valuable — John learned financial management, record keeping, and how to negotiate with buyers. He now provides informal employment to two other young people who help with harvesting and delivery.',
-    image: getUrl('/images/projects/y2yf-project.jpg'),
+    gallery: [
+      { src: getUrl('/images/stories/john-1.jpg'), alt: 'John K. supplying vegetables to hotels in Kisumu' },
+      { src: getUrl('/images/stories/john-2.jpg'), alt: 'John K. at his agribusiness operation' },
+    ],
     project: 'Y2YF Project',
     location: 'Kisumu County',
   },
@@ -39,7 +107,10 @@ const stories = [
     role: 'Cassava Farmer & Group Leader',
     quote: 'Through the cassava project, our group of 30 women learned to process and market our produce. We now sell directly to buyers instead of middlemen. Our incomes have doubled.',
     fullStory: 'Amina leads a group of 30 women who transformed their cassava farming through the cassava value chain project in Kilifi County.\n\nThe group received training on good agricultural practices, post-harvest handling, and farming as a business. They adopted the Tajirika cassava variety, which significantly improved their yields.\n\nMost importantly, they learned to process and market their produce collectively. Instead of selling through middlemen, the group now sells directly to buyers, doubling their incomes. The project also connected them to aggregation centres and KEBS certification for value-added cassava flour.',
-    image: getUrl('/images/projects/cassava-project.jpg'),
+    gallery: [
+      { src: getUrl('/images/stories/amina-1.jpg'), alt: 'Amina S. leading her cassava farming group in Kilifi County' },
+      { src: getUrl('/images/stories/amina-2.jpg'), alt: 'Cassava processing and value addition by Amina\'s group' },
+    ],
     project: 'Cassava Value Chain Project',
     location: 'Kilifi County',
   },
@@ -48,7 +119,10 @@ const stories = [
     role: 'Livestock Trader',
     quote: 'K-SALES connected me to better markets. I learned about livestock grading and pricing. Today I buy from over 50 pastoralist households and supply to major butcheries.',
     fullStory: 'Peter transformed his small livestock trading operation through the K-SALES project, which focused on improving the competitiveness of livestock value chains in semi-arid Kenya.\n\nThe project taught him about livestock grading, pricing, and market dynamics. Armed with this knowledge, he now buys from over 50 pastoralist households and supplies to major butcheries.\n\nThe market linkages established through the project opened doors that were previously inaccessible to small-scale traders. Peter now provides reliable income to pastoralist families while building a sustainable business.',
-    image: getUrl('/images/projects/ksales-project.jpg'),
+    gallery: [
+      { src: getUrl('/images/stories/peter-1.jpg'), alt: 'Peter M. at a livestock market in Laikipia County' },
+      { src: getUrl('/images/stories/peter-2.jpg'), alt: 'Peter M. trading livestock with pastoralist households' },
+    ],
     project: 'K-SALES Project',
     location: 'Laikipia County',
   },
@@ -57,7 +131,10 @@ const stories = [
     role: 'COVID-19 Recovery Grant Recipient',
     quote: 'When the pandemic hit, my poultry business almost collapsed. The resilience grant and coaching helped me pivot to day-old chick sales. I am now back on my feet and growing.',
     fullStory: 'Grace\'s poultry business was thriving until the COVID-19 pandemic disrupted her supply chain and customer base. The post-VIJABIZ resilience programme provided the lifeline she needed.\n\nThrough targeted coaching and a resilience grant, Grace pivoted her business model to day-old chick sales — a more resilient and scalable approach. The training helped her understand market demand shifts and adapt accordingly.\n\nToday, Grace is back on her feet and growing. Her business now serves surrounding communities with healthy day-old chicks, and she has regained her financial independence.',
-    image: getUrl('/images/projects/covid-resilience.jpg'),
+    gallery: [
+      { src: getUrl('/images/stories/grace-1.jpg'), alt: 'Grace W. with her poultry business in Nakuru County' },
+      { src: getUrl('/images/stories/grace-2.jpg'), alt: 'Grace W. with day-old chicks at her business' },
+    ],
     project: 'COVID-19 Resilience Project',
     location: 'Nakuru County',
   },
@@ -72,7 +149,7 @@ const storiesJson = JSON.stringify(stories);
 <MainLayout
   title="Success Stories"
   description="Read inspiring stories of youth and women entrepreneurs whose lives have been transformed through USTADI Foundation's capacity development programmes across Kenya."
-  currentPage="news"
+  currentPage="stories"
 >
   <!-- Hero -->
   <section class="section-padding bg-white" aria-labelledby="stories-heading">
@@ -104,7 +181,7 @@ const storiesJson = JSON.stringify(stories);
           Real stories from youth and women whose lives have been transformed through access to skills, markets, and opportunity.
         </p>
 
-        {/* Mini stats */}
+        <!-- Mini stats -->
         <div class="mt-8 inline-flex flex-wrap justify-center gap-6">
           <span class="text-dark/50 text-sm"><strong class="text-primary font-heading">{stories.length}</strong> Stories</span>
           <span class="text-dark/30">·</span>
@@ -128,12 +205,17 @@ const storiesJson = JSON.stringify(stories);
           <div class="grid md:grid-cols-2">
             <div class="relative h-72 md:h-full overflow-hidden">
               <img
-                src={featured.image}
-                alt={`${featured.name} — ${featured.role}`}
+                src={featured.gallery[0].src}
+                alt={featured.gallery[0].alt}
                 class="w-full h-full object-cover"
                 loading="eager"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-dark/50 to-transparent md:bg-gradient-to-r" aria-hidden="true"></div>
+              <div class="absolute top-4 left-4">
+                <span class="bg-accent text-dark text-xs font-semibold px-3 py-1.5 rounded-full shadow-sm">
+                  Featured Story
+                </span>
+              </div>
             </div>
             <div class="p-8 lg:p-12 flex flex-col justify-center">
               <span class="text-accent text-xs font-semibold tracking-wider uppercase">Featured Story</span>
@@ -174,7 +256,7 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  {/* Stories Grid */}
+  <!-- Stories Grid -->
   <section class="pb-20 bg-white">
     <div class="container-wide">
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-stories-grid>
@@ -188,8 +270,8 @@ const storiesJson = JSON.stringify(stories);
             
             <div class="relative h-56 overflow-hidden">
               <img
-                src={story.image}
-                alt={`${story.name} — ${story.role}`}
+                src={story.gallery[0].src}
+                alt={story.gallery[0].alt}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"
@@ -203,11 +285,11 @@ const storiesJson = JSON.stringify(stories);
 
             <div class="p-6 flex flex-col flex-1">
               <div class="flex-1">
-                <div class="flex items-center gap-2 mb-4">
-                  <svg class="w-8 h-8 text-accent/40 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <div class="flex items-start gap-2 mb-4">
+                  <svg class="w-8 h-8 text-accent/40 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
-                  <p class="text-dark/80 text-sm leading-relaxed italic line-clamp-4">
+                  <p class="text-dark/80 text-sm leading-relaxed italic">
                     "{story.quote}"
                   </p>
                 </div>
@@ -254,7 +336,7 @@ const storiesJson = JSON.stringify(stories);
             Are you a USTADI programme graduate? We would love to feature your journey.
           </p>
           
-          {/* Success message */}
+          <!-- Success message -->
           <div id="form-success" class="hidden mt-8 bg-green-50 border-2 border-green-200 rounded-xl px-6 py-4 text-center">
             <svg class="w-10 h-10 mx-auto text-green-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -263,7 +345,7 @@ const storiesJson = JSON.stringify(stories);
             <p class="text-green-600 text-xs mt-1">We will review it and get back to you shortly.</p>
           </div>
 
-          {/* Error message */}
+          <!-- Error message -->
           <div id="form-error" class="hidden mt-8 bg-red-50 border-2 border-red-200 rounded-xl px-6 py-4 text-center">
             <p class="text-red-700 font-semibold text-sm">Something went wrong. Please try again.</p>
           </div>
@@ -310,6 +392,7 @@ const storiesJson = JSON.stringify(stories);
                   <option value="Cassava Value Chain">Cassava Value Chain</option>
                   <option value="K-SALES">K-SALES</option>
                   <option value="COVID-19 Resilience">COVID-19 Resilience</option>
+                  <option value="Wezesha III Project">Wezesha III Project</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
@@ -346,13 +429,14 @@ const storiesJson = JSON.stringify(stories);
     </div>
   </section>
 
-  <!-- Story modal -->
+  <!-- Story modal with carousel -->
   <dialog
     id="story-modal"
     class="fixed inset-0 z-50 w-full h-full max-w-none max-h-none m-0 p-0 bg-dark/95 backdrop-blur-sm"
     aria-label="Success story"
   >
     <div class="flex flex-col h-full relative">
+      <!-- Header -->
       <div class="flex items-center justify-between px-6 py-4 bg-dark/50 shrink-0">
         <p id="story-modal-project" class="text-accent text-xs font-semibold tracking-wider uppercase"></p>
         <button
@@ -366,10 +450,51 @@ const storiesJson = JSON.stringify(stories);
           </svg>
         </button>
       </div>
+
+      <!-- Content -->
       <div class="flex-1 overflow-y-auto">
         <div class="max-w-3xl mx-auto px-6 py-8 md:py-12">
-          <img id="story-modal-image" src="" alt="" class="w-full rounded-2xl shadow-2xl object-cover aspect-[16/9] mb-8" />
-          <h2 id="story-modal-name" class="font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"></h2>
+
+          <!-- Carousel -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[16/9] bg-dark/50" id="carousel-container">
+            <img id="story-modal-image" src="" alt="" class="w-full h-full object-cover transition-opacity duration-300" />
+            
+            <!-- Navigation arrows -->
+            <button
+              id="carousel-prev"
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-dark/50 text-white hover:bg-dark/70 transition-colors backdrop-blur-sm"
+              aria-label="Previous image"
+              type="button"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              id="carousel-next"
+              class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full bg-dark/50 text-white hover:bg-dark/70 transition-colors backdrop-blur-sm"
+              aria-label="Next image"
+              type="button"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <!-- Image counter -->
+            <div id="carousel-counter" class="absolute bottom-4 right-4 bg-dark/60 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm">
+              1 / 2
+            </div>
+
+            <!-- Dots indicator -->
+            <div id="carousel-dots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              <span class="w-2 h-2 rounded-full bg-white/80" data-dot="0"></span>
+              <span class="w-2 h-2 rounded-full bg-white/30" data-dot="1"></span>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <h2 id="story-modal-name" class="mt-8 font-heading font-bold text-white" style="font-size: var(--text-heading-md); line-height: var(--text-heading-md--line-height);"></h2>
           <p id="story-modal-meta" class="mt-3 text-white/50 text-sm"></p>
           <div id="story-modal-body" class="mt-6 text-white/70 leading-relaxed space-y-4" style="font-size: var(--text-body-base); line-height: var(--text-body-base--line-height);"></div>
         </div>
@@ -381,16 +506,22 @@ const storiesJson = JSON.stringify(stories);
 
   <script>
     const storyData = window.__stories;
+    let currentCarouselIndex = 0;
+    let currentGallery = [];
 
     function openStory(index: number) {
       const story = storyData[index];
       if (!story) return;
 
+      currentGallery = story.gallery || [];
+      currentCarouselIndex = 0;
+
       document.getElementById('story-modal-project').textContent = story.project;
       document.getElementById('story-modal-name').textContent = story.name;
       document.getElementById('story-modal-meta').textContent = `${story.role} · ${story.location}`;
-      document.getElementById('story-modal-image').src = story.image;
-      document.getElementById('story-modal-image').alt = `${story.name} — ${story.role}`;
+
+      // Update carousel
+      updateCarousel();
 
       const bodyEl = document.getElementById('story-modal-body');
       bodyEl.innerHTML = '';
@@ -404,6 +535,35 @@ const storiesJson = JSON.stringify(stories);
       document.body.style.overflow = 'hidden';
     }
 
+    function updateCarousel() {
+      const img = document.getElementById('story-modal-image');
+      const counter = document.getElementById('carousel-counter');
+      const dots = document.querySelectorAll('#carousel-dots span');
+
+      if (currentGallery.length > 0) {
+        img.src = currentGallery[currentCarouselIndex].src;
+        img.alt = currentGallery[currentCarouselIndex].alt;
+        counter.textContent = `${currentCarouselIndex + 1} / ${currentGallery.length}`;
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('bg-white/80', i === currentCarouselIndex);
+          dot.classList.toggle('bg-white/30', i !== currentCarouselIndex);
+        });
+      }
+    }
+
+    function nextImage() {
+      if (currentGallery.length === 0) return;
+      currentCarouselIndex = (currentCarouselIndex + 1) % currentGallery.length;
+      updateCarousel();
+    }
+
+    function prevImage() {
+      if (currentGallery.length === 0) return;
+      currentCarouselIndex = (currentCarouselIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateCarousel();
+    }
+
     function closeStoryModal() {
       document.getElementById('story-modal').close();
       document.body.style.overflow = '';
@@ -411,11 +571,15 @@ const storiesJson = JSON.stringify(stories);
 
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('story-modal-close').addEventListener('click', closeStoryModal);
+      document.getElementById('carousel-prev').addEventListener('click', prevImage);
+      document.getElementById('carousel-next').addEventListener('click', nextImage);
 
       document.addEventListener('keydown', (e) => {
         const dialog = document.getElementById('story-modal');
         if (!dialog || !dialog.open) return;
         if (e.key === 'Escape') closeStoryModal();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
       });
 
       document.getElementById('story-modal').addEventListener('click', (e) => {
