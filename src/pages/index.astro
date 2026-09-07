@@ -146,16 +146,17 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     cta={{ label: 'View all projects', href: getUrl('/projects') }}
   />
 
-  <!-- 7. Success Story -->
+  <!-- 7. Featured Success Story -->
   <SuccessStorySection
-    quote="Through the VIJABIZ project, USTADI supported 173 youth groups across 2 counties, equipping over
-			1,550 direct participants (30 percent of them young women) with enterprise training, design clinics,
-			boot camps, mentorship, and incubation. To turn skills into real growth, 72 youth businesses
-			received catalytic grants to scale their operations, while key innovations and best practices were
-			documented for future expansion."
-    name="VIJABIZ Project"
-    role="Youth Economic Empowerment through Agribusiness in Kenya, 2018–2020"
-    portrait={{ src: getUrl('/images/home/success-vijabiz.jpg'), alt: 'Youth participants at a VIJABIZ agribusiness training session in Kilifi or Nakuru County' }}
+    sectionTitle="Featured Success Story"
+    quote="Before, I never thought of selling chickens. We simply kept them. If visitors came, we would slaughter one. They were not a business. One lesson stayed with me: we should rear chickens as a business."
+    name="William Otwane"
+    role="Agripreneur & Wezesha III Graduate, Busia County"
+    narrative="Meet William Otwane, whose journey into poultry entrepreneurship began with a change in how he viewed the chickens he was already keeping. Through the Wezesha III project, he transformed traditional livestock keeping into a diversified farming enterprise that now includes poultry, pigs, vegetables, and soybeans, creating a sustainable livelihood and inspiring other young people in his community."
+    portrait={{
+      src: getUrl('/images/stories/william-2.jpg'),
+      alt: 'William Otwane with his poultry in Angurai East Ward, Busia County',
+    }}
     cta={{ label: 'More success stories', href: getUrl('/success-stories') }}
   />
 
