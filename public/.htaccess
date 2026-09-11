@@ -6,7 +6,7 @@
 Options -Indexes +SymLinksIfOwnerMatch
 DirectoryIndex index.html
 
-# Fallback error page for LiteSpeed/Apache
+# Fallback error page for LiteSpeed/Apache Web Server
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
