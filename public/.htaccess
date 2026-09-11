@@ -1,31 +1,32 @@
 # ============================================
-# USTADI Foundation — .htaccess (with 404 support)
+# USTADI Foundation — Production .htaccess
 # ============================================
 
-Options +FollowSymLinks
+# Prevent directory browsing and set default index
+Options -Indexes +SymLinksIfOwnerMatch
+DirectoryIndex index.html
+
+# Fallback error page for LiteSpeed/Apache
 ErrorDocument 404 /404.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # If the request is for a real file or directory, serve it
-  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  # 1. Direct file requests (e.g., CSS, JS, images, PDFs) serve normally
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # 2. Existing directories with index.html serve directly
   RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule . - [L]
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^ - [L]
 
-  # If the request is not for a real file, check if it's a valid page
-  # (if it's not a valid route, serve 404)
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  
-  # Check if the requested URL is a valid page in your site
-  # (You can add more paths as needed)
-  RewriteCond %{REQUEST_URI} !^/(about|programs|projects|success-stories|news|contact|impact|partners|donate|get-involved|value-chains|resources|privacy-policy|terms)($|/)
-  RewriteRule . /404.html [L]
+  # 3. Clean URLs: Map /about to /about/index.html (Astro folder structure)
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [L]
 
-  # For valid routes, serve index.html
+  # 4. Serve custom Astro /404.html for all non-existent paths
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  RewriteRule ^ /404.html [L]
 </IfModule>
