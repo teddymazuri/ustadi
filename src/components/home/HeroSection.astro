@@ -1,8 +1,5 @@
 ---
-// HeroSection.astro — Fullscreen hero with overlay
-// Visual: Full-bleed background image, dark gradient overlay
-// Typography: Large editorial headline, single sentence, one CTA
-// Purpose: Emotional hook — "this matters"
+// HeroSection.astro — Fullscreen hero with frosted glass text panel
 export interface Props {
   headline: string;
   subheadline: string;
@@ -30,32 +27,40 @@ const { headline, subheadline, cta, backgroundImage, backgroundAlt } = Astro.pro
     fetchpriority="high"
   />
   
-  <!-- Gradient overlay -->
+  <!-- Dark gradient overlay -->
   <div
-    class="absolute inset-0 bg-gradient-to-b from-dark/30 via-dark/40 to-dark/80"
+    class="absolute inset-0 bg-gradient-to-b from-dark/40 via-dark/50 to-dark/80"
     aria-hidden="true"
   ></div>
 
   <!-- Content -->
   <div class="relative z-10 container-wide pb-16 md:pb-0">
     <div class="max-w-3xl">
-      <h1
-        id="hero-heading"
-        class="font-heading font-bold text-white text-balance"
-        style="font-size: clamp(2.25rem, 5vw, var(--text-heading-xl)); line-height: 1.1;"
-      >
-        {headline}
-      </h1>
-      <p
-        class="mt-6 text-white/80 max-w-xl text-balance"
-        style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height);"
-      >
-        {subheadline}
-      </p>
+      <!-- Frosted glass panel — reduced padding -->
+      <div class="bg-dark/5 backdrop-blur-md rounded-2xl px-4 py-4 md:px-6 md:py-5 border border-white/10">
+        
+        <h1
+          id="hero-heading"
+          class="font-heading font-bold text-white text-balance"
+          style="font-size: clamp(2.25rem, 5vw, var(--text-heading-xl)); line-height: 1.1; text-shadow: 0 2px 30px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);"
+        >
+          {headline}
+        </h1>
+
+        <p
+          class="mt-4 text-white/95 max-w-xl text-balance"
+          style="font-size: var(--text-body-lg); line-height: var(--text-body-lg--line-height); text-shadow: 0 1px 10px rgba(0,0,0,0.5);"
+        >
+          {subheadline}
+        </p>
+
+      </div>
+
+      <!-- CTA (outside the panel) -->
       <div class="mt-8">
         <a
           href={cta.href}
-          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg"
+          class="inline-flex items-center justify-center px-8 py-4 font-semibold text-dark bg-accent rounded-lg hover:bg-accent/90 no-underline shadow-lg transition-colors"
           style="font-size: var(--text-body-lg);"
         >
           {cta.label}
@@ -67,10 +72,37 @@ const { headline, subheadline, cta, backgroundImage, backgroundAlt } = Astro.pro
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:block" aria-hidden="true">
-    <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-      <div class="w-1.5 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></div>
-    </div>
-  </div>
+  <!-- Scroll Indicator — Minimal line + text -->
+  <a
+    href="#mission"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors no-underline group"
+    aria-label="Scroll to next section"
+  >
+    <span class="text-xs font-medium tracking-wider uppercase">Scroll</span>
+    <span class="w-px h-12 bg-white/30 group-hover:bg-white/60 transition-colors relative overflow-hidden">
+      <span class="absolute top-0 left-0 w-full h-4 bg-accent rounded-full animate-scroll-line"></span>
+    </span>
+  </a>
 </section>
+
+<style>
+  @keyframes scroll-line {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(300%);
+    }
+  }
+
+  .animate-scroll-line {
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-scroll-line {
+      animation: none;
+      transform: translateY(150%);
+    }
+  }
+</style>

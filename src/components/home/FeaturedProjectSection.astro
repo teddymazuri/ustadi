@@ -16,12 +16,13 @@ export interface Props {
   };
   duration?: string;
   value?: string;
+  id?: string; // Optional id for anchor linking
 }
 
-const { overline, heading, description, quote, quoteAttribution, image, cta, duration, value } = Astro.props;
+const { overline, heading, description, quote, quoteAttribution, image, cta, duration, value, id } = Astro.props;
 ---
 
-<section class="section-padding bg-white" aria-labelledby="project-heading">
+<section id={id} class="section-padding bg-white" aria-labelledby="project-heading">
   <div class="container-wide">
     
     <p

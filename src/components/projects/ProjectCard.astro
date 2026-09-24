@@ -31,17 +31,18 @@ const titleJson = JSON.stringify(title);
   <div class="md:w-1/2">
     <div class={`bg-white rounded-3xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 ${isEven ? 'md:mr-10' : 'md:ml-10'}`}>
       
-      {/* Thumbnail */}
-      <div class="relative h-44 overflow-hidden group">
+      {/* Thumbnail — Uniform aspect ratio, full uncropped photo */}
+      <div class="relative aspect-[4/3] bg-cream overflow-hidden group">
         <img
           src={image.src}
           alt={image.alt}
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-dark/40 to-transparent" aria-hidden="true"></div>
+
+        {/* Duration badge */}
         <div class="absolute bottom-3 left-4">
-          <p class="text-white/80 text-xs font-medium tracking-wider uppercase">{duration}</p>
+          <p class="text-dark/70 text-xs font-medium tracking-wider uppercase bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full">{duration}</p>
         </div>
 
         {/* Gallery trigger */}

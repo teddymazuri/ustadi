@@ -143,7 +143,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
     image={{ src: getUrl('/images/home/project-joy.jpg'), alt: 'Youth participants in the JOY Project agribusiness hub training' }}
     duration="2021–2025"
     value="US$ 2.5 Million"
-    cta={{ label: 'View all projects', href: getUrl('/projects') }}
+    cta={{ label: 'View Project', href: getUrl('/projects#project-joy-project') }}
   />
 
   <!-- 7. Featured Success Story -->
@@ -157,7 +157,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
       src: getUrl('/images/stories/william-2.jpg'),
       alt: 'William Otwane with his poultry in Angurai East Ward, Busia County',
     }}
-    cta={{ label: 'More success stories', href: getUrl('/success-stories') }}
+    cta={{ label: 'Read full story', href: getUrl('/success-stories#william-otwane') }}
   />
 
   <!-- 8. Partners -->
@@ -197,7 +197,7 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
       excerpt: 'This 4.5-year EU-funded initiative reached over 10,000 smallholder farmers across Kilifi and Kitui Counties, establishing 450 farmer business groups and 100 aggregation centres. At least 60% of participants were women.',
       date: '2017–2022',
       image: { src: getUrl('/images/projects/cassava-project.jpg'), alt: 'Smallholder farmers in a USTADI-supported cassava farming group' },
-      href: getUrl('/projects'),
+      href: getUrl('/projects#project-cassava-value-chain'),
     }}
     secondary={[
       {
@@ -205,14 +205,14 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
         excerpt: '34 youth-led organizations received grants. The programme created 1,171 jobs and reached over 10,000 indirect beneficiaries across 11 counties.',
         date: '2014–2015',
         image: { src: getUrl('/images/projects/y2yf-project.jpg'), alt: 'Y2YF grantee showcasing their business' },
-        href: getUrl('/projects'),
+        href: getUrl('/projects#project-y2yf'),
       },
       {
         title: 'Increasing Resilience for Youth Enterprises Affected by COVID-19',
         excerpt: 'Post-VIJABIZ support helping youth enterprises recover and build resilience after the pandemic, funded by USADF.',
         date: '2020–2022',
         image: { src: getUrl('/images/projects/covid-resilience.jpg'), alt: 'Youth entrepreneur rebuilding their business after COVID-19' },
-        href: getUrl('/projects'),
+        href: getUrl('/projects#project-covid-resilience'),
       },
     ]}
     cta={{ label: 'View all projects', href: getUrl('/projects') }}

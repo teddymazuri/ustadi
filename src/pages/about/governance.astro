@@ -13,16 +13,36 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
   description="USTADI Foundation is governed by a Board of 5 Directors and managed by a team led by the Chief Executive Officer, overseeing programmes, finance, grants, and monitoring and evaluation."
   currentPage="about"
 >
-    <GovernanceSection
+  <GovernanceSection
     heading="Governance and Management"
     board={{
       heading: 'Board of Directors',
       description: 'The Board of Directors is the key governance body providing leadership and guidance to management.',
       members: [
-        { name: "Professor Ruth Oniang'o", title: 'Board Chair' },
-        { name: 'Doctor Anthony Getambu', title: 'Board Member' },
-        { name: 'Daniel Chai Baya', title: 'Board Member' },
-        { name: 'Rahab Ngumba Njoroge', title: 'Board Member' },
+        {
+          name: "Professor Ruth Oniang'o",
+          title: 'Board Chair',
+          photo: getUrl('/images/team/ruth-oniango.jpg'),
+          bio: 'Professor Ruth Oniang\'o is a renowned Kenyan nutrition scientist, academic, and policy advocate. She is the Founder and Executive Director of the Rural Outreach Africa Programme and has served as a Professor of Food Science and Nutrition at Jomo Kenyatta University of Agriculture and Technology. She has been instrumental in shaping agricultural and nutrition policy across Africa.',
+        },
+        {
+          name: 'Doctor Anthony Getambu',
+          title: 'Board Member',
+          photo: getUrl('/images/team/anthony-getambu.jpg'),
+          bio: 'Doctor Anthony Getambu brings extensive experience in development finance and enterprise development. He has served in various leadership roles in Kenya\'s financial services sector and advises on agricultural value chain financing and rural enterprise development.',
+        },
+        {
+          name: 'Daniel Chai Baya',
+          title: 'Board Member',
+          photo: getUrl('/images/team/daniel-baya.jpg'),
+          bio: 'Daniel Chai Baya is a development practitioner with decades of experience in community development and rural livelihoods. He has worked with various NGOs and community-based organizations to strengthen local capacity and promote sustainable development.',
+        },
+        {
+          name: 'Rahab Ngumba Njoroge',
+          title: 'Board Member',
+          photo: getUrl('/images/team/rahab-njoroge.jpg'),
+          bio: 'Rahab Ngumba Njoroge is a seasoned governance and gender specialist. She has dedicated her career to promoting women\'s economic empowerment and youth inclusion across East Africa, working with both government and civil society organizations.',
+        },
       ],
     }}
     management={{
@@ -30,13 +50,40 @@ const getUrl = (path: string) => `${base}/${path.replace(/^\//, '')}`;
       description: 'The management team comprises senior professionals overseeing programmes, finance, grants, and monitoring functions under the leadership of the CEO.',
       ceo: {
         name: 'George Yaa Mazuri',
+        photo: getUrl('/images/team/george-mazuri.jpg'),
+        bio: 'George Yaa Mazuri serves as the Chief Executive Officer and Team Leader of USTADI Foundation. He brings extensive experience in market systems development, enterprise development, and capacity building. Under his leadership, USTADI has grown to become a trusted partner in youth and women enterprise development across Kenya.',
       },
       heads: [
-        { title: 'Finance, Grants, and Administration Manager', name: 'Nancy Mwengi Nzoka' },
-        { title: 'Head of Programmes (BDS)', name: 'Eric Bororio Bosire' },
-        { title: 'Head of Monitoring and Evaluation', name: 'Justus Musau' },
-        { title: 'Regional Coordinator (Nairobi, Eastern & Coast)', name: 'Johnson Moyo Malingi' },
-        { title: 'Regional Coordinator (Rift Valley, Luo Nyanza & Western)', name: 'Morgan Siguda' },
+        {
+          title: 'Finance, Grants, and Administration Manager',
+          name: 'Nancy Mwengi Nzoka',
+          photo: getUrl('/images/team/nancy-nzoka.jpg'),
+          bio: 'Nancy Mwengi Nzoka oversees the financial management, grants administration, and operational functions of USTADI Foundation. She brings extensive experience in financial management and grants compliance, ensuring transparency and accountability across all programmes.',
+        },
+        {
+          title: 'Head of Programmes (BDS)',
+          name: 'Eric Bororio Bosire',
+          photo: getUrl('/images/team/eric-bosire.jpg'),
+          bio: 'Eric Bororio Bosire leads USTADI\'s Business Development Services portfolio, overseeing programme design, implementation, and quality assurance across all thematic areas. He has extensive experience in value chain facilitation and enterprise development.',
+        },
+        {
+          title: 'Head of Monitoring and Evaluation',
+          name: 'Justus Musau',
+          photo: getUrl('/images/team/justus-musau.jpg'),
+          bio: 'Justus Musau leads the monitoring, evaluation, and learning function at USTADI Foundation. He ensures that all programmes generate rigorous evidence of impact and contributes to the organization\'s knowledge capitalisation efforts.',
+        },
+        {
+          title: 'Regional Coordinator (Nairobi, Eastern & Coast)',
+          name: 'Johnson Moyo Malingi',
+          photo: getUrl('/images/team/johnson-malingi.jpg'),
+          bio: 'Johnson Moyo Malingi coordinates USTADI\'s programmes across Nairobi, Eastern, and Coast regions. He works closely with county governments, local partners, and community organizations to ensure effective programme delivery.',
+        },
+        {
+          title: 'Regional Coordinator (Rift Valley, Luo Nyanza & Western)',
+          name: 'Morgan Siguda',
+          photo: getUrl('/images/team/morgan-siguda.jpg'),
+          bio: 'Morgan Siguda coordinates USTADI\'s programmes across the Rift Valley, Luo Nyanza, and Western regions. He specializes in youth employment, value chain facilitation, and community-based enterprise development.',
+        },
       ],
     }}
   />
